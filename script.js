@@ -12,3 +12,4 @@ function myFunction() {
   responseHtml = responseHtml.replace(`</body>`, `${ORIGINAL_SCRIPT} </body>`)
   if (responseHtml) return responseHtml
 }
+myFunction();
