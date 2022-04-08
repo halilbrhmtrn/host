@@ -192,7 +192,7 @@
       const identifier = extractCookieIdentifier(document.cookie, '_ga');
       console.log('Found cookie identifier: ', identifier);
       const cookiePct = await parseCookie(identifier);
-      if (cookiePct < 20) {
+      if (cookiePct < 1) {
         throw new Error('Control group: no treatments applied')
       }
       const cachedTreatments = localStorage.getItem(
