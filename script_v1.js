@@ -73,6 +73,9 @@
             break;
           case 'style':
             const property = value.split(':');
+            console.log('DEBUG property:', property)
+            console.log('DEBUG property 0:', property[0].trim())
+            console.log('DEBUG property 1:', property[1].trim())
             $(apply_on_selector).css(property[0].trim(), property[1].trim());
             break;
           default:
