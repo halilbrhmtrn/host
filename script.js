@@ -192,6 +192,7 @@
       const identifier = extractCookieIdentifier(document.cookie, '_ga');
       console.log('Found cookie identifier: ', identifier);
       const cookiePct = await parseCookie(identifier);
+      console.log('DEBUG cookie pct:', cookiePct)
       if (cookiePct < 1) {
         throw new Error('Control group: no treatments applied')
       }
