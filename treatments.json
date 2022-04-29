@@ -259,23 +259,6 @@
             "operator": "popup",
             "value": "<span style=\"margin: 70px auto; padding: 20px; background: #fff; border-radius: 5px; width: 30%; position: relative; display: block;\">A Simple Popup for Testing Purpose!</span>",
             "skipRule": "random",
-            "timeout": 2500
-        }
-    },
-    {
-        "id": 18,
-        "name": "popup",
-        "description": "popup",
-        "split_weight": "100",
-        "apply_on_user_segment": "*",
-        "apply_on_url": "/",
-        "apply_on_selector": "body",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "popup",
-            "value": "<span style=\"margin: 70px auto; padding: 20px; background: #fff; border-radius: 5px; width: 30%; position: relative; display: block;\">A Simple Popup for Testing Purpose!</span>",
-            "skipRule": "random",
             "applyEvent": "mouseout"
         }
     }
