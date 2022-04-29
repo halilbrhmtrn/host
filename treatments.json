@@ -259,7 +259,7 @@
             "operator": "popup",
             "value": "<span style=\"margin: 70px auto; padding: 20px; background: #fff; border-radius: 5px; width: 30%; position: relative; display: block;\">A Simple Popup for Testing Purpose!</span>",
             "skipRule": "random",
-            "applyEvent": "mouseout"
+            "applyEvent": "mouseleave"
         }
     }
 ]
