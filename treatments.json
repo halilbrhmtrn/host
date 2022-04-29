@@ -1,0 +1,265 @@
+[
+    {
+        "id": 1,
+        "name": "badge change",
+        "description": "change the badge with a heart image",
+        "split_weight": "100",
+        "apply_on_user_segment": "A",
+        "apply_on_url": "/oturma-odasi-mobilyalari.html",
+        "apply_on_selector": "div.product-link > div > a > div > div.top-left-badge > div > img",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "setattribute",
+            "attribute": "src",
+            "value": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Red_heart_tw.svg/292px-Red_heart_tw.svg.png"
+        }
+    },
+    {
+        "id": 2,
+        "name": "badge change",
+        "description": "change the badge with a heart image",
+        "split_weight": "100",
+        "apply_on_user_segment": "B",
+        "apply_on_url": "/oturma-odasi-mobilyalari.html",
+        "apply_on_selector": "div.product-link > div > a > div > div.top-left-badge > div > img",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "setattribute",
+            "attribute": "src",
+            "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyWTOgbZhvemSpnP5op16Bd9axuoRsH2Eiuw&usqp=CAU"
+        }
+    },
+    {
+        "id": 3,
+        "name": "move 2 divs",
+        "description": "replace divs contents",
+        "split_weight": "100",
+        "apply_on_user_segment": "A",
+        "apply_on_url": "/",
+        "apply_on_selector": "div.vvs-snippet-hero-products__items",
+        "apply_on_action":
+        {
+            "type": "move",
+            "operator": "swap",
+            "move_selector_2": ".vvs-snippet-hero-products__items > div:nth-child(2)",
+            "move_selector_1": ".vvs-snippet-hero-products__items > div:first-child"
+        }
+    },
+    {
+        "id": 4,
+        "name": "move 2 divs",
+        "description": "replace divs contents",
+        "split_weight": "100",
+        "apply_on_user_segment": "B",
+        "apply_on_url": "/",
+        "apply_on_selector": "div.vvs-snippet-hero-products__items",
+        "apply_on_action":
+        {
+            "type": "move",
+            "operator": "swap",
+            "move_selector_2": ".vvs-snippet-hero-products__items > div:nth-child(3)",
+            "move_selector_1": ".vvs-snippet-hero-products__items > div:first-child"
+        }
+    },
+    {
+        "id": 5,
+        "name": "remove element",
+        "description": "remove an element",
+        "split_weight": "100",
+        "apply_on_user_segment": "A",
+        "apply_on_url": "/",
+        "apply_on_selector": ".signup_icon",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "remove"
+        }
+    },
+    {
+        "id": 6,
+        "name": "remove element",
+        "description": "remove an element",
+        "split_weight": "100",
+        "apply_on_user_segment": "B",
+        "apply_on_url": "/",
+        "apply_on_selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.my_favorites_wrapper.my-favorites > a > span.shortcut_icon.heart_icon",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "remove"
+        }
+    },
+    {
+        "id": 7,
+        "name": "inject script",
+        "description": "inject a script",
+        "split_weight": "100",
+        "apply_on_user_segment": "A",
+        "apply_on_url": "/",
+        "apply_on_selector": "body",
+        "apply_on_action":
+        {
+            "type": "injectscript",
+            "operator": "injectscript",
+            "value": "console.log('GLOV DEBUG: script injected for segment A');"
+        }
+    },
+    {
+        "id": 8,
+        "name": "inject script",
+        "description": "inject a script",
+        "split_weight": "100",
+        "apply_on_user_segment": "B",
+        "apply_on_url": "/",
+        "apply_on_selector": "body",
+        "apply_on_action":
+        {
+            "type": "injectscript",
+            "operator": "injectscript",
+            "value": "console.log('GLOV DEBUG: script injected for segment B');"
+        }
+    },
+    {
+        "id": 9,
+        "name": "color change",
+        "description": "change color of cta button",
+        "split_weight": "100",
+        "apply_on_user_segment": "A",
+        "apply_on_url": "/valens-yemek-odasi-takimi-modeli.html",
+        "apply_on_selector": "div.panel.panel-default.product-right-sidebar > div > div.button-add-cart-action > a",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "setattribute",
+            "attribute": "style",
+            "value": "background-color: #FFB500"
+        }
+    },
+    {
+        "id": 10,
+        "name": "color change",
+        "description": "change color of cta button",
+        "split_weight": "100",
+        "apply_on_user_segment": "B",
+        "apply_on_url": "/valens-yemek-odasi-takimi-modeli.html",
+        "apply_on_selector": "div.panel.panel-default.product-right-sidebar > div > div.button-add-cart-action > a",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "setattribute",
+            "attribute": "style",
+            "value": "background-color: red"
+        }
+    },
+    {
+        "id": 11,
+        "name": "add urgency label",
+        "description": "add urgency label for discount",
+        "split_weight": "100",
+        "apply_on_user_segment": "A",
+        "apply_on_url": "/",
+        "apply_on_selector": "body > div.main-custom-container > div > div > div.vvs-snippet.vvs-snippet-hero-products > div.vvs-snippet-hero-products__items > div:nth-child(4)",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "before",
+            "value": "<div style='width: 72px; border: red; border-radius: 12%; top: 2rem; right: 20rem; background-color: red; color: white; font-size: 15px; position: absolute;'>2 days left</div>"
+        }
+    },
+    {
+        "id": 12,
+        "name": "add urgency label",
+        "description": "add urgency label for discount",
+        "split_weight": "100",
+        "apply_on_user_segment": "B",
+        "apply_on_url": "/",
+        "apply_on_selector": "body > div.main-custom-container > div > div > div.vvs-snippet.vvs-snippet-hero-products > div.vvs-snippet-hero-products__items > div:nth-child(4)",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "before",
+            "value": "<div style='width: 72px; border: #FFB500; border-radius: 12%; top: 2rem; right: 20rem; background-color: #FFB500; color: black; font-size: 15px; position: absolute;'>2 days left</div>"
+        }
+    },
+    {
+        "id": 13,
+        "name": "remove element skip every fourth",
+        "description": "remove an element",
+        "split_weight": "100",
+        "apply_on_user_segment": "A",
+        "apply_on_url": "/haftanin-cok-satanlari.html",
+        "apply_on_selector": "div.super-price-badge",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "remove",
+            "skipRule": "every-fourth"
+        }
+    },
+    {
+        "id": 14,
+        "name": "remove element skip randomly",
+        "description": "remove an element",
+        "split_weight": "100",
+        "apply_on_user_segment": "B",
+        "apply_on_url": "/haftanin-cok-satanlari.html",
+        "apply_on_selector": "div.super-price-badge",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "remove",
+            "skipRule": "random"
+        }
+    },
+    {
+        "id": 15,
+        "name": "TEST color change",
+        "description": "TEST change color of text",
+        "split_weight": "100",
+        "apply_on_user_segment": "A",
+        "apply_on_url": "/",
+        "apply_on_selector": "body > section > div.call-to-action > h1",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "setattribute",
+            "attribute": "style",
+            "value": "color: red"
+        }
+    },
+    {
+        "id": 16,
+        "name": "TEST color change",
+        "description": "TEST change color of text",
+        "split_weight": "100",
+        "apply_on_user_segment": "B",
+        "apply_on_url": "/",
+        "apply_on_selector": "body > section > div.call-to-action > h1",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "setattribute",
+            "attribute": "style",
+            "value": "color: red"
+        }
+    },
+    {
+        "id": 17,
+        "name": "popup",
+        "description": "popup",
+        "split_weight": "100",
+        "apply_on_user_segment": "*",
+        "apply_on_url": "/",
+        "apply_on_selector": "body",
+        "apply_on_action":
+        {
+            "type": "element_handler",
+            "operator": "popup",
+            "value": "<span style=\"margin: 70px auto; padding: 20px; background: #fff; border-radius: 5px; width: 30%; position: relative; display: block;\">A Simple Popup for Testing Purpose!</span>",
+            "skipRule": "random",
+            "timeout": 2500
+        }
+    }
+]
