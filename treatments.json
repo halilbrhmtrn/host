@@ -253,6 +253,11 @@
         "apply_on_user_segment": "*",
         "apply_on_url": "/",
         "apply_on_selector": "body",
+        "rule": 
+        {
+            "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length",
+            "operator": "exist"
+        },
         "apply_on_action":
         {
             "type": "element_handler",
