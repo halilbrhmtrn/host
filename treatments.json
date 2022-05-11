@@ -262,7 +262,7 @@
         {
             "type": "element_handler",
             "operator": "popup",
-            "value": "<span style=\"margin: 70px auto; padding: 20px; background: #fff; border-radius: 5px; width: 30%; position: relative; display: block;\">A Simple Popup for Testing Purpose! {{REPLACE}}</span>",
+            "value": "<span style=\"margin: 70px auto; padding: 20px; background: #fff; border-radius: 5px; width: 30%; position: relative; display: block;\">Sepetinizdeki ürün hızlı tükeniyor!</span>",
             "skipRule": "random",
             "applyEvent": "mouseleave",
             "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img"
