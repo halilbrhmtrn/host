@@ -1,288 +1,252 @@
 [
     {
         "id": 1,
-        "name": "badge change",
-        "description": "change the badge with a heart image",
-        "split_weight": "100",
-        "apply_on_user_segment": "A",
-        "apply_on_url": "/oturma-odasi-mobilyalari.html",
-        "apply_on_selector": "div.product-link > div > a > div > div.top-left-badge > div > img",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "setattribute",
-            "attribute": "src",
-            "value": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Red_heart_tw.svg/292px-Red_heart_tw.svg.png"
-        }
+        "description": "Display exit popup",
+        "apply_on_user_segment": "*",
+        "apply_on_url": "/",
+        "device": "desktop",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "session",
+                "operator": "duration",
+                "condition": "greaterThan",
+                "value": 10
+            },
+            {
+                "id": 2,
+                "type": "counter",
+                "operator": "pageView",
+                "condition": "greaterEquals",
+                "value": 2
+            }
+        ],
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "element",
+                "operator": null,
+                "condition": "notExist",
+                "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length",
+                "subVariantId": 1
+            },
+            {
+                "id": 2,
+                "type": "element",
+                "operator": null,
+                "condition": "exist",
+                "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length",
+                "subVariantId": 2
+            }
+        ],
+        "actions": [
+            {
+                "operator": "insert",
+                "type": "popup",
+                "applyEvent": ["exitIntent", "copyIntent"],
+                "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
+                "value": "<div>Empty Popup</div>",
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "value": "<div style=\"margin: 70px auto; background: #fff; border-radius: 10px; width: 370px; position: relative; display: block;\"><button style=\"position: absolute; right: 0px; top: 0px; margin: 5px;\">X</button><div style=\"display: flex; flex-direction: column; align-items: center\"><div style=\"font-size: 28px; font-weight: 450; text-align: center; margin-bottom: 12px;\">Vivense'de her bütçeye uygun eşya bulmak mümkün!</div><div style=\"font-size: 18px; font-weight: 390; text-align: center; margin-bottom: 12px;\">Sen de tüm kampanyalara ulaşmak için hemen tıkla</div><a class=\"adora-cta_btn\" href=\"indirimli-mobilya-kampanyalari.html\">KAMPANYALARA GIT</a></div></div>"
+                    },
+                    {
+                        "id": 2,
+                        "value": "<div style=\"margin: 70px auto; background: #fff; border-radius: 10px; width: 370px; position: relative; display: block;\"><button style=\"position: absolute; right: 0px; top: 0px; margin: 5px;\">X</button><div style=\"display: flex; flex-direction: column; align-items: center\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div style=\"display: flex; align-items: center; justify-content: center\"><img src=\"https://ndvivense.glov.ai/assets/selling_out.png\" width=\"90px\" style=\"width: 30px; height: 20px\">Ürünlerin Tükeniyor</div><div style=\"font-size: 28px; font-weight: 450; text-align: center; margin-bottom: 12px;\">Acele et! Ürünlerin tükenmeden satın al</div><div style=\"font-size: 18px; font-weight: 390; text-align: center; margin-bottom: 12px;\">Sepetindeki ürünler hızlıca tükeniyor. Stoklar bitmeden Vivense kalitesini yaşa.</div><a class=\"adora-cta_btn\" href=\"siparis-listesi.html\">SEPETE GIT</a></div></div>"
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 2,
-        "name": "badge change",
-        "description": "change the badge with a heart image",
-        "split_weight": "100",
-        "apply_on_user_segment": "B",
-        "apply_on_url": "/oturma-odasi-mobilyalari.html",
-        "apply_on_selector": "div.product-link > div > a > div > div.top-left-badge > div > img",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "setattribute",
-            "attribute": "src",
-            "value": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyWTOgbZhvemSpnP5op16Bd9axuoRsH2Eiuw&usqp=CAU"
-        }
+        "description": "Change mobile layout into 1 column",
+        "apply_on_user_segment": "*",
+        "apply_on_url": "/yatak-odasi.html",
+        "device": "mobile",
+        "actions": [
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"margin-top\":\"13rem\"}",
+                "selector": "div.product_info"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"width\":\"100%\"}",
+                "selector": "#product-list-wrapper > div.product-list_container > div > div"
+            }
+        ]
     },
     {
         "id": 3,
-        "name": "move 2 divs",
-        "description": "replace divs contents",
-        "split_weight": "100",
-        "apply_on_user_segment": "A",
-        "apply_on_url": "/",
-        "apply_on_selector": "div.vvs-snippet-hero-products__items",
-        "apply_on_action":
-        {
-            "type": "move",
-            "operator": "swap",
-            "move_selector_2": ".vvs-snippet-hero-products__items > div:nth-child(2)",
-            "move_selector_1": ".vvs-snippet-hero-products__items > div:first-child"
-        }
+        "description": "Sales Motivator (Coupon) - Basket",
+        "apply_on_user_segment": "*",
+        "apply_on_url": "/siparis-listesi.html",
+        "device": "*",
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "lessThan",
+                "value": 1500,
+                "selectorAll": ".price",
+                "subVariantId": 1
+            },
+            {
+                "id": 2,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "between",
+                "value": "1500, 3000",
+                "selectorAll": ".price",
+                "subVariantId": 2
+            },
+            {
+                "id": 3,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "between",
+                "value": "3000, 6000",
+                "selectorAll": ".price",
+                "subVariantId": 3
+            },
+            {
+                "id": 4,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "greaterThan",
+                "value": 6000,
+                "selectorAll": ".price",
+                "subVariantId": 4
+            }
+        ],
+        "actions": [
+            {
+                "operator": "remove",
+                "selector": ".basket_top_warning-wrapper"
+            },
+            {
+                "operator": "insert",
+                "type": "before",
+                "selector": "#checkoutForm",
+                "value": "<div class=\"nd-banner\"><div class=\"nd-banner__text\"><b>3.000 TL ve üzeri alışverişlerde geçerli 300 TL indirim Kupon Kodu : YAZAMERHABA300</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>",
+                "replaceFn": null,
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "value": "<div class=\"nd-banner\"><div class=\"nd-banner__text\"><b>Güzel gidiyorsun! Sepetine {{REPLACE}} TL ürün ekle 300 TL indirimin keyfini çıkar.</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>",
+                        "replaceFn": "const elems = Array.from(document.querySelectorAll('.price')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 3000 - total;"
+                    },
+                    {
+                        "id": 2,
+                        "value": "<div class=\"nd-banner\"><div class=\"nd-banner__text\"><b>Çok az kaldı! Sepetine {{REPLACE}} TL ürün ekle 300 TL indirimin keyfini çıkar.</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>",
+                        "replaceFn": "const elems = Array.from(document.querySelectorAll('.price')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 3000 - total;"
+                    },
+                    {
+                        "id": 3,
+                        "value": "<div class=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 300 TL indirim kuponun kullanıma hazır. Toplam 600 TL indirim kazanmak için ise sepetine {{REPLACE}} TL ürün ekle! Kupon Kodu : YAZAMERHABA300</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>",
+                        "replaceFn": "const elems = Array.from(document.querySelectorAll('.price')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 6000 - total;"
+                    },
+                    {
+                        "id": 4,
+                        "value": "<div class=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 600 TL indirim kuponun kullanıma hazır Kupon Kodu : YAZAMERHABA600</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>"
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 4,
-        "name": "move 2 divs",
-        "description": "replace divs contents",
-        "split_weight": "100",
-        "apply_on_user_segment": "B",
-        "apply_on_url": "/",
-        "apply_on_selector": "div.vvs-snippet-hero-products__items",
-        "apply_on_action":
-        {
-            "type": "move",
-            "operator": "swap",
-            "move_selector_2": ".vvs-snippet-hero-products__items > div:nth-child(3)",
-            "move_selector_1": ".vvs-snippet-hero-products__items > div:first-child"
-        }
-    },
-    {
-        "id": 5,
-        "name": "remove element",
-        "description": "remove an element",
-        "split_weight": "100",
-        "apply_on_user_segment": "A",
-        "apply_on_url": "/",
-        "apply_on_selector": ".signup_icon",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "remove"
-        }
-    },
-    {
-        "id": 6,
-        "name": "remove element",
-        "description": "remove an element",
-        "split_weight": "100",
-        "apply_on_user_segment": "B",
-        "apply_on_url": "/",
-        "apply_on_selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.my_favorites_wrapper.my-favorites > a > span.shortcut_icon.heart_icon",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "remove"
-        }
-    },
-    {
-        "id": 7,
-        "name": "inject script",
-        "description": "inject a script",
-        "split_weight": "100",
-        "apply_on_user_segment": "A",
-        "apply_on_url": "/",
-        "apply_on_selector": "body",
-        "apply_on_action":
-        {
-            "type": "injectscript",
-            "operator": "injectscript",
-            "value": "console.log('GLOV DEBUG: script injected for segment A');"
-        }
-    },
-    {
-        "id": 8,
-        "name": "inject script",
-        "description": "inject a script",
-        "split_weight": "100",
-        "apply_on_user_segment": "B",
-        "apply_on_url": "/",
-        "apply_on_selector": "body",
-        "apply_on_action":
-        {
-            "type": "injectscript",
-            "operator": "injectscript",
-            "value": "console.log('GLOV DEBUG: script injected for segment B');"
-        }
-    },
-    {
-        "id": 9,
-        "name": "color change",
-        "description": "change color of cta button",
-        "split_weight": "100",
-        "apply_on_user_segment": "A",
-        "apply_on_url": "/valens-yemek-odasi-takimi-modeli.html",
-        "apply_on_selector": "div.panel.panel-default.product-right-sidebar > div > div.button-add-cart-action > a",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "setattribute",
-            "attribute": "style",
-            "value": "background-color: #FFB500"
-        }
-    },
-    {
-        "id": 10,
-        "name": "color change",
-        "description": "change color of cta button",
-        "split_weight": "100",
-        "apply_on_user_segment": "B",
-        "apply_on_url": "/valens-yemek-odasi-takimi-modeli.html",
-        "apply_on_selector": "div.panel.panel-default.product-right-sidebar > div > div.button-add-cart-action > a",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "setattribute",
-            "attribute": "style",
-            "value": "background-color: red"
-        }
-    },
-    {
-        "id": 11,
-        "name": "add urgency label",
-        "description": "add urgency label for discount",
-        "split_weight": "100",
-        "apply_on_user_segment": "A",
-        "apply_on_url": "/",
-        "apply_on_selector": "body > div.main-custom-container > div > div > div.vvs-snippet.vvs-snippet-hero-products > div.vvs-snippet-hero-products__items > div:nth-child(4)",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "before",
-            "value": "<div style='width: 72px; border: red; border-radius: 12%; top: 2rem; right: 20rem; background-color: red; color: white; font-size: 15px; position: absolute;'>2 days left</div>"
-        }
-    },
-    {
-        "id": 12,
-        "name": "add urgency label",
-        "description": "add urgency label for discount",
-        "split_weight": "100",
-        "apply_on_user_segment": "B",
-        "apply_on_url": "/",
-        "apply_on_selector": "body > div.main-custom-container > div > div > div.vvs-snippet.vvs-snippet-hero-products > div.vvs-snippet-hero-products__items > div:nth-child(4)",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "before",
-            "value": "<div style='width: 72px; border: #FFB500; border-radius: 12%; top: 2rem; right: 20rem; background-color: #FFB500; color: black; font-size: 15px; position: absolute;'>2 days left</div>"
-        }
-    },
-    {
-        "id": 13,
-        "name": "remove element skip every fourth",
-        "description": "remove an element",
-        "split_weight": "100",
-        "apply_on_user_segment": "A",
-        "apply_on_url": "/haftanin-cok-satanlari.html",
-        "apply_on_selector": "div.super-price-badge",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "remove",
-            "skipRule": "every-fourth"
-        }
-    },
-    {
-        "id": 14,
-        "name": "remove element skip randomly",
-        "description": "remove an element",
-        "split_weight": "100",
-        "apply_on_user_segment": "B",
-        "apply_on_url": "/haftanin-cok-satanlari.html",
-        "apply_on_selector": "div.super-price-badge",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "remove",
-            "skipRule": "random"
-        }
-    },
-    {
-        "id": 15,
-        "name": "TEST color change",
-        "description": "TEST change color of text",
-        "split_weight": "100",
-        "apply_on_user_segment": "A",
-        "apply_on_url": "/",
-        "apply_on_selector": "body > section > div.call-to-action > h1",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "setattribute",
-            "attribute": "style",
-            "value": "color: red"
-        }
-    },
-    {
-        "id": 16,
-        "name": "TEST color change",
-        "description": "TEST change color of text",
-        "split_weight": "100",
-        "apply_on_user_segment": "B",
-        "apply_on_url": "/",
-        "apply_on_selector": "body > section > div.call-to-action > h1",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "setattribute",
-            "attribute": "style",
-            "value": "color: red"
-        }
-    },
-    {
-        "id": 17,
-        "name": "popup",
-        "description": "popup",
-        "split_weight": "100",
+        "description": "Desktop Enlargement A",
         "apply_on_user_segment": "*",
-        "apply_on_url": "/",
-        "apply_on_selector": "body",
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "popup",
-            "value": "<span style=\"margin: 70px auto; padding: 20px; background: #fff; border-radius: 5px; width: 30%; position: relative; display: block;\">A Simple Popup for Testing Purpose!</span>",
-            "skipRule": "random",
-            "timeout": 2500
-        }
+        "apply_on_url": "/luna-by-vivense-yatak-90-190-modeli.html",
+        "device": "desktop",
+        "actions": [
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "container-fluid",
+                "selector": ".main-custom-container > .container"
+            },
+            {
+                "operator": "edit",
+                "type": "removeClass",
+                "value": "main-custom-container > container",
+                "selector": ".main-custom-container > .container"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "custom-row",
+                "selector": ".main-custom-container > .container-fluid> .row"
+            },
+            {
+                "operator": "edit",
+                "type": "removeClass",
+                "value": "main-custom-container > container-fluid> row",
+                "selector": ".main-custom-container > .container-fluid> .row"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "custom-detail",
+                "selector": ".sticky_column > .product-details-bottom"
+            }
+        ]
     },
     {
-        "id": 18,
-        "name": "popup",
-        "description": "popup",
-        "split_weight": "100",
+        "id": 4,
+        "description": "Desktop Enlargement B",
         "apply_on_user_segment": "*",
-        "apply_on_url": "/",
-        "apply_on_selector": "body",
-        "rule": 
-        {
-            "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length",
-            "operator": "exists"
-        },
-        "apply_on_action":
-        {
-            "type": "element_handler",
-            "operator": "popup",
-            "value": "<span style=\"margin: 70px auto; padding: 20px; background: #fff; border-radius: 5px; width: 30%; position: relative; display: block;\">Sepetinizdeki ürün hızlı tükeniyor!</span>",
-            "skipRule": "random",
-            "applyEvent": "mouseleave",
-            "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img"
-        }
+        "apply_on_url": "/luna-by-vivense-yatak-90-190-modeli.html",
+        "device": "desktop",
+        "actions": [
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "container-fluid",
+                "selector": ".main-custom-container > .container"
+            },
+            {
+                "operator": "edit",
+                "type": "removeClass",
+                "value": "main-custom-container > container",
+                "selector": ".main-custom-container > .container"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "custom-row",
+                "selector": ".main-custom-container > .container-fluid> .row"
+            },
+            {
+                "operator": "edit",
+                "type": "removeClass",
+                "value": "main-custom-container > container-fluid> row",
+                "selector": ".main-custom-container > .container-fluid> .row"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "custom-detail",
+                "selector": ".sticky_column > .product-details-bottom"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "next-day-image",
+                "selector": "#wowslider-container1 > .ws_images"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "next-day-thumb",
+                "selector": "#wowslider-container1 > .ws_thumbs"
+            }
+        ]
     }
 ]
