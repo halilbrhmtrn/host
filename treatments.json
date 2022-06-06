@@ -198,8 +198,8 @@
             },
             {
                 "operator": "setattribute",
-                "attribute": "width",
-                "value": "100%",
+                "attribute": "style",
+                "value": "width: 100%",
                 "selector": ".button-add-cart-action .add-to-cart-btn"
             }
         ]
