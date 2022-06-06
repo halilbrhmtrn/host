@@ -195,6 +195,12 @@
                 "type": "addClass",
                 "value": "custom-detail",
                 "selector": ".sticky_column > .product-details-bottom"
+            },
+            {
+                "operator": "setattribute",
+                "attribute": "width",
+                "value": "100%",
+                "selector": ".button-add-cart-action .add-to-cart-btn"
             }
         ]
     },
