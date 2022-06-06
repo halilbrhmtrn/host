@@ -243,6 +243,12 @@
             },
             {
                 "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"width\":\"100%\"}",
+                "selector": ".button-add-cart-action .add-to-cart-btn"
+            },
+            {
+                "operator": "edit",
                 "type": "addClass",
                 "value": "next-day-image",
                 "selector": "#wowslider-container1 > .ws_images"
