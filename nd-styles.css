@@ -69,7 +69,7 @@
 }
 
 .ws_images.next-day-image{
-  margin-left:0
+  margin-left:0 !important;
 }
 #wowslider-container1 .ws_thumbs.next-day-thumb {
   position:relative; width:100%
