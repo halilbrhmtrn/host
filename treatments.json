@@ -3,7 +3,6 @@
         "id": 1,
         "description": "Display exit popup",
         "apply_on_user_segment": "*",
-        "apply_on_url": "/",
         "device": "desktop",
         "baseRuleSet": [
             {
@@ -19,6 +18,13 @@
                 "operator": "pageView",
                 "condition": "greaterEquals",
                 "value": 2
+            },
+            {
+                "id": 3,
+                "type": "url",
+                "operator": "path",
+                "condition": "notEqual",
+                "value": "/siparis-listesi.html"
             }
         ],
         "subVariantRuleSet": [
@@ -63,8 +69,16 @@
         "id": 2,
         "description": "Change mobile layout into 1 column",
         "apply_on_user_segment": "*",
-        "apply_on_url": "/yatak-odasi.html",
         "device": "mobile",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Listingpage"
+            }
+        ],
         "actions": [
             {
                 "operator": "edit",
@@ -84,8 +98,16 @@
         "id": 3,
         "description": "Sales Motivator (Coupon) - Basket",
         "apply_on_user_segment": "*",
-        "apply_on_url": "/siparis-listesi.html",
         "device": "*",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/siparis-listesi.html"
+            }
+        ],
         "subVariantRuleSet": [
             {
                 "id": 1,
@@ -161,10 +183,113 @@
     },
     {
         "id": 4,
+        "description": "Sales Motivator (Coupon) - PDP",
+        "apply_on_user_segment": "*",
+        "device": "*",
+        "baseRuleSet":[
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage"
+            },
+            {
+                "id": 2,
+                "type": "element",
+                "operator": null,
+                "selector": ".not-allowed-coupon",
+                "condition": "notExist"
+            }
+        ],
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "lessThan",
+                "value": 1500,
+                "selectorAll": ".price",
+                "subVariantId": 1
+            },
+            {
+                "id": 2,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "between",
+                "value": "1500, 3000",
+                "selectorAll": ".price",
+                "subVariantId": 2
+            },
+            {
+                "id": 3,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "between",
+                "value": "3000, 6000",
+                "selectorAll": ".price",
+                "subVariantId": 3
+            },
+            {
+                "id": 4,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "greaterThan",
+                "value": 6000,
+                "selectorAll": ".price",
+                "subVariantId": 4
+            }
+        ],
+        "actions": [
+            {
+                "operator": "remove",
+                "selector": ".basket_top_warning-wrapper"
+            },
+            {
+                "operator": "insert",
+                "type": "before",
+                "selector": "body > div.main-custom-container > div.container",
+                "value": "<div class=\"nd-banner nd-banner--margin-bottom\"><div class=\"nd-banner__text\"><b>3.000 TL ve üzeri alışverişlerde geçerli 300 TL indirim Kupon Kodu : YAZAMERHABA300</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>",
+                "replaceFn": null,
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "value": "<div class=\"nd-banner nd-banner--margin-bottom\"><div class=\"nd-banner__text\"><b>Güzel gidiyorsun! Sepetine {{REPLACE}} TL ürün ekle 300 TL indirimin keyfini çıkar.</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>",
+                        "replaceFn": "const elems = Array.from(document.querySelectorAll('.price')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 3000 - total;"
+                    },
+                    {
+                        "id": 2,
+                        "value": "<div class=\"nd-banner nd-banner--margin-bottom\"><div class=\"nd-banner__text\"><b>Çok az kaldı! Sepetine {{REPLACE}} TL ürün ekle 300 TL indirimin keyfini çıkar.</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>",
+                        "replaceFn": "const elems = Array.from(document.querySelectorAll('.price')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 3000 - total;"
+                    },
+                    {
+                        "id": 3,
+                        "value": "<div class=\"nd-banner nd-banner--margin-bottom\"><div class=\"nd-banner__text\"><b>Tebrikler! 300 TL indirim kuponun kullanıma hazır. Toplam 600 TL indirim kazanmak için ise sepetine {{REPLACE}} TL ürün ekle! Kupon Kodu : YAZAMERHABA300</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>",
+                        "replaceFn": "const elems = Array.from(document.querySelectorAll('.price')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 6000 - total;"
+                    },
+                    {
+                        "id": 4,
+                        "value": "<div class=\"nd-banner nd-banner--margin-bottom\"><div class=\"nd-banner__text\"><b>Tebrikler! 600 TL indirim kuponun kullanıma hazır Kupon Kodu : YAZAMERHABA600</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a></div>"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
         "description": "Desktop Enlargement A",
         "apply_on_user_segment": "*",
         "apply_on_url": "/luna-by-vivense-yatak-90-190-modeli.html",
         "device": "desktop",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage"
+            }
+        ],
         "actions": [
             {
                 "operator": "edit",
@@ -205,11 +330,20 @@
         ]
     },
     {
-        "id": 5,
+        "id": 6,
         "description": "Desktop Enlargement B",
         "apply_on_user_segment": "*",
         "apply_on_url": "/bedpark-bed16-ultra-full-yayli-yatak-90x200-modeli.html",
         "device": "desktop",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage"
+            }
+        ],
         "actions": [
             {
                 "operator": "edit",
