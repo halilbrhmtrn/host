@@ -145,6 +145,10 @@
                 "type": "addClass",
                 "value": "next-day-thumb",
                 "selector": "#wowslider-container1 > .ws_thumbs"
+            },
+            {
+                "operator": "remove",
+                "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > div"
             }
         ]
     }
