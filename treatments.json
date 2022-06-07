@@ -278,7 +278,7 @@
     {
         "id": 5,
         "description": "Desktop Enlargement A",
-        "apply_on_user_segment": "*",
+        "apply_on_user_segment": "A",
         "apply_on_url": "/luna-by-vivense-yatak-90-190-modeli.html",
         "device": "desktop",
         "baseRuleSet": [
@@ -332,7 +332,7 @@
     {
         "id": 6,
         "description": "Desktop Enlargement B",
-        "apply_on_user_segment": "*",
+        "apply_on_user_segment": "B",
         "apply_on_url": "/bedpark-bed16-ultra-full-yayli-yatak-90x200-modeli.html",
         "device": "desktop",
         "baseRuleSet": [
