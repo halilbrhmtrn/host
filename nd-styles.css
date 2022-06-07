@@ -73,7 +73,9 @@
   max-height: none !important;
 }
 #wowslider-container1 .ws_thumbs.next-day-thumb {
-  position:relative; width:100%
+  position:relative;
+  width:100%;
+  top: -33px;
 }
 #wowslider-container1 .ws_thumbs.next-day-thumb:before {
   left:0;width: 20px;height: 100%
