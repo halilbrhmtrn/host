@@ -79,10 +79,18 @@
   top: -33px;
 }
 #wowslider-container1 .ws_thumbs.next-day-thumb:before {
-  left:0;width: 20px;height: 100%
+    left: -503;
+    top: 30;
+    width: 100%;
+    height: 20px%;
+    transform: rotate(270deg);
 }
 #wowslider-container1 .ws_thumbs.next-day-thumb:after { 
-  right:0;width: 20px;height: 100% 
+    right: -503;
+    width: 100%;
+    height: 20px;
+    transform: rotate(270deg);
+    top: 30px; 
 }
 
 #wowslider-container1 .ws_thumbs.next-day-thumb div {
