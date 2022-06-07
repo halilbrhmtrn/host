@@ -149,7 +149,20 @@
             {
                 "operator": "remove",
                 "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > div"
-            }
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "container-fluid",
+                "selector": "body > div.main-custom-container > div.full-width > div"
+            },
+            {
+                "operator": "edit",
+                "type": "removeClass",
+                "value": "main-custom-container > container",
+                "selector": "body > div.main-custom-container > div.full-width > div"
+            },
+            
         ]
     }
 ]
