@@ -161,6 +161,12 @@
                 "type": "removeClass",
                 "value": "main-custom-container > container",
                 "selector": "body > div.main-custom-container > div.full-width > div"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"padding-left\":\"inherit\"}",
+                "selector": "#breadcrumb-ol"
             }
         ]
     }
