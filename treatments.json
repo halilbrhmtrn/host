@@ -171,7 +171,20 @@
                 "type": "styleApplicator",
                 "value": "{\"padding-left\":\"inherit\"}",
                 "selector": "#breadcrumb-ol"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "image-edit-content",
+                "selector": ".ws_images.next-day-image > div:nth-child(3)"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "image-edit",
+                "selector": "#wowslider-container1 > .ws_images.next-day-image > .image-edit-content > .ws_list > ul > li > a > img"
             }
+            
         ]
     }
 ]
