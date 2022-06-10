@@ -176,7 +176,7 @@
                 "operator": "edit",
                 "type": "addClass",
                 "value": "image-edit-content",
-                "selector": ".ws_images.next-day-image > div:nth-child(3)"
+                "selector": ".ws_images.next-day-image > div"
             },
             {
                 "operator": "edit",
