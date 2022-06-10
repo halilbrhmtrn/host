@@ -99,3 +99,5 @@
 #wowslider-container1 .ws_thumbs.next-day-thumb a { 
   display:inline-block;margin:5px
 }
+
+#wowslider-container1 .ws_images.next-day-image .ws_list img{margin-top:initial !important}
