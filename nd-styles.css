@@ -95,7 +95,9 @@
 }
 
 #wowslider-container1 .ws_thumbs.next-day-thumb div {
-  width:400em
+  width:400em;
+  padding-top: 0;
+  flex-direction: initial;
 }
 
 #wowslider-container1 .ws_thumbs.next-day-thumb a { 
