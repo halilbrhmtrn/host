@@ -73,9 +73,11 @@
   max-height: none !important;
 }
 #wowslider-container1 .ws_thumbs.next-day-thumb {
-  position:relative;
+  position:absolute;
   width:100%;
-  top: 8px;
+  bottom:0;
+  top:initial;
+  height:85px
 }
 #wowslider-container1 .ws_thumbs.next-day-thumb:before {
     left: -503;
@@ -93,7 +95,7 @@
 }
 
 #wowslider-container1 .ws_thumbs.next-day-thumb div {
-  display:block;    padding: 0 20px;left:5px
+  width:400em
 }
 
 #wowslider-container1 .ws_thumbs.next-day-thumb a { 
