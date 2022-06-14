@@ -80,6 +80,16 @@
                 "type": "styleApplicator",
                 "value": "{\"width\":\"100%\"}",
                 "selector": "#product-list-wrapper > div.product-list_container > div > div"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "next-day-product",
+                "selector": ".product-list > .product-card"
+            }, 
+            {
+                "operator": "remove",
+                "selector": "#product-list-wrapper > div.product-list_container > div > div > div.other_size_options_mobile_wrapper.open_other_product"
             }
         ]
     },
