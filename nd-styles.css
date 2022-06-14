@@ -249,4 +249,41 @@
   margin-top: initial !important;
 }
 
+.category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card.next-day-product {
+  float: initial;
+}
+
+.category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card.next-day-product .product-link {
+  float: initial;
+  width: 100%;
+  top: initial;
+  left: initial;
+  display: block;
+}
+
+.category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card.next-day-product .product-link {
+  float: initial;
+  width: 100%;
+  top: initial;
+  left: initial;
+}
+
+.category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card.next-day-product .product-link .product_img {
+  height: initial !important;
+  float: initial;
+}
+
+.category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card.next-day-product .product-link .product_info {
+  margin-top: 1rem !important;
+  float: initial;
+}
+
+.product-card.next-day-product .vvns-promotional-product {
+  margin-top: 10px;
+}
+
+.category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card .next-day-product .product-link .product_img .new-product-badge {
+  top: calc(100% - 112px);
+}
+
 /*# sourceMappingURL=nd-styles.css.map */
