@@ -1,8 +1,12 @@
+
 [
     {
         "id": 1,
+        "name": "Exit Pop-up",
         "description": "Display exit popup",
+        "category": "Abandonment and Reengagement / Sitewide / Web",
         "apply_on_user_segment": "*",
+        "reapply_event": "interval",
         "device": "desktop",
         "baseRuleSet": [
             {
@@ -25,6 +29,13 @@
                 "operator": "path",
                 "condition": "notEqual",
                 "value": "/siparis-listesi.html"
+            },
+            {
+                "id": 4,
+                "type": "url",
+                "operator": "path",
+                "condition": "notEqual",
+                "value": "/indirimli-mobilya-kampanyalari.html"
             }
         ],
         "subVariantRuleSet": [
@@ -56,9 +67,12 @@
     },
     {
         "id": 2,
+        "name": "Photo Enlarging",
         "description": "Change mobile layout into 1 column",
+        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile App, Mobile Web",
         "apply_on_user_segment": "*",
         "device": "mobile",
+        "reapply_event": "infinite_scroll",
         "baseRuleSet": [
             {
                 "id": 1,
@@ -95,7 +109,9 @@
     },
     {
         "id": 3,
+        "name": "Sales Motivator",
         "description": "Sales Motivator (Coupon) - Basket",
+        "category": "Promotional Messaging / Cart and Checkout Pages / Mobile App, Mobile Web, Web",
         "apply_on_user_segment": "*",
         "device": "*",
         "baseRuleSet": [
@@ -187,7 +203,9 @@
     },
     {
         "id": 4,
+        "name": "Sales Motivator",
         "description": "Sales Motivator (Coupon) - PDP-Desktop",
+        "category": "Promotional Messaging / Product Pages (PDP) / Mobile App, Web",
         "apply_on_user_segment": "*",
         "device": "desktop",
         "baseRuleSet":[
@@ -386,7 +404,9 @@
     },
     {
         "id": 5,
+        "name": "Sales Motivator",
         "description": "Sales Motivator (Coupon) - PDP-Mobile",
+        "category": "Promotional Messaging / Product Pages (PDP) / Mobile Web",
         "apply_on_user_segment": "*",
         "device": "mobile",
         "baseRuleSet":[
@@ -559,7 +579,9 @@
     },
     {
         "id": 6,
-        "description": "Desktop Enlargement",
+        "name": "Photo Enlarging",
+        "description": "Desktop Photo Enlargement",
+        "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
         "apply_on_user_segment": "*",
         "device": "desktop",
         "baseRuleSet": [
@@ -658,7 +680,7 @@
                 "value": "image-edit",
                 "selector": "#wowslider-container1 > .ws_images.next-day-image > .image-edit-content > .ws_list > ul > li > a > img"
             },
-            {
+             {
                 "operator": "edit",
                 "type": "addClass",
                 "value": "next-day-sticky-f",
@@ -668,3 +690,4 @@
         ]
     }
 ]
+
