@@ -660,8 +660,8 @@
             },
             {
                 "operator": "edit",
-                "type": "addClass",
-                "value": "is_stuck",
+                "type": "styleApplicator",
+                "value": "{\"z-index\":\"99\"}",
                 "selector": ".full-width.sticky_header"
             }
             
