@@ -660,8 +660,8 @@
             },
             {
                 "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"z-index\":\"99\"}",
+                "type": "addClass",
+                "value": "next-day-sticky-f",
                 "selector": ".full-width.sticky_header"
             }
             
