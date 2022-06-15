@@ -559,63 +559,8 @@
     },
     {
         "id": 6,
-        "description": "Desktop Enlargement A",
+        "description": "Desktop Enlargement",
         "apply_on_user_segment": "*",
-        "apply_on_url": "/luna-by-vivense-yatak-90-190-modeli.html",
-        "device": "desktop",
-        "baseRuleSet": [
-            {
-                "id": 1,
-                "type": "dataLayer",
-                "operator": "PageType",
-                "condition": "equal",
-                "value": "Productpage"
-            }
-        ],
-        "actions": [
-            {
-                "operator": "edit",
-                "type": "addClass",
-                "value": "container-fluid",
-                "selector": ".main-custom-container > .container"
-            },
-            {
-                "operator": "edit",
-                "type": "removeClass",
-                "value": "main-custom-container > container",
-                "selector": ".main-custom-container > .container"
-            },
-            {
-                "operator": "edit",
-                "type": "addClass",
-                "value": "custom-row",
-                "selector": ".main-custom-container > .container-fluid> .row"
-            },
-            {
-                "operator": "edit",
-                "type": "removeClass",
-                "value": "main-custom-container > container-fluid> row",
-                "selector": ".main-custom-container > .container-fluid> .row"
-            },
-            {
-                "operator": "edit",
-                "type": "addClass",
-                "value": "custom-detail",
-                "selector": ".sticky_column > .product-details-bottom"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"width\":\"100%\"}",
-                "selector": ".button-add-cart-action .add-to-cart-btn"
-            }
-        ]
-    },
-    {
-        "id": 7,
-        "description": "Desktop Enlargement B",
-        "apply_on_user_segment": "*",
-        "apply_on_url": "/bedpark-bed16-ultra-full-yayli-yatak-90x200-modeli.html",
         "device": "desktop",
         "baseRuleSet": [
             {
