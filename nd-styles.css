@@ -286,5 +286,5 @@
 .category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card .next-day-product .product-link .product_img .new-product-badge {
   top: calc(100% - 112px);
 }
+.full-width.sticky_header.is_stuck {z-index:99 !important}
 
-/*# sourceMappingURL=nd-styles.css.map */
