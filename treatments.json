@@ -688,6 +688,67 @@
             }
             
         ]
+    },
+    {
+        "id": 9,
+        "name": "Flashing Tab Messaging",
+        "description": "Flashing Tab Messaging - Browser",
+        "category": "Promotional Messaging / Web",
+        "apply_on_user_segment": "*",
+        "reapply_event": "element_change",
+        "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
+        "device": "desktop",
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "element",
+                "operator": null,
+                "condition": "exists",
+                "selector": "span.basket_length",
+                "chain_condition": "and",
+                "subVariantId": 1
+            },
+            {
+                "id": 2,
+                "type": "dataLayer",
+                "operator": "event",
+                "condition": "equal",
+                "value": "categorypage"
+            },
+            {
+                "id": 3,
+                "type": "dataLayer",
+                "operator": "event",
+                "condition": "equal",
+                "value": "urundetay"
+            }
+        ],
+        "actions": [
+            {
+                "operator": "edit",
+                "type": "documentTitle",
+                "selector": "body > div.main-custom-container > div.container > div > div.col-md-9 > div.full-width.sticky_header",
+                "value": ["Hey! Hala orada mısın?", "❤ Seni özledik"],
+                "applyEvent": ["tabChange"],
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "value": ["Sepetinde {{REPLACE}} ürün unuttun!"],
+                        "replaceFn" : ["let count = document.querySelector('span.basket_length'); if(count) return count; return 0;"]
+                    },
+                    {
+                        "id": 2,
+                        "value": ["En güzel {{REPLACE}} mobilyaları Vivense’de!", "En sağlam {{REPLACE}} mobilyaları Vivense’de!", "En kaliteli {{REPLACE}} mobilyaları Vivense’de!"],
+                        "replaceFn" : ["return dataLayerFinder(event)['categorypage']", "return dataLayerFinder(event)['categorypage']", "return dataLayerFinder(event)['categorypage']"]
+                    },
+                    {
+                        "id": 3,
+                        "value": "O {{REPLACE}} Bu {{REPLACE}} !",
+                        "replaceFn": "return dataLayerFinder(event)['urundetay']"
+                    }
+                ]
+            }
+        ]
     }
 ]
 
