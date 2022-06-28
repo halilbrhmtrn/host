@@ -598,7 +598,7 @@
                 "type": "element",
                 "operator": null,
                 "condition": "exist",
-                "selector": "td.components-change.components-change-custom > a"
+                "selector": "td.components-change.components-change-custom > a",
 		"chain_condition": "and",
     		"chain":
     			{
@@ -612,7 +612,7 @@
             ],
 
 	    “actions” : [
-		    {
+	     {
                 "operator": "insert",
                 "type": "after",
                 "selector": "#sidebar-right > div > div.sticky_column > div.expand-showroom",
