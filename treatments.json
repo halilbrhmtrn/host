@@ -578,7 +578,7 @@
         ]
     },
     {
-        "id": 6,
+        "id": 7,
         "name": "Photo Enlarging",
         "description": "Desktop Photo Enlargement",
         "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
@@ -643,6 +643,14 @@
                 "selector": "#wowslider-container1 > .ws_thumbs"
             },
             {
+                "operator": "remove",
+                "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > div"
+            },
+            {
+                "operator": "remove",
+                "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.chose_fabric > div"
+            },
+            {
                 "operator": "edit",
                 "type": "addClass",
                 "value": "container-fluid",
@@ -672,29 +680,11 @@
                 "value": "image-edit",
                 "selector": "#wowslider-container1 > .ws_images.next-day-image > .image-edit-content > .ws_list > ul > li > a > img"
             },
-             {
+            {
                 "operator": "edit",
                 "type": "addClass",
                 "value": "next-day-sticky-f",
                 "selector": ".full-width.sticky_header"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"width\":\"60%\", \"margin-left\":\"25rem\"}",
-                "selector": "body > div.main-custom-container > div.container-fluid > div > div.col-md-9"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"width\":\"15%\"}",
-                "selector": "#sidebar-right"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"margin-left\":\"25rem\"}",
-                "selector": "body > div.main-custom-container > div.full-width"
             }
             
         ]
