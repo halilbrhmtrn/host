@@ -310,7 +310,7 @@
     margin-top: 10px;
     height: 90px;
 }
-#sidebar-right .sticky_column .panel.panel-default.product-right-sidebar .product-price-details .components-change.components-change-custom.nd-changecontent-fix:after {
+.sticky_column .product-right-sidebar .product-price-details .components-change .nd-changecontent-fix:after {
   float: right !important
 }
 
