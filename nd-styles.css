@@ -311,9 +311,6 @@
     height: 90px;
 }
 .sticky_column .product-right-sidebar .product-price-details .components-change .nd-changecontent-fix:after {
-  float: initial !important
-}
-.sticky_column .product-right-sidebar .product-price-details .components-change .nd-changecontent-fix:after {
-  float: right !important
+  display: none
 }
 
