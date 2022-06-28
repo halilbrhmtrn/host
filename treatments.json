@@ -691,7 +691,13 @@
                 "type": "addClass",
                 "value": "next-day-sticky-f",
                 "selector": ".full-width.sticky_header"
-            }
+            },
+             {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "nd-changecontent-fix",
+                "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > a"
+            },
             
         ]
     },
