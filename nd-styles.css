@@ -290,3 +290,22 @@
 
 #wowslider-container1 .ws_thumbs.next-day-thumb .video-play-icon{width:100% !important}
 
+.nd-popover p {
+    font-family: BrandonTextRegular;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: .2px;
+    color: #40484e;
+}
+.nd-popover {
+    background-color: rgba(64,72,78,.1);
+    border-radius: 3px;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    height: 90px;
+}
+
