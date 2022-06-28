@@ -310,4 +310,7 @@
     margin-top: 10px;
     height: 90px;
 }
+#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tr > td.components-change.components-change-custom > a:after {
+  float: right !important
+}
 
