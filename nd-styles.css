@@ -296,6 +296,8 @@
     line-height: 1.29;
     letter-spacing: .2px;
     color: #40484e;
+    width: 80%;
+    margin: auto;
 }
 .nd-popover {
     background-color: rgba(64,72,78,.1);
