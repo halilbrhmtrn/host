@@ -577,6 +577,49 @@
             }
         ]
     },
+      {
+        "id": 11,
+        "name": "Photo Enlarging Extras",
+        "description": "Desktop photo enlargement takim iceri extras",
+        "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+        "device": "desktop",
+        "apply_on_user_segment": "*",
+        "reapply_event": "element_change",
+        "reapply_selector": "td.sumprice-com",
+        "baseRuleSet": [
+             {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage"
+            },
+             {
+                "type": "element",
+                "operator": null,
+                "condition": "exist",
+                "selector": "td.components-change.components-change-custom > a"
+		"chain_condition": "and",
+    		"chain":
+    			{
+        			"type": "element",
+       				 "operator": "text-number",
+       				 "selector": "td.sumprice-com > p",
+        			"condition": "lessThan",
+        			"value": 7000
+   			    }
+            }
+            ],
+
+	    “actions” : [
+		    {
+                "operator": "insert",
+                "type": "after",
+                "selector": "#sidebar-right > div > div.sticky_column > div.expand-showroom",
+                "value": "<div class=\"nd-popover\"><p>7000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>"
+            }
+	    ]        
+    },
     {
         "id": 7,
         "name": "Photo Enlarging",
@@ -650,12 +693,6 @@
                 "operator": "remove",
                 "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.chose_fabric > div"
             },
-             {
-                "operator": "insert",
-                "type": "after",
-                "selector": "#sidebar-right > div > div.sticky_column > div.expand-showroom",
-                "value": "<div class=\"nd-popover\"><p>7000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>"
-             },
             {
                 "operator": "edit",
                 "type": "addClass",
