@@ -643,14 +643,6 @@
                 "selector": "#wowslider-container1 > .ws_thumbs"
             },
             {
-                "operator": "remove",
-                "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > div"
-            },
-            {
-                "operator": "remove",
-                "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.chose_fabric > div"
-            },
-            {
                 "operator": "edit",
                 "type": "addClass",
                 "value": "container-fluid",
