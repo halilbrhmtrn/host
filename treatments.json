@@ -606,17 +606,17 @@
       "subVariantRuleSet":[
          {
             "id":1,
-            "type": "element",
-            "operator": null,
-            "condition": "notExist",
-            "selector": ".nd-popover",
-            "chain_condition": "and",
-            "chain": {
             "type":"element",
-            "operator":"text-number",
-            "condition":"lessThan",
-            "value":7000,
-            "selector":"td.sumprice-com > p",
+            "operator":null,
+            "condition":"notExist",
+            "selector":".nd-popover",
+            "chain_condition":"and",
+            "chain":{
+               "type":"element",
+               "operator":"text-number",
+               "condition":"lessThan",
+               "value":7000,
+               "selector":"td.sumprice-com > p"
             },
             "subVariantId":1
          }
