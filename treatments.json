@@ -643,6 +643,7 @@
                   "value":"<div class=\"nd-popover\"><p>7000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>"
                },
                {
+                  "id": 2,
                   "operator":"remove",
                   "selector":".nd-popover"
                }
