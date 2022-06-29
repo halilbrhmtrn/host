@@ -626,6 +626,7 @@
             "operator":null,
             "condition":"exist",
             "selector":".nd-popover",
+            "chain_condition":"and",
             "chain":{
                "type":"element",
                "operator":"text-number",
