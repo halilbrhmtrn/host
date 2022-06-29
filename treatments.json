@@ -606,7 +606,7 @@
                "type":"element",
                "operator":"text-number",
                "selector":"td.sumprice-com > p",
-               "condition":"lessThan",
+               "condition":"greaterThan",
                "value":7000
             }
          }
@@ -616,7 +616,7 @@
             "id":1,
             "type":"element",
             "operator":"text-number",
-            "condition":"greaterThan",
+            "condition":"lessThan",
             "value":7000,
             "selector":"td.sumprice-com > p",
             "subVariantId":1
@@ -624,14 +624,15 @@
       ],
       "actions":[
          {
-            "operator":"insert",
-            "type":"after",
-            "selector":"#sidebar-right > div > div.sticky_column > div.expand-showroom",
-            "value":"<div class=\"nd-popover\"><p>7000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>",
+            "operator":"remove",
+            "selector":".nd-popover",
             "subVariants":[
                {
-                  "operator":"remove",
-                  "selector":".nd-popover",
+                  "id":1
+                  "operator":"insert",
+                  "type":"after",
+                  "selector":"#sidebar-right > div > div.sticky_column > div.expand-showroom",
+                  "value":"<div class=\"nd-popover\"><p>7000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>",
                   "id":1
                }
             ]
