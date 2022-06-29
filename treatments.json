@@ -600,15 +600,7 @@
             "type":"element",
             "operator":null,
             "condition":"exist",
-            "selector":"td.components-change.components-change-custom > a",
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":"text-number",
-               "selector":"td.sumprice-com > p",
-               "condition":"greaterThan",
-               "value":7000
-            }
+            "selector":"td.components-change.components-change-custom > a"
          }
       ],
       "subVariantRuleSet":[
