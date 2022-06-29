@@ -623,10 +623,16 @@
          {
             "id":2,
             "type":"element",
-            "operator":"text-number",
-            "condition":"greaterThan",
-            "value":7000,
-            "selector":"td.sumprice-com > p",
+            "operator":null,
+            "condition":"exist",
+            "selector":".nd-popover",
+            "chain":{
+               "type":"element",
+               "operator":"text-number",
+               "condition":"greaterThan",
+               "value":7000,
+               "selector":"td.sumprice-com > p"
+            },
             "subVariantId":2
          }
       ],
@@ -643,7 +649,7 @@
                   "value":"<div class=\"nd-popover\"><p>7000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>"
                },
                {
-                  "id": 2,
+                  "id":2,
                   "operator":"remove",
                   "selector":".nd-popover"
                }
