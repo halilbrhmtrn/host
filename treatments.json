@@ -635,6 +635,22 @@
                "selector":"td.sumprice-com > p"
             },
             "subVariantId":2
+         },
+         {
+            "id":3,
+            "type":"element",
+            "operator":null,
+            "condition":"exist",
+            "selector":".nd-popover",
+            "chain_condition":"and",
+            "chain":{
+               "type":"element",
+               "operator":"text-number",
+               "condition":"lessThan",
+               "value":7000,
+               "selector":"td.sumprice-com > p"
+            },
+            "subVariantId":3
          }
       ],
       "actions":[
@@ -652,6 +668,11 @@
                {
                   "id":2,
                   "operator":"remove",
+                  "selector":".nd-popover"
+               },
+               {
+                  "id":3,
+                  "operator":"noop",
                   "selector":".nd-popover"
                }
             ]
