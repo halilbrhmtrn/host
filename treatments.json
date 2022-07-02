@@ -922,18 +922,6 @@
                 "type": "styleApplicator",
                 "value": "{\"margin-left\":\"calc(100vw - 1350px - (100vw - 1320px) / 2)\"}",
                 "selector": "#breadcrumb-ol"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"flex-wrap\":\"wrap\", \"justify-content\":\"space-evenly\", \"padding\":\"15px\"}",
-                "selector": ".product-main-detail-card"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"right\":\"-15px\", \"top\":\"83px\"}",
-                "selector": ".vvns-customer-rating-modal"
             }
             
         ]
