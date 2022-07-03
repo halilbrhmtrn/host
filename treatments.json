@@ -1094,7 +1094,7 @@
             {
                 "operator": "edit",
                 "type": "documentTitle",
-                "selector": "body > div.main-custom-container > div.container > div > div.col-md-9 > div.full-width.sticky_header",
+                "selector": "document",
                 "value": ["Hey! Hala orada mısın?", "❤ Seni özledik"],
                 "applyEvent": ["tabChange"],
                 "subVariants": [
