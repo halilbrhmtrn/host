@@ -1094,7 +1094,7 @@
             {
                 "operator": "edit",
                 "type": "documentTitle",
-                "selector": "document",
+                "selector": "no-selector",
                 "value": ["Hey! Hala orada mısın?", "❤ Seni özledik"],
                 "applyEvent": ["tabChange"],
                 "subVariants": [
