@@ -1067,15 +1067,6 @@
         "device": "desktop",
         "subVariantRuleSet": [
             {
-                "id": 1,
-                "type": "element",
-                "operator": null,
-                "condition": "exists",
-                "selector": "span.basket_length",
-                "chain_condition": "and",
-                "subVariantId": 1
-            },
-            {
                 "id": 2,
                 "type": "dataLayer",
                 "operator": "event",
@@ -1090,6 +1081,15 @@
                 "condition": "equal",
                 "value": "urundetay",
                 "subVariantId": 3
+            },
+            {
+                "id": 1,
+                "type": "element",
+                "operator": null,
+                "condition": "exists",
+                "selector": "span.basket_length",
+                "chain_condition": "and",
+                "subVariantId": 1
             }
         ],
         "actions": [
