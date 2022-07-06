@@ -1113,7 +1113,7 @@
                     {
                         "id": 3,
                         "value": "O {{REPLACE}} Bu {{REPLACE}} !",
-                        "replaceFn": ["let res = this.dataLayerFinder('content_category'); return res", "let res = this.dataLayerFinder('content_category'); return res"]
+                        "replaceFn": "let res = this.dataLayerFinder('content_category'); return res"
                     }
                 ]
             }
