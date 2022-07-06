@@ -1108,7 +1108,7 @@
                     {
                         "id": 2,
                         "value": ["En güzel {{REPLACE}} mobilyaları Vivense’de!", "En sağlam {{REPLACE}} mobilyaları Vivense’de!", "En kaliteli {{REPLACE}} mobilyaları Vivense’de!"],
-                        "replaceFn" : ["let res = this.dataLayerFinder(event); return res['categorypage']", "let res = this.dataLayerFinder(event); return res['categorypage']", "let res = this.dataLayerFinder(event); return res['categorypage']"]
+                        "replaceFn" : ["let res = this.dataLayerFinder('content_name'); return res", "let res = this.dataLayerFinder('content_name'); return res", "let res = this.dataLayerFinder('content_name'); return res"]
                     },
                     {
                         "id": 3,
