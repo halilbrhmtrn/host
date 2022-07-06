@@ -1080,14 +1080,16 @@
                 "type": "dataLayer",
                 "operator": "event",
                 "condition": "equal",
-                "value": "categorypage"
+                "value": "categorypage",
+                "subVariantId": 2
             },
             {
                 "id": 3,
                 "type": "dataLayer",
                 "operator": "event",
                 "condition": "equal",
-                "value": "urundetay"
+                "value": "urundetay",
+                "subVariantId": 3
             }
         ],
         "actions": [
