@@ -1108,12 +1108,12 @@
                     {
                         "id": 2,
                         "value": ["En güzel {{REPLACE}} mobilyaları Vivense’de!", "En sağlam {{REPLACE}} mobilyaları Vivense’de!", "En kaliteli {{REPLACE}} mobilyaları Vivense’de!"],
-                        "replaceFn" : ["let res = dataLayerFinder(event); res['categorypage']", "let res = dataLayerFinder(event); res['categorypage']", "let res = dataLayerFinder(event); res['categorypage']"]
+                        "replaceFn" : ["let res = this.dataLayerFinder(event); return res['categorypage']", "let res = this.dataLayerFinder(event); return res['categorypage']", "let res = this.dataLayerFinder(event); return res['categorypage']"]
                     },
                     {
                         "id": 3,
                         "value": "O {{REPLACE}} Bu {{REPLACE}} !",
-                        "replaceFn": "return dataLayerFinder(event)['urundetay']"
+                        "replaceFn": "return this.dataLayerFinder(event)['urundetay']"
                     }
                 ]
             }
