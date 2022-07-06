@@ -1066,20 +1066,20 @@
         "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
         "device": "desktop",
         "subVariantRuleSet": [
-            {
+             {
                 "id": 2,
                 "type": "dataLayer",
-                "operator": "event",
+                "operator": "PageType",
                 "condition": "equal",
-                "value": "categorypage",
+                "value": "Listingpage",
                 "subVariantId": 2
             },
             {
                 "id": 3,
                 "type": "dataLayer",
-                "operator": "event",
+                "operator": "PageType",
                 "condition": "equal",
-                "value": "urundetay",
+                "value": "Productpage",
                 "subVariantId": 3
             },
             {
