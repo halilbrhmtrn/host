@@ -829,7 +829,7 @@
       "category":"Promotional Messaging / Web",
       "apply_on_user_segment":"*",
       "reapply_event":"element_change",
-      "reapply_selector":"div.shortcut_column.basket_wrapper.my-cart",
+      "reapply_selector":"#checkoutForm > div > div",
       "device":"desktop",
       "subVariantRuleSet":[
          {
