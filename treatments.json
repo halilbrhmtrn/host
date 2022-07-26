@@ -883,7 +883,7 @@
                      "Sepetinde {{REPLACE}} ürün unuttun!"
                   ],
                   "replaceFn":[
-                     "let sum = 0; Array.from($(\".cartItemQuantity\")).forEach(elm => sum += parseInt(elm.getAttribute(\"data-previous\"))); return sum;"
+                     "let sum = Array.from($(\".cartItemQuantity\")).length; return sum;"
                   ]
                },
                {
