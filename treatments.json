@@ -1,942 +1,1193 @@
 [
-   {
-      "id":1,
-      "name":"Exit Pop-up",
-      "description":"Display exit popup",
-      "category":"Abandonment and Reengagement / Sitewide / Web",
-      "apply_on_user_segment":"*",
-      "reapply_event":"element_change",
-      "reapply_selector":"div.shortcut_column.basket_wrapper.my-cart",
-      "device":"desktop",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"session",
-            "operator":"duration",
-            "condition":"greaterThan",
-            "value":10
-         },
-         {
-            "id":2,
-            "type":"counter",
-            "operator":"pageView",
-            "condition":"greaterThan",
-            "value":2
-         },
-         {
-            "id":3,
-            "type":"url",
-            "operator":"path",
-            "condition":"notEqual",
-            "value":"/siparis-listesi.html"
-         },
-         {
-            "id":4,
-            "type":"url",
-            "operator":"path",
-            "condition":"notEqual",
-            "value":"/indirimli-mobilya-kampanyalari.html"
-         },
-         {
-            "id":5,
-            "type":"element",
-            "operator":null,
-            "condition":"exist",
-            "selector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length"
-         }
-      ],
-      "actions":[
-         {
-            "operator":"insert",
-            "type":"popup",
-            "applyEvent":[
-               "exitIntent",
-               "copyIntent"
-            ],
+    {
+        "id": 1,
+        "name": "Exit Pop-up",
+        "description": "Display exit popup",
+        "category": "Abandonment and Reengagement / Sitewide / Web",
+        "apply_on_user_segment": "*",
+        "reapply_event": "element_change",
+        "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
+        "device": "desktop",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "session",
+                "operator": "duration",
+                "condition": "greaterThan",
+                "value": 10
+            },
+            {
+                "id": 2,
+                "type": "counter",
+                "operator": "pageView",
+                "condition": "greaterThan",
+                "value": 2
+            },
+            {
+                "id": 3,
+                "type": "url",
+                "operator": "path",
+                "condition": "notEqual",
+                "value": "/siparis-listesi.html"
+            },
+            {
+                "id": 4,
+                "type": "url",
+                "operator": "path",
+                "condition": "notEqual",
+                "value": "/indirimli-mobilya-kampanyalari.html"
+            },
+            {
+                "id": 5,
+                "type": "element",
+                "operator": null,
+                "condition": "exist",
+                "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length"
+            }
+        ],
+        "actions": [
+            {
+                "operator": "insert",
+                "type": "popup",
+                "applyEvent": ["exitIntent", "copyIntent"],
+                "selector": "body",
+                "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
+                "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Sipariş vermenin tam zamanı!</div><div class=\"nd-popup__text\">Sepetindeki ürünlerin stokları azalıyor. Şimdi alışverişini tamamla, ürünlerin daha hızlı teslim edilsin!</div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">ŞİMDİ SİPARİŞ VER</a></div></div>"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Photo Enlarging",
+        "description": "Change mobile layout into 1 column",
+        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+        "apply_on_user_segment": "*",
+        "device": "mobile",
+        "reapply_event": "infinite_scroll",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Listingpage"
+            }
+        ],
+        "actions": [
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"margin-top\":\"13rem\"}",
+                "selector": "div.product_info"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"width\":\"100%\"}",
+                "selector": "#product-list-wrapper > div.product-list_container > div > div"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "next-day-product",
+                "selector": ".product-list > .product-card"
+            }, 
+            {
+                "operator": "remove",
+                "selector": "#product-list-wrapper > div.product-list_container > div > div > div.other_size_options_mobile_wrapper.open_other_product"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Sales Motivator",
+        "description": "Sales Motivator (Coupon) - Basket",
+        "category": "Promotional Messaging / Cart and Checkout Pages / Web",
+        "apply_on_user_segment": "*",
+        "device": "desktop",
+        "reapply_event": "element_change",
+        "reapply_selector": "#checkoutForm > div > div > div.col-md-8.cart-left-container",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/siparis-listesi.html"
+            }
+        ],
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "lessThan",
+                "value": 3000,
+                "selectorAll": ".price",
+                "subVariantId": 1
+            },
+            {
+                "id": 2,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "between",
+                "value": "3000, 6000",
+                "selectorAll": ".price",
+                "subVariantId": 2
+            },
+            {
+                "id": 3,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "greaterEquals",
+                "value": 6000,
+                "selectorAll": ".price",
+                "subVariantId": 3
+            }
+        ],
+        "actions": [
+            {
+                "operator": "remove",
+                "selector": ".basket_top_warning-wrapper"
+            },
+            {
+                "operator": "remove",
+                "selector": "#nd-banner"
+            },
+            {
+                "operator": "insert",
+                "type": "before",
+                "selector": "body > div.main-custom-container",
+                "selectorFallback": "#main > div",
+                "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim! Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
+                "replaceFn": null,
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "selector": "#checkoutForm",
+                        "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim! Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                    },
+                    {
+                        "id": 2,
+                        "selector": "#checkoutForm",
+                        "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Güzel gidiyorsun! Sepetine {{REPLACE}} TL değerinde ürün ekleyerek anında 500 TL indirime sahip olabilirsin.</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
+                        "replaceFn": "const elems = Array.from(document.querySelectorAll('.price')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 6000 - total;"
+                    },
+                    {
+                        "id": 3,
+                        "selector": "#checkoutForm",
+                        "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 500 TL indirim kuponun kullanıma hazır. Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Sales Motivator",
+        "description": "Sales Motivator (Coupon) - Basket",
+        "category": "Promotional Messaging / Cart and Checkout Pages / Mobile Web",
+        "apply_on_user_segment": "*",
+        "device": "mobile",
+        "reapply_event": "element_change",
+        "reapply_selector": "#\\#",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/siparis-listesi.html"
+            }
+        ],
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "lessThan",
+                "value": 3000,
+                "selectorAll": "#price:not(.not-allowed-coupon)",
+                "subVariantId": 1
+            },
+            {
+                "id": 2,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "between",
+                "value": "3000, 6000",
+                "selectorAll": "#price:not(.not-allowed-coupon)",
+                "subVariantId": 2
+            },
+            {
+                "id": 3,
+                "type": "element",
+                "operator": "text-number",
+                "condition": "greaterEquals",
+                "value": 6000,
+                "selectorAll": "#price:not(.not-allowed-coupon)",
+                "subVariantId": 3
+            }
+        ],
+        "actions": [
+            {
+                "operator": "remove",
+                "selector": ".basket_top_warning-wrapper"
+            },
+            {
+                "operator": "remove",
+                "selector": "#nd-banner"
+            },
+            {
+                "operator": "insert",
+                "type": "before",
+                "selector": "body > div.main-custom-container",
+                "selectorFallback": "#main > div",
+                "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim!<br/>Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
+                "replaceFn": null,
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "selector": "#checkoutForm",
+                        "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim!<br/>Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                    },
+                    {
+                        "id": 2,
+                        "selector": "#checkoutForm",
+                        "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Güzel gidiyorsun! Sepetine {{REPLACE}} TL değerinde ürün ekleyerek anında 500 TL indirime sahip olabilirsin.</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
+                        "replaceFn": "const elems = Array.from(document.querySelectorAll('#price:not(.not-allowed-coupon)')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 6000 - total;"
+                    },
+                    {
+                        "id": 3,
+                        "selector": "#checkoutForm",
+                        "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 500 TL indirim kuponun kullanıma hazır.<br/>Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Sales Motivator",
+        "description": "Sales Motivator (Coupon) - PDP-Desktop",
+        "category": "Promotional Messaging / Product Pages (PDP) / Web",
+        "apply_on_user_segment": "*",
+        "reapply_event": "element_change",
+        "reapply_selector": ["div.shortcut_column.basket_wrapper.my-cart", "span.price", "span.new-price"],
+        "device": "desktop",
+        "dependant_on_treatment": 3,
+        "baseRuleSet":[
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage"
+            },
+            {
+                "id": 2,
+                "type": "element",
+                "operator": null,
+                "selector": ".not-allowed-coupon",
+                "condition": "notExist"
+            }
+        ],
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "equal",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "element",
+                    "operator": "text-number",
+                    "selector": "span.price",
+                    "selectorFallback": "span.new-price",
+                    "condition": "lessThan",
+                    "value": 6000
+                },
+                "subVariantId": 1
+            },
+            {
+                "id": 2,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "equal",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "element",
+                    "operator": "text-number",
+                    "selector": "span.price",
+                    "selectorFallback": "span.new-price",
+                    "condition": "greaterEquals",
+                    "value": 6000
+                },
+                "subVariantId": 2
+            },
+            {
+                "id": 3,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterEquals",
+                "value": 6000,
+                "subVariantId": 3
+            },
+            {
+                "id": 4,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterThan",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "function",
+                    "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                    "condition": "lessThan",
+                    "value": 6000
+                },
+                "subVariantId": 4
+            },
+            {
+                "id": 5,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterThan",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "function",
+                    "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                    "condition": "greaterEquals",
+                    "value": 6000
+                },
+                "subVariantId": 5
+            }
+        ],
+        "actions": [
+            {
+                "operator": "insert",
+                "type": "before",
+                "selector": "body > div.main-custom-container > div.container > div > div.col-md-9 > div.full-width.sticky_header",
+                "selectorFallback": "body > div.main-custom-container > div.container-fluid > div > div.col-md-9 > div.full-width.sticky_header.next-day-sticky-f",
+                "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>",
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    },
+                    {
+                        "id": 2,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    },
+                    {
+                        "id": 3,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Tebrikler! 500 TL indirim kuponun sepette seni bekliyor.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    },
+                    {
+                        "id": 4,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek 500 TL indirime daha çok yaklaşabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    },
+                    {
+                        "id": 5,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Sales Motivator",
+        "description": "Sales Motivator (Coupon) - PDP-Mobile",
+        "category": "Promotional Messaging / Product Pages (PDP) / Mobile Web",
+        "apply_on_user_segment": "*",
+        "reapply_event": "element_change",
+        "reapply_selector": [".basket_icon.my-cart-mobile", "#sales-price"],
+        "device": "mobile",
+        "dependant_on_treatment": 4,
+        "baseRuleSet":[
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage"
+            },
+            {
+                "id": 2,
+                "type": "element",
+                "operator": null,
+                "selector": ".not-allowed-coupon",
+                "condition": "notExist"
+            }
+        ],
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "equal",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "element",
+                    "operator": "text-number",
+                    "selector": "#sales-price",
+                    "condition": "lessThan",
+                    "value": 6000
+                },
+                "subVariantId": 1
+            },
+            {
+                "id": 2,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "equal",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "element",
+                    "operator": "text-number",
+                    "selector": "#sales-price",
+                    "condition": "greaterEquals",
+                    "value": 6000
+                },
+                "subVariantId": 2
+            },
+            {
+                "id": 3,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterEquals",
+                "value": 6000,
+                "subVariantId": 3
+            },
+            {
+                "id": 4,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterThan",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "function",
+                    "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                    "condition": "lessThan",
+                    "value": 6000
+                },
+                "subVariantId": 4
+            },
+            {
+                "id": 5,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterThan",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "function",
+                    "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                    "condition": "greaterEquals",
+                    "value": 6000
+                },
+                "subVariantId": 5
+            }
+        ],
+        "actions": [
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"float\":\"none\"}",
+                "selector": "div.product_images_wrapper"
+            },
+            {
+                "operator": "insert",
+                "type": "before",
+                "selector": "#main > div > section > div:nth-child(1) > div > div.header-bottom",
+                "value": "<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div></div>",
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "value": "<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div></div>"
+                    },
+                    {
+                        "id": 2,
+                        "value": "<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div></div>"
+                    },
+                    {
+                        "id": 3,
+                        "value": "<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Tebrikler! 500 TL indirim kuponun sepette seni bekliyor.</div></div></div>"
+                    },
+                    {
+                        "id": 4,
+                        "value": "<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek 500 TL indirime daha çok yaklaşabilirsin.</div></div></div>"
+                    },
+                    {
+                        "id": 5,
+                        "value": "<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div></div>"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Photo Enlarging",
+        "description": "Desktop Photo Enlargement",
+        "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+        "apply_on_user_segment": "*",
+        "reapply_event": ["element_change", "timeout"],
+        "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
+        "device": "desktop",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage"
+            }
+        ],
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "element",
+                "operator": "count",
+                "selectorAll": "#wowslider-container1 > div.ws_thumbs.next-day-thumb > div a",
+                "condition": "greaterThan",
+                "value": 8,
+                "subVariantId": 1
+            }
+        ],
+        "actions": [
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "container-fluid",
+                "selector": ".main-custom-container > .container"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "nd-photo-enlarging",
+                "selector": ".main-custom-container > .container"
+            },
+            {
+                "operator": "edit",
+                "type": "removeClass",
+                "value": "main-custom-container > container",
+                "selector": ".main-custom-container > .container"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "custom-row",
+                "selector": ".main-custom-container > .container-fluid> .row"
+            },
+            {
+                "operator": "edit",
+                "type": "removeClass",
+                "value": "main-custom-container > container-fluid> row",
+                "selector": ".main-custom-container > .container-fluid> .row"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "custom-detail",
+                "selector": ".sticky_column > .product-details-bottom"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"width\":\"100%\"}",
+                "selector": ".button-add-cart-action .add-to-cart-btn"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "next-day-image",
+                "selector": "#wowslider-container1 > .ws_images"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "next-day-thumb",
+                "selector": "#wowslider-container1 > .ws_thumbs",
+                "subVariants":[
+                    {
+                        "id": 1,
+                        "value": "next-day-thumb__max-content"
+                    }
+                ]
+            },
+            {
+                "operator": "remove",
+                "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > div"
+            },
+            {
+                "operator": "remove",
+                "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.chose_fabric > div"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "container-fluid",
+                "selector": "body > div.main-custom-container > div.full-width > div"
+            },
+            {
+                "operator": "edit",
+                "type": "removeClass",
+                "value": "main-custom-container > container",
+                "selector": "body > div.main-custom-container > div.full-width > div"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"padding-left\":\"inherit\"}",
+                "selector": "#breadcrumb-ol"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "image-edit-content",
+                "selector": ".ws_images.next-day-image > div"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "image-edit",
+                "selector": "#wowslider-container1 > .ws_images.next-day-image > .image-edit-content > .ws_list > ul > li > a > img"
+            },
+            {
+                "operator": "move",
+                "move_selector_1": "body > div.main-custom-container > div.container-fluid > div > div.col-md-9 > div.full-width.sticky_header",
+                "move_selector_2": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"margin-bottom\": \"0\", \"width\": \"unset\", \"height\": \"unset\"}",
+                "selector": ".product-main-details"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "nd-remove-pseudo-elements",
+                "selector": ".product-main-details"
+            },
+            {
+                "operator":"edit",
+                "type":"addClass",
+                "value":"nd-changecontent-fix",
+                "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > a"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "nd-breadcrumb",
+                "selector": "#breadcrumb-ol"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "nd-rating-popup",
+                "selector": ".vvns-customer-rating-modal"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"flex-wrap\":\"wrap\", \"justify-content\":\"space-evenly\", \"padding\":\"15px\", \"align-items\":\"unset\"}",
+                "selector": ".product-main-detail-card"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"white-space\":\"pre-line\", \"text-align\":\"center\"}",
+                "selector": ".product-title"
+            },
+            {
+                "operator": "edit",
+                "type": "addClass",
+                "value": "nd-product-title",
+                "selector": ".full-width.sticky_header"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"margin-bottom\":\"6px\"}",
+                "selector": ".vvns-customer-rating__stars"
+            },
+            {
+                "operator": "edit",
+                "type": "styleApplicator",
+                "value": "{\"padding-left\":\"unset\"}",
+                "selector": "body > div.main-custom-container > div.container-fluid > div > div.col-md-9"
+            }
+        ]
+    },
+    {
+        "id":11,
+        "name":"Photo Enlarging Extras",
+        "description":"Desktop photo enlargement takim iceri extras",
+        "category":"Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+        "device":"desktop",
+        "apply_on_user_segment":"*",
+        "reapply_event":"element_change",
+        "reapply_selector":"td.sumprice-com",
+        "dependant_on_treatment": 7,
+        "baseRuleSet":[
+           {
+              "id":1,
+              "type":"dataLayer",
+              "operator":"PageType",
+              "condition":"equal",
+              "value":"Productpage"
+           },
+           {
+              "type":"element",
+              "operator":null,
+              "condition":"exist",
+              "selector":"td.components-change.components-change-custom > a"
+           }
+        ],
+        "subVariantRuleSet":[
+           {
+              "id":1,
+              "type":"element",
+              "operator":null,
+              "condition":"notExist",
+              "selector":".nd-popover",
+              "chain_condition":"and",
+              "chain":{
+                 "type":"element",
+                 "operator":"text-number",
+                 "condition":"lessThan",
+                 "value":7000,
+                 "selector":"td.sumprice-com > p"
+              },
+              "subVariantId":1
+           },
+           {
+              "id":2,
+              "type":"element",
+              "operator":null,
+              "condition":"exist",
+              "selector":".nd-popover",
+              "chain_condition":"and",
+              "chain":{
+                 "type":"element",
+                 "operator":"text-number",
+                 "condition":"greaterThan",
+                 "value":7000,
+                 "selector":"td.sumprice-com > p"
+              },
+              "subVariantId":2
+           },
+           {
+              "id":3,
+              "type":"element",
+              "operator":null,
+              "condition":"exist",
+              "selector":".nd-popover",
+              "chain_condition":"and",
+              "chain":{
+                 "type":"element",
+                 "operator":"text-number",
+                 "condition":"lessThan",
+                 "value":7000,
+                 "selector":"td.sumprice-com > p"
+              },
+              "subVariantId":3
+           }
+        ],
+        "actions":[
+           {
+              "operator":"remove",
+              "selector":".nd-popover",
+              "subVariants":[
+                 {
+                    "id":1,
+                    "operator":"insert",
+                    "type":"after",
+                    "selector":"#sidebar-right > div > div.sticky_column > div.expand-showroom",
+                    "value":"<div class=\"nd-popover\"><p>7000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>"
+                 },
+                 {
+                    "id":2,
+                    "operator":"remove",
+                    "selector":".nd-popover"
+                 },
+                 {
+                    "id":3,
+                    "operator":"noop",
+                    "selector":".nd-popover"
+                 }
+              ]
+           }
+        ]
+     },
+    {
+        "id":12,
+        "name":"Photo Enlarging Extras",
+        "description":"Desktop photo enlargement sticky header fix",
+        "category":"Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+        "device":"desktop",
+        "apply_on_user_segment":"*",
+        "reapply_event":"on_scroll",
+        "dependant_on_treatment": 7,
+        "baseRuleSet":[
+           {
+              "id":1,
+              "type":"dataLayer",
+              "operator":"PageType",
+              "condition":"equal",
+              "value":"Productpage"
+           },
+           {
+              "type":"element",
+              "operator":"classList",
+              "condition":"notContains",
+              "value": "panel-body",
+              "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div:nth-child(2)"
+           }
+        ],
+        "actions":[
+           {
+              "operator":"remove",
+              "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div:nth-child(2)"
+           }
+        ]
+     },
+    {
+        "id": 13,
+        "name": "Money Back Guarantee Banner",
+        "description": "Money back guarantee banner",
+        "category": "Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
+        "apply_on_user_segment": "*",
+        "device": "*",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/adres-listesi.html"
+            }
+        ],
+        "subVariantRuleSet": [
+            {
+                "id": 1,
+                "type": "environment",
+                "operator": "device_type",
+                "condition": "equal",
+                "value": "mobile",
+                "subVariantId": 1
+            }
+        ],
+        "actions": [
+            {
+                "operator": "insert",
+                "type": "before",
+                "value": "<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>",
+                "selector": "#address-section",
+                "selectorFallback": "#order-cart-addreslist",
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "value": "<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":14,
+        "name":"Desktop infinite scroll",
+        "description":"Enable inifite scroll on desktop",
+        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web",
+        "device":"desktop",
+        "apply_on_user_segment":"*",
+        "baseRuleSet":[
+           {
+              "id":1,
+              "type":"dataLayer",
+              "operator":"PageType",
+              "condition":"equal",
+              "value":"Listingpage"
+           }
+        ],
+        "actions":[
+           {
+              "operator":"remove",
+              "selector":".pagination_wrapper"
+           },
+           {
+            "operator":"injectscript",
             "selector":"body",
-            "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
-            "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Sipariş vermenin tam zamanı!</div><div class=\"nd-popup__text\">Sepetindeki ürünlerin stokları azalıyor. Şimdi alışverişini tamamla, ürünlerin daha hızlı teslim edilsin!</div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">ŞİMDİ SİPARİŞ VER</a></div></div>"
-         }
-      ]
-   },
-   {
-      "id":2,
-      "name":"Photo Enlarging",
-      "description":"Change mobile layout into 1 column",
-      "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
-      "apply_on_user_segment":"*",
-      "device":"mobile",
-      "reapply_event":"infinite_scroll",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"dataLayer",
-            "operator":"PageType",
-            "condition":"equal",
-            "value":"Listingpage"
-         }
-      ],
-      "actions":[
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"margin-top\":\"13rem\"}",
-            "selector":"div.product_info"
-         },
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"width\":\"100%\"}",
-            "selector":"#product-list-wrapper > div.product-list_container > div > div"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"next-day-product",
-            "selector":".product-list > .product-card"
-         },
-         {
-            "operator":"remove",
-            "selector":"#product-list-wrapper > div.product-list_container > div > div > div.other_size_options_mobile_wrapper.open_other_product"
-         }
-      ]
-   },
-   {
-      "id":3,
-      "name":"Sales Motivator",
-      "description":"Sales Motivator (Coupon) - Basket",
-      "category":"Promotional Messaging / Cart and Checkout Pages / Web",
-      "apply_on_user_segment":"*",
-      "device":"desktop",
-      "reapply_event":"element_change",
-      "reapply_selector":"#checkoutForm > div > div > div.col-md-8.cart-left-container",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"url",
-            "operator":"path",
-            "condition":"equal",
-            "value":"/siparis-listesi.html"
-         }
-      ],
-      "subVariantRuleSet":[
-         {
-            "id":1,
-            "type":"element",
-            "operator":"text-number",
-            "condition":"lessThan",
-            "value":3000,
-            "selectorAll":".price",
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"element",
-            "operator":"text-number",
-            "condition":"between",
-            "value":"3000, 6000",
-            "selectorAll":".price",
-            "subVariantId":2
-         },
-         {
-            "id":3,
-            "type":"element",
-            "operator":"text-number",
-            "condition":"greaterEquals",
-            "value":6000,
-            "selectorAll":".price",
-            "subVariantId":3
-         }
-      ],
-      "actions":[
-         {
-            "operator":"remove",
-            "selector":".basket_top_warning-wrapper"
-         },
-         {
-            "operator":"remove",
-            "selector":"#nd-banner"
-         },
-         {
-            "operator":"insert",
-            "type":"before",
-            "selector":"body > div.main-custom-container",
-            "selectorFallback":"#main > div",
-            "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim! Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
-            "replaceFn":null,
-            "subVariants":[
-               {
-                  "id":1,
-                  "selector":"#checkoutForm",
-                  "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim! Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
-               },
-               {
-                  "id":2,
-                  "selector":"#checkoutForm",
-                  "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Güzel gidiyorsun! Sepetine {{REPLACE}} TL değerinde ürün ekleyerek anında 500 TL indirime sahip olabilirsin.</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
-                  "replaceFn":"const elems = Array.from(document.querySelectorAll('.price')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 6000 - total;"
-               },
-               {
-                  "id":3,
-                  "selector":"#checkoutForm",
-                  "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 500 TL indirim kuponun kullanıma hazır. Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "id":4,
-      "name":"Sales Motivator",
-      "description":"Sales Motivator (Coupon) - Basket",
-      "category":"Promotional Messaging / Cart and Checkout Pages / Mobile Web",
-      "apply_on_user_segment":"*",
-      "device":"mobile",
-      "reapply_event":"element_change",
-      "reapply_selector":"#\\#",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"url",
-            "operator":"path",
-            "condition":"equal",
-            "value":"/siparis-listesi.html"
-         }
-      ],
-      "subVariantRuleSet":[
-         {
-            "id":1,
-            "type":"element",
-            "operator":"text-number",
-            "condition":"lessThan",
-            "value":3000,
-            "selectorAll":"#price:not(.not-allowed-coupon)",
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"element",
-            "operator":"text-number",
-            "condition":"between",
-            "value":"3000, 6000",
-            "selectorAll":"#price:not(.not-allowed-coupon)",
-            "subVariantId":2
-         },
-         {
-            "id":3,
-            "type":"element",
-            "operator":"text-number",
-            "condition":"greaterEquals",
-            "value":6000,
-            "selectorAll":"#price:not(.not-allowed-coupon)",
-            "subVariantId":3
-         }
-      ],
-      "actions":[
-         {
-            "operator":"remove",
-            "selector":".basket_top_warning-wrapper"
-         },
-         {
-            "operator":"remove",
-            "selector":"#nd-banner"
-         },
-         {
-            "operator":"insert",
-            "type":"before",
-            "selector":"body > div.main-custom-container",
-            "selectorFallback":"#main > div",
-            "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim!<br/>Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
-            "replaceFn":null,
-            "subVariants":[
-               {
-                  "id":1,
-                  "selector":"#checkoutForm",
-                  "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim!<br/>Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
-               },
-               {
-                  "id":2,
-                  "selector":"#checkoutForm",
-                  "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Güzel gidiyorsun! Sepetine {{REPLACE}} TL değerinde ürün ekleyerek anında 500 TL indirime sahip olabilirsin.</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
-                  "replaceFn":"const elems = Array.from(document.querySelectorAll('#price:not(.not-allowed-coupon)')); const total = elems.reduce((returnVal, elem) => {returnVal += parseInt(elem.textContent.replace('TL', '').replace('.', '')); return returnVal;}, 0); return 6000 - total;"
-               },
-               {
-                  "id":3,
-                  "selector":"#checkoutForm",
-                  "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 500 TL indirim kuponun kullanıma hazır.<br/>Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "id":5,
-      "name":"Sales Motivator",
-      "description":"Sales Motivator (Coupon) - PDP-Desktop",
-      "category":"Promotional Messaging / Product Pages (PDP) / Web",
-      "apply_on_user_segment":"*",
-      "reapply_event":"element_change",
-      "reapply_selector":[
-         "div.shortcut_column.basket_wrapper.my-cart",
-         "span.price",
-         "span.new-price"
-      ],
-      "device":"desktop",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"dataLayer",
-            "operator":"PageType",
-            "condition":"equal",
-            "value":"Productpage"
-         },
-         {
-            "id":2,
-            "type":"element",
-            "operator":null,
-            "selector":".not-allowed-coupon",
-            "condition":"notExist"
-         }
-      ],
-      "subVariantRuleSet":[
-         {
-            "id":1,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"equal",
-            "value":0,
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":"text-number",
-               "selector":"span.price",
-               "selectorFallback":"span.new-price",
-               "condition":"lessThan",
-               "value":6000
+            "value": "function track(fn, handler, before) {  return function interceptor() {    if (before) {      handler.apply(this, arguments);      return fn.apply(this, arguments);    } else {      var result = fn.apply(this, arguments);      handler.apply(this, arguments);      return result;    }  }};var oldQs = location.search;function handler() {  url = new URL(window.location.href);  origin = url.origin;  pathname = url.pathname;  search = url.search.substr(1);  window.sessionStorage.removeItem(\"ND_scrollPage\");  ajaxPage = 2;  oldQs = location.search;  $('.pagination_wrapper').remove();};history.pushState = track(history.pushState, handler);history.replaceState = track(history.replaceState, handler);window.addEventListener('popstate', handler);let ajaxPage = 2;const scrollPage = parseInt(window.sessionStorage.getItem(\"ND_scrollPage\"));let url = new URL(window.location.href);let origin = url.origin;let pathname = url.pathname;let search = url.search.substr(1);const pageLoader = async (page) => {  const fetchURL = `${origin}/ajax/mobile-search/loadOtherPages.php?originalPath=${pathname}&${search}&page=${page}`;  const res = await fetch(fetchURL);  if (!res.ok) return false;  const resJson = await res.json();  if (!resJson.html || resJson.html === \"\") return false;  $(\".product-list\").append(resJson.html);  return true;};const productsInitialize = () => {  setTimeout(() => {    if (typeof window.viveCategoryPage.lazyLoadImages === \"function\") window.viveCategoryPage.lazyLoadImages();    else console.warn(\"Nextday: window.viveCategoryPage.lazyLoadImages not defined\");    if (typeof window.viveCategoryPage.imageHover === \"function\") window.viveCategoryPage.imageHover();    else console.warn(\"Nextday: window.viveCategoryPage.imageHover not defined\");    if (typeof Vivense.favoriteActions.init === \"function\") Vivense.favoriteActions.init();    else console.warn(\"Nextday: favoriteActions.init not defined\");  }, 750);};const navType = performance.getEntriesByType(\"navigation\")[0].type;if (navType === \"back_forward\") {  if (scrollPage) {    for (let i = 2; i <= scrollPage; i++) {      pageLoader(i);    }    productsInitialize();    ajaxPage = scrollPage + 1;  }} else window.sessionStorage.removeItem(\"ND_scrollPage\");let pageLoadStatus = true;setInterval(async () => {  if (pageLoadStatus && document.documentElement.scrollTop / document.documentElement.offsetHeight > 0.75) {    pageLoadStatus = await pageLoader(ajaxPage);    if (pageLoadStatus) {      productsInitialize();      window.sessionStorage.setItem(\"ND_scrollPage\", ajaxPage);      ajaxPage++;    }  }}, 750);"
+           }
+        ]
+    },
+    {
+        "id":15,
+        "name":"Desktop PLP layout",
+        "description":"Change PLP layout from 4 columns to 3 columns",
+        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web",
+        "device":"desktop",
+        "reapply_event": "infinite_scroll",
+        "apply_on_user_segment":"*",
+        "baseRuleSet":[
+           {
+              "id":1,
+              "type":"dataLayer",
+              "operator":"PageType",
+              "condition":"equal",
+              "value":"Listingpage"
+           }
+        ],
+        "actions":[
+           {
+              "operator":"edit",
+              "type": "addClass",
+              "value": "nd-product-item",
+              "selector":".product-card"
+           }
+        ]
+     },
+    {
+        "id":16,
+        "name":"CTA Button Text Optimization",
+        "description":"CTA Button Text Optimization",
+        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+        "device":"*",
+        "reapply_event": "element_change",
+        "reapply_selector": ".tabbable-line",
+        "apply_on_user_segment":"*",
+        "baseRuleSet": [
+            {
+                "id": 1,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/siparis-listesi.html",
+                "chain_condition" : "or",
+                "chain": {
+                    "type": "url",
+                    "operator": "path",
+                    "condition": "equal",
+                    "value": "/adres-listesi.html",
+                    "chain_condition" : "or",
+                    "chain": {
+                        "type": "url",
+                        "operator": "path",
+                        "condition": "equal",
+                        "value": "/odeme.html"
+                    }
+                }
+            }
+        ],
+        "subVariantRuleSet":[
+            {
+                "id": 1,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/siparis-listesi.html",
+                "subVariantId": 1
             },
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"equal",
-            "value":0,
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":"text-number",
-               "selector":"span.price",
-               "selectorFallback":"span.new-price",
-               "condition":"greaterEquals",
-               "value":6000
+            {
+                "id": 2,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/adres-listesi.html",
+                "subVariantId": 2
             },
-            "subVariantId":2
-         },
-         {
-            "id":3,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"greaterEquals",
-            "value":6000,
-            "subVariantId":3
-         },
-         {
-            "id":4,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"greaterThan",
-            "value":0,
-            "chain_condition":"and",
-            "chain":{
-               "type":"function",
-               "operator":"let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
-               "condition":"lessThan",
-               "value":6000
+            {
+                "id": 3,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/odeme.html",
+                "subVariantId": 3
+            }
+        ],
+        "actions":[
+           {
+              "operator":"edit",
+              "type": "text",
+              "selector": ".btn.cart-confirm.btn-lg",
+              "subVariants": [
+                {
+                    "id": 1,
+                    "value": "DEVAM ET",
+                    "selectorFallback": "#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button"
+                },
+                {
+                    "id": 2,
+                    "value": "DEVAM ET",
+                    "selectorFallback": "#order-cart-addreslist > div.cart-approve-btn > button > span:nth-child(2)"
+                },
+                {
+                    "id": 3,
+                    "value": "ALIŞVERİŞİ TAMAMLA",
+                    "selectorFallback": "#accept-pay"
+                }
+              ]
+           }
+        ]
+     },
+    {
+        "id":17,
+        "name":"Remove 'Destek' icon from PDP",
+        "description":"Remove 'Destek' icon from PDP",
+        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+        "device":"mobile",
+        "reapply_event": "timeout",
+        "apply_on_user_segment":"*",
+        "baseRuleSet":[
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage"
+            }
+        ],
+        "actions":[
+           {
+              "operator":"remove",
+              "selector": "#launcher"
+           }
+        ]
+     },
+    {
+        "id":18,
+        "name":"PLP - Swipeable Product Images - MOBILE",
+        "description":"PLP - Swipeable Product Images - MOBILE",
+        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+        "device":"mobile",
+        "reapply_event": "infinite_scroll",
+        "apply_on_user_segment":"*",
+        "baseRuleSet":[
+            {
+                "id": 1,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Listingpage"
+            }
+        ],
+        "actions":[
+           {
+                "operator":"injectscript",
+                "selector":"body",
+                "value": "let touchstartX = 0;function touchStartFn(e) {  touchstartX = e.originalEvent.touches[0].clientX;};function touchMoveFn(e) {  if (e.cancelable) {    const touchMoveX = e.originalEvent.changedTouches[0].clientX;    if (touchstartX - 10 > touchMoveX || touchstartX + 10 < touchMoveX) {      e.preventDefault();      e.stopPropagation();      $(this).find(\".bullets_wrapper\").css(\"display\", \"block\");    }  }};function touchEndFn(e) {  if (e.cancelable) {    e.preventDefault();    e.stopPropagation();    const touchendX = e.originalEvent.changedTouches[0].clientX;    let currentImg = $(this).find(\".active-img.main_image\").attr(\"src\");    const allImages = Array.from($(this).find(\".hover-product-image\"));    for (let i = 0; i < allImages.length; i++) {      const image = allImages[i];      if (image.getAttribute(\"data-original\") === currentImg) {        let newIndex = i + 1;        if (touchendX > touchstartX) {          newIndex = i - 1;        }        if (newIndex >= allImages.length) {          newIndex = 0;        }        if (newIndex < 0) {          newIndex = allImages.length - 1;        }        currentImg = allImages[newIndex].getAttribute(\"data-original\");        $(this).find(\".active-img.main_image\").attr(\"src\", currentImg);        break;      }    }  }  $(this).find(\".bullets_wrapper\").css(\"display\", \"none\");};$(\".product_img\").off(\"touchstart.nextDay\").on(\"touchstart.nextDay\", touchStartFn);$(\".product_img\").off(\"touchmove.nextDay\").on(\"touchmove.nextDay\", touchMoveFn);$(\".product_img\").off(\"touchend.nextDay\").on(\"touchend.nextDay\", touchEndFn);"
+           },
+           {
+                "operator":"edit",
+                "type": "styleApplicator", 
+                "selector":".product_img",
+                "value": "{\"touch-action\":\"none\"}"
+           }
+        ]
+     },
+     {
+        "id": 19,
+        "name": "Flashing Tab Messaging",
+        "description": "Flashing Tab Messaging - Browser",
+        "category": "Promotional Messaging / Web",
+        "apply_on_user_segment": "*",
+        "reapply_event": "element_change",
+        "reapply_selector": "#checkoutForm > div > div",
+        "device": "desktop",
+        "subVariantRuleSet": [
+            {
+                "id": 2,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Listingpage",
+                "subVariantId": 2
             },
-            "subVariantId":4
-         },
-         {
-            "id":5,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"greaterThan",
-            "value":0,
-            "chain_condition":"and",
-            "chain":{
-               "type":"function",
-               "operator":"let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
-               "condition":"greaterEquals",
-               "value":6000
+            {
+                "id": 3,
+                "type": "dataLayer",
+                "operator": "PageType",
+                "condition": "equal",
+                "value": "Productpage",
+                "subVariantId": 3
             },
-            "subVariantId":5
-         }
-      ],
-      "actions":[
-         {
-            "operator":"insert",
-            "type":"before",
-            "selector":"body > div.main-custom-container > div.container > div > div.col-md-9 > div.full-width.sticky_header",
-            "selectorFallback":"body > div.main-custom-container > div.container-fluid > div > div.col-md-9 > div.full-width.sticky_header.next-day-sticky-f",
-            "value":"<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>",
-            "subVariants":[
-               {
-                  "id":1,
-                  "value":"<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
-               },
-               {
-                  "id":2,
-                  "value":"<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
-               },
-               {
-                  "id":3,
-                  "value":"<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Tebrikler! 500 TL indirim kuponun sepette seni bekliyor.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
-               },
-               {
-                  "id":4,
-                  "value":"<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek 500 TL indirime daha çok yaklaşabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
-               },
-               {
-                  "id":5,
-                  "value":"<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "id":6,
-      "name":"Sales Motivator",
-      "description":"Sales Motivator (Coupon) - PDP-Mobile",
-      "category":"Promotional Messaging / Product Pages (PDP) / Mobile Web",
-      "apply_on_user_segment":"*",
-      "reapply_event":"element_change",
-      "reapply_selector":[
-         ".basket_icon.my-cart-mobile",
-         "#sales-price"
-      ],
-      "device":"mobile",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"dataLayer",
-            "operator":"PageType",
-            "condition":"equal",
-            "value":"Productpage"
-         },
-         {
-            "id":2,
-            "type":"element",
-            "operator":null,
-            "selector":".not-allowed-coupon",
-            "condition":"notExist"
-         }
-      ],
-      "subVariantRuleSet":[
-         {
-            "id":1,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"equal",
-            "value":0,
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":"text-number",
-               "selector":"#sales-price",
-               "condition":"lessThan",
-               "value":6000
-            },
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"equal",
-            "value":0,
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":"text-number",
-               "selector":"#sales-price",
-               "condition":"greaterEquals",
-               "value":6000
-            },
-            "subVariantId":2
-         },
-         {
-            "id":3,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"greaterEquals",
-            "value":6000,
-            "subVariantId":3
-         },
-         {
-            "id":4,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"greaterThan",
-            "value":0,
-            "chain_condition":"and",
-            "chain":{
-               "type":"function",
-               "operator":"const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
-               "condition":"lessThan",
-               "value":6000
-            },
-            "subVariantId":4
-         },
-         {
-            "id":5,
-            "type":"counter",
-            "operator":"CABasketPrice",
-            "condition":"greaterThan",
-            "value":0,
-            "chain_condition":"and",
-            "chain":{
-               "type":"function",
-               "operator":"const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
-               "condition":"greaterEquals",
-               "value":6000
-            },
-            "subVariantId":5
-         }
-      ],
-      "actions":[
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"float\":\"none\"}",
-            "selector":"div.product_images_wrapper"
-         },
-         {
-            "operator":"insert",
-            "type":"before",
-            "selector":"#main > div > section > div:nth-child(1) > div > div.header-bottom",
-            "value":"<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div></div>",
-            "subVariants":[
-               {
-                  "id":1,
-                  "value":"<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div></div>"
-               },
-               {
-                  "id":2,
-                  "value":"<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div></div>"
-               },
-               {
-                  "id":3,
-                  "value":"<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Tebrikler! 500 TL indirim kuponun sepette seni bekliyor.</div></div></div>"
-               },
-               {
-                  "id":4,
-                  "value":"<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek 500 TL indirime daha çok yaklaşabilirsin.</div></div></div>"
-               },
-               {
-                  "id":5,
-                  "value":"<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div></div>"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "id":7,
-      "name":"Photo Enlarging",
-      "description":"Desktop Photo Enlargement",
-      "category":"Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
-      "apply_on_user_segment":"*",
-      "reapply_event":[
-         "element_change",
-         "timeout"
-      ],
-      "reapply_selector":"div.shortcut_column.basket_wrapper.my-cart",
-      "device":"desktop",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"dataLayer",
-            "operator":"PageType",
-            "condition":"equal",
-            "value":"Productpage"
-         }
-      ],
-      "actions":[
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"container-fluid",
-            "selector":".main-custom-container > .container"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"nd-photo-enlarging",
-            "selector":".main-custom-container > .container"
-         },
-         {
-            "operator":"edit",
-            "type":"removeClass",
-            "value":"main-custom-container > container",
-            "selector":".main-custom-container > .container"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"custom-row",
-            "selector":".main-custom-container > .container-fluid> .row"
-         },
-         {
-            "operator":"edit",
-            "type":"removeClass",
-            "value":"main-custom-container > container-fluid> row",
-            "selector":".main-custom-container > .container-fluid> .row"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"custom-detail",
-            "selector":".sticky_column > .product-details-bottom"
-         },
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"width\":\"100%\"}",
-            "selector":".button-add-cart-action .add-to-cart-btn"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"next-day-image",
-            "selector":"#wowslider-container1 > .ws_images"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"next-day-thumb",
-            "selector":"#wowslider-container1 > .ws_thumbs"
-         },
-         {
-            "operator":"remove",
-            "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > div"
-         },
-         {
-            "operator":"remove",
-            "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.chose_fabric > div"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"container-fluid",
-            "selector":"body > div.main-custom-container > div.full-width > div"
-         },
-         {
-            "operator":"edit",
-            "type":"removeClass",
-            "value":"main-custom-container > container",
-            "selector":"body > div.main-custom-container > div.full-width > div"
-         },
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"padding-left\":\"inherit\"}",
-            "selector":"#breadcrumb-ol"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"image-edit-content",
-            "selector":".ws_images.next-day-image > div"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"image-edit",
-            "selector":"#wowslider-container1 > .ws_images.next-day-image > .image-edit-content > .ws_list > ul > li > a > img"
-         },
-         {
-            "operator":"move",
-            "move_selector_1":"body > div.main-custom-container > div.container-fluid > div > div.col-md-9 > div.full-width.sticky_header",
-            "move_selector_2":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar"
-         },
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"margin-bottom\": \"0\", \"width\": \"unset\", \"height\": \"unset\"}",
-            "selector":".product-main-details"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"nd-remove-pseudo-elements",
-            "selector":".product-main-details"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"nd-changecontent-fix",
-            "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > a"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"nd-breadcrumb",
-            "selector":"#breadcrumb-ol"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"nd-rating-popup",
-            "selector":".vvns-customer-rating-modal"
-         },
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"flex-wrap\":\"wrap\", \"justify-content\":\"space-evenly\", \"padding\":\"15px\", \"align-items\":\"unset\"}",
-            "selector":".product-main-detail-card"
-         },
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"white-space\":\"pre-line\", \"text-align\":\"center\"}",
-            "selector":".product-title"
-         },
-         {
-            "operator":"edit",
-            "type":"addClass",
-            "value":"nd-product-title",
-            "selector":".full-width.sticky_header"
-         },
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"margin-bottom\":\"6px\"}",
-            "selector":".vvns-customer-rating__stars"
-         },
-         {
-            "operator":"edit",
-            "type":"styleApplicator",
-            "value":"{\"padding-left\":\"unset\"}",
-            "selector":"body > div.main-custom-container > div.container-fluid > div > div.col-md-9"
-         }
-      ]
-   },
-   {
-      "id":11,
-      "name":"Photo Enlarging Extras",
-      "description":"Desktop photo enlargement takim iceri extras",
-      "category":"Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
-      "device":"desktop",
-      "apply_on_user_segment":"*",
-      "reapply_event":"element_change",
-      "reapply_selector":"td.sumprice-com",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"dataLayer",
-            "operator":"PageType",
-            "condition":"equal",
-            "value":"Productpage"
-         },
-         {
-            "type":"element",
-            "operator":null,
-            "condition":"exist",
-            "selector":"td.components-change.components-change-custom > a"
-         }
-      ],
-      "subVariantRuleSet":[
-         {
-            "id":1,
-            "type":"element",
-            "operator":null,
-            "condition":"notExist",
-            "selector":".nd-popover",
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":"text-number",
-               "condition":"lessThan",
-               "value":7000,
-               "selector":"td.sumprice-com > p"
-            },
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"element",
-            "operator":null,
-            "condition":"exist",
-            "selector":".nd-popover",
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":"text-number",
-               "condition":"greaterThan",
-               "value":7000,
-               "selector":"td.sumprice-com > p"
-            },
-            "subVariantId":2
-         },
-         {
-            "id":3,
-            "type":"element",
-            "operator":null,
-            "condition":"exist",
-            "selector":".nd-popover",
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":"text-number",
-               "condition":"lessThan",
-               "value":7000,
-               "selector":"td.sumprice-com > p"
-            },
-            "subVariantId":3
-         }
-      ],
-      "actions":[
-         {
-            "operator":"remove",
-            "selector":".nd-popover",
-            "subVariants":[
-               {
-                  "id":1,
-                  "operator":"insert",
-                  "type":"after",
-                  "selector":"#sidebar-right > div > div.sticky_column > div.expand-showroom",
-                  "value":"<div class=\"nd-popover\"><p>7000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>"
-               },
-               {
-                  "id":2,
-                  "operator":"remove",
-                  "selector":".nd-popover"
-               },
-               {
-                  "id":3,
-                  "operator":"noop",
-                  "selector":".nd-popover"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "id":13,
-      "name":"Flashing Tab Messaging",
-      "description":"Flashing Tab Messaging - Browser",
-      "category":"Promotional Messaging / Web",
-      "apply_on_user_segment":"*",
-      "reapply_event":"element_change",
-      "reapply_selector":"#checkoutForm > div > div",
-      "device":"desktop",
-      "subVariantRuleSet":[
-         {
-            "id":2,
-            "type":"dataLayer",
-            "operator":"PageType",
-            "condition":"equal",
-            "value":"Listingpage",
-            "subVariantId":2
-         },
-         {
-            "id":3,
-            "type":"dataLayer",
-            "operator":"PageType",
-            "condition":"equal",
-            "value":"Productpage",
-            "subVariantId":3
-         },
-         {
-            "id":1,
-            "type":"url",
-            "operator":"path",
-            "condition":"equal",
-            "value":"/siparis-listesi.html",
-            "chain_condition":"and",
-            "chain":{
-               "type":"element",
-               "operator":null,
-               "condition":"exist",
-               "selector":".cart-inside"
-            },
-            "subVariantId":1
-         }
-      ],
-      "actions":[
-         {
-            "operator":"edit",
-            "type":"documentTitle",
-            "selector":"no-selector",
-            "value":[
-               "Hey! Hala orada mısın?",
-               "❤ Seni özledik"
-            ],
-            "applyEvent":[
-               "tabChange"
-            ],
-            "subVariants":[
-               {
-                  "id":1,
-                  "value":[
-                     "Sepetinde {{REPLACE}} ürün unuttun!"
-                  ],
-                  "replaceFn":[
-                     "let sum = Array.from($(\".cartItemQuantity\")).length; return sum;"
-                  ]
-               },
-               {
-                  "id":2,
-                  "value":[
-                     "En güzel {{REPLACE}} mobilyaları Vivense’de!",
-                     "En sağlam {{REPLACE}} mobilyaları Vivense’de!",
-                     "En kaliteli {{REPLACE}} mobilyaları Vivense’de!"
-                  ],
-                  "replaceFn":[
-                     "let res = this.dataLayerFinder('content_name'); return res",
-                     "let res = this.dataLayerFinder('content_name'); return res",
-                     "let res = this.dataLayerFinder('content_name'); return res"
-                  ]
-               },
-               {
-                  "id":3,
-                  "value":"O {{REPLACE}} Bu {{REPLACE}} !",
-                  "replaceFn":"let res = this.dataLayerFinder('content_category'); return res"
-               }
-            ]
-         }
-      ]
-   },
-   {
-      "id":12,
-      "name":"Photo Enlarging Extras",
-      "description":"Desktop photo enlargement sticky header fix",
-      "category":"Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
-      "device":"desktop",
-      "apply_on_user_segment":"*",
-      "reapply_event":"on_scroll",
-      "baseRuleSet":[
-         {
-            "id":1,
-            "type":"dataLayer",
-            "operator":"PageType",
-            "condition":"equal",
-            "value":"Productpage"
-         },
-         {
-            "type":"element",
-            "operator":"classList",
-            "condition":"notContains",
-            "value":"panel-body",
-            "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div:nth-child(2)"
-         }
-      ],
-      "actions":[
-         {
-            "operator":"remove",
-            "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div:nth-child(2)"
-         }
-      ]
-   }
+            {
+                "id": 1,
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/siparis-listesi.html",
+                "chain_condition": "and",
+                "chain": {
+                    "type":"element",
+                    "operator":null,
+                    "condition":"exist",
+                    "selector":".cart-inside"
+                 },
+                "subVariantId": 1
+            }
+        ],
+        "actions": [
+            {
+                "operator": "edit",
+                "type": "documentTitle",
+                "selector": "no-selector",
+                "value": ["Hey! Hala orada mısın?", "❤ Seni özledik"],
+                "applyEvent": ["tabChange"],
+                "subVariants": [
+                    {
+                        "id": 1,
+                        "value": ["Sepetinde {{REPLACE}} ürün unuttun!"],
+                        "replaceFn" : ["let sum = Array.from($(\".cartItemQuantity\")).length; return sum;"]
+                    },
+                    {
+                        "id": 2,
+                        "value": ["En güzel {{REPLACE}} mobilyaları Vivense’de!", "En sağlam {{REPLACE}} mobilyaları Vivense’de!", "En kaliteli {{REPLACE}} mobilyaları Vivense’de!"],
+                        "replaceFn" : ["let res = this.dataLayerFinder('content_name'); return res", "let res = this.dataLayerFinder('content_name'); return res", "let res = this.dataLayerFinder('content_name'); return res"]
+                    },
+                    {
+                        "id": 3,
+                        "value": "O {{REPLACE}} Bu {{REPLACE}} !",
+                        "replaceFn": "let res = this.dataLayerFinder('content_category'); return res"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id":20,
+        "name":"Super Price badge update",
+        "description":"Insert or delete super price badge depending on info from lookup api",
+        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+        "device":"*",
+        "apply_on_user_segment":"*",
+        "baseRuleSet":[
+           {
+              "id":1,
+              "type":"dataLayer",
+              "operator":"PageType",
+              "condition":"equal",
+              "value":"Listingpage"
+           }
+        ],
+        "actions":[
+           {
+              "operator":"edit",
+              "type": "updateBadge",
+              "value": "superPrice",
+              "badgeSelector": ".top-left-badge",
+              "selector":".product-card"
+           }
+        ]
+    }
 ]
