@@ -460,17 +460,12 @@
   margin-top: 0 !important;
 }
 
-.quick-delivery-container {
-  min-height: 100vh;
-}
-
 .quick-delivery-quick-delivery {
   width: 100%;
   height: 28px;
   display: flex;
   padding: 4px 0;
   position: relative;
-  max-width: 951px;
   box-sizing: border-box;
   align-items: center;
   flex-shrink: 0;
