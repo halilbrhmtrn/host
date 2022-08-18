@@ -1165,9 +1165,9 @@
         ]
     },
     {
-        "id":20,
-        "name":"Super Price badge update",
-        "description":"Insert or delete super price badge depending on info from lookup api",
+        "id":21,
+        "name":"N user has viewed this product for last 24 hour banner",
+        "description":"Insert view count banner depending on info from lookup api",
         "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
         "device":"*",
         "apply_on_user_segment":"*",
@@ -1177,7 +1177,7 @@
               "type":"dataLayer",
               "operator":"PageType",
               "condition":"equal",
-              "value":"Listingpage"
+              "value":"Productpage"
            }
         ],
         "actions":[
@@ -1187,7 +1187,18 @@
               "value": "superPrice",
               "badgeSelector": ".top-left-badge",
               "selector":".product-card"
-           }
+           },
+           {
+            "operator": "edit",
+            "type": "addBanner",
+            "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>Bu ürünü son 2 haftada XXX kişi satın aldı.</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+            "selector": "#wowslider-container1 > div.ws_images > div.ws_cover",
+            "selectorFallback": "#wowslider-container1 > div.ws_images",
+            "subVariants": [
+            ]
+        }
         ]
     }
 ]
+
+
