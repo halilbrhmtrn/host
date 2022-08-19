@@ -1182,13 +1182,6 @@
         ],
         "actions":[
            {
-              "operator":"edit",
-              "type": "updateBadge",
-              "value": "superPrice",
-              "badgeSelector": ".top-left-badge",
-              "selector":".product-card"
-           },
-           {
             "operator": "edit",
             "type": "addBanner",
             "replaceFn": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return productInfo[elementSku].catalog.productViewCount",
