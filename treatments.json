@@ -1186,7 +1186,7 @@
             "type": "addBanner",
             "replaceFn": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.productViewCount;",
             "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>Bu ürünü son 2 haftada {{REPLACE}} kişi satın aldı.</span>\n            </span>\n          </div>\n        </div>\n      </div>",
-            "selector": "#wowslider-container1",
+            "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite",
             "selectorFallback": "#wowslider-container1 > div.ws_images",
             "subVariants": [
             ]
