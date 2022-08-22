@@ -459,12 +459,18 @@
 .nd-product-item .vvns-product-rating {
   margin-top: 0 !important;
 }
+
 .quick-delivery-container {
   width: 100%;
   position: absolute;
   z-index: 999;
-  bottom: 76;
+  bottom: 0;
 }
+
+.quick-delivery-container .w-desktopEnlargement {
+  bottom: 76 !important;
+}
+
 .quick-delivery-quick-delivery {
   width: 100%;
   height: 28px;
