@@ -70,7 +70,15 @@
                 "type": "dataLayer",
                 "operator": "PageType",
                 "condition": "equal",
-                "value": "Listingpage"
+                "value": "Listingpage",
+                "chain_condition" : "or",
+                "chain":
+                {
+                    "type": "url",
+                    "operator": "path",
+                    "condition": "equal",
+                    "value": "/arama"
+                }
             }
         ],
         "actions": [
@@ -91,7 +99,7 @@
                 "type": "addClass",
                 "value": "next-day-product",
                 "selector": ".product-list > .product-card"
-            }, 
+            },
             {
                 "operator": "remove",
                 "selector": "#product-list-wrapper > div.product-list_container > div > div > div.other_size_options_mobile_wrapper.open_other_product"
@@ -275,17 +283,24 @@
         "reapply_event": "element_change",
         "reapply_selector": ["div.shortcut_column.basket_wrapper.my-cart", "span.price", "span.new-price"],
         "device": "desktop",
-        "dependant_on_treatment": 3,
+        "weight": 50,
         "baseRuleSet":[
             {
                 "id": 1,
+                "type": "session",
+                "operator": "history",
+                "condition": "contains",
+                "value": "/siparis-listesi.html"
+            },
+            {
+                "id": 2,
                 "type": "dataLayer",
                 "operator": "PageType",
                 "condition": "equal",
                 "value": "Productpage"
             },
             {
-                "id": 2,
+                "id": 3,
                 "type": "element",
                 "operator": null,
                 "selector": ".not-allowed-coupon",
@@ -306,7 +321,7 @@
                     "selector": "span.price",
                     "selectorFallback": "span.new-price",
                     "condition": "lessThan",
-                    "value": 6000
+                    "value": 4000
                 },
                 "subVariantId": 1
             },
@@ -323,7 +338,16 @@
                     "selector": "span.price",
                     "selectorFallback": "span.new-price",
                     "condition": "greaterEquals",
-                    "value": 6000
+                    "value": 4000,
+                    "chain_condition": "and",
+                    "chain": {
+                        "type": "element",
+                        "operator": "text-number",
+                        "selector": "span.price",
+                        "selectorFallback": "span.new-price",
+                        "condition": "lessThan",
+                        "value": 7500
+                    }
                 },
                 "subVariantId": 2
             },
@@ -331,9 +355,26 @@
                 "id": 3,
                 "type": "counter",
                 "operator": "CABasketPrice",
-                "condition": "greaterEquals",
-                "value": 6000,
+                "condition": "equal",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "element",
+                    "operator": "text-number",
+                    "selector": "span.price",
+                    "selectorFallback": "span.new-price",
+                    "condition": "greaterEquals",
+                    "value": 7500
+                },
                 "subVariantId": 3
+            },
+            {
+                "id": 31,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterThan",
+                "value": 7500,
+                "subVariantId": 31
             },
             {
                 "id": 4,
@@ -346,12 +387,12 @@
                     "type": "function",
                     "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
                     "condition": "lessThan",
-                    "value": 6000
+                    "value": 4000
                 },
                 "subVariantId": 4
             },
             {
-                "id": 5,
+                "id": 41,
                 "type": "counter",
                 "operator": "CABasketPrice",
                 "condition": "greaterThan",
@@ -361,9 +402,85 @@
                     "type": "function",
                     "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
                     "condition": "greaterEquals",
-                    "value": 6000
+                    "value": 7500,
+                    "chain_condition": "and",
+                    "chain": {
+                        "type": "counter",
+                        "operator": "CABasketPrice",
+                        "condition": "lessThan",
+                        "value": 4000
+                    }
+                },
+                "subVariantId": 41
+            },
+            {
+                "id": 42,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterThan",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "function",
+                    "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                    "condition": "greaterEquals",
+                    "value": 4000,
+                    "chain_condition": "and",
+                    "chain":
+                    {
+                        "type": "counter",
+                        "operator": "CABasketPrice",
+                        "condition": "lessThan",
+                        "value": 4000
+                    }
+                },
+                "subVariantId": 42
+            },
+            {
+                "id": 5,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterThan",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "counter",
+                    "operator": "CABasketPrice",
+                    "condition": "greaterEquals",
+                    "value": 4000,
+                    "chain_condition": "and",
+                    "chain":
+                    {
+                        "type": "function",
+                        "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                        "condition": "lessThan",
+                        "value": 7500
+                    }
                 },
                 "subVariantId": 5
+            },
+            {
+                "id": 6,
+                "type": "counter",
+                "operator": "CABasketPrice",
+                "condition": "greaterThan",
+                "value": 0,
+                "chain_condition": "and",
+                "chain": {
+                    "type": "counter",
+                    "operator": "CABasketPrice",
+                    "condition": "greaterEquals",
+                    "value": 4000,
+                    "chain_condition": "and",
+                    "chain":
+                    {
+                        "type": "function",
+                        "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                        "condition": "greaterEquals",
+                        "value": 7500
+                    }
+                },
+                "subVariantId": 6
             }
         ],
         "actions": [
@@ -372,27 +489,43 @@
                 "type": "before",
                 "selector": "body > div.main-custom-container > div.container > div > div.col-md-9 > div.full-width.sticky_header",
                 "selectorFallback": "body > div.main-custom-container > div.container-fluid > div > div.col-md-9 > div.full-width.sticky_header.next-day-sticky-f",
-                "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>",
+                "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 300 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>",
                 "subVariants": [
                     {
                         "id": 1,
-                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 300 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
                     },
                     {
                         "id": 2,
-                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 300 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
                     },
                     {
                         "id": 3,
-                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Tebrikler! 500 TL indirim kuponun sepette seni bekliyor.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 600 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    },
+                    {
+                        "id": 31,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Tebrikler! 600 TL indirim kuponun sepette seni bekliyor.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
                     },
                     {
                         "id": 4,
-                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek 500 TL indirime daha çok yaklaşabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek 300 TL indirime daha çok yaklaşabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    },
+                    {
+                        "id": 41,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek anında 600 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    },
+                    {
+                        "id": 42,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek anında 300 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
                     },
                     {
                         "id": 5,
-                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Güzel gidiyorsun! Sepetine bu ürünü ekleyerek anında 500 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Tebrikler! 300 TL indirim kuponun sepette seni bekliyor. 600 TL indirim kazanmak için alışverişe devam et.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
+                    },
+                    {
+                        "id": 6,
+                        "value": "<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Tebrikler! 300 TL indirim kuponun sepette seni bekliyor. Sepetine bu ürünü ekleyerek anında 600 TL indirime sahip olabilirsin.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
                     }
                 ]
             }
@@ -549,6 +682,12 @@
                 "operator": "PageType",
                 "condition": "equal",
                 "value": "Productpage"
+            },
+            {
+                "type": "function",
+                "operator": "const w = Math.min(window.screen.availWidth, window.innerWidth); const h = Math.min(window.screen.availHeight, window.innerHeight); let show = w < 1000 ? false : w < (2 * h) ; return show",
+                "condition": "equal",
+                "value": true
             }
         ],
         "subVariantRuleSet": [
@@ -916,7 +1055,15 @@
               "type":"dataLayer",
               "operator":"PageType",
               "condition":"equal",
-              "value":"Listingpage"
+              "value":"Listingpage",
+              "chain_condition" : "or",
+              "chain":
+              {
+                  "type": "url",
+                  "operator": "path",
+                  "condition": "equal",
+                  "value": "/arama"
+              }
            }
         ],
         "actions":[
@@ -945,7 +1092,15 @@
               "type":"dataLayer",
               "operator":"PageType",
               "condition":"equal",
-              "value":"Listingpage"
+              "value":"Listingpage",
+              "chain_condition" : "or",
+              "chain":
+              {
+                  "type": "url",
+                  "operator": "path",
+                  "condition": "equal",
+                  "value": "/arama"
+              }
            }
         ],
         "actions":[
@@ -1078,7 +1233,15 @@
                 "type": "dataLayer",
                 "operator": "PageType",
                 "condition": "equal",
-                "value": "Listingpage"
+                "value": "Listingpage",
+                "chain_condition" : "or",
+                "chain":
+                {
+                    "type": "url",
+                    "operator": "path",
+                    "condition": "equal",
+                    "value": "/arama"
+                }
             }
         ],
         "actions":[
@@ -1089,7 +1252,7 @@
            },
            {
                 "operator":"edit",
-                "type": "styleApplicator", 
+                "type": "styleApplicator",
                 "selector":".product_img",
                 "value": "{\"touch-action\":\"none\"}"
            }
@@ -1171,13 +1334,55 @@
         "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
         "device":"*",
         "apply_on_user_segment":"*",
+        "subVariantRuleSet": [
+            {
+                "id":1,
+                "type":"dataLayer",
+                "operator":"PageType",
+                "condition":"equal",
+                "value":"Productpage",
+                "chain_condition": "and",
+                "chain": {
+                      "type": "function",
+                      "operator": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.mostSoldLevel;",
+                      "bindings": "productInfo",
+                      "condition": "lessThan",
+                      "value": 6
+                },
+                "subVariantId":1
+            },
+            {
+                "id":2,
+                "type":"dataLayer",
+                "operator":"PageType",
+                "condition":"equal",
+                "value":"Productpage",
+                "chain_condition": "and",
+                "chain": {
+                      "type": "function",
+                      "operator": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.mostAddedToCartLevel;",
+                      "bindings": "productInfo",
+                      "condition": "lessThan",
+                      "value": 6
+                },
+                "subVariantId":2
+            }
+        ],
         "baseRuleSet":[
            {
               "id":1,
               "type":"dataLayer",
               "operator":"PageType",
               "condition":"equal",
-              "value":"Productpage"
+              "value":"Productpage",
+              "chain_condition": "and",
+                "chain": {
+                    "type": "function",
+                    "operator": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.productViewCount;",
+                    "bindings": "productInfo",
+                    "condition": "greaterThan",
+                    "value": 350
+                }
            }
         ],
         "actions":[
@@ -1185,10 +1390,25 @@
             "operator": "edit",
             "type": "addBanner",
             "replaceFn": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.productViewCount;",
-            "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>Bu ürünü son 2 haftada {{REPLACE}} kişi satın aldı.</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+            "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>Bu ürünü son 24 saatte {{REPLACE}} kişi görüntüledi.</span>\n            </span>\n          </div>\n        </div>\n      </div>",
             "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite",
-            "selectorFallback": "#wowslider-container1 > div.ws_images",
             "subVariants": [
+                {
+                    "id": 1,
+                    "operator": "edit",
+                    "type": "addBanner",
+                    "replaceFn": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks;",
+                    "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>Bu ürünü son 2 haftada {{REPLACE}} kişi satın aldı.</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+                    "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite"
+                },
+                {
+                    "id": 2,
+                    "operator": "edit",
+                    "type": "addBanner",
+                    "replaceFn": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks;",
+                    "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>Bu ürünü son 2 haftada {{REPLACE}} kişi sepete ekledi.</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+                    "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite"
+                }
             ]
         }
         ]
