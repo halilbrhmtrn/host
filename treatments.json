@@ -1390,7 +1390,7 @@
             "operator": "edit",
             "type": "addBanner",
             "replaceFn": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.productViewCount;",
-            "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi görüntüledi.</span><span class=\"quick-delivery-text-small\">son 24 saatte</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+            "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi görüntüledi.  </span><span class=\"quick-delivery-text-small\"> son 24 saatte</span>\n            </span>\n          </div>\n        </div>\n      </div>",
             "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite",
             "subVariants": [
                 {
@@ -1398,7 +1398,7 @@
                     "operator": "edit",
                     "type": "addBanner",
                     "replaceFn": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks;",
-                    "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} adet satıldı,</span><span class=\"quick-delivery-text-small\">son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+                    "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} adet satıldı,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
                     "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite"
                 },
                 {
@@ -1406,7 +1406,7 @@
                     "operator": "edit",
                     "type": "addBanner",
                     "replaceFn": "const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks;",
-                    "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi sepete ekledi.</span><span class=\"quick-delivery-text-small\">son 24 saatte</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+                    "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi sepete ekledi.  </span><span class=\"quick-delivery-text-small\"> son 24 saatte</span>\n            </span>\n          </div>\n        </div>\n      </div>",
                     "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite"
                 }
             ]
