@@ -465,12 +465,12 @@
   position: absolute;
   z-index: 999;
   bottom: 0;
-  float: right;
+  margin-left: 15.9em;
 }
 
 .quick-delivery-container .w-desktopEnlargement {
   bottom: 76 !important;
-  float: initial;
+  margin-left: initial;
   width: 100%;
 }
 
