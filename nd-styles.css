@@ -461,14 +461,17 @@
 }
 
 .quick-delivery-container {
-  width: 100%;
+  width: calc(100% - 15.9em);
   position: absolute;
   z-index: 999;
   bottom: 0;
+  float: right;
 }
 
 .quick-delivery-container .w-desktopEnlargement {
   bottom: 76 !important;
+  float: initial;
+  width: 100%;
 }
 
 .quick-delivery-quick-delivery {
