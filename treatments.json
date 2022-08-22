@@ -1412,7 +1412,33 @@
             ]
         }
         ]
-    }
+    },
+    {
+        "id":22,
+        "name":"N user has viewed this product for last 24 hour banner Extras",
+        "description":"Insert view count banner depending on info from lookup api",
+        "category":"Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+        "device":"desktop",
+        "apply_on_user_segment":"*",
+        "dependant_on_treatment": 21,
+        "baseRuleSet":[
+            {
+                "id":1,
+                "type":"element",
+                "operator":null,
+                "condition":"exist",
+                "selector":"#wowslider-container1 > div.ws_thumbs.next-day-thumb"
+             }
+        ],
+        "subVariantRuleSet":[
+        ],
+        "actions":[
+           {
+            "operator": "edit",
+            "type": "addClass",
+            "value": "w-desktopEnlargement",
+            "selector": ".quick-delivery-container"
+          }
+        ]
+     }
 ]
-
-
