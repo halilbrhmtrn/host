@@ -527,7 +527,7 @@
   align-self: auto;
   font-style: Semi Bold;
   text-align: left;
-  font-family: Inter;
+  font-family: BrandonTextBold;
   font-weight: 700;
   line-height: 19.36px;
   font-stretch: normal;
@@ -541,4 +541,5 @@
   font-weight: 300;
   line-height: 16.94px;
   margin-left: 4px;
+  font-family: BrandonTextRegular;
 }
