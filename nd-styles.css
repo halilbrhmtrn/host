@@ -562,23 +562,22 @@
   background-color: #f5b75b !important;
   border-color: #f4b556 !important;
 }
-
-.button-add-cart-action .add-to-cart-btn .nd-cta-red {
+.button-add-cart-action .nd-cta-red {
   background-color: #f31c00 !important;
 }
 
-.button-add-cart-action .add-to-cart-btn .nd-cta-red:hover {
+.button-add-cart-action .nd-cta-red:hover {
   color: #fff;
   background-color: #F04C35 !important;
   border-color: #f8514b !important;
 }
 
 
-.button-add-cart-action .add-to-cart-btn .nd-cta-yellow {
+.button-add-cart-action .nd-cta-yellow {
   background-color: #F59F1D !important;
 }
 
-.button-add-cart-action .add-to-cart-btn .nd-cta-yellow:hover {
+.button-add-cart-action .nd-cta-yellow:hover {
   color: #fff;
   background-color: #f5b75b !important;
   border-color: #f4b556 !important;
