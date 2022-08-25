@@ -562,7 +562,7 @@
           "#sales-price"
        ],
        "device":"mobile",
-       "dependant_on_treatment":4,
+       "weight": 20,
        "baseRuleSet":[
           {
              "id":1,
@@ -1372,7 +1372,7 @@
        "category":"Abandonment and Reengagement / Basket / Mobile Web",
        "apply_on_user_segment":"*",
        "device":"mobile",
-       "weight":100,
+       "weight":5,
        "baseRuleSet":[
           {
              "id":1,
@@ -1386,6 +1386,10 @@
           {
              "operator":"remove",
              "selector":"#checkoutForm > div.personaclick-recommend"
+          },
+          {
+             "operator":"remove",
+             "selector":"#cart-recommendation"
           }
        ]
     },
@@ -1396,7 +1400,8 @@
        "category":"Abandonment and Reengagement / PLP / Mobile Web",
        "apply_on_user_segment":"*",
        "device":"mobile",
-       "weight":100,
+       "weight":5,
+       "reapply_event": "query_search_change",
        "baseRuleSet":[
           {
              "id":1,
@@ -1410,7 +1415,13 @@
           {
              "operator":"remove",
              "selector":"#search-body > div.category-banner-wrapper"
-          }
+          },
+          {
+            "operator":"edit",
+            "type":"styleApplicator",
+            "value":"{\"top\":\"0\"}",
+            "selector":"#category_sticky_filter"
+         }
        ]
     },
     {
@@ -1492,7 +1503,7 @@
        "description":"Insert view count banner depending on info from lookup api",
        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
        "device":"desktop",
-       "weight": 30,
+       "weight": 100,
        "apply_on_user_segment":"*",
        "subVariantRuleSet":[
           {
@@ -1550,7 +1561,7 @@
              "operator":"edit",
              "type":"addBanner",
              "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.productViewCount;",
-             "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-eye.png\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi görüntüledi.  </span><span class=\"quick-delivery-text-small\"> son 24 saatte</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+             "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-eye.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi görüntüledi.  </span><span class=\"quick-delivery-text-small\"> son 24 saatte</span>\n            </span>\n          </div>\n        </div>\n      </div>",
              "selector":"#wowslider-container1 > div.favorite-area-hearth.d-product-favorite",
              "subVariants":[
                 {
@@ -1580,7 +1591,7 @@
        "category":"Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
        "device":"desktop",
        "apply_on_user_segment":"*",
-       "dependant_on_treatment":21,
+       "dependant_on_treatment":24,
        "baseRuleSet":[
           {
              "id":1,
@@ -1601,5 +1612,77 @@
              "selector":".quick-delivery-container"
           }
        ]
-    }
+    },
+    {
+      "id":26,
+      "name":"CTA Buttons Change Color",
+      "description":"CTA Buttons Change Color",
+      "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+      "device":"*",
+      "reapply_event":"element_change",
+      "reapply_selector":".tabbable-line",
+      "apply_on_user_segment":"*",
+      "baseRuleSet":[
+         {
+            "id":1,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/siparis-listesi.html",
+            "chain_condition":"or",
+            "chain":{
+               "type":"url",
+               "operator":"path",
+               "condition":"equal",
+               "value":"/adres-listesi.html",
+               "chain_condition":"or",
+               "chain":{
+                  "type":"url",
+                  "operator":"path",
+                  "condition":"equal",
+                  "value":"/odeme.html"
+               }
+            } // cta buttonlar exist mi diye bakilabilir
+         }
+      ],
+      "subVariantRuleSet":[
+         {
+            "id":1,
+            "type":"random",
+            "operator":"number",
+            "salt": "ctaText",
+            "condition":"lessThan",
+            "value":50,
+            "subVariantId":1
+         },
+         {
+            "id":2,
+            "type":"random",
+            "operator":"number",
+            "salt": "ctaText",
+            "condition":"lessThan",
+            "value":99,
+            "subVariantId":2
+         }
+      ],
+      "actions":[
+         {
+            "operator":"edit",
+            "type":"addClass",
+            "selector":".btn.cart-confirm.btn-lg",
+            "subVariants":[
+               {
+                  "id":1,
+                  "value":"nd-cta-red",
+                  "selectorFallback":"#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button"
+               },
+               {
+                  "id":2,
+                  "value":"nd-cta-yellow",
+                  "selectorFallback":"#order-cart-addreslist > div.cart-approve-btn > button > span:nth-child(2)"
+               }
+            ]
+         }
+      ]
+   }
  ]
