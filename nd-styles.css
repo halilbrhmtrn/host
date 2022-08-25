@@ -544,21 +544,21 @@
 }
 
 .btn.cart-confirm, .delete-address-spn .delete-address-btn, .verifone-button, .verifone-button-check, .verifone-cancel-button .nd-cta-red {
-  background-color: #f31c00;
+  background-color: #f31c00 !important;
 }
 
 .btn.cart-confirm, .delete-address-spn .delete-address-btn, .verifone-button, .verifone-button-check, .verifone-cancel-button .nd-cta-red:hover {
   color: #fff;
-  background-color: #F04C35;
-  border-color: #f8514b;
+  background-color: #F04C35 !important;
+  border-color: #f8514b !important;
 }
 
 .btn.cart-confirm, .delete-address-spn .delete-address-btn, .verifone-button, .verifone-button-check, .verifone-cancel-button .nd-cta-yellow {
-  background-color: #F59F1D;
+  background-color: #F59F1D !important;
 }
 
 .btn.cart-confirm, .delete-address-spn .delete-address-btn, .verifone-button, .verifone-button-check, .verifone-cancel-button .nd-cta-yellow:hover {
   color: #fff;
-  background-color: #f5b75b;
-  border-color: #f4b556;
+  background-color: #f5b75b !important;
+  border-color: #f4b556 !important;
 }
