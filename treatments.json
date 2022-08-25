@@ -1622,6 +1622,7 @@
       "reapply_event":"element_change",
       "reapply_selector":".tabbable-line",
       "apply_on_user_segment":"*",
+      "weight": 100,
       "baseRuleSet":[
          {
             "type":"element",
