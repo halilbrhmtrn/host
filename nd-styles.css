@@ -542,21 +542,22 @@
   margin-left: 4px;
   font-family: BrandonTextRegular;
 }
-.nd-cta-red {
+
+.btn.cart-confirm, .delete-address-spn .delete-address-btn, .verifone-button, .verifone-button-check, .verifone-cancel-button .nd-cta-red {
   background-color: #f31c00;
 }
 
-.nd-cta-red:hover {
+.btn.cart-confirm, .delete-address-spn .delete-address-btn, .verifone-button, .verifone-button-check, .verifone-cancel-button .nd-cta-red:hover {
   color: #fff;
   background-color: #F04C35;
   border-color: #f8514b;
 }
 
-.nd-cta-yellow {
+.btn.cart-confirm, .delete-address-spn .delete-address-btn, .verifone-button, .verifone-button-check, .verifone-cancel-button .nd-cta-yellow {
   background-color: #F59F1D;
 }
 
-.nd-cta-yellow:hover {
+.btn.cart-confirm, .delete-address-spn .delete-address-btn, .verifone-button, .verifone-button-check, .verifone-cancel-button .nd-cta-yellow:hover {
   color: #fff;
   background-color: #f5b75b;
   border-color: #f4b556;
