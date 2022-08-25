@@ -1666,12 +1666,12 @@
                {
                   "id":1,
                   "value":"nd-cta-red",
-                  "selectorFallback":"#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button"
+                  "selectorFallback":".button-add-cart-action .add-to-cart-btn"
                },
                {
                   "id":2,
                   "value":"nd-cta-yellow",
-                  "selectorFallback":"#order-cart-addreslist > div.cart-approve-btn > button > span:nth-child(2)"
+                  "selectorFallback":".button-add-cart-action .add-to-cart-btn"
                }
             ]
          }
