@@ -542,44 +542,44 @@
   margin-left: 4px;
   font-family: BrandonTextRegular;
 }
-
-.btn.cart-confirm.nd-cta-red {
+.btn.cart-confirm .nd-cta-red {
   background-color: #f31c00 !important;
 }
 
-.btn.cart-confirm.nd-cta-red:hover {
+.btn.cart-confirm .nd-cta-red:hover {
   color: #fff;
   background-color: #F04C35 !important;
   border-color: #f8514b !important;
 }
 
-.btn.cart-confirm.nd-cta-yellow {
+.btn.cart-confirm .nd-cta-yellow {
   background-color: #F59F1D !important;
 }
 
-.btn.cart-confirm.nd-cta-yellow:hover {
+.btn.cart-confirm .nd-cta-yellow:hover {
   color: #fff;
   background-color: #f5b75b !important;
   border-color: #f4b556 !important;
 }
 
-.button-add-cart-action.nd-cta-red {
+.button-add-cart-action .nd-cta-red {
   background-color: #f31c00 !important;
 }
 
-.button-add-cart-action.nd-cta-red:hover {
+.button-add-cart-action .nd-cta-red:hover {
   color: #fff;
   background-color: #F04C35 !important;
   border-color: #f8514b !important;
 }
 
 
-.button-add-cart-action.nd-cta-yellow {
+.button-add-cart-action .nd-cta-yellow {
   background-color: #F59F1D !important;
 }
 
-.button-add-cart-action.nd-cta-yellow:hover {
+.button-add-cart-action .nd-cta-yellow:hover {
   color: #fff;
   background-color: #f5b75b !important;
   border-color: #f4b556 !important;
 }
+
