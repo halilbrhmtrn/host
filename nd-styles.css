@@ -542,23 +542,22 @@
   margin-left: 4px;
   font-family: BrandonTextRegular;
 }
-
 .nd-cta-red {
-  background-color: linear-gradient(270deg, #F04C35 0%, #F04C35 100%);
+  background-color: #f31c00;
 }
 
 .nd-cta-red:hover {
   color: #fff;
-  background-color: linear-gradient(270deg, #f31c00 0%, #f91e01 100%);
-  border-color: #f02a23;
+  background-color: #F04C35;
+  border-color: #f8514b;
 }
 
 .nd-cta-yellow {
-  background-color: linear-gradient(270deg, #F04C35 0%, #F04C35 100%);
+  background-color: #F59F1D;
 }
 
 .nd-cta-yellow:hover {
   color: #fff;
-  background-color: linear-gradient(270deg, #f31c00 0%, #f91e01 100%);
-  border-color: #f02a23;
+  background-color: #f5b75b;
+  border-color: #f4b556;
 }
