@@ -525,7 +525,6 @@
   height: auto;
   font-size: 16px;
   align-self: auto;
-  font-style: Semi Bold;
   text-align: left;
   font-family: BrandonTextBold;
   font-weight: 700;
@@ -542,4 +541,24 @@
   line-height: 16.94px;
   margin-left: 4px;
   font-family: BrandonTextRegular;
+}
+
+.nd-cta-red {
+  background-color: linear-gradient(270deg, #F04C35 0%, #F04C35 100%);
+}
+
+.nd-cta-red:hover {
+  color: #fff;
+  background-color: linear-gradient(270deg, #f31c00 0%, #f91e01 100%);
+  border-color: #f02a23;
+}
+
+.nd-cta-yellow {
+  background-color: linear-gradient(270deg, #F04C35 0%, #F04C35 100%);
+}
+
+.nd-cta-yellow:hover {
+  color: #fff;
+  background-color: linear-gradient(270deg, #f31c00 0%, #f91e01 100%);
+  border-color: #f02a23;
 }
