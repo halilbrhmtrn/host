@@ -542,63 +542,24 @@
   margin-left: 4px;
   font-family: BrandonTextRegular;
 }
-.cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-red {
+
+.button-add-cart-action, .default-add-cart-btn, .cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-red {
   background-color: #f31c00 !important;
 }
 
-.cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-red:hover {
+.button-add-cart-action, .default-add-cart-btn, .cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-red:hover {
   color: #fff;
   background-color: #F04C35 !important;
   border-color: #f8514b !important;
 }
 
-.cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-yellow {
+.button-add-cart-action, .default-add-cart-btn, .cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-yellow {
   background-color: #F59F1D !important;
 }
 
-.cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-yellow:hover {
+.button-add-cart-action, .default-add-cart-btn, .cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-yellow:hover {
   color: #fff;
   background-color: #f5b75b !important;
   border-color: #f4b556 !important;
-}
-
-.button-add-cart-action .nd-cta-red {
-  background-color: #f31c00 !important;
-}
-
-.button-add-cart-action .nd-cta-red:hover {
-  color: #fff;
-  background-color: #F04C35 !important;
-  border-color: #f8514b !important;
-}
-
-.button-add-cart-action .nd-cta-yellow {
-  background-color: #F59F1D !important;
-}
-
-.button-add-cart-action .nd-cta-yellow:hover {
-  color: #fff;
-  background-color: #f5b75b !important;
-  border-color: #f4b556 !important;
-}
-
-.default-add-cart-btn.nd-cta-yellow {
-  background-color: #F59F1D !important;
-}
-
-.default-add-cart-btn.nd-cta-yellow:hover {
-  color: #fff;
-  background-color: #f5b75b !important;
-  border-color: #f4b556 !important;
-}
-
-.default-add-cart-btn.nd-cta-red {
-  background-color: #f31c00 !important;
-}
-
-.default-add-cart-btn.nd-cta-red:hover {
-  color: #fff;
-  background-color: #F04C35 !important;
-  border-color: #f8514b !important;
 }
 
