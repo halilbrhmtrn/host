@@ -582,3 +582,22 @@
   border-color: #f4b556 !important;
 }
 
+.default-add-cart-btn.nd-cta-yellow {
+  background-color: #F59F1D !important;
+}
+
+.default-add-cart-btn.nd-cta-yellow:hover {
+  color: #fff;
+  background-color: #f5b75b !important;
+  border-color: #f4b556 !important;
+}
+
+.default-add-cart-btn.nd-cta-red {
+  background-color: #f31c00 !important;
+}
+
+.default-add-cart-btn.nd-cta-red:hover {
+  color: #fff;
+  background-color: #F04C35 !important;
+  border-color: #f8514b !important;
+}
