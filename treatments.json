@@ -1759,12 +1759,12 @@
                {
                   "id":1,
                   "value":"nd-cta-red",
-                  "selectorFallback":".btn-type-address"
+                  "selectorFallback":".default-add-cart-btn"
                },
                {
                   "id":2,
                   "value":"nd-cta-yellow",
-                  "selectorFallback":".btn-type-address"
+                  "selectorFallback":".default-add-cart-btn"
                }
             ]
          }
