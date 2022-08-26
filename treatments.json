@@ -1689,7 +1689,7 @@
             "type":"element",
             "operator":null,
             "condition":"exist",
-            "selector":"#checkoutForm > button",
+            "selector":"#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button",
             "chain":{
                "type":"element",
                "operator":null,
