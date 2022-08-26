@@ -542,21 +542,21 @@
   margin-left: 4px;
   font-family: BrandonTextRegular;
 }
-.btn.cart-confirm.nd-cta-red {
+.cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-red {
   background-color: #f31c00 !important;
 }
 
-.btn.cart-confirm.nd-cta-red:hover {
+.cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-red:hover {
   color: #fff;
   background-color: #F04C35 !important;
   border-color: #f8514b !important;
 }
 
-.btn.cart-confirm.nd-cta-yellow {
+.cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-yellow {
   background-color: #F59F1D !important;
 }
 
-.btn.cart-confirm.nd-cta-yellow:hover {
+.cart-approve-btn button, .btn-type-address, .btn.cart-confirm.nd-cta-yellow:hover {
   color: #fff;
   background-color: #f5b75b !important;
   border-color: #f4b556 !important;
@@ -601,3 +601,4 @@
   background-color: #F04C35 !important;
   border-color: #f8514b !important;
 }
+
