@@ -1613,12 +1613,12 @@
          }
       ]
    },
-{
+   {
       "id":26,
       "name":"CTA Buttons Change Color",
       "description":"CTA Buttons Change Color",
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
-      "device":"*",
+      "device":"desktop",
       "apply_on_user_segment":"*",
       "baseRuleSet":[
          {
@@ -1626,25 +1626,11 @@
             "operator":null,
             "condition":"exist",
             "selector":".btn.cart-confirm.btn-lg",
-            "chain": {
+            "chain":{
                "type":"element",
                "operator":null,
                "condition":"exist",
-               "selector":".button-add-cart-action .add-to-cart-btn",
-               "chain":{
-                  "type":"element",
-                  "operator":null,
-                  "condition":"exist",
-                  "selector":"#mobile-product-sticky > div.custom-form.add-to-cart-button-div > ul > li > a",
-                  "chain":{
-                     "type":"element",
-                     "operator":null,
-                     "condition":"exist",
-                     "selector":"#order-cart-addreslist > div.cart-approve-btn > button"
-                  },
-                  "chain_condition": "or"
-               },
-               "chain_condition": "or"
+               "selector":".button-add-cart-action .add-to-cart-btn"
             },
             "chain_condition":"or"
          }
@@ -1654,7 +1640,7 @@
             "id":1,
             "type":"random",
             "operator":"number",
-            "salt": "ctaText",
+            "salt":"ctaText",
             "condition":"lessThan",
             "value":50,
             "subVariantId":1
@@ -1663,7 +1649,7 @@
             "id":2,
             "type":"random",
             "operator":"number",
-            "salt": "ctaText",
+            "salt":"ctaText",
             "condition":"lessThan",
             "value":99,
             "subVariantId":2
@@ -1684,6 +1670,94 @@
                   "id":2,
                   "value":"nd-cta-yellow",
                   "selectorFallback":".add-to-cart-btn"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "id":27,
+      "name":"CTA Buttons Change Color Mobile",
+      "description":"CTA Buttons Change Color Mobile",
+      "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+      "device":"mobile",
+      "reapply_event":"element_change",
+      "reapply_selector":".tabbable-line",
+      "apply_on_user_segment":"*",
+      "baseRuleSet":[
+         {
+            "type":"element",
+            "operator":null,
+            "condition":"exist",
+            "selector":"#checkoutForm > button",
+            "chain":{
+               "type":"element",
+               "operator":null,
+               "condition":"exist",
+               "selector":"#order-cart-addreslist > div.cart-approve-btn > button",
+               "chain":{
+                  "type":"element",
+                  "operator":null,
+                  "condition":"exist",
+                  "selector":" #accept-pay"
+               },
+               "chain_condition":"or"
+            },
+            "chain_condition":"or"
+         }
+      ],
+      "subVariantRuleSet":[
+         {
+            "id":1,
+            "type":"random",
+            "operator":"number",
+            "salt":"ctaText",
+            "condition":"lessThan",
+            "value":50,
+            "subVariantId":1
+         },
+         {
+            "id":2,
+            "type":"random",
+            "operator":"number",
+            "salt":"ctaText",
+            "condition":"lessThan",
+            "value":99,
+            "subVariantId":2
+         }
+      ],
+      "actions":[
+         {
+            "operator":"edit",
+            "type":"addClass",
+            "selector":".cart-approve-btn button",
+            "subVariants":[
+               {
+                  "id":1,
+                  "value":"nd-cta-red",
+                  "selectorFallback":".btn-type-address"
+               },
+               {
+                  "id":2,
+                  "value":"nd-cta-yellow",
+                  "selectorFallback":".btn-type-address"
+               }
+            ]
+         },
+         {
+            "operator":"edit",
+            "type":"addClass",
+            "selector":".btn.cart-confirm",
+            "subVariants":[
+               {
+                  "id":1,
+                  "value":"nd-cta-red",
+                  "selectorFallback":".btn-type-address"
+               },
+               {
+                  "id":2,
+                  "value":"nd-cta-yellow",
+                  "selectorFallback":".btn-type-address"
                }
             ]
          }
