@@ -1635,7 +1635,14 @@
                   "type":"element",
                   "operator":null,
                   "condition":"exist",
-                  "selector":"#mobile-product-sticky > div.custom-form.add-to-cart-button-div > ul > li > a"
+                  "selector":"#mobile-product-sticky > div.custom-form.add-to-cart-button-div > ul > li > a",
+                  "chain":{
+                     "type":"element",
+                     "operator":null,
+                     "condition":"exist",
+                     "selector":"#order-cart-addreslist > div.cart-approve-btn > button"
+                  },
+                  "chain_condition": "or"
                },
                "chain_condition": "or"
             },
