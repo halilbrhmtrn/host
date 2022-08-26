@@ -1699,7 +1699,14 @@
                   "type":"element",
                   "operator":null,
                   "condition":"exist",
-                  "selector":" #accept-pay"
+                  "selector":" #accept-pay",
+                  "chain":{
+                     "type":"element",
+                     "operator":null,
+                     "condition":"exist",
+                     "selector":"#mobile-product-sticky > div.custom-form.add-to-cart-button-div > ul > li > a"
+                  },
+                  "chain_condition":"or"
                },
                "chain_condition":"or"
             },
