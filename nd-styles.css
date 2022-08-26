@@ -543,21 +543,21 @@
   font-family: BrandonTextRegular;
 }
 
-.button-add-cart-action.nd-cta-red, .default-add-cart-btn.nd-cta-red, .cart-approve-btn button.nd-cta-red, .btn-type-address.nd-cta-red, .btn.cart-confirm.nd-cta-red {
+.button-add-cart-action .add-to-cart-btn.nd-cta-red, .button-add-cart-action.nd-cta-red, .default-add-cart-btn.nd-cta-red, .cart-approve-btn button.nd-cta-red, .btn-type-address.nd-cta-red, .btn.cart-confirm.nd-cta-red {
   background-color: #f31c00 !important;
 }
 
-.button-add-cart-action.nd-cta-red:hover, .default-add-cart-btn.nd-cta-red:hover, .cart-approve-btn button.nd-cta-red:hover, .btn-type-address.nd-cta-red:hover, .btn.cart-confirm.nd-cta-red:hover {
+.button-add-cart-action .add-to-cart-btn.nd-cta-red:hover, .button-add-cart-action.nd-cta-red:hover, .default-add-cart-btn.nd-cta-red:hover, .cart-approve-btn button.nd-cta-red:hover, .btn-type-address.nd-cta-red:hover, .btn.cart-confirm.nd-cta-red:hover {
   color: #fff;
   background-color: #F04C35 !important;
   border-color: #f8514b !important;
 }
 
-.button-add-cart-action.nd-cta-yellow, .default-add-cart-btn.nd-cta-yellow, .cart-approve-btn button.nd-cta-yellow, .btn-type-address.nd-cta-yellow, .btn.cart-confirm.nd-cta-yellow {
+.button-add-cart-action .add-to-cart-btn.nd-cta-yellow, .button-add-cart-action.nd-cta-yellow, .default-add-cart-btn.nd-cta-yellow, .cart-approve-btn button.nd-cta-yellow, .btn-type-address.nd-cta-yellow, .btn.cart-confirm.nd-cta-yellow {
   background-color: #F59F1D !important;
 }
 
-.button-add-cart-action.nd-cta-yellow:hover, .default-add-cart-btn.nd-cta-yellow:hover, .cart-approve-btn button.nd-cta-yellow:hover, .btn-type-address.nd-cta-yellow:hover, .btn.cart-confirm.nd-cta-yellow:hover {
+.button-add-cart-action .add-to-cart-btn.nd-cta-yellow:hover, .button-add-cart-action.nd-cta-yellow:hover, .default-add-cart-btn.nd-cta-yellow:hover, .cart-approve-btn button.nd-cta-yellow:hover, .btn-type-address.nd-cta-yellow:hover, .btn.cart-confirm.nd-cta-yellow:hover {
   color: #fff;
   background-color: #f5b75b !important;
   border-color: #f4b556 !important;
