@@ -1055,13 +1055,13 @@
          {
             "operator":"insert",
             "type":"before",
-            "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>",
+            "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake-black.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>",
             "selector":"#address-section",
             "selectorFallback":"#order-cart-addreslist",
             "subVariants":[
                {
                   "id":1,
-                  "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
+                  "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake-black.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
                }
             ]
          }
@@ -1455,13 +1455,13 @@
          {
             "operator":"insert",
             "type":"before",
-            "value":"<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>",
+            "value":"<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake-black.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>",
             "selector":"#checkoutForm > div > div.row.centered-wide-fix",
             "selectorFallback":"#main > div",
             "subVariants":[
                {
                   "id":1,
-                  "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
+                  "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake-black.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
                }
             ]
          },
