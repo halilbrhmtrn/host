@@ -1516,10 +1516,10 @@
             "chain_condition":"and",
             "chain":{
                "type":"function",
-               "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.mostSoldLevel;",
+               "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.transactionIn2Weeks;",
                "bindings":"productInfo",
-               "condition":"lessThan",
-               "value":10,
+               "condition":"greaterThan",
+               "value":100,
                "chain_condition": "and",
                "chain": {
                       "type":"element",
@@ -1539,10 +1539,10 @@
             "chain_condition":"and",
             "chain":{
                "type":"function",
-               "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.mostAddedToCartLevel;",
+               "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks;",
                "bindings":"productInfo",
-               "condition":"lessThan",
-               "value":10,
+               "condition":"greaterThan",
+               "value":100,
                "chain_condition": "and",
                "chain": {
                       "type":"element",
