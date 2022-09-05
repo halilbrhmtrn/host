@@ -1526,7 +1526,7 @@
                       "operator":null,
                       "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
                       "condition":"notExist"
-               },
+               }
             },
             "subVariantId":1
          },
@@ -1549,7 +1549,7 @@
                       "operator":null,
                       "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
                       "condition":"notExist"
-               },
+               }
             },
             "subVariantId":2
          }
@@ -1574,7 +1574,7 @@
                       "operator":null,
                       "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
                       "condition":"notExist"
-               },
+               }
             }
          }
       ],
