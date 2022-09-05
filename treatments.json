@@ -1504,6 +1504,7 @@
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
       "device":"desktop",
       "weight":100,
+      "reapply_event": "timeout",
       "apply_on_user_segment":"*",
       "subVariantRuleSet":[
          {
@@ -1518,7 +1519,14 @@
                "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.mostSoldLevel;",
                "bindings":"productInfo",
                "condition":"lessThan",
-               "value":10
+               "value":10,
+               "chain_condition": "and",
+               "chain": {
+                      "type":"element",
+                      "operator":null,
+                      "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
+                      "condition":"notExist"
+               },
             },
             "subVariantId":1
          },
@@ -1534,7 +1542,14 @@
                "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.mostAddedToCartLevel;",
                "bindings":"productInfo",
                "condition":"lessThan",
-               "value":10
+               "value":10,
+               "chain_condition": "and",
+               "chain": {
+                      "type":"element",
+                      "operator":null,
+                      "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
+                      "condition":"notExist"
+               },
             },
             "subVariantId":2
          }
@@ -1552,7 +1567,14 @@
                "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.productViewCount;",
                "bindings":"productInfo",
                "condition":"greaterThan",
-               "value":100
+               "value":100,
+               "chain_condition": "and",
+               "chain": {
+                      "type":"element",
+                      "operator":null,
+                      "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
+                      "condition":"notExist"
+               },
             }
          }
       ],
