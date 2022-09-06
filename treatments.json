@@ -1829,6 +1829,23 @@
                   "selectorFallback":"#loginForm > button"
                }
             ]
+         },
+         {
+            "operator":"edit",
+            "type":"addClass",
+            "selector":"#loginForm > button",
+            "subVariants":[
+               {
+                  "id":1,
+                  "value":"nd-cta-red",
+                  "selectorFallback":"#loginForm > button"
+               },
+               {
+                  "id":2,
+                  "value":"nd-cta-yellow",
+                  "selectorFallback":"#registerBtn"
+               }
+            ]
          }
       ]
    },
@@ -1952,6 +1969,23 @@
                   "id":2,
                   "value":"nd-cta-yellow",
                   "selectorFallback":"#loginForm > button"
+               }
+            ]
+         },
+         {
+            "operator":"edit",
+            "type":"addClass",
+            "selector":"#loginForm > button",
+            "subVariants":[
+               {
+                  "id":1,
+                  "value":"nd-cta-red",
+                  "selectorFallback":"#loginForm > button"
+               },
+               {
+                  "id":2,
+                  "value":"nd-cta-yellow",
+                  "selectorFallback":"#registerBtn"
                }
             ]
          }
