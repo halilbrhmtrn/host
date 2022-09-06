@@ -1742,6 +1742,7 @@
       "description":"CTA Buttons Change Color",
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
       "device":"desktop",
+      "reapply_event":"on_popstate",
       "apply_on_user_segment":"*",
       "weight": 100,
       "baseRuleSet":[
@@ -1853,6 +1854,7 @@
       "description":"CTA Buttons Change Color Mobile",
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
       "device":"mobile",
+      "reapply_event":"on_popstate",
       "apply_on_user_segment":"*",
       "weight": 100,
       "baseRuleSet":[
