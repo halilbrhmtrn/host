@@ -1458,14 +1458,7 @@
              "type":"url",
              "operator":"path",
              "condition":"equal",
-             "value":"/siparis-listesi.html",
-             "chain_condition":"and",
-             "chain":{
-               "type":"counter",
-               "operator":"CABasketPrice",
-               "condition":"equal",
-               "value":0
-             }
+             "value":"/siparis-listesi.html"
           }
        ],
        "subVariantRuleSet":[
