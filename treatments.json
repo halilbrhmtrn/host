@@ -1663,20 +1663,12 @@
              "condition":"equal",
              "value":"Productpage",
              "chain_condition":"and",
-             "chain":{
-                "type":"function",
-                "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.productViewCount;",
-                "bindings":"productInfo",
-                "condition":"greaterThan",
-                "value":100,
-                "chain_condition": "and",
-                "chain": {
-                      "type":"element",
-                      "operator":null,
-                      "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
-                      "condition":"notExist"
-                  }
-             }
+             "chain": {
+                  "type":"element",
+                  "operator":null,
+                  "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
+                  "condition":"notExist"
+             } 
           }
        ],
        "actions":[
