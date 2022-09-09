@@ -1026,48 +1026,6 @@
        ]
     },
     {
-       "id":13,
-       "name":"Money Back Guarantee Banner",
-       "description":"Money back guarantee banner",
-       "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
-       "apply_on_user_segment":"*",
-       "device":"*",
-       "baseRuleSet":[
-          {
-             "id":1,
-             "type":"url",
-             "operator":"path",
-             "condition":"equal",
-             "value":"/adres-listesi.html"
-          }
-       ],
-       "subVariantRuleSet":[
-          {
-             "id":1,
-             "type":"environment",
-             "operator":"device_type",
-             "condition":"equal",
-             "value":"mobile",
-             "subVariantId":1
-          }
-       ],
-       "actions":[
-          {
-             "operator":"insert",
-             "type":"before",
-             "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>",
-             "selector":"#address-section",
-             "selectorFallback":"#order-cart-addreslist",
-             "subVariants":[
-                {
-                   "id":1,
-                   "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
-                }
-             ]
-          }
-       ]
-    },
-    {
        "id":14,
        "name":"Desktop infinite scroll",
        "description":"Enable inifite scroll on desktop",
@@ -1143,10 +1101,10 @@
     },
     {
        "id":16,
-       "name":"CTA Button Text Optimization",
+       "name":"CTA Button Text Optimization - Desktop",
        "description":"CTA Button Text Optimization",
-       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
-       "device":"*",
+       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web",
+       "device":"desktop",
        "reapply_event":"element_change",
        "reapply_selector":[".tabbable-line", ".payment-options-area.frame-box.form-group"],
        "apply_on_user_segment":"*",
@@ -1221,7 +1179,7 @@
                   "type":"html",
                   "value":"{{REPLACE}}",
                   "selectorFallback":"#accept-pay",
-                  "replaceFn": "if (!$(\"#menuPayments > ul > li:nth-child(2)\").length) {if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.bank-transfer-area.form-group.frame-box.bank-payment-section\").attr(\"style\")?.includes(\"display: block\")) return \"<span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.row.payment-box.payment-area.credit-cart-section > div.row.installement-box.installement-area\").attr(\"style\")?.includes(\"display: none\")) return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const selectedOption = $(\"#installement-table-area > tbody\").find(\".selected-installement\");if (selectedOption.is(\":first-child\")) return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\"td\").text().split(\"x\")[1].trim();return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";} else {if ($(\"#menuPayments > ul > li:nth-child(2)\").hasClass(\"active\")) return \"<span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if (!$(\"#no_card_data\").hasClass(\"hidden\")) return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if ($(\"#menuPayments > ul > li:nth-child(1)\").hasClass(\"active\")) {const selectedOption = $(\"#creditCardInstallmentOptions > div.installament-list-2-col.add-installament > div > table > tbody\").find(\".active\");if (selectedOption.attr(\"id\") === \"installment-tr-1\") return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\".installment-price\").text().split(\"x\")[1].trim();return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";}}"
+                  "replaceFn": "if (!$(\"#menuPayments > ul > li:nth-child(2)\").length) {if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.bank-transfer-area.form-group.frame-box.bank-payment-section\").attr(\"style\")?.includes(\"display: block\")) return \"<span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.row.payment-box.payment-area.credit-cart-section > div.row.installement-box.installement-area\").attr(\"style\")?.includes(\"display: none\")) return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const selectedOption = $(\"#installement-table-area > tbody\").find(\".selected-installement\");if (selectedOption.is(\":first-child\")) return \"<span style='height: 2.5rem;color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\"td\").text().split(\"x\")[1].trim();return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";} else {if ($(\"#menuPayments > ul > li:nth-child(2)\").hasClass(\"active\")) return \"<span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if (!$(\"#no_card_data\").hasClass(\"hidden\")) return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if ($(\"#menuPayments > ul > li:nth-child(1)\").hasClass(\"active\")) {const selectedOption = $(\"#creditCardInstallmentOptions > div.installament-list-2-col.add-installament > div > table > tbody\").find(\".active\");if (selectedOption.attr(\"id\") === \"installment-tr-1\") return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\".installment-price\").text().split(\"x\")[1].trim();return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";}}"
                 }
              ]
           },
@@ -1466,7 +1424,7 @@
             "id":1,
             "type":"random",
             "operator":"number",
-            "salt": "ctaText",
+            "salt": "desktopMoneyBackGuarantee",
             "condition":"lessThan",
             "value":50,
             "subVariantId":1
@@ -1475,7 +1433,7 @@
             "id":2,
             "type":"random",
             "operator":"number",
-            "salt": "ctaText",
+            "salt": "desktopMoneyBackGuarantee",
             "condition":"lessThan",
             "value":100,
             "subVariantId":2
@@ -1490,79 +1448,11 @@
               "subVariants": [
                   {
                       "id": 1,
-                      "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE DİLEDİĞİN GİBİ KOŞULSUZ İADE EDEBİLİRSİN</div></div></div></div>"
+                      "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Uzun uzun düşünmene gerek yok! Ürünü teslim ettikten sonra da biz hep yanındayız.</div></div></div></div>"
                   },
                   {
                      "id": 2,
-                     "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>"
-                 }
-              ]
-          },
-          {
-              "operator": "remove",
-              "selector": "#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
-              "selectorFallback": "#checkoutForm > div.basket_product_list_header.reserved-product"
-          }
-      ]
-  },
-  {
-      "id": 29,
-      "name": "MOBILE Money Back Guarantee Banner",
-      "description": "Money back guarantee banner - Basket",
-      "category": "Universal Best Practice UX Strategies / Basket Page / Mobile Web",
-      "apply_on_user_segment": "*",
-      "device": "mobile",
-      "weight": 1,
-      "baseRuleSet": [
-          {
-              "id": 1,
-              "type": "url",
-              "operator": "path",
-              "condition": "equal",
-              "value": "/siparis-listesi.html",
-              "chain_condition":"and",
-              "chain":{
-                 "type":"counter",
-                 "operator":"CABasketPrice",
-                 "condition":"notEqual",
-                 "value":0
-             }
-          }
-      ],
-      "subVariantRuleSet": [
-         {
-            "id":1,
-            "type":"random",
-            "operator":"number",
-            "salt": "ctaText",
-            "condition":"lessThan",
-            "value":50,
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"random",
-            "operator":"number",
-            "salt": "ctaText",
-            "condition":"lessThan",
-            "value":100,
-            "subVariantId":2
-         }
-      ],
-      "actions": [
-          {
-              "operator": "insert",
-              "type": "before",
-              "selector": "#checkoutForm > div > div.row.centered-wide-fix",
-              "selectorFallback": "#main > div",
-              "subVariants": [
-                  {
-                      "id": 1,
-                      "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
-                  },
-                  {
-                     "id": 2,
-                     "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE DİLEDİĞİN GİBİ KOŞULSUZ İADE EDEBİLİRSİN</div></div></div></div>"
+                     "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 gün içinde para iade garantisi</div></div></div></div>"
                  }
               ]
           },
@@ -1615,19 +1505,11 @@
              "condition":"equal",
              "value":"Productpage",
              "chain_condition":"and",
-             "chain":{
-                "type":"function",
-                "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.transactionIn2Weeks;",
-                "bindings":"productInfo",
-                "condition":"greaterThan",
-                "value":100,
-                "chain_condition": "and",
-                "chain": {
-                      "type":"element",
-                      "operator":null,
-                      "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
-                      "condition":"notExist"
-                  }
+             "chain": {
+                  "type":"element",
+                  "operator":null,
+                  "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
+                  "condition":"notExist"
              },
              "subVariantId":1
           },
@@ -1663,12 +1545,20 @@
              "condition":"equal",
              "value":"Productpage",
              "chain_condition":"and",
-             "chain": {
-                  "type":"element",
-                  "operator":null,
-                  "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
-                  "condition":"notExist"
-             } 
+             "chain":{
+                "type":"function",
+                "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.productViewCount;",
+                "bindings":"productInfo",
+                "condition":"greaterThan",
+                "value":100,
+                "chain_condition": "and",
+                "chain": {
+                      "type":"element",
+                      "operator":null,
+                      "selector":"#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
+                      "condition":"notExist"
+                  }
+             }
           }
        ],
        "actions":[
@@ -1798,12 +1688,12 @@
           },
           {
              "operator":"injectscript",
-             "value":"document.querySelectorAll(\"div.checkbox.checkbox-accept.js-accept-policy-checkboxes span.cr.accept-policy-checkbox\").forEach((el) => el.click());$(\".accept-policy-text-link\").on(\"click\",function(){$.ajax(\"/ajax/cart/contract.php\", {method: \"GET\"}).done(function (responseData) {$.jAlert({\"id\": \"accept-policy-alert\",\"title\": \"Sözleşme\",\"content\": responseData ,\"theme\": \"default\",\"size\": \"lg\",\"showAnimation\": \"fadeIn\",\"hideAnimation\": \"fadeOut\",\"btns\":  [ {\"text\": \"ONAYLIYORUM\",\"id\":\"return-address-id\", \"onClick\": function(){ $(\"#isTOSAccepted\").trigger(\"click\"); } } ]});}).fail(function(){$.jAlert({\"id\": \"isTOSAcceptedAlert\",\"title\": \"&nbsp;\",\"content\": \"İstek Şu An Gerçekleştirilemiyor!\",\"theme\": \"default\",\"size\": \"sm\",\"showAnimation\": \"fadeIn\",\"hideAnimation\": \"fadeOut\",\"btns\": [{\"text\": \"TAMAM\", \"closeAlert\":true, \"id\": \"cancel-id\"}]});});});",
+             "value":"$(\".cart-confirm\").off(\"click\");$(\".cart-confirm\").on(\"click\", function() {var selectedPayment = $(\"#menuPayments\").find(\"li.active\");if (selectedPayment.length === 1) {if (parseInt(selectedPayment.data(\"type\")) === 12) {window.viveCartPayment.payWithCard();} else if (parseInt(selectedPayment.data(\"type\")) === 2) {window.viveCartPayment.payWithBank();} else if (parseInt(selectedPayment.data(\"type\")) === 14) {if (window.viveCartPayment.controlEmptyField(true)) {window.viveCartPayment.payWithMobilPos();}return false;} else if (parseInt(selectedPayment.data(\"type\")) === 15) {window.viveCartPayment.payWithCash();}return true;}$.jAlert({'id': 'isTOSAcceptedAlert','title': '&nbsp;','content': 'Ödeme Yöntemi Seçiminde Hata!!','theme': 'default','size': 'sm','showAnimation': 'fadeIn','hideAnimation': 'fadeOut','btns': [{'text': 'TAMAM','closeAlert': true,'id': 'cancel-id'}]});return false;});",
              "selector":"body",
              "subVariants": [
                {
                   "id":1,
-                  "value": "document.querySelectorAll(\"div.checkbox.checkbox-accept.js-accept-policy-checkboxes span.cr.accept-policy-checkbox\").forEach((el) => el.click());"
+                  "value": "$(\"#accept-pay\").off('click');$(\"#accept-pay\").on('click', function() {var selectedPayment = $('input[name=payment-radio-button]:checked');if (selectedPayment.length !== 1) {showError(\"Lütfen Bir Ödeme Yöntemi Seçiniz!\");return false;}if (selectedPayment.val() === \"2\") {window.viveCartPayment.payWithBank();} else if (selectedPayment.val() === \"12\") {window.viveCartPayment.payWithCard();}});"
                }
              ]
           }
@@ -1811,12 +1701,12 @@
     },
     {
       "id":27,
-      "name":"CTA Buttons Change Color",
+      "name":"DESKTOP - CTA Buttons Change Color",
       "description":"CTA Buttons Change Color",
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
       "device":"desktop",
-      "reapply_event":"timeout",
       "apply_on_user_segment":"*",
+      "reapply_event":"timeout",
       "weight": 100,
       "baseRuleSet":[
          {
@@ -1910,7 +1800,7 @@
                {
                   "id":1,
                   "value":"nd-cta-red",
-                  "selectorFallback":"#loginForm > button"
+                  "selectorFallback":"#registerBtn"
                },
                {
                   "id":2,
@@ -1923,11 +1813,11 @@
    },
    {
       "id":28,
-      "name":"CTA Buttons Change Color Mobile",
+      "name":"MOBILE - CTA Buttons Change Color",
       "description":"CTA Buttons Change Color Mobile",
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
       "device":"mobile",
-      "reapply_event": "timeout",
+      "reapply_event":"timeout",
       "apply_on_user_segment":"*",
       "weight": 100,
       "baseRuleSet":[
@@ -2051,13 +1941,245 @@
                {
                   "id":1,
                   "value":"nd-cta-red",
-                  "selectorFallback":"#loginForm > button"
+                  "selectorFallback":"#registerBtn"
                },
                {
                   "id":2,
                   "value":"nd-cta-yellow",
                   "selectorFallback":"#registerBtn"
                }
+            ]
+         }
+      ]
+   },
+   {
+      "id": 29,
+      "name": "MOBILE - Money Back Guarantee Banner",
+      "description": "Money back guarantee banner - Basket",
+      "category": "Universal Best Practice UX Strategies / Basket Page / Mobile Web",
+      "apply_on_user_segment": "*",
+      "device": "mobile",
+      "weight": 1,
+      "baseRuleSet": [
+          {
+              "id": 1,
+              "type": "url",
+              "operator": "path",
+              "condition": "equal",
+              "value": "/siparis-listesi.html",
+              "chain_condition":"and",
+              "chain":{
+                 "type":"counter",
+                 "operator":"CABasketPrice",
+                 "condition":"notEqual",
+                 "value":0
+             }
+          }
+      ],
+      "subVariantRuleSet": [
+         {
+            "id":1,
+            "type":"random",
+            "operator":"number",
+            "salt": "mobileMoneyBackGuarantee",
+            "condition":"lessThan",
+            "value":50,
+            "subVariantId":1
+         },
+         {
+            "id":2,
+            "type":"random",
+            "operator":"number",
+            "salt": "mobileMoneyBackGuarantee",
+            "condition":"lessThan",
+            "value":100,
+            "subVariantId":2
+         }
+      ],
+      "actions": [
+          {
+              "operator": "insert",
+              "type": "before",
+              "selector": "#checkoutForm > div > div.row.centered-wide-fix",
+              "selectorFallback": "#main > div",
+              "subVariants": [
+                  {
+                      "id": 1,
+                      "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>"
+                  },
+                  {
+                     "id": 2,
+                     "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 gün içinde para iade garantisi</div></div></div></div>"
+                 }
+              ]
+          },
+          {
+              "operator": "remove",
+              "selector": "#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
+              "selectorFallback": "#checkoutForm > div.basket_product_list_header.reserved-product"
+          }
+      ]
+  },
+   {
+      "id":30,
+      "name":"CTA Button Text Optimization - Mobile",
+      "description":"CTA Button Text Optimization",
+      "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+      "device":"mobile",
+      "reapply_event":"element_change",
+      "reapply_selector":[".tabbable-line", ".payment-options-area.frame-box.form-group"],
+      "apply_on_user_segment":"*",
+      "baseRuleSet":[
+         {
+            "id":1,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/siparis-listesi.html",
+            "chain_condition":"or",
+            "chain":{
+               "type":"url",
+               "operator":"path",
+               "condition":"equal",
+               "value":"/adres-listesi.html",
+               "chain_condition":"or",
+               "chain":{
+                  "type":"url",
+                  "operator":"path",
+                  "condition":"equal",
+                  "value":"/odeme.html"
+               }
+            }
+         }
+      ],
+      "subVariantRuleSet":[
+         {
+            "id":1,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/siparis-listesi.html",
+            "subVariantId":1
+         },
+         {
+            "id":2,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/adres-listesi.html",
+            "subVariantId":2
+         },
+         {
+            "id":3,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/odeme.html",
+            "subVariantId":3
+         }
+      ],
+      "actions":[
+         {
+            "operator":"edit",
+            "type":"text",
+            "selector":".btn.cart-confirm.btn-lg",
+            "subVariants":[
+               {
+                 "id":1,
+                 "value":"ALIŞVERİŞİ TAMAMLA",
+                 "selectorFallback":"#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button"
+               },
+               {
+                 "id":2,
+                 "type":"html",
+                 "value":"<span style=\"color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;\">sonraki adım</span><span style=\"font-size:18px; font-family: BrandonTextBold\">ÖDEME BİLGİLERİNİ GİR</span>",
+                 "selectorFallback":"#order-cart-addreslist > div.cart-approve-btn > button"
+               },
+               {
+                 "id":3,
+                 "type":"html",
+                 "value":"{{REPLACE}}",
+                 "selectorFallback":"#accept-pay",
+                 "replaceFn": "if (!$(\"#menuPayments > ul > li:nth-child(2)\").length) {if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.bank-transfer-area.form-group.frame-box.bank-payment-section\").attr(\"style\")?.includes(\"display: block\")) return \"<span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.row.payment-box.payment-area.credit-cart-section > div.row.installement-box.installement-area\").attr(\"style\")?.includes(\"display: none\")) return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const selectedOption = $(\"#installement-table-area > tbody\").find(\".selected-installement\");if (selectedOption.is(\":first-child\")) return \"<span style='height: 2.5rem;color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\"td\").text().split(\"x\")[1].trim();return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";} else {if ($(\"#menuPayments > ul > li:nth-child(2)\").hasClass(\"active\")) return \"<span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if (!$(\"#no_card_data\").hasClass(\"hidden\")) return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if ($(\"#menuPayments > ul > li:nth-child(1)\").hasClass(\"active\")) {const selectedOption = $(\"#creditCardInstallmentOptions > div.installament-list-2-col.add-installament > div > table > tbody\").find(\".active\");if (selectedOption.attr(\"id\") === \"installment-tr-1\") return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\".installment-price\").text().split(\"x\")[1].trim();return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";}}"
+               }
+            ]
+         },
+         {
+           "operator": "edit",
+           "type": "addClass",
+           "selector":".btn.cart-confirm.btn-lg",
+           "value": "nd-flex nd-flex__centered nd-flex__column",
+           "subVariants": [
+              {
+                 "id": 1,
+                 "operator": "noop"
+              },
+              {
+                 "id": 3,
+                 "selectorFallback":"#accept-pay"
+              }
+           ]
+         }
+      ]
+   },
+   {
+      "id":31,
+      "name":"DESKTOP - Money Back Guarantee Banner Adress List Page",
+      "description":"Money back guarantee banner",
+      "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
+      "apply_on_user_segment":"*",
+      "device":"desktop",
+      "baseRuleSet":[
+         {
+            "id":1,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/adres-listesi.html",
+            "chain_condition":"and"
+         }
+      ],
+      "subVariantRuleSet":[
+      ],
+      "actions":[
+         {
+            "operator":"insert",
+            "type":"before",
+            "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Uzun uzun düşünmene gerek yok! Ürünü teslim ettikten sonra da biz hep yanındayız.</div></div></div></div>",
+            "selector":"#address-section",
+            "selectorFallback":"#order-cart-addreslist",
+            "subVariants":[
+            ]
+         }
+      ]
+   },
+   {
+      "id":32,
+      "name":"MOBILE - Money Back Guarantee Banner Address List Page",
+      "description":"Money back guarantee banner",
+      "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
+      "apply_on_user_segment":"*",
+      "device":"mobile",
+      "baseRuleSet":[
+         {
+            "id":1,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/adres-listesi.html",
+            "chain_condition":"and"
+         }
+      ],
+      "subVariantRuleSet":[
+      ],
+      "actions":[
+         {
+            "operator":"insert",
+            "type":"before",
+            "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>",
+            "selector":"#address-section",
+            "selectorFallback":"#order-cart-addreslist",
+            "subVariants":[
             ]
          }
       ]
