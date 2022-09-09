@@ -1445,60 +1445,134 @@
        ]
     },
     {
-       "id":22,
-       "name":"Money Back Guarantee Banner",
-       "description":"Money back guarantee banner - Basket",
-       "category":"Universal Best Practice UX Strategies / Basket Page / Web, Mobile Web",
-       "apply_on_user_segment":"*",
-       "device":"*",
-       "weight":30,
-       "baseRuleSet":[
+      "id": 22,
+      "name": "DESKTOP Money Back Guarantee Banner",
+      "description": "Money back guarantee banner - Basket",
+      "category": "Universal Best Practice UX Strategies / Basket Page / Web",
+      "apply_on_user_segment": "*",
+      "device": "desktop",
+      "weight": 30,
+      "baseRuleSet": [
           {
-             "id":1,
-             "type":"url",
-             "operator":"path",
-             "condition":"equal",
-             "value":"/siparis-listesi.html",
-             "chain_condition":"and",
-             "chain":{
-               "type":"counter",
-               "operator":"CABasketPrice",
-               "condition":"notEqual",
-               "value":0
-             }
+              "id": 1,
+              "type": "url",
+              "operator": "path",
+              "condition": "equal",
+              "value": "/siparis-listesi.html"
           }
-       ],
-       "subVariantRuleSet":[
+      ],
+      "subVariantRuleSet": [
+         {
+            "id":1,
+            "type":"random",
+            "operator":"number",
+            "salt": "ctaText",
+            "condition":"lessThan",
+            "value":50,
+            "subVariantId":1
+         },
+         {
+            "id":2,
+            "type":"random",
+            "operator":"number",
+            "salt": "ctaText",
+            "condition":"lessThan",
+            "value":100,
+            "subVariantId":2
+         }
+      ],
+      "actions": [
           {
-             "id":1,
-             "type":"environment",
-             "operator":"device_type",
-             "condition":"equal",
-             "value":"mobile",
-             "subVariantId":1
-          }
-       ],
-       "actions":[
-          {
-             "operator":"insert",
-             "type":"before",
-             "value":"<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>",
-             "selector":"#checkoutForm > div > div.row.centered-wide-fix",
-             "selectorFallback":"#main > div",
-             "subVariants":[
-                {
-                   "id":1,
-                   "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
-                }
-             ]
+              "operator": "insert",
+              "type": "before",
+              "selector": "#checkoutForm > div > div.row.centered-wide-fix",
+              "selectorFallback": "#main > div",
+              "subVariants": [
+                  {
+                      "id": 1,
+                      "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE DİLEDİĞİN GİBİ KOŞULSUZ İADE EDEBİLİRSİN</div></div></div></div>"
+                  },
+                  {
+                     "id": 2,
+                     "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE KOŞULSUZ PARA İADE GARANTİSİ</div></div></div></div>"
+                 }
+              ]
           },
           {
-             "operator":"remove",
-             "selector":"#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
-             "selectorFallback":"#checkoutForm > div.basket_product_list_header.reserved-product"
+              "operator": "remove",
+              "selector": "#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
+              "selectorFallback": "#checkoutForm > div.basket_product_list_header.reserved-product"
           }
-       ]
-    },
+      ]
+  },
+  {
+      "id": 29,
+      "name": "MOBILE Money Back Guarantee Banner",
+      "description": "Money back guarantee banner - Basket",
+      "category": "Universal Best Practice UX Strategies / Basket Page / Mobile Web",
+      "apply_on_user_segment": "*",
+      "device": "mobile",
+      "weight": 1,
+      "baseRuleSet": [
+          {
+              "id": 1,
+              "type": "url",
+              "operator": "path",
+              "condition": "equal",
+              "value": "/siparis-listesi.html",
+              "chain_condition":"and",
+              "chain":{
+                 "type":"counter",
+                 "operator":"CABasketPrice",
+                 "condition":"notEqual",
+                 "value":0
+             }
+          }
+      ],
+      "subVariantRuleSet": [
+         {
+            "id":1,
+            "type":"random",
+            "operator":"number",
+            "salt": "ctaText",
+            "condition":"lessThan",
+            "value":50,
+            "subVariantId":1
+         },
+         {
+            "id":2,
+            "type":"random",
+            "operator":"number",
+            "salt": "ctaText",
+            "condition":"lessThan",
+            "value":100,
+            "subVariantId":2
+         }
+      ],
+      "actions": [
+          {
+              "operator": "insert",
+              "type": "before",
+              "selector": "#checkoutForm > div > div.row.centered-wide-fix",
+              "selectorFallback": "#main > div",
+              "subVariants": [
+                  {
+                      "id": 1,
+                      "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE PARA İADE GARANTİSİ</div></div></div></div>"
+                  },
+                  {
+                     "id": 2,
+                     "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/money_back.png\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 GÜN İÇİNDE DİLEDİĞİN GİBİ KOŞULSUZ İADE EDEBİLİRSİN</div></div></div></div>"
+                 }
+              ]
+          },
+          {
+              "operator": "remove",
+              "selector": "#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
+              "selectorFallback": "#checkoutForm > div.basket_product_list_header.reserved-product"
+          }
+      ]
+  },
     {
        "id":23,
        "name":"Remove Default Vivense banner",
