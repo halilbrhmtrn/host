@@ -2084,7 +2084,13 @@
             "operator":"path",
             "condition":"equal",
             "value":"/adres-listesi.html",
-            "chain_condition":"and"
+            "chain_condition":"and",
+            "chain": {
+                     "type":"element",
+                     "operator":null,
+                     "selector":".nd-money-back__wrapper",
+                     "condition":"notExist"
+             }
          }
       ],
       "businessRuleSet":[
