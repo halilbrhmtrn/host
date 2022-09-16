@@ -141,7 +141,7 @@
              "value":"/siparis-listesi.html"
           }
        ],
-       "subVariantRuleSet":[
+       "businessRuleSet":[
           {
              "id":1,
              "type":"element",
@@ -149,7 +149,7 @@
              "condition":"lessThan",
              "value":3000,
              "selectorAll":".price",
-             "subVariantId":1
+             "businessRuleId":1
           },
           {
              "id":2,
@@ -158,7 +158,7 @@
              "condition":"between",
              "value":"3000, 6000",
              "selectorAll":".price",
-             "subVariantId":2
+             "businessRuleId":2
           },
           {
              "id":3,
@@ -167,7 +167,7 @@
              "condition":"greaterEquals",
              "value":6000,
              "selectorAll":".price",
-             "subVariantId":3
+             "businessRuleId":3
           }
        ],
        "actions":[
@@ -186,7 +186,7 @@
              "selectorFallback":"#main > div",
              "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim! Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
              "replaceFn":null,
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                    "id":1,
                    "selector":"#checkoutForm",
@@ -226,7 +226,7 @@
              "value":"/siparis-listesi.html"
           }
        ],
-       "subVariantRuleSet":[
+       "businessRuleSet":[
           {
              "id":1,
              "type":"element",
@@ -234,7 +234,7 @@
              "condition":"lessThan",
              "value":3000,
              "selectorAll":"#price:not(.not-allowed-coupon)",
-             "subVariantId":1
+             "businessRuleId":1
           },
           {
              "id":2,
@@ -243,7 +243,7 @@
              "condition":"between",
              "value":"3000, 6000",
              "selectorAll":"#price:not(.not-allowed-coupon)",
-             "subVariantId":2
+             "businessRuleId":2
           },
           {
              "id":3,
@@ -252,7 +252,7 @@
              "condition":"greaterEquals",
              "value":6000,
              "selectorAll":"#price:not(.not-allowed-coupon)",
-             "subVariantId":3
+             "businessRuleId":3
           }
        ],
        "actions":[
@@ -271,7 +271,7 @@
              "selectorFallback":"#main > div",
              "value":"<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>6.000 TL ve üzeri alışverişlerde geçerli 500 TL indirim!<br/>Kupon kodu: YAZ500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
              "replaceFn":null,
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                    "id":1,
                    "selector":"#checkoutForm",
@@ -329,7 +329,7 @@
              "condition":"notExist"
           }
        ],
-       "subVariantRuleSet":[
+       "businessRuleSet":[
           {
              "id":1,
              "type":"counter",
@@ -345,7 +345,7 @@
                 "condition":"lessThan",
                 "value":4000
              },
-             "subVariantId":1
+             "businessRuleId":1
           },
           {
              "id":2,
@@ -371,7 +371,7 @@
                    "value":7500
                 }
              },
-             "subVariantId":2
+             "businessRuleId":2
           },
           {
              "id":3,
@@ -388,7 +388,7 @@
                 "condition":"greaterEquals",
                 "value":7500
              },
-             "subVariantId":3
+             "businessRuleId":3
           },
           {
              "id":31,
@@ -396,7 +396,7 @@
              "operator":"CABasketPrice",
              "condition":"greaterThan",
              "value":7500,
-             "subVariantId":31
+             "businessRuleId":31
           },
           {
              "id":4,
@@ -411,7 +411,7 @@
                 "condition":"lessThan",
                 "value":4000
              },
-             "subVariantId":4
+             "businessRuleId":4
           },
           {
              "id":41,
@@ -433,7 +433,7 @@
                    "value":4000
                 }
              },
-             "subVariantId":41
+             "businessRuleId":41
           },
           {
              "id":42,
@@ -455,7 +455,7 @@
                    "value":4000
                 }
              },
-             "subVariantId":42
+             "businessRuleId":42
           },
           {
              "id":5,
@@ -477,7 +477,7 @@
                    "value":7500
                 }
              },
-             "subVariantId":5
+             "businessRuleId":5
           },
           {
              "id":6,
@@ -499,7 +499,7 @@
                    "value":7500
                 }
              },
-             "subVariantId":6
+             "businessRuleId":6
           }
        ],
        "actions":[
@@ -509,7 +509,7 @@
              "selector":"body > div.main-custom-container > div.container > div > div.col-md-9 > div.full-width.sticky_header",
              "selectorFallback":"body > div.main-custom-container > div.container-fluid > div > div.col-md-9 > div.full-width.sticky_header.next-day-sticky-f",
              "value":"<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 300 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>",
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                    "id":1,
                    "value":"<div class=\"nd-add-to-win\"><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 300 TL indirime bir adım daha yaklaş.</div></div><img src=\"https://ndvivense.glov.ai/assets/gift--gold.png\" class=\"nd-add-to-win__image\" /></div>"
@@ -579,7 +579,7 @@
              "condition":"notExist"
           }
        ],
-       "subVariantRuleSet":[
+       "businessRuleSet":[
           {
              "id":1,
              "type":"counter",
@@ -594,7 +594,7 @@
                 "condition":"lessThan",
                 "value":6000
              },
-             "subVariantId":1
+             "businessRuleId":1
           },
           {
              "id":2,
@@ -610,7 +610,7 @@
                 "condition":"greaterEquals",
                 "value":6000
              },
-             "subVariantId":2
+             "businessRuleId":2
           },
           {
              "id":3,
@@ -618,7 +618,7 @@
              "operator":"CABasketPrice",
              "condition":"greaterEquals",
              "value":6000,
-             "subVariantId":3
+             "businessRuleId":3
           },
           {
              "id":4,
@@ -633,7 +633,7 @@
                 "condition":"lessThan",
                 "value":6000
              },
-             "subVariantId":4
+             "businessRuleId":4
           },
           {
              "id":5,
@@ -648,7 +648,7 @@
                 "condition":"greaterEquals",
                 "value":6000
              },
-             "subVariantId":5
+             "businessRuleId":5
           }
        ],
        "actions":[
@@ -663,7 +663,7 @@
              "type":"before",
              "selector":"#main > div > section > div:nth-child(1) > div > div.header-bottom",
              "value":"<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div></div>",
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                    "id":1,
                    "value":"<div class=\"nd-add-to-win\"><div><img src=\"https://ndvivense.glov.ai/assets/gift--grey.png\" class=\"nd-add-to-win__image\"><div class=\"nd-add-to-win__title\">Ekle ve Kazan:</div></div><div class=\"nd-add-to-win__text\"><div class=\"nd-add-to-win__body\">Sepetine bu ürünü ekleyerek anında 500 TL indirime bir adım daha yaklaş.</div></div></div>"
@@ -715,7 +715,7 @@
              "value":true
           }
        ],
-       "subVariantRuleSet":[
+       "businessRuleSet":[
           {
              "id":1,
              "type":"element",
@@ -723,7 +723,7 @@
              "selectorAll":"#wowslider-container1 > div.ws_thumbs.next-day-thumb > div a",
              "condition":"greaterThan",
              "value":8,
-             "subVariantId":1
+             "businessRuleId":1
           }
        ],
        "actions":[
@@ -780,7 +780,7 @@
              "type":"addClass",
              "value":"next-day-thumb",
              "selector":"#wowslider-container1 > .ws_thumbs",
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                    "id":1,
                    "value":"next-day-thumb__max-content"
@@ -917,7 +917,7 @@
              "selector":"td.components-change.components-change-custom > a"
           }
        ],
-       "subVariantRuleSet":[
+       "businessRuleSet":[
           {
              "id":1,
              "type":"element",
@@ -932,7 +932,7 @@
                 "value":7000,
                 "selector":"td.sumprice-com > p"
              },
-             "subVariantId":1
+             "businessRuleId":1
           },
           {
              "id":2,
@@ -948,7 +948,7 @@
                 "value":7000,
                 "selector":"td.sumprice-com > p"
              },
-             "subVariantId":2
+             "businessRuleId":2
           },
           {
              "id":3,
@@ -964,14 +964,14 @@
                 "value":7000,
                 "selector":"td.sumprice-com > p"
              },
-             "subVariantId":3
+             "businessRuleId":3
           }
        ],
        "actions":[
           {
              "operator":"remove",
              "selector":".nd-popover",
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                    "id":1,
                    "operator":"insert",
@@ -1088,8 +1088,17 @@
           {
              "operator":"edit",
              "type":"addClass",
-             "value":"nd-product-item",
-             "selector":".product-card"
+             "selector":".product-card",
+             "variants": {
+               "A":{
+                  "value":"nd-product-item",
+                  "weight":50
+               },
+               "B":{
+                  "value":"nd-product-item-2",
+                  "weight": 100
+               }
+             }
           },
           {
            "operator": "edit",
@@ -1131,14 +1140,14 @@
              }
           }
        ],
-       "subVariantRuleSet":[
+       "businessRuleSet":[
           {
              "id":1,
              "type":"url",
              "operator":"path",
              "condition":"equal",
              "value":"/siparis-listesi.html",
-             "subVariantId":1
+             "businessRuleId":1
           },
           {
              "id":2,
@@ -1146,7 +1155,7 @@
              "operator":"path",
              "condition":"equal",
              "value":"/adres-listesi.html",
-             "subVariantId":2
+             "businessRuleId":2
           },
           {
              "id":3,
@@ -1154,7 +1163,7 @@
              "operator":"path",
              "condition":"equal",
              "value":"/odeme.html",
-             "subVariantId":3
+             "businessRuleId":3
           }
        ],
        "actions":[
@@ -1162,7 +1171,7 @@
              "operator":"edit",
              "type":"text",
              "selector":".btn.cart-confirm.btn-lg",
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                   "id":1,
                   "value":"ALIŞVERİŞİ TAMAMLA",
@@ -1188,7 +1197,7 @@
             "type": "addClass",
             "selector":".btn.cart-confirm.btn-lg",
             "value": "nd-flex nd-flex__centered nd-flex__column",
-            "subVariants": [
+            "businessRuleTransformations": [
                {
                   "id": 1,
                   "operator": "noop"
@@ -1266,14 +1275,14 @@
        "reapply_event":"element_change",
        "reapply_selector":"#checkoutForm > div > div",
        "device":"desktop",
-       "subVariantRuleSet":[
+       "businessRuleSet":[
           {
              "id":2,
              "type":"dataLayer",
              "operator":"PageType",
              "condition":"equal",
              "value":"Listingpage",
-             "subVariantId":2
+             "businessRuleId":2
           },
           {
              "id":3,
@@ -1281,7 +1290,7 @@
              "operator":"PageType",
              "condition":"equal",
              "value":"Productpage",
-             "subVariantId":3
+             "businessRuleId":3
           },
           {
              "id":1,
@@ -1296,7 +1305,7 @@
                 "condition":"exist",
                 "selector":".cart-inside"
              },
-             "subVariantId":1
+             "businessRuleId":1
           }
        ],
        "actions":[
@@ -1311,7 +1320,7 @@
              "applyEvent":[
                 "tabChange"
              ],
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                    "id":1,
                    "value":[
@@ -1419,42 +1428,22 @@
               "value": "/siparis-listesi.html"
           }
       ],
-      "subVariantRuleSet": [
-         {
-            "id":1,
-            "type":"random",
-            "operator":"number",
-            "salt": "desktopMoneyBackGuarantee",
-            "condition":"lessThan",
-            "value":50,
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"random",
-            "operator":"number",
-            "salt": "desktopMoneyBackGuarantee",
-            "condition":"lessThan",
-            "value":100,
-            "subVariantId":2
-         }
-      ],
       "actions": [
           {
               "operator": "insert",
               "type": "before",
               "selector": "#checkoutForm > div > div.row.centered-wide-fix",
               "selectorFallback": "#main > div",
-              "subVariants": [
-                  {
-                      "id": 1,
-                      "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Uzun uzun düşünmene gerek yok! Ürünü teslim ettikten sonra da biz hep yanındayız.</div></div></div></div>"
+              "variants": {
+               "A": {
+                  "weight": 50,
+                  "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Uzun uzun düşünmene gerek yok! Ürünü teslim ettikten sonra da biz hep yanındayız.</div></div></div></div>"
                   },
-                  {
-                     "id": 2,
-                     "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 gün içinde para iade garantisi</div></div></div></div>"
-                 }
-              ]
+               "B": {
+                  "weight": 100,
+                  "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 25px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 gün içinde para iade garantisi</div></div></div></div>"
+               }
+            }
           },
           {
               "operator": "remove",
@@ -1497,7 +1486,7 @@
        "reapply_event":"timeout",
        "weight": 100,
        "apply_on_user_segment":"*",
-       "subVariantRuleSet":[
+       "businessRuleSet":[
          {
             "id":1,
             "type":"dataLayer",
@@ -1519,7 +1508,7 @@
                      "condition":"notExist"
                  }
             },
-            "subVariantId":1
+            "businessRuleId":1
          }
        ],
        "baseRuleSet":[
@@ -1561,7 +1550,7 @@
             "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks?.toString().replace(\/\\B(?=(\\d{3})+(?!\\d))\/g, '.');",
             "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi sepete ekledi,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
             "selector":"#wowslider-container1 > div.favorite-area-hearth.d-product-favorite",
-             "subVariants":[
+             "businessRuleTransformations":[
                 {
                    "id":1,
                    "operator":"edit",
@@ -1591,8 +1580,8 @@
              "selector":"#wowslider-container1 > div.ws_thumbs.next-day-thumb"
           }
        ],
-       "subVariantRuleSet":[
-          
+       "businessRuleSet":[
+
        ],
        "actions":[
           {
@@ -1619,14 +1608,14 @@
             "value":"/odeme.html"
          }
        ],
-       "subVariantRuleSet": [
+       "businessRuleSet": [
          {
             "id":1,
             "type":"environment",
             "operator":"device_type",
             "condition":"equal",
             "value":"mobile",
-            "subVariantId":1
+            "businessRuleId":1
          }
        ],
        "actions":[
@@ -1657,7 +1646,7 @@
              "value":"Sipariş vererek, Vivense'nin <span class=\"accept-policy-text-link\"> Ön Bilgilendirme Koşulları'nı ve Mesafeli Satış Sözleşmesi</span>'ni kabul etmiş olursunuz. Kişisel verilerinizin Vivense tarafından nasıl işlendiğine ilişkin detaylı bilgi için <a href=\"#gizlilik-ve-cerez\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Gizlilik ve Çerez Politikasını</a>, <a href=\"#aydinlatma-metni\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Müşteri Aydınlatma Metni</a> ve <a href=\"#kvkk-contract\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Veri Koruma ve İşleme Politikası</a> inceleyebilirsiniz.",
              "selector":"body > div.main-custom-container > div.container.payment-container > div > div.col-md-3.address-right-container > div.accept-policy > div.checkbox.checkbox-accept.js-accept-policy-checkboxes > label > label",
              "selectorFallback": "#main > div > fieldset > div.col-xs-12.accept-policy > div:nth-child(1) > label > label",
-             "subVariants": [
+             "businessRuleTransformations": [
                {
                   "id":1,
                   "value": "Sipariş vererek, Vivense'nin <a href=\"#contract-popup\" class=\"accept-policy-text-link\" data-lity=\"\">Ön Bilgilendirme Koşulları'nı ve Mesafeli Satış Sözleşmesi</a>'ni kabul etmiş olursunuz. Kişisel verilerinizin Vivense tarafından nasıl işlendiğine ilişkin detaylı bilgi için <a href=\"#gizlilik-ve-cerez\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Gizlilik ve Çerez Politikasını</a>, <a href=\"#aydinlatma-metni\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Müşteri Aydınlatma Metni</a> ve <a href=\"#kvkk-contract\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Veri Koruma ve İşleme Politikası</a> inceleyebilirsiniz."
@@ -1675,7 +1664,7 @@
              "operator":"injectscript",
              "value":"$(\".cart-confirm\").off(\"click\");$(\".cart-confirm\").on(\"click\", function() {var selectedPayment = $(\"#menuPayments\").find(\"li.active\");if (selectedPayment.length === 1) {if (parseInt(selectedPayment.data(\"type\")) === 12) {window.viveCartPayment.payWithCard();} else if (parseInt(selectedPayment.data(\"type\")) === 2) {window.viveCartPayment.payWithBank();} else if (parseInt(selectedPayment.data(\"type\")) === 14) {if (window.viveCartPayment.controlEmptyField(true)) {window.viveCartPayment.payWithMobilPos();}return false;} else if (parseInt(selectedPayment.data(\"type\")) === 15) {window.viveCartPayment.payWithCash();}return true;}$.jAlert({'id': 'isTOSAcceptedAlert','title': '&nbsp;','content': 'Ödeme Yöntemi Seçiminde Hata!!','theme': 'default','size': 'sm','showAnimation': 'fadeIn','hideAnimation': 'fadeOut','btns': [{'text': 'TAMAM','closeAlert': true,'id': 'cancel-id'}]});return false;});",
              "selector":"body",
-             "subVariants": [
+             "businessRuleTransformations": [
                {
                   "id":1,
                   "value": "$(\"#accept-pay\").off('click');$(\"#accept-pay\").on('click', function() {var selectedPayment = $('input[name=payment-radio-button]:checked');if (selectedPayment.length !== 1) {showError(\"Lütfen Bir Ödeme Yöntemi Seçiniz!\");return false;}if (selectedPayment.val() === \"2\") {window.viveCartPayment.payWithBank();} else if (selectedPayment.val() === \"12\") {window.viveCartPayment.payWithCard();}});"
@@ -1722,77 +1711,57 @@
             "chain_condition":"or"
          }
       ],
-      "subVariantRuleSet":[
-         {
-            "id":1,
-            "type":"random",
-            "operator":"number",
-            "salt": "ctaText",
-            "condition":"lessThan",
-            "value":50,
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"random",
-            "operator":"number",
-            "salt": "ctaText",
-            "condition":"lessThan",
-            "value":100,
-            "subVariantId":2
-         }
-      ],
       "actions":[
          {
             "operator":"edit",
             "type":"addClass",
             "selector":".btn.cart-confirm.btn-lg",
-            "subVariants":[
-               {
-                  "id":1,
+            "variants": {
+               "A": {
+                  "weight": 50,
                   "value":"nd-cta-red",
                   "selectorFallback":".add-to-cart-btn"
-               },
-               {
-                  "id":2,
+                  },
+               "B": {
+                  "weight": 100,
                   "value":"nd-cta-yellow",
                   "selectorFallback":".add-to-cart-btn"
                }
-            ]
-         }, 
+            }
+         },
          {
             "operator":"edit",
             "type":"addClass",
             "selector":"#registerBtn",
-            "subVariants":[
-               {
-                  "id":1,
+            "variants": {
+               "A": {
+                  "weight": 50,
                   "value":"nd-cta-red",
                   "selectorFallback":"#loginForm > button"
-               },
-               {
-                  "id":2,
+                  },
+               "B": {
+                  "weight": 100,
                   "value":"nd-cta-yellow",
                   "selectorFallback":"#loginForm > button"
                }
-            ]
+            }
          },
          {
             "operator":"edit",
             "type":"addClass",
             "selector":"#loginForm > button",
-            "subVariants":[
-               {
-                  "id":1,
+            "variants": {
+               "A": {
+                  "weight": 50,
                   "value":"nd-cta-red",
                   "selectorFallback":"#registerBtn"
-               },
-               {
-                  "id":2,
+                  },
+               "B": {
+                  "weight": 100,
                   "value":"nd-cta-yellow",
                   "selectorFallback":"#registerBtn"
                }
-            ]
+            }
          }
       ]
    },
@@ -1802,7 +1771,8 @@
       "description":"CTA Buttons Change Color Mobile",
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
       "device":"mobile",
-      "reapply_event":"timeout",
+      "reapply_event": ["timeout", "element_change"],
+      "reapply_selector": "#\\#",
       "apply_on_user_segment":"*",
       "weight": 100,
       "baseRuleSet":[
@@ -1848,92 +1818,73 @@
             "chain_condition":"or"
          }
       ],
-      "subVariantRuleSet":[
-         {
-            "id":1,
-            "type":"random",
-            "operator":"number",
-            "salt": "ctaText",
-            "condition":"lessThan",
-            "value":50,
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"random",
-            "operator":"number",
-            "salt": "ctaText",
-            "condition":"lessThan",
-            "value":100,
-            "subVariantId":2
-         }
-      ],
       "actions":[
          {
             "operator":"edit",
             "type":"addClass",
             "selector":".cart-approve-btn button",
             "selectorFallback":".btn-type-address",
-            "subVariants":[
-               {
-                  "id":1,
+            "value":"nd-cta-m-red",
+            "variants": {
+               "A": {
+                  "weight": 50,
                   "value":"nd-cta-red"
-               },
-               {
-                  "id":2,
+                  },
+               "B": {
+                  "weight": 100,
                   "value":"nd-cta-yellow"
                }
-            ]
+            }
          },
          {
             "operator":"edit",
             "type":"addClass",
             "selector":".btn.cart-confirm",
             "selectorFallback":".default-add-cart-btn",
-            "subVariants":[
-               {
-                  "id":1,
+            "variants": {
+               "A": {
+                  "weight": 50,
                   "value":"nd-cta-red"
-               },
-               {
-                  "id":2,
+                  },
+               "B": {
+                  "weight": 100,
                   "value":"nd-cta-yellow"
                }
-            ]
+            }
          },
          {
             "operator":"edit",
             "type":"addClass",
             "selector":"#registerBtn",
-            "subVariants":[
-               {
-                  "id":1,
+            "variants": {
+               "A": {
+                  "weight": 50,
                   "value":"nd-cta-red",
                   "selectorFallback":"#loginForm > button"
-               },
-               {
-                  "id":2,
+                  },
+               "B": {
+                  "weight": 100,
                   "value":"nd-cta-yellow",
                   "selectorFallback":"#loginForm > button"
                }
-            ]
+            }
          },
          {
             "operator":"edit",
             "type":"addClass",
             "selector":"#loginForm > button",
-            "subVariants":[
-               {
-                  "id":1,
+            "variants": {
+               "A": {
+                  "weight": 50,
                   "value":"nd-cta-red",
                   "selectorFallback":"#registerBtn"
-               },
-               {
-                  "id":2,
+                  },
+               "B": {
+                  "weight": 100,
                   "value":"nd-cta-yellow",
                   "selectorFallback":"#registerBtn"
                }
-            ]
+            }
          }
       ]
    },
@@ -1961,42 +1912,22 @@
              }
           }
       ],
-      "subVariantRuleSet": [
-         {
-            "id":1,
-            "type":"random",
-            "operator":"number",
-            "salt": "mobileMoneyBackGuarantee",
-            "condition":"lessThan",
-            "value":50,
-            "subVariantId":1
-         },
-         {
-            "id":2,
-            "type":"random",
-            "operator":"number",
-            "salt": "mobileMoneyBackGuarantee",
-            "condition":"lessThan",
-            "value":100,
-            "subVariantId":2
-         }
-      ],
       "actions": [
           {
               "operator": "insert",
               "type": "before",
               "selector": "#checkoutForm > div > div.row.centered-wide-fix",
               "selectorFallback": "#main > div",
-              "subVariants": [
-                  {
-                      "id": 1,
-                      "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>"
+              "variants": {
+               "A": {
+                  "weight": 50,
+                  "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>"
                   },
-                  {
-                     "id": 2,
-                     "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 gün içinde para iade garantisi</div></div></div></div>"
-                 }
-              ]
+               "B": {
+                  "weight": 100,
+                  "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 gün içinde para iade garantisi</div></div></div></div>"
+               }
+            }
           },
           {
               "operator": "remove",
@@ -2012,7 +1943,7 @@
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
       "device":"mobile",
       "reapply_event":"element_change",
-      "reapply_selector":[".tabbable-line", ".payment-options-area.frame-box.form-group"],
+      "reapply_selector":[".tabbable-line", ".payment-options-area.frame-box.form-group", "#\\#"],
       "apply_on_user_segment":"*",
       "baseRuleSet":[
          {
@@ -2037,14 +1968,14 @@
             }
          }
       ],
-      "subVariantRuleSet":[
+      "businessRuleSet":[
          {
             "id":1,
             "type":"url",
             "operator":"path",
             "condition":"equal",
             "value":"/siparis-listesi.html",
-            "subVariantId":1
+            "businessRuleId":1
          },
          {
             "id":2,
@@ -2052,7 +1983,7 @@
             "operator":"path",
             "condition":"equal",
             "value":"/adres-listesi.html",
-            "subVariantId":2
+            "businessRuleId":2
          },
          {
             "id":3,
@@ -2060,7 +1991,7 @@
             "operator":"path",
             "condition":"equal",
             "value":"/odeme.html",
-            "subVariantId":3
+            "businessRuleId":3
          }
       ],
       "actions":[
@@ -2068,7 +1999,7 @@
             "operator":"edit",
             "type":"text",
             "selector":".btn.cart-confirm.btn-lg",
-            "subVariants":[
+            "businessRuleTransformations":[
                {
                  "id":1,
                  "value":"ALIŞVERİŞİ TAMAMLA",
@@ -2094,7 +2025,7 @@
            "type": "addClass",
            "selector":".btn.cart-confirm.btn-lg",
            "value": "nd-flex nd-flex__centered nd-flex__column",
-           "subVariants": [
+           "businessRuleTransformations": [
               {
                  "id": 1,
                  "operator": "noop"
@@ -2124,7 +2055,7 @@
             "chain_condition":"and"
          }
       ],
-      "subVariantRuleSet":[
+      "businessRuleSet":[
       ],
       "actions":[
          {
@@ -2133,7 +2064,7 @@
             "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Uzun uzun düşünmene gerek yok! Ürünü teslim ettikten sonra da biz hep yanındayız.</div></div></div></div>",
             "selector":"#address-section",
             "selectorFallback":"#order-cart-addreslist",
-            "subVariants":[
+            "businessRuleTransformations":[
             ]
          }
       ]
@@ -2144,6 +2075,7 @@
       "description":"Money back guarantee banner",
       "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
       "apply_on_user_segment":"*",
+      "reapply_event": "timeout",
       "device":"mobile",
       "baseRuleSet":[
          {
@@ -2155,7 +2087,7 @@
             "chain_condition":"and"
          }
       ],
-      "subVariantRuleSet":[
+      "businessRuleSet":[
       ],
       "actions":[
          {
@@ -2164,13 +2096,95 @@
             "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>",
             "selector":"#address-section",
             "selectorFallback":"#order-cart-addreslist",
-            "subVariants":[
+            "businessRuleTransformations":[
             ]
          }
       ]
    },
    {
-      "id": 34,
+      "id":34,
+      "name":"ALL - Product Price Installments",
+      "description":"Display minimum installement price in PDP",
+      "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
+      "apply_on_user_segment":"*",
+      "device":"*",
+      "delay": 5000,
+      "baseRuleSet":[
+         {
+            "id":1,
+            "type":"dataLayer",
+            "operator":"PageType",
+            "condition":"equal",
+            "value":"Productpage"
+         },
+         {
+            "id":2,
+            "type":"dataLayer",
+            "operator":"vvsPDPProduct.price",
+            "condition":"greaterThan",
+            "value":"2000"
+         },
+         {
+            "id": 3,
+            "type": "element",
+            "operator":null,
+            "condition": "notExist",
+            "selector": ".old-price"
+         }
+      ],
+      "businessRuleSet": [
+         {
+            "id":1,
+            "type":"environment",
+            "operator":"device_type",
+            "condition":"equal",
+            "value":"mobile",
+            "businessRuleId":1
+         }
+      ],
+      "actions":[
+         {
+            "operator":"insert",
+            "type":"after",
+            "value":"<div style=\"text-align: center;color: red;\">*{{REPLACE}} TL’den başlayan taksitlerle!<br><span style=\"font-size: 12px;\">Vade farkları anlık değişebilir</span></div>",
+            "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-box > div.price-text.non-discounted",
+            "selectorFallback": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price > div",
+            "replaceFn": "const p = window.beagleInfoLayer.vvsPDPProduct.price;const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return String((p * (1 + comishRate) / 9).toFixed(2)).replace('.', ',');",
+            "businessRuleTransformations": [
+               {
+                  "id": 1,
+                  "value": "<div style=\"text-align: center;color: red;font-size: 12px;\">*{{REPLACE}} TL’den başlayan taksitlerle!<br><span style=\"font-size: 10px;\">Vade farkları anlık değişebilir</span></div>"
+               }
+            ]
+         },
+         {
+            "operator": "noop",
+            "businessRuleTransformations": [
+               {
+                  "id": 1,
+                  "operator": "edit",
+                  "type": "styleApplicator",
+                  "value":"{\"margin-top\":\"0\"}",
+                  "selector": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price"
+               }
+            ]
+         },
+         {
+            "operator": "noop",
+            "businessRuleTransformations": [
+               {
+                  "id": 1,
+                  "operator": "edit",
+                  "type": "styleApplicator",
+                  "value":"{\"padding\":\"0\"}",
+                  "selector": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price > div.product-price-sale.non-discounted"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "id": 35,
       "name":"MOBILE - Social Proof N user has viewed this product for last 24 hour banner",
       "description":"Insert view count banner depending on info from lookup api",
       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
@@ -2178,22 +2192,22 @@
       "reapply_event":"timeout",
       "weight": 100,
       "apply_on_user_segment":"*",
-      "subVariantRuleSet":[
+      "businessRuleSet":[
         {
            "id":1,
            "type":"dataLayer",
            "operator":"PageType",
            "condition":"equal",
            "value":"Productpage",
-           "chain_condition":"and",
+           "chain_condition": "and",
            "chain":{
               "type":"function",
-              "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.transactionIn2Weeks;",
+              "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.transactionIn2Weeks;",
               "bindings":"productInfo",
               "condition":"greaterThan",
               "value":100
            },
-           "subVariantId":1
+           "businessRuleId":1
         }
       ],
       "baseRuleSet":[
@@ -2202,15 +2216,15 @@
             "type":"dataLayer",
             "operator":"PageType",
             "condition":"equal",
-            "value":"Productpage",
-            "chain_condition":"and",
-            "chain": {
-                    "type":"function",
-                    "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks;",
-                    "bindings":"productInfo",
-                    "condition":"greaterThan",
-                    "value":100
-            }
+            "value":"Productpage"
+         },
+         {
+            "id": 2,
+            "type":"function",
+            "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.addToCartIn2Weeks;",
+            "bindings":"productInfo",
+            "condition":"greaterThan",
+            "value":100
          }
       ],
       "actions":[
@@ -2218,19 +2232,43 @@
            "id":1,
            "operator":"edit",
            "type":"addBanner",
-           "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks?.toString().replace(\/\\B(?=(\\d{3})+(?!\\d))\/g, '.');",
+           "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.addToCartIn2Weeks?.toString().replace(\/\\B(?=(\\d{3})+(?!\\d))\/g, '.');",
            "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi sepete ekledi,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
            "selector":"#main > div > section > div:nth-child(1) > div > div.product_images_wrapper > div.product_img_slider.slideset.slick-initialized.slick-slider.slick-dotted > ul",
-            "subVariants":[
+            "businessRuleTransformations":[
                {
                   "id":1,
-                  "operator":"edit",
-                  "type":"addBanner",
-                  "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.transactionIn2Weeks?.toString().replace(\/\\B(?=(\\d{3})+(?!\\d))\/g, '.');",
-                  "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-lightning.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} adet satıldı,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
-                  "selector":"#main > div > section > div:nth-child(1) > div > div.product_images_wrapper > div.product_img_slider.slideset.slick-initialized.slick-slider.slick-dotted > ul"
+                  "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.transactionIn2Weeks?.toString().replace(\/\\B(?=(\\d{3})+(?!\\d))\/g, '.');",
+                  "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-lightning.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} adet satıldı,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>"
                }
             ]
+         }
+      ]
+   },
+   {
+      "id": 36,
+      "name": "Delivery Date Prettifier",
+      "description": "Delivery Date Prettifier",
+      "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+      "device": "*",
+      "apply_on_user_segment": "*",
+      "weight": 100,
+      "baseRuleSet": [
+         {
+            "id": 1,
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "Productpage"
+         }
+      ],
+      "actions": [
+         {
+            "operator": "edit",
+            "type": "text",
+            "selector": ".delivery-date",
+            "value":"{{REPLACE}}",
+            "replaceFn": "return window.beagleInfoLayer?.vvsPDPDeliveryDateFormatted"
          }
       ]
    }
