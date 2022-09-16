@@ -1088,17 +1088,8 @@
           {
              "operator":"edit",
              "type":"addClass",
-             "selector":".product-card",
-             "variants": {
-               "A":{
-                  "value":"nd-product-item",
-                  "weight":50
-               },
-               "B":{
-                  "value":"nd-product-item-2",
-                  "weight": 100
-               }
-             }
+             "value":"nd-product-item",
+             "selector":".product-card"
           },
           {
            "operator": "edit",
@@ -2154,12 +2145,13 @@
             "type":"after",
             "value":"<div style=\"text-align: center;color: red;\">*{{REPLACE}} TL’den başlayan taksitlerle!<br><span style=\"font-size: 12px;\">Vade farkları anlık değişebilir</span></div>",
             "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-box > div.price-text.non-discounted",
-            "selectorFallback": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price > div",
+            "selectorFallback": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-box > div",
             "replaceFn": "const p = window.beagleInfoLayer.vvsPDPProduct.price;const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return String((p * (1 + comishRate) / 9).toFixed(2)).replace('.', ',');",
             "businessRuleTransformations": [
                {
                   "id": 1,
-                  "value": "<div style=\"text-align: center;color: red;font-size: 12px;\">*{{REPLACE}} TL’den başlayan taksitlerle!<br><span style=\"font-size: 10px;\">Vade farkları anlık değişebilir</span></div>"
+                  "value": "<div style=\"text-align: center;color: red;font-size: 12px;\">*{{REPLACE}} TL’den başlayan taksitlerle!<br><span style=\"font-size: 10px;\">Vade farkları anlık değişebilir</span></div>",
+                  "selectorFallback": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price > div"
                }
             ]
          },
@@ -2231,6 +2223,12 @@
             "bindings":"productInfo",
             "condition":"greaterThan",
             "value":100
+         },
+         {
+                     "type":"element",
+                     "operator":null,
+                     "selector":".quick-delivery-container",
+                     "condition":"notExist"
          }
       ],
       "actions":[
@@ -2240,7 +2238,8 @@
            "type":"addBanner",
            "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.addToCartIn2Weeks?.toString().replace(\/\\B(?=(\\d{3})+(?!\\d))\/g, '.');",
            "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi sepete ekledi,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
-           "selector":"#main > div > section > div:nth-child(1) > div > div.header-bottom",
+           "selector": ".nd-add-to-win",
+           "selectorFallback":"#main > div > section > div:nth-child(1) > div > div.header-bottom",
             "businessRuleTransformations":[
                {
                   "id":1,
