@@ -137,7 +137,11 @@
             "weight": 0
         },
         "15": {
-            "weight": 0
+            "weight": 0,
+            "variants": {
+                "A": 50,
+                "B": 100
+            }
         },
         "16": {
             "weight": 0
