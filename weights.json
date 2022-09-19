@@ -1,321 +1,436 @@
 {
     "UGA": {
         "0": {
+            "name":"ALL Dummy Baseline",
             "weight": 50
         },
         "1": {
-            "weight": 50
+            "name": "DESKTOP Exit Pop-up",
+            "weight": 3
         },
         "2": {
+            "name": "MOBILE Photo Enlarging",
             "weight": 0
         },
         "3": {
+            "name": "DESKTOP Sales Motivator",
             "weight": 0
         },
         "4": {
+            "name": "MOBILE Sales Motivator",
             "weight": 0
         },
         "5": {
-            "weight": 50
+            "name": "DESKTOP Sales Motivator",
+            "weight": 0
         },
         "6": {
+            "name": "MOBILE Sales Motivator",
             "weight": 0
         },
         "7": {
-            "weight": 50
+            "name": "DESKTOP Photo Enlarging",
+            "weight": 35
         },
         "14": {
-            "weight": 50
+            "name":"DESKTOP infinite scroll",
+            "weight": 0
         },
         "15": {
-            "weight": 50,
+            "name":"DESKTOP PLP layout",
+            "weight": 5,
             "variants": {
                 "A": 50,
                 "B": 100
             }
         },
         "16": {
-            "weight": 50
+            "name":"DESKTOP CTA Button Text Optimization",
+            "weight": 3
         },
         "17": {
-            "weight": 0
-        },
-        "18": {
+            "name":"MOBILE Remove 'Destek' icon from PDP",
             "weight": 0
         },
         "19": {
+            "name":"DESKTOP Flashing Tab Messaging",
             "weight": 50
         },
         "20": {
+            "name":"MOBILE Disable Product Recommendations & Last Visited",
             "weight": 0
         },
         "21": {
+            "name":"MOBILE Disable Top Banner",
             "weight": 0
         },
         "22": {
-            "weight": 30,
+            "name": "DESKTOP Money Back Guarantee Banner",
+            "weight": 1,
             "variants": {
-                "A": 50,
+                "A": 20,
                 "B": 100
             }
         },
         "23": {
-            "weight": 20
+            "name":"DESKTOP Remove Default Vivense banner",
+            "weight": 30
         },
         "24": {
-            "weight": 100
+            "name": "MOBILE - Money Back Guarantee Banner",
+            "weight": 0,
+            "variants": {
+                "A": 99,
+                "B": 100
+            }
         },
         "26": {
-            "weight": 50
-        },
-        "27": {
-            "weight": 100,
-            "variants": {
-                "A": 50,
-                "B": 100
-            }
-        },
-        "28": {
-            "weight": 0,
-            "variants": {
-                "A": 50,
-                "B": 100
-            }
-        },
-        "29": {
-            "weight": 0,
-            "variants": {
-                "A": 50,
-                "B": 100
-            }
-        },
-        "31": {
-            "weight": 50
-        },
-        "32": {
+            "name":"DESKTOP Checkout improvement",
             "weight": 0
         },
+        "27": {
+            "name":"DESKTOP - Money Back Guarantee Banner Adress List Page",
+            "weight": 5
+        },
+        "28": {
+            "name":"MOBILE - Money Back Guarantee Banner Address List Page",
+            "weight": 0
+        },
+        "29": {
+            "name":"DESKTOP - Social Proof N user has viewed this product for last 24 hour banner",
+            "weight": 35
+        },
+        "31": {
+            "name":"DESKTOP - CTA Buttons Change Color",
+            "weight": 1,
+            "variants": {
+                "A": 95,
+                "B": 100
+            }
+        },
+        "32": {
+            "name":"MOBILE - CTA Buttons Change Color",
+            "weight": 0,
+            "variants": {
+                "A": 99,
+                "B": 100
+            }
+        },
         "33": {
+            "name":"MOBILE CTA Button Text Optimization",
             "weight": 0
         },
         "34": {
-            "weight": 50
+            "name":"DESKTOP - Product Price Installments",
+            "weight": 3
         },
         "35": {
+            "name":"MOBILE - Social Proof N user has viewed this product for last 24 hour banner",
             "weight": 0
         },
         "36": {
-            "weight": 100
+            "name": "DESKTOP - Delivery Date Prettifier",
+            "weight": 4
+        },
+        "37": {
+            "name": "MOBILE - Delivery Date Prettifier",
+            "weight": 0
+        },
+        "38": {
+            "name":"MOBILE - Product Price Installments",
+            "weight": 0
+        },
+        "39": {
+            "name":"MOBILE Remove Default Vivense banner",
+            "weight": 0
         }
     },
     "UGB": {
         "0": {
+            "name":"ALL Dummy Baseline",
             "weight": 50
         },
         "1": {
+            "name": "DESKTOP Exit Pop-up",
             "weight": 0
         },
         "2": {
-            "weight": 50
+            "name": "MOBILE Photo Enlarging",
+            "weight": 0
         },
         "3": {
+            "name": "DESKTOP Sales Motivator",
             "weight": 0
         },
         "4": {
-            "weight": 0
+            "name": "MOBILE Sales Motivator",
+            "weight": 1
         },
         "5": {
+            "name": "DESKTOP Sales Motivator",
             "weight": 0
         },
         "6": {
-            "weight": 20
+            "name": "MOBILE Sales Motivator",
+            "weight": 1
         },
         "7": {
+            "name": "DESKTOP Photo Enlarging",
             "weight": 0
         },
         "14": {
+            "name":"DESKTOP infinite scroll",
             "weight": 0
         },
         "15": {
+            "name":"DESKTOP PLP layout",
+            "weight": 0
+        },
+        "16": {
+            "name":"DESKTOP CTA Button Text Optimization",
+            "weight": 0
+        },
+        "17": {
+            "name":"MOBILE Remove 'Destek' icon from PDP",
+            "weight": 40
+        },
+        "19": {
+            "name":"DESKTOP Flashing Tab Messaging",
+            "weight": 0
+        },
+        "20": {
+            "name":"MOBILE Disable Product Recommendations & Last Visited",
+            "weight": 0
+        },
+        "21": {
+            "name":"MOBILE Disable Top Banner",
+            "weight": 0
+        },
+        "22": {
+            "name": "DESKTOP Money Back Guarantee Banner",
             "weight": 0,
+            "variants": {
+                "A": 20,
+                "B": 100
+            }
+        },
+        "23": {
+            "name":"DESKTOP Remove Default Vivense banner",
+            "weight": 0
+        },
+        "24": {
+            "name": "MOBILE - Money Back Guarantee Banner",
+            "weight": 30,
+            "variants": {
+                "A": 99,
+                "B": 100
+            }
+        },
+        "26": {
+            "name":"DESKTOP Checkout improvement",
+            "weight": 0
+        },
+        "27": {
+            "name":"DESKTOP - Money Back Guarantee Banner Adress List Page",
+            "weight": 0
+        },
+        "28": {
+            "name":"MOBILE - Money Back Guarantee Banner Address List Page",
+            "weight": 0
+        },
+        "29": {
+            "name":"DESKTOP - Social Proof N user has viewed this product for last 24 hour banner",
+            "weight": 0
+        },
+        "31": {
+            "name":"DESKTOP - CTA Buttons Change Color",
+            "weight": 0,
+            "variants": {
+                "A": 99,
+                "B": 100
+            }
+        },
+        "32": {
+            "name":"MOBILE - CTA Buttons Change Color",
+            "weight": 90,
+            "variants": {
+                "A": 100,
+                "B": 100
+            }
+        },
+        "33": {
+            "name":"MOBILE CTA Button Text Optimization",
+            "weight": 1
+        },
+        "34": {
+            "name":"DESKTOP - Product Price Installments",
+            "weight": 0
+        },
+        "35": {
+            "name":"MOBILE - Social Proof N user has viewed this product for last 24 hour banner",
+            "weight": 15
+        },
+        "36": {
+            "name": "DESKTOP - Delivery Date Prettifier",
+            "weight": 0
+        },
+        "37": {
+            "name": "MOBILE - Delivery Date Prettifier",
+            "weight": 4
+        },
+        "38": {
+            "name":"MOBILE - Product Price Installments",
+            "weight": 1
+        },
+        "39": {
+            "name":"MOBILE Remove Default Vivense banner",
+            "weight": 30
+        }
+    },
+    "default": {
+        "0": {
+            "name":"ALL Dummy Baseline",
+            "weight": 50
+        },
+        "1": {
+            "name": "DESKTOP Exit Pop-up",
+            "weight": 0
+        },
+        "2": {
+            "name": "MOBILE Photo Enlarging",
+            "weight": 0
+        },
+        "3": {
+            "name": "DESKTOP Sales Motivator",
+            "weight": 0
+        },
+        "4": {
+            "name": "MOBILE Sales Motivator",
+            "weight": 0
+        },
+        "5": {
+            "name": "DESKTOP Sales Motivator",
+            "weight": 0
+        },
+        "6": {
+            "name": "MOBILE Sales Motivator",
+            "weight": 0
+        },
+        "7": {
+            "name": "DESKTOP Photo Enlarging",
+            "weight": 5
+        },
+        "14": {
+            "name":"DESKTOP infinite scroll",
+            "weight": 0
+        },
+        "15": {
+            "name":"DESKTOP PLP layout",
+            "weight": 5,
             "variants": {
                 "A": 50,
                 "B": 100
             }
         },
         "16": {
+            "name":"DESKTOP CTA Button Text Optimization",
             "weight": 0
         },
         "17": {
-            "weight": 50
-        },
-        "18": {
-            "weight": 0
+            "name":"MOBILE Remove 'Destek' icon from PDP",
+            "weight": 5
         },
         "19": {
-            "weight": 0
+            "name":"DESKTOP Flashing Tab Messaging",
+            "weight": 5
         },
         "20": {
-            "weight": 5
+            "name":"MOBILE Disable Product Recommendations & Last Visited",
+            "weight": 0
         },
         "21": {
-            "weight": 5
+            "name":"MOBILE Disable Top Banner",
+            "weight": 0
         },
         "22": {
-            "weight": 0,
+            "name": "DESKTOP Money Back Guarantee Banner",
+            "weight": 5,
             "variants": {
                 "A": 50,
                 "B": 100
             }
         },
         "23": {
-            "weight": 20
+            "name":"DESKTOP Remove Default Vivense banner",
+            "weight": 30
         },
         "24": {
-            "weight": 0
-        },
-        "26": {
-            "weight": 0
-        },
-        "27": {
+            "name": "MOBILE - Money Back Guarantee Banner",
             "weight": 0,
             "variants": {
                 "A": 50,
                 "B": 100
             }
         },
+        "26": {
+            "name":"DESKTOP Checkout improvement",
+            "weight": 0
+        },
+        "27": {
+            "name":"DESKTOP - Money Back Guarantee Banner Adress List Page",
+            "weight": 0
+        },
         "28": {
-            "weight": 100,
-            "variants": {
-                "A": 50,
-                "B": 100
-            }
+            "name":"MOBILE - Money Back Guarantee Banner Address List Page",
+            "weight": 0
         },
         "29": {
+            "name":"DESKTOP - Social Proof N user has viewed this product for last 24 hour banner",
+            "weight": 1
+        },
+        "31": {
+            "name":"DESKTOP - CTA Buttons Change Color",
             "weight": 1,
             "variants": {
                 "A": 50,
                 "B": 100
             }
         },
-        "31": {
-            "weight": 0
-        },
         "32": {
-            "weight": 50
+            "name":"MOBILE - CTA Buttons Change Color",
+            "weight": 5,
+            "variants": {
+                "A": 50,
+                "B": 100
+            }
         },
         "33": {
-            "weight": 50
+            "name":"MOBILE CTA Button Text Optimization",
+            "weight": 1
         },
         "34": {
-            "weight": 50
+            "name":"DESKTOP - Product Price Installments",
+            "weight": 1
         },
         "35": {
-            "weight": 100
+            "name":"MOBILE - Social Proof N user has viewed this product for last 24 hour banner",
+            "weight": 1
         },
         "36": {
-            "weight": 100
-        }
-    },
-    "default": {
-        "0": {
-            "weight": 50
+            "name": "DESKTOP - Delivery Date Prettifier",
+            "weight": 1
         },
-        "1": {
-            "weight": 50
+        "37": {
+            "name": "MOBILE - Delivery Date Prettifier",
+            "weight": 1
         },
-        "2": {
-            "weight": 50
+        "38": {
+            "name":"MOBILE - Product Price Installments",
+            "weight": 1
         },
-        "3": {
-            "weight": 50
-        },
-        "4": {
-            "weight": 50
-        },
-        "5": {
-            "weight": 50
-        },
-        "6": {
-            "weight": 50
-        },
-        "7": {
-            "weight": 50
-        },
-        "14": {
-            "weight": 50
-        },
-        "15": {
-            "weight": 50,
-            "variants": {
-                "A": 50,
-                "B": 100
-            }
-        },
-        "16": {
-            "weight": 50
-        },
-        "17": {
-            "weight": 50
-        },
-        "18": {
-            "weight": 50
-        },
-        "19": {
-            "weight": 50
-        },
-        "20": {
-            "weight": 50
-        },
-        "21": {
-            "weight": 50
-        },
-        "22": {
-            "weight": 50
-        },
-        "23": {
-            "weight": 50
-        },
-        "24": {
-            "weight": 50
-        },
-        "26": {
-            "weight": 50
-        },
-        "27": {
-            "weight": 50,
-            "variants": {
-                "A": 50,
-                "B": 100
-            }
-        },
-        "28": {
-            "weight": 50,
-            "variants": {
-                "A": 50,
-                "B": 100
-            }
-        },
-        "29": {
-            "weight": 50
-        },
-        "31": {
-            "weight": 50
-        },
-        "32": {
-            "weight": 50
-        },
-        "33": {
-            "weight": 50
-        },
-        "34": {
-            "weight": 50
-        },
-        "35": {
-            "weight": 100
-        },
-        "36": {
-            "weight": 100
+        "39": {
+            "name":"MOBILE Remove Default Vivense banner",
+            "weight": 30
         }
     }
 }
