@@ -474,12 +474,12 @@
 
 @media screen and (min-width: 1121px) {
   .nd-product-item-2 {
-    width: calc((100% - 40px) / 2) !important;
+    width: calc((100% - 150px) / 2) !important;
   }
 }
 @media screen and (min-width: 1080px) and (max-width: 1120px) {
   .nd-product-item-2 {
-    width: calc((100% - 30px) / 2) !important;
+    width: calc((100% - 140px) / 2) !important;
   }
 }
 @media screen and (min-width: 1121px) {
@@ -538,7 +538,7 @@
 }
 @media screen and (max-width: 441px) {
   .quick-delivery-quick-delivery {
-    height: 22px;
+    height: 21px;
   }
 }
 
@@ -603,7 +603,6 @@
 }
 @media screen and (max-width: 441px) {
   .quick-delivery-text-small {
-    font-size: 13px !important;
     margin-left: 3px;
   }
 }
