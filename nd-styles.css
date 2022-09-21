@@ -268,12 +268,6 @@
   flex-direction: initial;
 }
 
-#wowslider-container1 .ws_thumbs.next-day-thumb__max-content div {
-  width: max-content;
-  padding-top: 0;
-  flex-direction: initial;
-}
-
 #wowslider-container1 .ws_thumbs.next-day-thumb a {
   display: inline-block;
   margin: 3px 5px 5px 5px;
