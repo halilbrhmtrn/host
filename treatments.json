@@ -868,7 +868,7 @@
                 "id": 1,
                 "type": "element",
                 "operator": "count",
-                "selectorAll": "#wowslider-container1 > div.ws_thumbs.next-day-thumb > div a",
+                "selectorAll": "#wowslider-container1 > div.ws_thumbs > div a",
                 "condition": "greaterThan",
                 "value": 8,
                 "businessRuleId": 1
@@ -927,11 +927,18 @@
                 "operator": "edit",
                 "type": "addClass",
                 "value": "next-day-thumb",
-                "selector": "#wowslider-container1 > .ws_thumbs",
+                "selector": "#wowslider-container1 > .ws_thumbs"
+            },
+            {
+                "operator": "noop",
+                "type": "styleApplicator",
+                "replaceFn": "return document.querySelectorAll(\"#wowslider-container1 > div.ws_thumbs.next-day-thumb > div a\")?.length",
+                "value": "{\"width\":\"calc({{REPLACE}} * 10em)\"}",
+                "selector": "#wowslider-container1 > .ws_thumbs div",
                 "businessRuleTransformations":[
                     {
                         "id": 1,
-                        "value": "next-day-thumb__max-content"
+                        "operator": "edit"
                     }
                 ]
             },
@@ -991,22 +998,10 @@
                 "selector": ".product-main-details"
             },
             {
-                "operator":"edit",
-                "type":"addClass",
-                "value":"nd-changecontent-fix",
-                "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > a"
-            },
-            {
                 "operator": "edit",
                 "type": "addClass",
                 "value": "nd-breadcrumb",
                 "selector": "#breadcrumb-ol"
-            },
-            {
-                "operator": "edit",
-                "type": "addClass",
-                "value": "nd-rating-popup",
-                "selector": ".vvns-customer-rating-modal"
             },
             {
                 "operator": "edit",
@@ -1025,12 +1020,6 @@
                 "type": "addClass",
                 "value": "nd-product-title",
                 "selector": ".full-width.sticky_header"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"margin-bottom\":\"6px\"}",
-                "selector": ".vvns-customer-rating__stars"
             },
             {
                 "operator": "edit",
@@ -1138,6 +1127,12 @@
                     "selector":".nd-popover"
                  }
               ]
+           },
+           {
+               "operator":"edit",
+               "type":"addClass",
+               "value":"nd-changecontent-fix",
+               "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > a"
            }
         ]
     },
@@ -1259,12 +1254,12 @@
             "value": "{\"max-width\":\"300px\", \"row-gap\":\"5px\"}",
             "selector": ".list-product-cart-badge"
            },
-             {
+           {
             "operator": "edit",
             "type": "styleApplicator",
             "value": "{\"width\":\"100%\"}",
             "selector": ".category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card .product-link .product_img img"
-           }
+          }
         ]
      },
      {
@@ -1776,36 +1771,73 @@
         "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
         "apply_on_user_segment":"*",
         "device":"mobile",
+        "reapply_event":"element_change",
+        "reapply_selector": ["#order-cart-addreslist > div.popup.frame-box", "#address-list > div.editAddress"],
         "weight": 1,
         "baseRuleSet":[
-           {
-              "id":1,
-              "type":"url",
-              "operator":"path",
-              "condition":"equal",
-              "value":"/adres-listesi.html",
-              "chain_condition":"and",
-              "chain": {
-                       "type":"element",
-                       "operator":null,
-                       "selector":".nd-money-back__wrapper",
-                       "condition":"notExist"
-               }
-           }
+         {
+            "id":1,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/adres-listesi.html"
+         }
         ],
         "businessRuleSet":[
+         {
+            "id":1,
+            "type":"element",
+            "selector": "#order-cart-addreslist > div.popup.frame-box",
+            "operator":"style",
+            "condition":"contains",
+            "value":"display: block",
+            "chain_condition":"or",
+            "chain": {
+               "type":"element",
+               "selector": "#address-list > div.editAddress",
+               "operator":"style",
+               "condition":"contains",
+               "value":"display: block"
+            },
+            "businessRuleId": 1
+         },
+         {
+            "id": 2,
+            "type":"element",
+            "selector":".nd-money-back__wrapper",
+            "condition":"exist",
+            "businessRuleId": 2
+         }
         ],
         "actions":[
-           {
-              "operator":"insert",
-              "type":"before",
-              "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>",
-              "selector":"#address-section",
-              "selectorFallback":"#order-cart-addreslist",
-              "businessRuleTransformations":[
-              ]
-           }
-        ]
+         {
+            "operator": "noop",
+            "selector": ".nd-money-back__wrapper",
+            "businessRuleTransformations": [
+               {
+                  "id": 1,
+                  "operator": "remove"
+               },
+               {
+                  "id": 2,
+                  "operator": "remove"
+               }
+            ]
+         },
+         {
+            "operator":"insert",
+            "type":"before",
+            "value":"<div class=\"nd-money-back__wrapper\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>",
+            "selector":"#address-section",
+            "selectorFallback":"#order-cart-addreslist",
+            "businessRuleTransformations": [
+               {
+                  "id": 1,
+                  "operator": "noop"
+               }
+            ]
+         }
+      ]
      },
      {
         "id": 29,
@@ -1825,9 +1857,8 @@
              "value":"Productpage",
              "chain_condition":"and",
              "chain":{
-                "type":"function",
-                "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.transactionIn2Weeks;",
-                "bindings":"productInfo",
+                "type":"productInfoLookup",
+                "operator":"transactionIn2Weeks",
                 "condition":"greaterThan",
                 "value":100,
                 "chain_condition": "and",
@@ -1856,9 +1887,8 @@
                    "condition":"notExist",
                    "chain_condition":"and",
                    "chain":{
-                      "type":"function",
-                      "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku].catalog.addToCartIn2Weeks;",
-                      "bindings":"productInfo",
+                      "type":"productInfoLookup",
+                      "operator":"addToCartIn2Weeks",
                       "condition":"greaterThan",
                       "value":100,
                       "chain_condition": "and",
@@ -1908,6 +1938,13 @@
               "operator":null,
               "condition":"exist",
               "selector":"#wowslider-container1 > div.ws_thumbs.next-day-thumb"
+           },
+           {
+              "id":2,
+              "type":"element",
+              "operator":null,
+              "condition":"exist",
+              "selector":".quick-delivery-container"
            }
         ],
         "businessRuleSet":[
@@ -1958,59 +1995,95 @@
                 }
               },
               "chain_condition":"or"
+           },
+           {
+            "type":"url",
+            "operator":"path",
+            "condition":"notEqual",
+            "value":"/"
            }
+        ],
+        "businessRuleSet":[
+            {
+                "id":1,
+                "type":"dataLayer",
+                "operator":"PageType",
+                "condition":"equal",
+                "value":"Productpage",
+                "businessRuleId":1,
+                "chain_condition": "or",
+                "chain":
+                {
+                    "type":"url",
+                    "operator":"path",
+                    "condition":"equal",
+                    "value":"/siparis-listesi.html",
+                    "chain_condition": "or",
+                    "chain":
+                    {
+                        "type":"url",
+                        "operator":"path",
+                        "condition":"equal",
+                        "value":"/adres-listesi.html",
+                        "chain_condition": "or",
+                        "chain":
+                        {
+                            "type":"url",
+                            "operator":"path",
+                            "condition":"equal",
+                            "value":"/odeme.html"
+                        }
+                    }
+                }
+            },
+            {
+                "id":2,
+                "type":"url",
+                "operator":"path",
+                "condition":"equal",
+                "value":"/vivense-uye-kayit.html",
+                "businessRuleId":2
+            },
+            {
+                "id":3,
+                "type":"url",
+                "operator":"path",
+                "condition":"equal",
+                "value":"/vivense-uye-girisi.html",
+                "businessRuleId":3
+            }
         ],
         "actions":[
            {
               "operator":"edit",
               "type":"addClass",
-              "selector":".btn.cart-confirm.btn-lg",
               "variants": {
                 "A": {
                     "weight": 99,
-                    "value":"nd-cta-red",
-                    "selectorFallback":".add-to-cart-btn"
+                    "value":"nd-cta-red"
                    },
                 "B": {
                    "weight": 100,
-                   "value":"nd-cta-yellow",
+                   "value":"nd-cta-yellow"
+                }
+            },
+            "businessRuleTransformations":[
+                {
+                   "id":1,
+                   "selector":".btn.cart-confirm.btn-lg",
                    "selectorFallback":".add-to-cart-btn"
-                }
-            }
-           },
-           {
-              "operator":"edit",
-              "type":"addClass",
-              "selector":"#registerBtn",
-              "variants": {
-                "A": {
-                    "weight": 99,
-                    "value":"nd-cta-red",
-                    "selectorFallback":"#loginForm > button"
-                   },
-                "B": {
-                   "weight": 100,
-                   "value":"nd-cta-yellow",
+                },
+                {
+                   "id":2,
+                   "selector":"#registerBtn",
                    "selectorFallback":"#loginForm > button"
-                }
-            }
-           },
-           {
-              "operator":"edit",
-              "type":"addClass",
-              "selector":"#loginForm > button",
-              "variants": {
-                "A": {
-                    "weight": 99,
-                    "value":"nd-cta-red",
-                    "selectorFallback":"#registerBtn"
-                   },
-                "B": {
-                   "weight": 100,
-                   "value":"nd-cta-yellow",
+                },
+                {
+                   "id":3,
+                   "selector":"#loginForm > button",
                    "selectorFallback":"#registerBtn"
                 }
-            }
+             ]
            }
         ]
      },
@@ -2067,12 +2140,60 @@
               "chain_condition":"or"
            }
         ],
+        "businessRuleSet":[
+            {
+                "id":1,
+                "type":"dataLayer",
+                "operator":"PageType",
+                "condition":"equal",
+                "value":"Productpage",
+                "businessRuleId":1,
+                "chain_condition": "or",
+                "chain":
+                {
+                    "type":"url",
+                    "operator":"path",
+                    "condition":"equal",
+                    "value":"/siparis-listesi.html"
+                }
+            },
+            {
+                "id":2,
+                "type":"url",
+                "operator":"path",
+                "condition":"equal",
+                "value":"/adres-listesi.html",
+                "chain_condition": "or",
+                "chain":
+                {
+                    "type":"url",
+                    "operator":"path",
+                    "condition":"equal",
+                    "value":"/odeme.html"
+                },
+                "businessRuleId":2
+            },
+            {
+                "id":3,
+                "type":"url",
+                "operator":"path",
+                "condition":"equal",
+                "value":"/vivense-uye-girisi.html",
+                "chain_condition": "or",
+                "chain":
+                {
+                    "type":"url",
+                    "operator":"path",
+                    "condition":"equal",
+                    "value":"/vivense-uye-kayit.html"
+                },
+                "businessRuleId":3
+            }
+        ],
         "actions":[
            {
-              "operator":"edit",
+              "operator":"noop",
               "type":"addClass",
-              "selector":".cart-approve-btn button",
-              "selectorFallback":".btn-type-address",
               "variants": {
                 "A": {
                     "weight": 99,
@@ -2082,57 +2203,47 @@
                    "weight": 100,
                    "value":"nd-cta-yellow"
                 }
-            }
+            },
+            "businessRuleTransformations": [
+                {
+                    "id": 1,
+                    "operator": "edit",
+                    "selector":".btn.cart-confirm",
+                    "selectorFallback":".default-add-cart-btn"
+                },
+                {
+                    "id": 2,
+                    "operator": "edit",
+                    "selector":".cart-approve-btn button",
+                    "selectorFallback":".btn-type-address"
+                },
+                {
+                    "id": 3,
+                    "operator": "edit",
+                    "selector":"#registerBtn"
+                }
+            ]
            },
            {
-              "operator":"edit",
-              "type":"addClass",
-              "selector":".btn.cart-confirm",
-              "selectorFallback":".default-add-cart-btn",
-              "variants": {
+            "operator": "noop",
+            "variants": {
                 "A": {
-                    "weight": 80,
+                    "weight": 99,
                     "value":"nd-cta-red"
                    },
                 "B": {
                    "weight": 100,
                    "value":"nd-cta-yellow"
                 }
-            }
-           },
-           {
-              "operator":"edit",
-              "type":"addClass",
-              "selector":"#registerBtn",
-              "variants": {
-                "A": {
-                    "weight": 80,
-                    "value":"nd-cta-red",
-                    "selectorFallback":"#loginForm > button"
-                   },
-                "B": {
-                   "weight": 100,
-                   "value":"nd-cta-yellow",
-                   "selectorFallback":"#loginForm > button"
+            },
+            "businessRuleTransformations": [
+                {
+                    "id": 3,
+                    "operator": "edit",
+                    "type": "addClass",
+                    "selector": "#loginForm > button"
                 }
-            }
-           },
-           {
-              "operator":"edit",
-              "type":"addClass",
-              "selector":"#loginForm > button",
-              "variants": {
-                "A": {
-                    "weight": 80,
-                    "value":"nd-cta-red",
-                    "selectorFallback":"#registerBtn"
-                   },
-                "B": {
-                   "weight": 100,
-                   "value":"nd-cta-yellow",
-                   "selectorFallback":"#registerBtn"
-                }
-            }
+            ]
            }
         ]
      },
@@ -2232,6 +2343,10 @@
                    "operator": "noop"
                 },
                 {
+                   "id": 2,
+                   "operator": "noop"
+                },
+                {
                    "id": 3,
                    "selectorFallback":"#accept-pay"
                 }
@@ -2257,9 +2372,8 @@
              "value":"Productpage",
              "chain_condition": "and",
              "chain":{
-                "type":"function",
-                "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.transactionIn2Weeks;",
-                "bindings":"productInfo",
+                "type":"productInfoLookup",
+                "operator":"transactionIn2Weeks",
                 "condition":"greaterThan",
                 "value":100
              },
@@ -2276,9 +2390,8 @@
            },
            {
               "id": 2,
-              "type":"function",
-              "operator":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.addToCartIn2Weeks;",
-              "bindings":"productInfo",
+              "type":"productInfoLookup",
+              "operator":"addToCartIn2Weeks",
               "condition":"greaterThan",
               "value":100
            },
@@ -2409,7 +2522,7 @@
               "value":"<div style=\"text-align: center;color: #40484e;font-family: BrandonTextRegular;\">{{REPLACE}} TL’den başlayan taksitlerle</div>",
               "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-box > div.price-text.non-discounted",
               "selectorFallback": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-box > div",
-              "replaceFn": "const p = window.beagleInfoLayer.vvsPDPProduct.price;const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return (p * 1.01 * (1 + comishRate) / 9).toLocaleString(\"tr-TR\", {minimumFractionDigits: 2, maximumFractionDigits: 2});",
+              "replaceFn": "const p = window.beagleInfoLayer.vvsPDPProduct.price;const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return (p * 1.01 * (1 + comishRate) / 9).toFixed(0);",
               "businessRuleTransformations": [
                  {
                     "id": 1,
@@ -2491,7 +2604,7 @@
               "value":"<div style=\"text-align: center;color: #40484e;font-family: BrandonTextRegular;\">{{REPLACE}} TL’den başlayan taksitlerle</div>",
               "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-box > div.price-text.non-discounted",
               "selectorFallback": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-box > div",
-              "replaceFn": "const p = window.beagleInfoLayer.vvsPDPProduct.price;const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return (p * 1.01 * (1 + comishRate) / 9).toLocaleString(\"tr-TR\", {minimumFractionDigits: 2, maximumFractionDigits: 2});",
+              "replaceFn": "const p = window.beagleInfoLayer.vvsPDPProduct.price;const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return (p * 1.01 * (1 + comishRate) / 9).toFixed(0);",
               "businessRuleTransformations": [
                  {
                     "id": 1,
