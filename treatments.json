@@ -2404,7 +2404,22 @@
                 "value":100
              },
              "businessRuleId":1
-          }
+          },
+          {
+            "id":2,
+            "type":"dataLayer",
+            "operator":"PageType",
+            "condition":"equal",
+            "value":"Productpage",
+            "chain_condition": "and",
+            "chain":{
+               "type":"productInfoLookup",
+               "operator":"addToCartIn2Weeks",
+               "condition":"greaterThan",
+               "value":100
+            },
+            "businessRuleId":2
+         }
         ],
         "baseRuleSet":[
            {
@@ -2417,32 +2432,36 @@
            {
               "id": 2,
               "type":"productInfoLookup",
-              "operator":"addToCartIn2Weeks",
+              "operator":"productViewCount",
               "condition":"greaterThan",
               "value":100
            },
            {
-                       "type":"element",
-                       "operator":null,
-                       "selector":".quick-delivery-container",
-                       "condition":"notExist"
+             "type":"element",
+             "operator":null,
+             "selector":".quick-delivery-container",
+             "condition":"notExist"
            }
         ],
         "actions":[
            {
              "id":1,
-             "operator":"edit",
-             "type":"addBanner",
-             "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.addToCartIn2Weeks?.toString().replace(\/\\B(?=(\\d{3})+(?!\\d))\/g, '.');",
-             "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi sepete ekledi,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+             "operator":"productInfoLookup",
+             "type":"productViewCount",
+             "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi görüntüledi,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
              "selector": ".nd-add-to-win",
              "selectorFallback":"#main > div > section > div:nth-child(1) > div > div.header-bottom",
               "businessRuleTransformations":[
                  {
                     "id":1,
-                    "replaceFn":"const elementSku = JSON.parse(sessionStorage.getItem('ND_SkuList'))[0]; return this.productInfo[elementSku]?.catalog?.transactionIn2Weeks?.toString().replace(\/\\B(?=(\\d{3})+(?!\\d))\/g, '.');",
+                    "type":"transactionIn2Weeks",
                     "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-lightning.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} adet satıldı,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>"
-                 }
+                 },
+                 {
+                   "id":2,
+                   "type":"addToCartIn2Weeks",
+                   "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE}} kişi sepete ekledi,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>"
+                }
               ]
            }
         ]
