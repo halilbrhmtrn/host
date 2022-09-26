@@ -22,7 +22,7 @@
        "reapply_event":"element_change",
        "reapply_selector":"div.shortcut_column.basket_wrapper.my-cart",
        "device":"desktop",
-       "productInfoStorage": "ND_SkuListBasket",
+       "productInfoStorage": "ND_SkuListProduct",
        "baseRuleSet":[
           {
              "id":1,
