@@ -76,8 +76,8 @@
                "value":"/siparis-listesi.html",
                "chain_condition":"and",
                "chain":{
-                  "type":"productInfoLookup",
-                  "operator":"transactionIn2Weeks",
+                  "type":"transactionIn2Weeks",
+                  "operator":"productInfoLookup",
                   "condition":"greaterThan",
                   "value":20
                }
@@ -99,8 +99,8 @@
             "value":"/siparis-listesi.html",
             "chain_condition":"and",
             "chain":{
-               "type":"productInfoLookup",
-               "operator":"addToCartIn2Weeks",
+               "type":"addToCartIn2Weeks",
+               "operator":"productInfoLookup",
                "condition":"greaterThan",
                "value":20
             }
