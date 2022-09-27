@@ -76,8 +76,8 @@
                "value":"/siparis-listesi.html",
                "chain_condition":"and",
                "chain":{
-                  "type":"transactionIn2Weeks",
-                  "operator":"productInfoLookup",
+                  "type":"productInfoLookup",
+                  "operator":"transactionIn2Weeks",
                   "condition":"greaterThan",
                   "value":20
                }
@@ -99,8 +99,8 @@
             "value":"/siparis-listesi.html",
             "chain_condition":"and",
             "chain":{
-               "type":"addToCartIn2Weeks",
-               "operator":"productInfoLookup",
+               "type":"productInfoLookup",
+               "operator":"addToCartIn2Weeks",
                "condition":"greaterThan",
                "value":20
             }
@@ -118,14 +118,21 @@
              ],
              "selector":"body",
              "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
-             "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Sipariş vermenin tam zamanı!</div><div class=\"nd-popup__text\">Sepetindeki ürünlerin stokları azalıyor. Şimdi alışverişini tamamla, ürünlerin daha hızlı teslim edilsin!</div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">ŞİMDİ SİPARİŞ VER</a></div></div>",
-             "businessRuleTransformations":[
+             "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Sipariş vermenin tam zamanı!</div><div class=\"nd-popup__text\">Sepetindeki ürünlerin stokları azalıyor. Şimdi alışverişini tamamla, ürünlerin daha hızlı teslim edilsin!</div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">ŞİMDİ SİPARİŞ VER</a></div></div>"
+             
+          },
+          {
+            "businessRuleTransformations":[
                {
+                  "operator":"productInfoLookup",
+                  "type":"transactionIn2Weeks",
                   "id": 1,
                   "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
                   "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Acele Et, Kaçırma!</div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere satın alındı.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
                },
                {
+                  "operator":"productInfoLookup",
+                  "type":"addToCartIn2Weeks",
                   "id": 2,
                   "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
                   "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Hızlı Olan Kazansın!</div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
