@@ -163,6 +163,159 @@
          }
       ]
    },
+   {
+      "id":44,
+      "name":"MOBILE - Exit Pop-up",
+      "description":"Display exit popup",
+      "category":"Abandonment and Reengagement / Sitewide / Web",
+      "apply_on_user_segment":"*",
+      "reapply_event":"element_change",
+      "reapply_selector":"div.shortcut_column.basket_wrapper.my-cart",
+      "device":"desktop",
+      "productInfoStorage": "basket",
+      "baseRuleSet":[
+         {
+            "id":1,
+            "type":"session",
+            "operator":"duration",
+            "condition":"greaterThan",
+            "value":10
+         },
+         {
+            "id":2,
+            "type":"counter",
+            "operator":"pageView",
+            "condition":"greaterThan",
+            "value":2
+         },
+         {
+            "id":3,
+            "type":"url",
+            "operator":"path",
+            "condition":"notEqual",
+            "value":"/siparis-listesi.html"
+         },
+         {
+            "id":4,
+            "type":"url",
+            "operator":"path",
+            "condition":"notEqual",
+            "value":"/indirimli-mobilya-kampanyalari.html"
+         },
+         {
+            "id":5,
+            "type":"element",
+            "operator":null,
+            "condition":"exist",
+            "selector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length"
+         }
+      ],
+      "businessRuleSet": [
+        {
+           "id": 1,
+           "type": "element",
+           "operator": "text-number",
+           "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length",
+           "condition": "greaterEquals",
+           "value": 1,
+           "chain_condition":"and",
+           "chain": {
+              "type":"session",
+              "operator":"history",
+              "condition":"contains",
+              "value":"/siparis-listesi.html",
+              "chain_condition":"and",
+              "chain":{
+                 "type":"productInfoLookup",
+                 "operator":"transactionIn2Weeks",
+                 "condition":"greaterThan",
+                 "value":20
+              }
+           },
+           "businessRuleId": 1
+       },
+       {
+        "id": 2,
+        "type": "element",
+        "operator": "text-number",
+        "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length",
+        "condition": "greaterEquals",
+        "value": 1,
+        "chain_condition":"and",
+        "chain": {
+           "type":"session",
+           "operator":"history",
+           "condition":"contains",
+           "value":"/siparis-listesi.html",
+           "chain_condition":"and",
+           "chain":{
+              "type":"productInfoLookup",
+              "operator":"addToCartIn2Weeks",
+              "condition":"greaterThan",
+              "value":20
+           }
+        },
+        "businessRuleId": 2
+     },
+     {
+        "id": 3,
+        "type": "element",
+        "operator": "text-number",
+        "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length",
+        "condition": "greaterEquals",
+        "value": 1,
+        "chain_condition":"and",
+        "chain": {
+           "type":"session",
+           "operator":"history",
+           "condition":"contains",
+           "value":"/siparis-listesi.html",
+           "chain_condition":"and",
+           "chain":{
+              "type":"productInfoLookup",
+              "operator":"productViewCount",
+              "condition":"greaterThan",
+              "value":20
+           }
+        },
+        "businessRuleId": 3
+     }
+      ],
+      "actions":[
+         {
+            "operator":"insert",
+            "type":"popup",
+            "applyEvent":[
+               "exitIntent",
+               "copyIntent"
+            ],
+            "selector":"body",
+            "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
+            "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Sipariş vermenin tam zamanı!</div><div class=\"nd-popup__text\">Sepetindeki ürünlerin stokları azalıyor. Şimdi alışverişini tamamla, ürünlerin daha hızlı teslim edilsin!</div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">ŞİMDİ SİPARİŞ VER</a></div></div>",
+            "businessRuleTransformations":[
+              {
+                 "pType":"transactionIn2Weeks",
+                 "id": 1,
+                 "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                 "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Acele Et, Kaçırma!<br/><img src=\"https://ndvivense.glov.ai/assets/clock-history__red.png\" style=\"height: 20px;position: absolute;\"><span style=\"font-family: 'BrandonTextBold';margin-left: 24px;color: #FF5959;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere satın alındı.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+              },
+              {
+                 "pType":"addToCartIn2Weeks",
+                 "id": 2,
+                 "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                 "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Hızlı Olan Kazansın!<br/><img src=\"https://ndvivense.glov.ai/assets/clock-history__red.png\" style=\"height: 20px;position: absolute;\"><span style=\"font-family: 'BrandonTextBold';margin-left: 24px;color: #FF5959;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+              },
+              {
+                 "pType":"productViewCount",
+                 "id": 3,
+                 "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                 "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Gözler Üstümde!<br/></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+              }
+            ]
+            
+         }
+      ]
+   },
     {
        "id":1,
        "name":"DESKTOP Exit Pop-up",
@@ -256,6 +409,29 @@
             }
          },
          "businessRuleId": 2
+      },
+      {
+         "id": 3,
+         "type": "element",
+         "operator": "text-number",
+         "selector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > a > span.basket_length",
+         "condition": "greaterEquals",
+         "value": 1,
+         "chain_condition":"and",
+         "chain": {
+            "type":"session",
+            "operator":"history",
+            "condition":"contains",
+            "value":"/siparis-listesi.html",
+            "chain_condition":"and",
+            "chain":{
+               "type":"productInfoLookup",
+               "operator":"productViewCount",
+               "condition":"greaterThan",
+               "value":20
+            }
+         },
+         "businessRuleId": 3
       }
        ],
        "actions":[
@@ -274,13 +450,19 @@
                   "pType":"transactionIn2Weeks",
                   "id": 1,
                   "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
-                  "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Acele Et, Kaçırma!</div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere satın alındı.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+                  "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Acele Et, Kaçırma!<br/><img src=\"https://ndvivense.glov.ai/assets/clock-history__red.png\" style=\"height: 20px;position: absolute;\"><span style=\"font-family: 'BrandonTextBold';margin-left: 24px;color: #FF5959;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere satın alındı.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
                },
                {
                   "pType":"addToCartIn2Weeks",
                   "id": 2,
                   "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
-                  "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Hızlı Olan Kazansın!</div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+                  "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Hızlı Olan Kazansın!<br/><img src=\"https://ndvivense.glov.ai/assets/clock-history__red.png\" style=\"height: 20px;position: absolute;\"><span style=\"font-family: 'BrandonTextBold';margin-left: 24px;color: #FF5959;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+               },
+               {
+                  "pType":"productViewCount",
+                  "id": 3,
+                  "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                  "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Gözler Üstümde!<br/></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><strong>{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</strong></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
                }
              ]
              
