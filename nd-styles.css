@@ -19,6 +19,12 @@
   position: relative;
   display: block;
 }
+@media screen and (max-width: 441px) {
+  .nd-popup {
+    width: 90vw;
+    margin: 15vh auto;
+  }
+}
 .nd-popup__wrapper {
   display: none;
   position: fixed;
@@ -222,6 +228,7 @@
   text-align: center;
   color: #fff;
   margin-bottom: 30px;
+  text-decoration: none;
 }
 
 .nd-cta_btn:hover {
@@ -620,3 +627,9 @@
   background-color: #f5b75b !important;
   border-color: #f4b556 !important;
 }
+
+.nd-empty {
+  
+}
+
+/*# sourceMappingURL=nd-styles.css.map */
