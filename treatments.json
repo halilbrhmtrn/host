@@ -3368,7 +3368,29 @@
               "selectorFallback":"#registerBtn"
            }
         ]
-     }
+     },
+     {
+      "operator": "edit",
+      "type": "addClass",
+      "value": "nd-text-transform",
+      "businessRuleTransformations":[
+         {
+            "id":1,
+            "selector":".btn.cart-confirm.btn-lg",
+            "selectorFallback":".add-to-cart-btn"
+         },
+         {
+            "id":2,
+            "selector":"#registerBtn",
+            "selectorFallback":"#loginForm > button"
+         },
+         {
+            "id":3,
+            "selector":"#loginForm > button",
+            "selectorFallback":"#registerBtn"
+         }
+      ]
+   }
    ]
    },
    {
@@ -3503,7 +3525,29 @@
                  "selectorFallback":"#registerBtn"
               }
            ]
-        }
+        },
+        {
+         "operator": "edit",
+         "type": "addClass",
+         "value": "nd-text-transform",
+         "businessRuleTransformations":[
+            {
+               "id":1,
+               "selector":".btn.cart-confirm.btn-lg",
+               "selectorFallback":".add-to-cart-btn"
+            },
+            {
+               "id":2,
+               "selector":"#registerBtn",
+               "selectorFallback":"#loginForm > button"
+            },
+            {
+               "id":3,
+               "selector":"#loginForm > button",
+               "selectorFallback":"#registerBtn"
+            }
+         ]
+      }
       ]
    }
 ]
