@@ -2534,9 +2534,8 @@
             ]
           },
           {
-            "operator": "edit",
-            "type": "styleApplicator",
-            "value":"{\"text-transform\":\"lowercase !important\"}",
+            "operator": "text-transform",
+            "type": "capitalize",
             "businessRuleTransformations":[
                {
                   "id":1,
@@ -2717,9 +2716,8 @@
            ]
           },
           {
-            "operator": "edit",
-            "type": "styleApplicator",
-            "value":"{\"text-transform\":\"lowercase !important\"}",
+            "operator": "text-transform",
+            "type": "capitalize",
             "businessRuleTransformations":[
                {
                   "id":1,
