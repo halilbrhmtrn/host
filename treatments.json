@@ -3286,5 +3286,266 @@
           "selector": ".right-content"
         }
      ]
-  }
+  },
+  {
+   "id": 44,
+   "name":"DESKTOP - CTA Buttons Text Transformation",
+   "description":"CTA Buttons Text Transformation",
+   "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+   "device":"desktop",
+   "apply_on_user_segment":"*",
+   "reapply_event":"timeout",
+   "baseRuleSet":[
+      {
+         "type":"element",
+         "operator":null,
+         "condition":"exist",
+         "selector":".btn.cart-confirm.btn-lg",
+         "chain": {
+            "type":"element",
+            "operator":null,
+            "condition":"exist",
+            "selector":".button-add-cart-action .add-to-cart-btn",
+            "chain_condition": "or",
+            "chain": {
+              "type":"element",
+              "operator": null,
+              "condition": "exist",
+              "selector": "#loginForm > button",
+              "chain_condition": "or",
+              "chain": {
+                 "type":"element",
+                 "operator": null,
+                 "condition": "exist",
+                 "selector": "#registerBtn"
+              }
+           }
+         },
+         "chain_condition":"or"
+      },
+      {
+       "type":"url",
+       "operator":"path",
+       "condition":"notEqual",
+       "value":"/"
+      }
+   ],
+   "businessRuleSet":[
+       {
+           "id":1,
+           "type":"dataLayer",
+           "operator":"PageType",
+           "condition":"equal",
+           "value":"Productpage",
+           "businessRuleId":1,
+           "chain_condition": "or",
+           "chain":
+           {
+               "type":"url",
+               "operator":"path",
+               "condition":"equal",
+               "value":"/siparis-listesi.html"
+           }
+       },
+       {
+         "id":4,
+         "businessRuleId":1,
+         "type":"url",
+         "operator":"path",
+         "condition":"equal",
+         "value":"/adres-listesi.html",
+         "chain_condition": "or",
+         "chain":
+         {
+             "type":"url",
+             "operator":"path",
+             "condition":"equal",
+             "value":"/odeme.html",
+             "chain_condition": "and",
+             "chain": {
+               "type":"element",
+               "operator":"classList",
+               "condition":"notContains",
+               "value": "nd-flex",
+               "selector":".btn.cart-confirm.btn-lg",
+               "selectorFallback":".add-to-cart-btn"
+            }
+         }
+      },
+       {
+           "id":2,
+           "type":"url",
+           "operator":"path",
+           "condition":"equal",
+           "value":"/vivense-uye-kayit.html",
+           "businessRuleId":2
+       },
+       {
+           "id":3,
+           "type":"url",
+           "operator":"path",
+           "condition":"equal",
+           "value":"/vivense-uye-girisi.html",
+           "businessRuleId":3
+       }
+   ],
+   "actions":[
+      {
+        "operator": "text-transform",
+        "type": "capitalize",
+        "businessRuleTransformations":[
+           {
+              "id":1,
+              "selector":".btn.cart-confirm.btn-lg",
+              "selectorFallback":".add-to-cart-btn"
+           },
+           {
+              "id":2,
+              "selector":"#registerBtn",
+              "selectorFallback":"#loginForm > button"
+           },
+           {
+              "id":3,
+              "selector":"#loginForm > button",
+              "selectorFallback":"#registerBtn"
+           }
+        ]
+     }
+   ]
+   },
+   {
+      "id": 45,
+      "name":"MOBILE - CTA Buttons Text Transformation",
+      "description":"CTA Buttons Text Transformation Mobile",
+      "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+      "device":"mobile",
+      "reapply_event": ["timeout", "element_change"],
+      "reapply_selector": "#\\#",
+      "apply_on_user_segment":"*",
+      "baseRuleSet":[
+         {
+            "type":"element",
+            "operator":null,
+            "condition":"exist",
+            "selector":"#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button",
+            "chain": {
+               "type":"element",
+               "operator":null,
+               "condition":"exist",
+               "selector":"#order-cart-addreslist > div.cart-approve-btn > button",
+               "chain":{
+                  "type":"element",
+                  "operator":null,
+                  "condition":"exist",
+                  "selector":" #accept-pay",
+                  "chain":{
+                     "type":"element",
+                     "operator":null,
+                     "condition":"exist",
+                     "selector":"#mobile-product-sticky > div.custom-form.add-to-cart-button-div > ul > li > a",
+                     "chain_condition": "or",
+                     "chain": {
+                        "type":"element",
+                        "operator": null,
+                        "condition": "exist",
+                        "selector": "#loginForm > button",
+                        "chain_condition": "or",
+                        "chain": {
+                           "type":"element",
+                           "operator": null,
+                           "condition": "exist",
+                           "selector": "#registerBtn"
+                        }
+                     }
+                  },
+                  "chain_condition": "or"
+               },
+               "chain_condition": "or"
+            },
+            "chain_condition":"or"
+         }
+      ],
+      "businessRuleSet":[
+          {
+              "id":1,
+              "type":"dataLayer",
+              "operator":"PageType",
+              "condition":"equal",
+              "value":"Productpage",
+              "businessRuleId":1,
+              "chain_condition": "or",
+              "chain":
+              {
+                  "type":"url",
+                  "operator":"path",
+                  "condition":"equal",
+                  "value":"/siparis-listesi.html"
+              }
+          },
+          {
+              "id":2,
+              "type":"url",
+              "operator":"path",
+              "condition":"equal",
+              "value":"/adres-listesi.html",
+              "chain_condition": "or",
+              "chain":
+              {
+                  "type":"url",
+                  "operator":"path",
+                  "condition":"equal",
+                  "value":"/odeme.html",
+                  "chain_condition": "and",
+                  "chain": {
+                    "type":"element",
+                    "operator":"classList",
+                    "condition":"notContains",
+                    "value": "nd-flex",
+                    "selector":".btn.cart-confirm.btn-lg",
+                    "selectorFallback":".add-to-cart-btn"
+                 }
+              },
+              "businessRuleId":2
+          },
+          {
+              "id":3,
+              "type":"url",
+              "operator":"path",
+              "condition":"equal",
+              "value":"/vivense-uye-girisi.html",
+              "chain_condition": "or",
+              "chain":
+              {
+                  "type":"url",
+                  "operator":"path",
+                  "condition":"equal",
+                  "value":"/vivense-uye-kayit.html"
+              },
+              "businessRuleId":3
+          }
+      ],
+      "actions":[
+         {
+           "operator": "text-transform",
+           "type": "capitalize",
+           "businessRuleTransformations":[
+              {
+                 "id":1,
+                 "selector":".btn.cart-confirm.btn-lg",
+                 "selectorFallback":".add-to-cart-btn"
+              },
+              {
+                 "id":2,
+                 "selector":"#registerBtn",
+                 "selectorFallback":"#loginForm > button"
+              },
+              {
+                 "id":3,
+                 "selector":"#loginForm > button",
+                 "selectorFallback":"#registerBtn"
+              }
+           ]
+        }
+      ]
+   }
 ]
