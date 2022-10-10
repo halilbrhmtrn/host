@@ -3302,7 +3302,14 @@
                "type":"url",
                "operator":"path",
                "condition":"equal",
-               "value":"/siparis-listesi.html"
+               "value":"/siparis-listesi.html",
+               "chain_condition":"and",
+               "chain": {
+                  "type":"url",
+                  "operator":"path",
+                  "condition":"notEqual",
+                  "value":"/adres-listesi.html"
+              }
            }
        },
        {
@@ -3311,24 +3318,7 @@
          "type":"url",
          "operator":"path",
          "condition":"equal",
-         "value":"/adres-listesi.html",
-         "chain_condition": "or",
-         "chain":
-         {
-             "type":"url",
-             "operator":"path",
-             "condition":"equal",
-             "value":"/odeme.html",
-             "chain_condition": "and",
-             "chain": {
-               "type":"element",
-               "operator":"classList",
-               "condition":"notContains",
-               "value": "nd-flex",
-               "selector":".btn.cart-confirm.btn-lg",
-               "selectorFallback":".add-to-cart-btn"
-            }
-         }
+         "value":"/odeme.html"
       },
        {
            "id":2,
@@ -3459,7 +3449,15 @@
                   "type":"url",
                   "operator":"path",
                   "condition":"equal",
-                  "value":"/siparis-listesi.html"
+                  "value":"/siparis-listesi.html",
+                  "chain_condition": "and",
+                  "chain":
+                     {
+                        "type":"url",
+                        "operator":"path",
+                        "condition":"equal",
+                        "value":"/adres-listesi.html"
+                     }
               }
           },
           {
@@ -3467,24 +3465,7 @@
               "type":"url",
               "operator":"path",
               "condition":"equal",
-              "value":"/adres-listesi.html",
-              "chain_condition": "or",
-              "chain":
-              {
-                  "type":"url",
-                  "operator":"path",
-                  "condition":"equal",
-                  "value":"/odeme.html",
-                  "chain_condition": "and",
-                  "chain": {
-                    "type":"element",
-                    "operator":"classList",
-                    "condition":"notContains",
-                    "value": "nd-flex",
-                    "selector":".btn.cart-confirm.btn-lg",
-                    "selectorFallback":".add-to-cart-btn"
-                 }
-              },
+              "value":"/odeme.html",
               "businessRuleId":2
           },
           {
