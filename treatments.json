@@ -3638,7 +3638,7 @@
       "actions":[
          {
             "operator":"injectscript",
-            "value":"for(let elm of document.querySelectorAll('a.product-link')) {elm.addEventListener('click', (ev) => { ev.preventDefault();  let win = window.open(this.href, '_blank');  win.focus();  ev.stopPropagation();})};",
+            "value":"for(let elm of document.querySelectorAll('a.product-link')) {elm.addEventListener('click', function(ev) { ev.preventDefault();  let win = window.open(this.href, '_blank');  win.focus();  ev.stopPropagation();})};",
             "selector":"body",
             "businessRuleTransformations": [
             ]
