@@ -63,6 +63,20 @@
            "operator":"path",
            "condition":"notEqual",
            "value":"/adres-listesi.html"
+        },
+        {
+           "id":7,
+           "type":"url",
+           "operator":"path",
+           "condition":"notEqual",
+           "value":"/vivense-uye-girisi.html"
+        },
+        {
+           "id":8,
+           "type":"url",
+           "operator":"path",
+           "condition":"notEqual",
+           "value":"/vivense-uye-kayit.html"
         }
      ],
      "actions":[
@@ -122,6 +136,20 @@
            "operator":"path",
            "condition":"notEqual",
            "value":"/adres-listesi.html"
+        },
+        {
+           "id":7,
+           "type":"url",
+           "operator":"path",
+           "condition":"notEqual",
+           "value":"/vivense-uye-girisi.html"
+        },
+        {
+           "id":8,
+           "type":"url",
+           "operator":"path",
+           "condition":"notEqual",
+           "value":"/vivense-uye-kayit.html"
         }
      ],
      "actions":[
@@ -196,6 +224,20 @@
            "operator":"path",
            "condition":"notEqual",
            "value":"/adres-listesi.html"
+        },
+        {
+           "id":8,
+           "type":"url",
+           "operator":"path",
+           "condition":"notEqual",
+           "value":"/vivense-uye-girisi.html"
+        },
+        {
+           "id":9,
+           "type":"url",
+           "operator":"path",
+           "condition":"notEqual",
+           "value":"/vivense-uye-kayit.html"
         }
      ],
      "businessRuleSet": [
@@ -363,6 +405,20 @@
            "operator":"path",
            "condition":"notEqual",
            "value":"/adres-listesi.html"
+        },
+        {
+           "id":8,
+           "type":"url",
+           "operator":"path",
+           "condition":"notEqual",
+           "value":"/vivense-uye-girisi.html"
+        },
+        {
+           "id":9,
+           "type":"url",
+           "operator":"path",
+           "condition":"notEqual",
+           "value":"/vivense-uye-kayit.html"
         }
       ],
       "businessRuleSet": [
@@ -607,7 +663,7 @@
                    {
                        "id": 4,
                        "selector": "#checkoutForm",
-                       "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 500 TL indirim kuponun kullanıma hazır. Kupon kodu: EKİM600</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                       "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 500 TL indirim kuponun kullanıma hazır. Kupon kodu: EKİM500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
                    }
                ]
            }
@@ -707,7 +763,7 @@
                    {
                        "id": 4,
                        "selector": "#checkoutForm",
-                       "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 500 TL indirim kuponun kullanıma hazır.<br/>Kupon kodu: EKİM600</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                       "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><b>Tebrikler! 500 TL indirim kuponun kullanıma hazır.<br/>Kupon kodu: EKİM500</b></div><a class=\"nd-banner__action-button\" href=\"/\"> Alışverişe Devam Et &gt;</a><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
                    }
                ]
            }
@@ -1312,7 +1368,7 @@
               "variants": {
                 "A": {
                     "weight": 99,
-                    "value":"nd-empty"
+                    "value":"nd-empty-next-day-image"
                    },
                 "B": {
                    "weight": 100,
@@ -1328,7 +1384,7 @@
               "variants": {
                 "A": {
                     "weight": 99,
-                    "value":"nd-empty"
+                    "value":"nd-empty-next-day-thumb"
                    },
                 "B": {
                    "weight": 100,
@@ -1347,7 +1403,17 @@
                       "id": 1,
                       "operator": "edit"
                   }
-              ]
+              ],
+              "variants": {
+               "A": {
+                   "weight": 99,
+                   "operator":"noop"
+                  },
+               "B": {
+                  "weight": 100,
+                  "value":"edit"
+               }
+            }
           },
           {
               "operator": "remove",
@@ -1369,19 +1435,30 @@
               "operator": "edit",
               "type": "styleApplicator",
               "value": "{\"padding-left\":\"inherit\"}",
-              "selector": "#breadcrumb-ol"
+              "selector": "#breadcrumb-ol",
+              "variants": {
+               "A": {
+                   "weight": 99,
+                   "operator":"noop"
+                  },
+               "B": {
+                  "weight": 100,
+                  "operator":"edit"
+               }
+            }
           },
           {
               "operator": "edit",
               "type": "addClass",
               "value": "image-edit-content",
-              "selector": ".ws_images.next-day-image > div",
               "variants": {
                 "A": {
+                    "selector": ".ws_images.nd-empty-next-day-image > div",
                     "weight": 99,
-                    "value":"nd-empty"
+                    "value":"nd-empty-image-edit-content"
                    },
                 "B": {
+                  "selector": ".ws_images.next-day-image > div",
                    "weight": 100,
                    "value":"image-edit-content"
                 }
@@ -1391,13 +1468,14 @@
               "operator": "edit",
               "type": "addClass",
               "value": "image-edit",
-              "selector": "#wowslider-container1 > .ws_images.next-day-image > .image-edit-content > .ws_list > ul > li > a > img",
               "variants": {
                 "A": {
+                    "selector": "#wowslider-container1 > .ws_images.nd-empty-next-day-image > .nd-empty-image-edit-content > .ws_list > ul > li > a > img",
                     "weight": 99,
-                    "value":"nd-empty"
+                    "value":"nd-empty-image-edit"
                    },
                 "B": {
+                  "selector": "#wowslider-container1 > .ws_images.next-day-image > .image-edit-content > .ws_list > ul > li > a > img",
                    "weight": 100,
                    "value":"image-edit"
                 }
@@ -1571,6 +1649,7 @@
       "device":"desktop",
       "apply_on_user_segment":"*",
       "reapply_event":"on_scroll",
+      "reapply_event_page_type": "Productpage",
       "dependant_on_treatment": 7,
       "baseRuleSet":[
        {
@@ -1794,7 +1873,9 @@
        "description":"Remove 'Destek' icon from PDP",
        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
        "device":"mobile",
-       "reapply_event": "timeout",
+       "reapply_event": "interval",
+       "delay": 250,
+       "reapply_event_page_type": "Productpage",
        "apply_on_user_segment":"*",
        "baseRuleSet":[
            {
@@ -2918,9 +2999,24 @@
           {
              "operator": "edit",
              "type": "text",
-             "selector": ".delivery-date",
+             "selector": "#sidebar-right .delivery-date",
              "value":"{{REPLACE}}",
-             "replaceFn": "return window.beagleInfoLayer?.vvsPDPDeliveryDateFormatted"
+             "variants": {
+               "A":{
+                  "replaceFn": "return window.beagleInfoLayer?.vvsPDPDeliveryDateFormatted"
+               },
+               "B":{
+                  "replaceFn": "const original = document.querySelector(\"#sidebar-right .delivery-date\").innerText;try {const charRegex = /[a-zA-Zıöüğşç]+/g;const numberRegex = /\\d+/g;const val = original.trim().split(\"-\");const firstDate = parseInt(val[0].match(numberRegex)[0]);const secondDate = parseInt(val[1].match(numberRegex)[0]);if (!charRegex.test(val[0])) {if (secondDate - firstDate >= 7) return `${secondDate - 3}-${secondDate} ${original.match(charRegex)[0]}`;return original;} else {const month = val[0].match(charRegex)[0].toLowerCase();let remainigDays = 31 - firstDate;if (month.startsWith('s') || month.startsWith('ş')) remainigDays = 28 - firstDate;if (month === \"nisan\") remainigDays = 30 - firstDate;if (month === \"haziran\") remainigDays = 30 - firstDate;if (month === \"eylul\" || month === \"eylül\") remainigDays = 30 - firstDate;if (month === \"kasım\" || month === \"kasim\") remainigDays = 30 - firstDate;if (remainigDays + secondDate >= 7) {if (secondDate > 3) return `${secondDate - 3}-${secondDate} ${val[1].match(charRegex)[0]}`;return `${firstDate + remainigDays + (secondDate - 3)} ${val[0].match(charRegex)[0]}-${val[1]}`;}return original;}} catch (err) {return original;}"
+               },
+               "C":{
+                  "replaceFn": "const original = document.querySelector(\"#sidebar-right .delivery-date\").innerText;try {return `En Geç ${original.trim().split(\"-\")[1]}`;} catch (err) {return original;}"
+               },
+               "D":{
+                  "operator":"injectscript",
+                  "selector":"body",
+                  "value": "const months = {\"ocak\": 0,\"şubat\": 1,\"subat\": 1,\"mart\": 2,\"nisan\": 3,\"mayıs\": 4,\"mayis\": 4,\"haziran\": 5,\"temmuz\": 6,\"ağustos\": 7,\"agustos\": 7,\"eylül\": 8,\"eylul\": 8,\"ekim\": 9,\"kasım\": 10,\"kasim\": 10,\"aralık\": 11,\"aralik\": 11,};const original = document.querySelector(\"#sidebar-right .delivery-date\").innerText;try {const charRegex = /[a-zA-Zıöüğşç]+/g;const numberRegex = /\\d+/g;const month = months[original.match(charRegex)[0].toLowerCase()];let currentMonth = new Date().getMonth();if (currentMonth === month) throw new Error();currentMonth = currentMonth + 1 === 12 ? 0 : currentMonth + 1;if (currentMonth === month) throw new Error();currentMonth = currentMonth + 1 === 12 ? 0 : currentMonth + 1;if (currentMonth === month) {const day = original.match(numberRegex)[0];const currentDay = new Date().getDate();if (day <= currentDay) throw new Error();}document.querySelector(\".product-details-bottom\").remove();} catch (err) {}"
+                 }
+             }
           }
        ]
     },
@@ -2944,9 +3040,24 @@
        {
           "operator": "edit",
           "type": "text",
-          "selector": ".planned_delivery_date",
+          "selector": ".panel-body .planned_delivery_date",
           "value":"{{REPLACE}}",
-          "replaceFn": "return window.beagleInfoLayer?.vvsPDPDeliveryDateFormatted"
+          "variants": {
+            "A":{
+               "replaceFn": "return window.beagleInfoLayer?.vvsPDPDeliveryDateFormatted"
+            },
+            "B":{
+               "replaceFn": "const original = document.querySelector(\".panel-body .planned_delivery_date\").innerText;try {const charRegex = /[a-zA-Zıöüğşç]+/g;const numberRegex = /\\d+/g;const val = original.trim().split(\"-\");const firstDate = parseInt(val[0].match(numberRegex)[0]);const secondDate = parseInt(val[1].match(numberRegex)[0]);if (!charRegex.test(val[0])) {if (secondDate - firstDate >= 7) return `${secondDate - 3}-${secondDate} ${original.match(charRegex)[0]}`;return original;} else {const month = val[0].match(charRegex)[0].toLowerCase();let remainigDays = 31 - firstDate;if (month.startsWith('s') || month.startsWith('ş')) remainigDays = 28 - firstDate;if (month === \"nisan\") remainigDays = 30 - firstDate;if (month === \"haziran\") remainigDays = 30 - firstDate;if (month === \"eylul\" || month === \"eylül\") remainigDays = 30 - firstDate;if (month === \"kasım\" || month === \"kasim\") remainigDays = 30 - firstDate;if (remainigDays + secondDate >= 7) {if (secondDate > 3) return `${secondDate - 3}-${secondDate} ${val[1].match(charRegex)[0]}`;return `${firstDate + remainigDays + (secondDate - 3)} ${val[0].match(charRegex)[0]}-${val[1]}`;}return original;}} catch (err) {return original;}"
+            },
+            "C":{
+               "replaceFn": "const original = document.querySelector(\".panel-body .planned_delivery_date\").innerText;try {return `En Geç ${original.trim().split(\"-\")[1]}`;} catch (err) {return original;}"
+            },
+            "D":{
+               "operator":"injectscript",
+               "selector":"body",
+               "value": "const months = {\"ocak\": 0,\"şubat\": 1,\"subat\": 1,\"mart\": 2,\"nisan\": 3,\"mayıs\": 4,\"mayis\": 4,\"haziran\": 5,\"temmuz\": 6,\"ağustos\": 7,\"agustos\": 7,\"eylül\": 8,\"eylul\": 8,\"ekim\": 9,\"kasım\": 10,\"kasim\": 10,\"aralık\": 11,\"aralik\": 11,};const original = document.querySelector(\".panel-body .planned_delivery_date\").innerText;try {const charRegex = /[a-zA-Zıöüğşç]+/g;const numberRegex = /\\d+/g;const month = months[original.match(charRegex)[0].toLowerCase()];let currentMonth = new Date().getMonth();if (currentMonth === month) throw new Error();currentMonth = currentMonth + 1 === 12 ? 0 : currentMonth + 1;if (currentMonth === month) throw new Error();currentMonth = currentMonth + 1 === 12 ? 0 : currentMonth + 1;if (currentMonth === month) {const day = original.match(numberRegex)[0];const currentDay = new Date().getDate();if (day <= currentDay) throw new Error();}document.querySelector(\".panel-body .delivery-date-custom\").remove();} catch (err) {}"
+              }
+          }
        }
     ]
     },
@@ -2973,24 +3084,24 @@
              "operator":"vvsPDPProduct.price",
              "condition":"greaterThan",
              "value":"2000"
-          },
-          {
-             "id": 3,
-             "type": "element",
-             "operator":null,
-             "condition": "notExist",
-             "selector": ".old-price"
           }
        ],
-       "businessRuleSet": [
-          {
-             "id":1,
-             "type":"environment",
-             "operator":"device_type",
-             "condition":"equal",
-             "value":"mobile",
-             "businessRuleId":1
-          }
+       "businessRuleSet":[
+         {
+            "id": 1,
+            "type": "element",
+            "operator":null,
+            "condition": "exist",
+            "selector": ".old-price",
+            "businessRuleId": 1,
+            "chain_condition": "and",
+            "chain": {
+               "type": "element",
+               "operator": null,
+               "condition": "notExist",
+               "selector": "#component"
+            }
+         }
        ],
        "actions":[
          {
@@ -3003,37 +3114,12 @@
              "value":"<div id=\"bn-price-installment-tag\" style=\"text-align: center;color: #40484e;font-family: BrandonTextRegular;\">{{REPLACE}} TL’den başlayan taksitlerle</div>",
              "selector":"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-box > div.price-text.non-discounted",
              "selectorFallback": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-box > div:nth-child(1)",
-             "replaceFn": "const p = parseInt(document.querySelector(\"#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-details td.sumprice-com > p\").innerText.replace(\".\",\"\").replace(\"TL\", \"\").trim());const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return (p * 1.01 * (1 + comishRate) / 9).toFixed(0);",
-             "businessRuleTransformations": [
-                {
-                   "id": 1,
-                   "value": "<div id=\"bn-price-installment-tag\" style=\"text-align: center;color: #40484e;font-size: 12px;font-family: BrandonTextRegular;\">{{REPLACE}} TL’den başlayan taksitlerle</div>",
-                   "selectorFallback": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price > div"
-                }
-             ]
-          },
-          {
-             "operator": "noop",
-             "businessRuleTransformations": [
-                {
-                   "id": 1,
-                   "operator": "edit",
-                   "type": "styleApplicator",
-                   "value":"{\"margin-top\":\"0\"}",
-                   "selector": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price"
-                }
-             ]
-          },
-          {
-             "operator": "noop",
-             "businessRuleTransformations": [
-                {
-                   "id": 1,
-                   "operator": "edit",
-                   "type": "styleApplicator",
-                   "value":"{\"padding\":\"0\"}",
-                   "selector": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price > div.product-price-sale.non-discounted"
-                }
+             "replaceFn": "const p = parseInt(document.querySelector(\".price\").innerText.replace(\".\",\"\").replace(\"TL\", \"\").trim());const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return (p * 1.01 * (1 + comishRate) / 9).toFixed(0);",
+             "businessRuleTransformations":[
+               {
+                  "id": 1,
+                  "selectorFallback": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-box > div:nth-child(2)"
+               }
              ]
           }
        ]
@@ -3529,6 +3615,34 @@
             }
          ]
       }
+      ]
+   },
+   {
+      "id": 46,
+      "name":"DESKTOP - Open PLP links in new tab",
+      "description":"Money back guarantee banner",
+      "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
+      "apply_on_user_segment":"*",
+      "device":"desktop",
+      "baseRuleSet":[
+         {
+            "id": 1,
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "Listingpage"
+        }
+      ],
+      "businessRuleSet":[
+      ],
+      "actions":[
+         {
+            "operator":"injectscript",
+            "value":"for(let elm of document.querySelectorAll(\\'a.product-link\\')) {\\nelm.addEventListener(\\'click\\', (ev) => {\\n  ev.preventDefault();\\n  let win = window.open(this.href, '_blank');\\n  win.focus();\\n  ev.stopPropagation();\\n})};",
+            "selector":"body",
+            "businessRuleTransformations": [
+            ]
+         }
       ]
    }
 ]
