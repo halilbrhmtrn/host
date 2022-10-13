@@ -3640,7 +3640,7 @@
       "actions":[
          {
             "operator":"injectscript",
-            "value":"function createDataLayerProduct(element) {return {'name': element.data('product-name'),'id': element.data('product-sku'),'price': element.data('product-price'),'brand': 'Vivense','category': element.data('category'),'variant': '','list': element.data('list') + ' Listing','position': element.data('position'),'dimension11' : element.data('discount-rate').toString(),'dimension12': parseInt(element.data('on-showroom')) ? 'Yes' : 'No', 'dimension13':element.data('image-count').toString()}};for(let elm of document.querySelectorAll('a.product-link')) {elm.addEventListener('click', function(ev) { ev.preventDefault();  dataLayer.push({'Category': 'Enhanced Ecommerce','Action': 'Product','Label': 'Click','Value': 0,'noninteraction': false,'ecommerce': {'click': {'actionField': {'list': element.data('list') + ' Listing'},'products': [createDataLayerProduct(element)]}},'event': 'eeEvent'});let win = window.open(this.href, '_blank');  win.focus();  ev.stopPropagation();})};",
+            "value":"for(let elm of document.querySelectorAll('a.product-link')) {elm.addEventListener('click', function(ev) { ev.preventDefault();  let win = window.open(this.href, '_blank');  win.focus();  ev.stopPropagation();})};",
             "selector":"body",
             "businessRuleTransformations": [
             ]
