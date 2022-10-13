@@ -3641,7 +3641,7 @@
             "type":"modal",
             "selector":"#checkoutForm > div > div > div.col-md-4.cart-right-container > div.cart-footer > span > button",
             "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
-            "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><div class=\"nd-popup__title\"></div><div class=\"nd-popup__text\"></div><div><a class=\"nd-cta_btn\" href=\"vivense-uye-kayit.html?ref=basket\">Üye Girişi Yaparak Devam Et</a></div><div><a class=\"nd-cta_btn\" href=\"adres-listesi.html\">Üye Olmadan Devam Et</a></div></div></div>",
+            "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><div class=\"nd-popup__title\"></div><div class=\"nd-popup__text\"></div><div><a class=\"nd-cta_btn\" href=\"vivense-uye-kayit.html?ref=basket\" style=\"font-size:15px; background:#337ab7\">Üye Girişi Yaparak Devam Et</a></div><div><a class=\"nd-cta_btn\" href=\"adres-listesi.html\" style=\"font-size:15px; background:#337ab7\">Üye Olmadan Devam Et</a></div></div></div>",
             "businessRuleTransformations":[
             ]
             
