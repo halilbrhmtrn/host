@@ -2445,7 +2445,7 @@
               "id":3,
               "operator":"productInfoLookup",
               "pType":"productViewCount",
-              "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE_PRODUCTINFO}} kişi görüntüledi,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
+              "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE_PRODUCTINFO}} kişi görüntüledi,  </span><span class=\"quick-delivery-text-small\"> son 1 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>",
               "selector":"#wowslider-container1 > div.favorite-area-hearth.d-product-favorite"
            }
            ]
@@ -2973,7 +2973,7 @@
              {
               "id":3,
               "pType":"productViewCount",
-              "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE_PRODUCTINFO}} kişi görüntüledi,  </span><span class=\"quick-delivery-text-small\"> son 15 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>"
+              "value":"<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span>{{REPLACE_PRODUCTINFO}} kişi görüntüledi,  </span><span class=\"quick-delivery-text-small\"> son 1 günde</span>\n            </span>\n          </div>\n        </div>\n      </div>"
            }
            ]
         }
@@ -3003,7 +3003,7 @@
              "value":"{{REPLACE}}",
              "variants": {
                "A":{
-                  "replaceFn": "return window.beagleInfoLayer?.vvsPDPDeliveryDateFormatted"
+                  "replaceFn": "return window.beagleInfoLayer?.pdp?.deliveryDateFormatted"
                },
                "B":{
                   "replaceFn": "const original = document.querySelector(\"#sidebar-right .delivery-date\").innerText;try {const charRegex = /[a-zA-Zıöüğşç]+/g;const numberRegex = /\\d+/g;const val = original.trim().split(\"-\");const firstDate = parseInt(val[0].match(numberRegex)[0]);const secondDate = parseInt(val[1].match(numberRegex)[0]);if (!charRegex.test(val[0])) {if (secondDate - firstDate >= 7) return `${secondDate - 3}-${secondDate} ${original.match(charRegex)[0]}`;return original;} else {const month = val[0].match(charRegex)[0].toLowerCase();let remainigDays = 31 - firstDate;if (month.startsWith('s') || month.startsWith('ş')) remainigDays = 28 - firstDate;if (month === \"nisan\") remainigDays = 30 - firstDate;if (month === \"haziran\") remainigDays = 30 - firstDate;if (month === \"eylul\" || month === \"eylül\") remainigDays = 30 - firstDate;if (month === \"kasım\" || month === \"kasim\") remainigDays = 30 - firstDate;if (remainigDays + secondDate >= 7) {if (secondDate > 3) return `${secondDate - 3}-${secondDate} ${val[1].match(charRegex)[0]}`;return `${firstDate + remainigDays + (secondDate - 3)} ${val[0].match(charRegex)[0]}-${val[1]}`;}return original;}} catch (err) {return original;}"
@@ -3044,7 +3044,7 @@
           "value":"{{REPLACE}}",
           "variants": {
             "A":{
-               "replaceFn": "return window.beagleInfoLayer?.vvsPDPDeliveryDateFormatted"
+               "replaceFn": "return window.beagleInfoLayer?.pdp?.deliveryDateFormatted"
             },
             "B":{
                "replaceFn": "const original = document.querySelector(\".panel-body .planned_delivery_date\").innerText;try {const charRegex = /[a-zA-Zıöüğşç]+/g;const numberRegex = /\\d+/g;const val = original.trim().split(\"-\");const firstDate = parseInt(val[0].match(numberRegex)[0]);const secondDate = parseInt(val[1].match(numberRegex)[0]);if (!charRegex.test(val[0])) {if (secondDate - firstDate >= 7) return `${secondDate - 3}-${secondDate} ${original.match(charRegex)[0]}`;return original;} else {const month = val[0].match(charRegex)[0].toLowerCase();let remainigDays = 31 - firstDate;if (month.startsWith('s') || month.startsWith('ş')) remainigDays = 28 - firstDate;if (month === \"nisan\") remainigDays = 30 - firstDate;if (month === \"haziran\") remainigDays = 30 - firstDate;if (month === \"eylul\" || month === \"eylül\") remainigDays = 30 - firstDate;if (month === \"kasım\" || month === \"kasim\") remainigDays = 30 - firstDate;if (remainigDays + secondDate >= 7) {if (secondDate > 3) return `${secondDate - 3}-${secondDate} ${val[1].match(charRegex)[0]}`;return `${firstDate + remainigDays + (secondDate - 3)} ${val[0].match(charRegex)[0]}-${val[1]}`;}return original;}} catch (err) {return original;}"
@@ -3618,32 +3618,33 @@
       ]
    },
    {
-      "id": 46,
-      "name":"DESKTOP - Open PLP links in new tab",
-      "description":"Open PLP links in new tab",
-      "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
+      "id":47,
+      "name":"DESKTOP Easy Navigation",
+      "description":"Easy Navigation",
+      "category":"Abandonment and Reengagement / Sitewide / Web",
       "apply_on_user_segment":"*",
-      "reapply_event": "infinite_scroll",
-      "reapply_event_page_type":"ListingPage",
       "device":"desktop",
       "baseRuleSet":[
          {
-            "id": 1,
-            "type": "dataLayer",
-            "operator": "PageType",
-            "condition": "equal",
-            "value": "Listingpage"
-        }
+            "id":1,
+            "type":"url",
+            "operator":"path",
+            "condition":"equal",
+            "value":"/siparis-listesi.html"
+         }
       ],
-      "businessRuleSet":[
+      "businessRuleSet": [
       ],
       "actions":[
          {
-            "operator":"injectscript",
-            "value":"for(let elm of document.querySelectorAll('a.product-link')) {elm.addEventListener('click', function(ev) { ev.preventDefault();  let win = window.open(this.href, '_blank');  win.focus();  ev.stopPropagation();})};",
+            "operator":"insert",
+            "type":"modal",
             "selector":"body",
-            "businessRuleTransformations": [
+            "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
+            "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><div class=\"nd-popup__title\">Sipariş vermenin tam zamanı!</div><div class=\"nd-popup__text\">Sepetindeki ürünlerin stokları azalıyor. Şimdi alışverişini tamamla, ürünlerin daha hızlı teslim edilsin!</div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">ŞİMDİ SİPARİŞ VER</a></div></div>",
+            "businessRuleTransformations":[
             ]
+            
          }
       ]
    }
