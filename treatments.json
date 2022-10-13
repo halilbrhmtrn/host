@@ -3623,6 +3623,7 @@
       "description":"Money back guarantee banner",
       "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
       "apply_on_user_segment":"*",
+      "reapply_event": "infinite_scroll",
       "device":"desktop",
       "baseRuleSet":[
          {
