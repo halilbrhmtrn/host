@@ -3640,7 +3640,7 @@
       "actions":[
          {
             "operator":"injectscript",
-            "value": "function openTabScript() {function openTab(ev) {ev.preventDefault();ev.stopPropagation();let win = window.open(this.href, '_blank');win.focus();}$('#product-list-wrapper > div > div > div > div > div > a').each(function(i, elm) {$(elm).off('click.beagleOpenTab', openTab);$(elm).on('click.beagleOpenTab', openTab);});};const observer = new ResizeObserver(function() {openTabScript();});observer.observe(window.top.document.documentElement);",
+            "value": "function openTabScript() {function openTab(ev) {ev.preventDefault();ev.stopPropagation();let win = window.open(this.href, '_blank');win.focus();}$('#product-list-wrapper > div > div > div > div > div > a').each(function(i, elm) {$(elm).off('click.beagleOpenTab');$(elm).on('click.beagleOpenTab', openTab);});};const observer = new ResizeObserver(function() {openTabScript();});observer.observe(window.top.document.documentElement);",
             "selector":"body",
             "businessRuleTransformations": [
             ]
