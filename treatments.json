@@ -3625,8 +3625,6 @@
       "description":"Open PLP links in new tab",
       "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
       "apply_on_user_segment":"*",
-      "reapply_event": "infinite_scroll",
-      "reapply_event_page_type":"Listingpage",
       "device":"desktop",
       "baseRuleSet":[
          {
