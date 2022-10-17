@@ -3642,7 +3642,7 @@
       "actions":[
          {
             "operator":"injectscript",
-            "value":"for(let elm of document.querySelectorAll('a.product-link')) {elm.addEventListener('click', function(ev) { ev.preventDefault();  let win = window.open(this.href, '_blank');  win.focus();  ev.stopPropagation();})};",
+            "value": "function removeHandle(elm) {elm.removeEventListener('click', openTab);}; function addHandle(elm){elm.addEventListener('click', openTab)}; function openTab(ev) { ev.preventDefault(); ev.stopPropagation(); let win = window.open(this.href, '_blank'); win.focus();} for(let elm of document.querySelectorAll('#product-list-wrapper > div > div > div > div > div > a')) { removeHandle(elm); addHandle(elm); };",
             "selector":"body",
             "businessRuleTransformations": [
             ]
