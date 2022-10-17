@@ -13,6 +13,42 @@
        ]
     },
     {
+      "id": 14,
+      "name":"DESKTOP infinite scroll",
+      "description":"Enable inifite scroll on desktop",
+      "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web",
+      "device":"desktop",
+      "apply_on_user_segment":"*",
+      "baseRuleSet":[
+         {
+            "id":1,
+            "type":"dataLayer",
+            "operator":"PageType",
+            "condition":"equal",
+            "value":"Listingpage",
+            "chain_condition" : "or",
+            "chain":
+            {
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/arama"
+            }
+         }
+      ],
+      "actions":[
+         {
+            "operator":"remove",
+            "selector":".pagination_wrapper"
+         },
+         {
+          "operator":"injectscript",
+          "selector":"body",
+          "value": "function track(fn, handler, before) {  return function interceptor() {    if (before) {      handler.apply(this, arguments);      return fn.apply(this, arguments);    } else {      var result = fn.apply(this, arguments);      handler.apply(this, arguments);      return result;    }  }};var oldQs = location.search;function handler() {  url = new URL(window.location.href);  origin = url.origin;  pathname = url.pathname;  search = url.search.substr(1);  window.sessionStorage.removeItem(\"BG_scrollPage\");  ajaxPage = 2;  oldQs = location.search;  $('.pagination_wrapper').remove();};history.pushState = track(history.pushState, handler);history.replaceState = track(history.replaceState, handler);window.addEventListener('popstate', handler);let ajaxPage = 2;const scrollPage = parseInt(window.sessionStorage.getItem(\"BG_scrollPage\"));let url = new URL(window.location.href);let origin = url.origin;let pathname = url.pathname;let search = url.search.substr(1);const pageLoader = async (page) => {  const fetchURL = `${origin}/ajax/mobile-search/loadOtherPages.php?originalPath=${pathname}&${search}&page=${page}`;  const res = await fetch(fetchURL);  if (!res.ok) return false;  const resJson = await res.json();  if (!resJson.html || resJson.html === \"\") return false;  $(\".product-list\").append(resJson.html);  return true;};const productsInitialize = () => {  setTimeout(() => {    if (typeof window.viveCategoryPage.lazyLoadImages === \"function\") window.viveCategoryPage.lazyLoadImages();    else console.warn(\"Beagle: window.viveCategoryPage.lazyLoadImages not defined\");    if (typeof window.viveCategoryPage.imageHover === \"function\") window.viveCategoryPage.imageHover();    else console.warn(\"Beagle: window.viveCategoryPage.imageHover not defined\");    if (typeof Vivense.favoriteActions.init === \"function\") Vivense.favoriteActions.init();    else console.warn(\"Beagle: favoriteActions.init not defined\");  }, 750);};const navType = performance.getEntriesByType(\"navigation\")[0].type;if (navType === \"back_forward\") {  if (scrollPage) {    for (let i = 2; i <= scrollPage; i++) {      pageLoader(i);    }    productsInitialize();    ajaxPage = scrollPage + 1;  }} else window.sessionStorage.removeItem(\"BG_scrollPage\");let pageLoadStatus = true;setInterval(async () => {  if (pageLoadStatus && document.documentElement.scrollTop / document.documentElement.offsetHeight > 0.75) {    pageLoadStatus = await pageLoader(ajaxPage);    if (pageLoadStatus) {      productsInitialize();      window.sessionStorage.setItem(\"BG_scrollPage\", ajaxPage);      ajaxPage++;    }  }}, 750);"
+         }
+      ]
+  },
+    {
      "id":41,
      "name":"DESKTOP Exit Pop-up Hero Product",
      "description":"Display exit popup",
@@ -577,7 +613,7 @@
        "apply_on_user_segment": "*",
        "device": "desktop",
        "reapply_event": "element_change",
-       "reapply_selector": "#checkoutForm > div > div > div.col-md-8.cart-left-container",
+       "reapply_selector": "#checkoutForm > div > div > div.col-md-4.cart-right-container",
        "baseRuleSet": [
            {
                "id": 1,
@@ -879,7 +915,7 @@
                "chain_condition": "and",
                "chain": {
                    "type": "function",
-                   "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                   "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                    "condition": "lessThan",
                    "value": 3500
                },
@@ -894,7 +930,7 @@
                "chain_condition": "and",
                "chain": {
                    "type": "function",
-                   "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                   "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                    "condition": "greaterEquals",
                    "value": 6500,
                    "chain_condition": "and",
@@ -916,7 +952,7 @@
                "chain_condition": "and",
                "chain": {
                    "type": "function",
-                   "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                   "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                    "condition": "greaterEquals",
                    "value": 3500,
                    "chain_condition": "and",
@@ -946,7 +982,7 @@
                    "chain":
                    {
                        "type": "function",
-                       "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                       "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                        "condition": "lessThan",
                        "value": 6500
                    }
@@ -969,7 +1005,7 @@
                    "chain":
                    {
                        "type": "function",
-                       "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                       "operator": "let selector = '.price'; if(!document.querySelector(selector)){selector = '.new-price'} const itemValue = parseInt(document.querySelector(selector).textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                        "condition": "greaterEquals",
                        "value": 6500
                    }
@@ -1133,7 +1169,7 @@
                "chain_condition": "and",
                "chain": {
                    "type": "function",
-                   "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                   "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                    "condition": "lessThan",
                    "value": 3500
                },
@@ -1149,7 +1185,7 @@
                "chain":
                {
                    "type": "function",
-                   "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                   "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                    "condition": "greaterEquals",
                    "value": 6500,
                    "chain_condition": "and",
@@ -1173,7 +1209,7 @@
                "chain":
                {
                    "type": "function",
-                   "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                   "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                    "condition": "greaterEquals",
                    "value": 3500,
                    "chain_condition": "and",
@@ -1203,7 +1239,7 @@
                    "chain":
                    {
                        "type": "function",
-                       "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                       "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                        "condition": "lessThan",
                        "value": 6500
                    }
@@ -1227,7 +1263,7 @@
                    "chain":
                    {
                        "type": "function",
-                       "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('ND_CABasketPrice')); return itemValue + caBasketPrice;",
+                       "operator": "const itemValue = parseInt(document.querySelector('#sales-price').textContent.replace('TL', '').replace('.','')); const caBasketPrice = parseInt(window.localStorage.getItem('BG_CABasketPrice')); return itemValue + caBasketPrice;",
                        "condition": "greaterEquals",
                        "value": 6500
                    }
@@ -1676,42 +1712,6 @@
       ]
    },
    {
-       "id": 14,
-       "name":"DESKTOP infinite scroll",
-       "description":"Enable inifite scroll on desktop",
-       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web",
-       "device":"desktop",
-       "apply_on_user_segment":"*",
-       "baseRuleSet":[
-          {
-             "id":1,
-             "type":"dataLayer",
-             "operator":"PageType",
-             "condition":"equal",
-             "value":"Listingpage",
-             "chain_condition" : "or",
-             "chain":
-             {
-                 "type": "url",
-                 "operator": "path",
-                 "condition": "equal",
-                 "value": "/arama"
-             }
-          }
-       ],
-       "actions":[
-          {
-             "operator":"remove",
-             "selector":".pagination_wrapper"
-          },
-          {
-           "operator":"injectscript",
-           "selector":"body",
-           "value": "function track(fn, handler, before) {  return function interceptor() {    if (before) {      handler.apply(this, arguments);      return fn.apply(this, arguments);    } else {      var result = fn.apply(this, arguments);      handler.apply(this, arguments);      return result;    }  }};var oldQs = location.search;function handler() {  url = new URL(window.location.href);  origin = url.origin;  pathname = url.pathname;  search = url.search.substr(1);  window.sessionStorage.removeItem(\"ND_scrollPage\");  ajaxPage = 2;  oldQs = location.search;  $('.pagination_wrapper').remove();};history.pushState = track(history.pushState, handler);history.replaceState = track(history.replaceState, handler);window.addEventListener('popstate', handler);let ajaxPage = 2;const scrollPage = parseInt(window.sessionStorage.getItem(\"ND_scrollPage\"));let url = new URL(window.location.href);let origin = url.origin;let pathname = url.pathname;let search = url.search.substr(1);const pageLoader = async (page) => {  const fetchURL = `${origin}/ajax/mobile-search/loadOtherPages.php?originalPath=${pathname}&${search}&page=${page}`;  const res = await fetch(fetchURL);  if (!res.ok) return false;  const resJson = await res.json();  if (!resJson.html || resJson.html === \"\") return false;  $(\".product-list\").append(resJson.html);  return true;};const productsInitialize = () => {  setTimeout(() => {    if (typeof window.viveCategoryPage.lazyLoadImages === \"function\") window.viveCategoryPage.lazyLoadImages();    else console.warn(\"Nextday: window.viveCategoryPage.lazyLoadImages not defined\");    if (typeof window.viveCategoryPage.imageHover === \"function\") window.viveCategoryPage.imageHover();    else console.warn(\"Nextday: window.viveCategoryPage.imageHover not defined\");    if (typeof Vivense.favoriteActions.init === \"function\") Vivense.favoriteActions.init();    else console.warn(\"Nextday: favoriteActions.init not defined\");  }, 750);};const navType = performance.getEntriesByType(\"navigation\")[0].type;if (navType === \"back_forward\") {  if (scrollPage) {    for (let i = 2; i <= scrollPage; i++) {      pageLoader(i);    }    productsInitialize();    ajaxPage = scrollPage + 1;  }} else window.sessionStorage.removeItem(\"ND_scrollPage\");let pageLoadStatus = true;setInterval(async () => {  if (pageLoadStatus && document.documentElement.scrollTop / document.documentElement.offsetHeight > 0.75) {    pageLoadStatus = await pageLoader(ajaxPage);    if (pageLoadStatus) {      productsInitialize();      window.sessionStorage.setItem(\"ND_scrollPage\", ajaxPage);      ajaxPage++;    }  }}, 750);"
-          }
-       ]
-   },
-   {
        "id": 15,
        "name":"DESKTOP PLP layout",
        "description":"Change PLP layout from 4 columns to 3 columns",
@@ -1954,9 +1954,7 @@
                      "🛒 Sepetinde {{REPLACE}} ürün unuttun!",
                      "👋 Sepetinde {{REPLACE}} ürün unuttun!"
                   ],
-                  "replaceFn":[
-                     "let sum = Array.from($(\".cartItemQuantity\")).length; return sum;"
-                  ]
+                  "replaceFn": "let sum = Array.from($(\".cartItemQuantity\")).length; return sum;"
                },
                {
                   "id":2,
@@ -1965,16 +1963,20 @@
                      "🛋 En sağlam {{REPLACE}} mobilyaları Vivense’de!",
                      "🪑 En kaliteli {{REPLACE}} mobilyaları Vivense’de!"
                   ],
-                  "replaceFn":[
-                     "let res = this.dataLayerFinder('content_name'); return res",
-                     "let res = this.dataLayerFinder('content_name'); return res",
-                     "let res = this.dataLayerFinder('content_name'); return res"
-                  ]
+                  "replaceFn": {
+                     "storage": "info-layer",
+                     "key": "plp.name",
+                     "keyFallback": "pdp.name"
+                  }
                },
                {
                   "id":3,
                   "value":"⭐ O {{REPLACE}} Bu {{REPLACE}} !",
-                  "replaceFn":"let res = this.dataLayerFinder('content_category'); return res"
+                  "replaceFn":{
+                     "storage": "info-layer",
+                     "key": "plp.name",
+                     "keyFallback": "pdp.name"
+                  }
                }
             ]
          }
@@ -3081,7 +3083,7 @@
           {
              "id":2,
              "type":"dataLayer",
-             "operator":"vvsPDPProduct.price",
+             "operator":"pdp.price",
              "condition":"greaterThan",
              "value":"2000"
           }
@@ -3618,8 +3620,38 @@
       ]
    },
    {
+      "id": 46,
+      "name":"DESKTOP - Open PLP links in new tab",
+      "description":"Open PLP links in new tab",
+      "category":"Universal Best Practice UX Strategies / Checkout Page / Web, Mobile Web",
+      "apply_on_user_segment":"*",
+      "reapply_event": "infinite_scroll",
+      "reapply_event_page_type":"Listingpage",
+      "device":"desktop",
+      "baseRuleSet":[
+         {
+            "id": 1,
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "Listingpage"
+        }
+      ],
+      "businessRuleSet":[
+      ],
+      "actions":[
+         {
+            "operator":"injectscript",
+            "value":"for(let elm of document.querySelectorAll('a.product-link')) {elm.addEventListener('click', function(ev) { ev.preventDefault();  let win = window.open(this.href, '_blank');  win.focus();  ev.stopPropagation();})};",
+            "selector":"body",
+            "businessRuleTransformations": [
+            ]
+         }
+      ]
+   },
+   {
       "id":47,
-      "name":"DESKTOP Easy Navigation",
+      "name":"DESKTOP - Easy Navigation",
       "description":"Easy Navigation",
       "category":"Abandonment and Reengagement / Sitewide / Web",
       "apply_on_user_segment":"*",
@@ -3631,6 +3663,13 @@
             "operator":"path",
             "condition":"equal",
             "value":"/siparis-listesi.html"
+         },
+         {
+            "id": 2,
+            "type": "dataLayer",
+            "operator": "vvsUserId",
+            "condition": "equal",
+            "value": "0"
          }
       ],
       "businessRuleSet": [
@@ -3641,10 +3680,9 @@
             "type":"modal",
             "selector":"#checkoutForm > div > div > div.col-md-4.cart-right-container > div.cart-footer > span > button",
             "contentSelector":"body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
-            "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><div class=\"nd-popup__title\"></div><div class=\"nd-popup__text\"></div><div><a class=\"nd-cta_btn\" href=\"vivense-uye-kayit.html?ref=basket\" style=\"font-size:15px; background:#337ab7\">Üye Girişi Yaparak Devam Et</a></div><div><a class=\"nd-cta_btn\" href=\"adres-listesi.html\" style=\"font-size:15px; background:#337ab7\">Üye Olmadan Devam Et</a></div></div></div>",
+            "value":"<div class=\"nd-popup\"><div class=\"nd-popup__body\"><div class=\"nd-popup__title\"></div><div class=\"nd-popup__text\"></div><div><a class=\"nd-modal_btn_colored\" href=\"vivense-uye-kayit.html?ref=basket\">Giriş Yaparak Devam Et</a></div><div><a class=\"nd-modal_btn\" href=\"adres-listesi.html\">Üye Olmadan Devam Et</a></div></div></div>",
             "businessRuleTransformations":[
             ]
-            
          }
       ]
    }
