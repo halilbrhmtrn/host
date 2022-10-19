@@ -3993,7 +3993,8 @@
            {
               "operator": "edit",
               "type": "text",
-              "value": "Üye Ol"
+              "value": "Üye Ol",
+              "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2)"
            },
            {
               "operator": "edit",
@@ -4002,13 +4003,31 @@
               "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > div.vivense-register-wrapper-direction > a"
            },
            {
-              "operator":"edit",
-              "type":"html",
-              "value":"Sipariş vererek, Vivense'nin <span class=\"bg-accept-policy-text-link\" style=\"color: #1b757e; text-decoration:underline; font-family:BrandonTextBold\"> Ön Bilgilendirme Koşulları'nı ve Mesafeli Satış Sözleşmesi</span>'ni kabul etmiş olursunuz. Kişisel verilerinizin Vivense tarafından nasıl işlendiğine ilişkin detaylı bilgi için <a href=\"#gizlilik-ve-cerez\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Gizlilik ve Çerez Politikasını</a>, <a href=\"#aydinlatma-metni\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Müşteri Aydınlatma Metni</a> ve <a href=\"#kvkk-contract\" target=\"_blank\" class=\"accept-policy-link\" data-lity=\"\">Veri Koruma ve İşleme Politikası</a> inceleyebilirsiniz.",
-              "selector":"#registration > div.vivense-campaign-endorsement-selection > div > div:nth-child(1) > label",
-              "selectorFallback": "#main > div > fieldset > div.col-xs-12.accept-policy > div:nth-child(1) > label > label",
-              "businessRuleTransformations": [
-              ]
+            "operator": "edit",
+            "type": "styleApplicator",
+            "value": "{\"display\":\"none\"}",
+            "selector": "#registration > div.vivense-campaign-endorsement-selection > div"
+           },
+           {
+            "operator": "insert",
+            "type": "after",
+            "value": "<div><label class=\"checkbox\" for=\"nd_tos\"><span class=\"checkbox-checked\"></span><input type=\"checkbox\" name=\"nd_tos\" id=\"nd_vvns-approve-campaign\" onclick='(function handleApproveClick(e){let checkboxes = document.getElementsByName(\"nd_tos\");checkboxes.forEach((item) => {if (item !== e) item.checked = false;}); document.querySelector(\"#vvns-approve-campaign\").click();document.querySelector(\"#vivenseSms\").click();document.querySelector(\"#vivenseEmail\").click();document.querySelector(\"#vivensePhone\").click()})(this)'><span style=\"margin-left:20px;vertical-align:middle\">Onaylıyorum</span></label><label class=\"checkbox\" for=\"nd_tos_rej\"><span class=\"checkbox-checked\"></span><input type=\"checkbox\" name=\"nd_tos\" id=\"nd_vvns-not-approve-campaign\" onclick='(function handleRejectClick(e){let checkboxes = document.getElementsByName(\"nd_tos\");checkboxes.forEach((item) => {if (item !== e) item.checked = false;}); document.querySelector(\"#vvns-not-approve-campaign\").click()})(this)'><span style=\"margin-left:20px;vertical-align:middle\">Onaylamıyorum</span></label></div>",
+            "selector": "#registration > div.vivense-campaign-endorsement-selection > p"
+           },
+           {
+            "operator": "remove",
+            "variants":
+            {
+                "A":
+                {
+                    "weight": 99,
+                    "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > div.vivense-register-other"
+                },
+                "B":
+                {
+                    "weight": 100
+                }
+            }
            }
         ]
      }
