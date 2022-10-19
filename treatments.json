@@ -3994,14 +3994,9 @@
               "operator": "edit",
               "type": "text",
               "value": "Üye Ol",
-              "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2)"
-           },
-           {
-              "operator": "edit",
-              "type": "styleApplicator",
-              "value": "{\"background\": \"#8f9ba7\", \"color\": \"#fff\"}",
-              "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > div.vivense-register-wrapper-direction > a"
-           },
+              "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > ul > li.active > a"
+            },
+         
            {
             "operator": "edit",
             "type": "styleApplicator",
@@ -4028,7 +4023,13 @@
                     "weight": 100
                 }
             }
-           }
+           },
+           {
+            "operator": "edit",
+            "type": "styleApplicator",
+            "value": "{\"background\": \"#8f9ba7\", \"color\": \"#fff\"}",
+            "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > div.vivense-register-wrapper-direction > a"
+         }
         ]
      }
 ]
