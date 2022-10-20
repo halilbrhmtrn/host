@@ -4078,7 +4078,8 @@
             {
                 "operator": "setattribute",
                 "attribute": "onfocus",
-                "value": "function() { this.placeholder = '0(5__) ___ __ __'"
+                "value": "function() { this.placeholder = '0(5__) ___ __ __'",
+                "selector": "#phone"
             }
         ]
     }
