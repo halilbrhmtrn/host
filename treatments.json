@@ -4076,10 +4076,11 @@
         ],
         "actions":[
             {
-                "operator": "setattribute",
-                "attribute": "onfocus",
+                "operator": "edit",
+                "type": "addEventListener",
                 "value": "function handlePhonePlaceHolder() { this.placeholder = '0(5__) ___ __ __'; }",
-                "selector": "#phone"
+                "selector": "#phone",
+                "eventType": "focus"
             }
         ]
     }
