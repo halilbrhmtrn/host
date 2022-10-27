@@ -4000,6 +4000,8 @@
         "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
         "device":"desktop",
         "apply_on_user_segment":"*",
+        "reapply_event": "element_change",
+        "reapply_selector": ".nav.nav-tabs",
         "baseRuleSet":[
             {
             "id": 1,
