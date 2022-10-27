@@ -4037,12 +4037,6 @@
               "selector": "#sign-up > p"
            },
            {
-              "operator": "edit",
-              "type": "text",
-              "value": "Üye Ol",
-              "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2) > a"
-            },
-           {
             "operator": "edit",
             "type": "styleApplicator",
             "value": "{\"display\":\"none\"}",
