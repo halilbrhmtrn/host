@@ -4022,7 +4022,7 @@
             "id": 2,
             "type": "element",
             "operator": "classList",
-            "condition": "notContains",
+            "condition": "contains",
             "value": "active",
             "selector": "div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2)"
            }
