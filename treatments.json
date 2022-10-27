@@ -3993,7 +3993,7 @@
             }
         ]
     },
-    {
+      {
         "id": 49,
         "name":"DESKTOP - Simplify Membership Page'",
         "description":"Simplify Membership Page",
@@ -4001,12 +4001,28 @@
         "device":"desktop",
         "apply_on_user_segment":"*",
         "baseRuleSet":[
+            {
+            "id": 1,
+            "type": "url",
+            "operator": "path",
+            "condition": "equal",
+            "value": "/vivense-uye-kayit.html",
+            "chain_condition": "or",
+            "chain":
+            {
+                "type": "url",
+                "operator": "path",
+                "condition": "equal",
+                "value": "/vivense-uye-girisi.html"
+            }
+           },
            {
-              "id":1,
-              "type":"url",
-              "operator":"path",
-              "condition":"equal",
-              "value":"/vivense-uye-kayit.html"
+            "id": 2,
+            "type": "element",
+            "operator": "classList",
+            "condition": "notContains",
+            "value": "active",
+            "selector": "div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2)"
            }
         ],
         "actions":[
