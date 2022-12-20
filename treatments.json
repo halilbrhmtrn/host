@@ -869,8 +869,8 @@
             }
         ]
     },
-    {
-        "id": 65,
+      {
+        "id": 64,
         "name": "D - P - Title Change",
         "description": "Change Title with chat gpt suggestions",
         "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
@@ -880,8 +880,27 @@
         "actions":
         [
             {
-                "operator": "title-change",
+                "operator": "ai-suggest",
+                "type": "title-change",
                 "selector": ".product-title"
+            }
+        ]
+    },
+    {
+        "id": 65,
+        "name": "D - P - Description Append",
+        "description": "Append Description with chat gpt suggestions",
+        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+        "device": "desktop",
+        "apply_on_user_segment": "*",
+        "eligibilityRuleSet": ["PageType.PDP"],
+        "actions":
+        [
+            {
+                "operator": "ai-suggest",
+                "type": "add-description",
+                "selector": "#other-colour",
+                "value": "<div class=\"bg-desc-body\"><p class=\"bg-desc-text\"></p></div>"
             }
         ]
     }
