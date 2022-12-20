@@ -257,6 +257,11 @@
                 "B": 100
             }
         },
+         "64":
+        {
+            "name": "D - C - desc Change",
+            "weight": 100
+        },
         "65":
         {
             "name": "D - C - Title Change",
@@ -310,6 +315,11 @@
             "name":"D - Header Menu Delay",
             "weight": 0
         },
+        "64":
+        {
+            "name": "D - C - desc Change",
+            "weight": 100
+        },
          "65":
         {
             "name": "D - C - Title Change",
@@ -353,6 +363,11 @@
                 "A": 100,
                 "B": 100
             }
+        },
+        "64":
+        {
+            "name": "D - C - desc Change",
+            "weight": 100
         },
          "65":
         {
@@ -406,6 +421,11 @@
         {
             "name":"D - Header Menu Delay",
             "weight": 0
+        },
+        "64":
+        {
+            "name": "D - C - desc Change",
+            "weight": 100
         },
          "65":
         {
