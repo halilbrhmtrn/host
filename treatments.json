@@ -880,7 +880,7 @@
         "actions":
         [
             {
-                "operator": "titleChange",
+                "operator": "title-change",
                 "selector": ".product-title"
             }
         ]
