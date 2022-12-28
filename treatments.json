@@ -1,907 +1,1762 @@
 [
-    {
-        "id": 0,
-        "name": "ALL Dummy Baseline",
-        "description": "Dummy Baseline",
-        "category": "Baseline / Sitewide / Web, Mobile Web",
-        "apply_on_user_segment": "*",
-        "device": "*",
-        "actions":
-        [
-            {
-                "operator": "noop"
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "name": "M - L - One Column Layout",
-        "description": "Change mobile layout into 1 column",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
-        "apply_on_user_segment": "*",
-        "device": "mobile",
-        "reapply_event": "infinite_scroll",
-        "pageTypes": ["PLP"],
-        "actions":
-        [
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"margin-top\":\"13rem\"}",
-                "selector": "div.product_info"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"width\":\"100%\"}",
-                "selector": "#product-list-wrapper > div.product-list_container > div > div"
-            },
-            {
-                "operator": "edit",
-                "type": "addClass",
-                "value": "next-day-product",
-                "selector": ".product-list > .product-card"
-            },
-            {
-                "operator": "remove",
-                "selector": "#product-list-wrapper > div.product-list_container > div > div > div.other_size_options_mobile_wrapper.open_other_product"
-            }
-        ]
-    },
-    {
-        "id": 16,
-        "name": "D - CTA - Text Optimization: sonraki adım ve ödeme türü",
-        "description": "CTA Button Text Optimization",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web",
-        "device": "desktop",
-        "reapply_event": "element_change",
-        "reapply_selector":
-        [
-            ".tabbable-line",
-            ".payment-options-area.frame-box.form-group"
-        ],
-        "apply_on_user_segment": "*",
-        "pageTypes":["Basket", "Address", "Payment"],
-        "businessRuleSet":["PageType.Basket", "PageType.Address", "PageType.Payment"],
-        "actions":
-        [
-            {
-                "operator": "edit",
-                "type": "text",
-                "selector": ".btn.cart-confirm.btn-lg",
-                "businessRuleTransformations":
-                [
-                    {
-                        "id": 0,
-                        "value": "SEPETİ ONAYLA",
-                        "selectorFallback": "#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button"
-                    },
-                    {
-                        "id": 1,
-                        "type": "html",
-                        "value": "<span style=\"color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;\">sonraki adım</span><span style=\"font-size:18px; font-family: BrandonTextBold\">ÖDEME BİLGİLERİNİ GİR</span>",
-                        "selectorFallback": "#order-cart-addreslist > div.cart-approve-btn > button"
-                    },
-                    {
-                        "id": 2,
-                        "type": "html",
-                        "value": "{{REPLACE}}",
-                        "selectorFallback": "#accept-pay",
-                        "replaceFn": "if (!$(\"#menuPayments > ul > li:nth-child(2)\").length) {if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.bank-transfer-area.form-group.frame-box.bank-payment-section\").attr(\"style\")?.includes(\"display: block\")) return \"<span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.row.payment-box.payment-area.credit-cart-section > div.row.installement-box.installement-area\").attr(\"style\")?.includes(\"display: none\")) return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const selectedOption = $(\"#installement-table-area > tbody\").find(\".selected-installement\");if (selectedOption.is(\":first-child\")) return \"<span style='height: 2.5rem;color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\"td\").text().split(\"x\")[1].trim();return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";} else {if ($(\"#menuPayments > ul > li:nth-child(2)\").hasClass(\"active\")) return \"<span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if (!$(\"#no_card_data\").hasClass(\"hidden\")) return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if ($(\"#menuPayments > ul > li:nth-child(1)\").hasClass(\"active\")) {const selectedOption = $(\"#creditCardInstallmentOptions > div.installament-list-2-col.add-installament > div > table > tbody\").find(\".active\");if (selectedOption.attr(\"id\") === \"installment-tr-1\") return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\".installment-price\").text().split(\"x\")[1].trim();return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";}}"
-                    }
-                ]
-            },
-            {
-                "operator": "edit",
-                "type": "addClass",
-                "selector": ".btn.cart-confirm.btn-lg",
-                "value": "nd-flex nd-flex__centered nd-flex__column",
-                "businessRuleTransformations":
-                [
-                    {
-                        "id": 0,
-                        "operator": "noop"
-                    },
-                    {
-                        "id": 2,
-                        "selectorFallback": "#accept-pay"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": 17,
-        "name": "M - P - Remove 'Desktek'",
-        "description": "Remove 'Destek' icon from PDP",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
-        "device": "mobile",
-        "delay": 50,
-        "apply_on_user_segment": "*",
-        "pageTypes": ["PDP"],
-        "eligibilityRuleSet": ["Element.LauncherExists"],
-        "actions":
-        [
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"display\":\"none\"}",
-                "selector": "#launcher"
-            }
-        ]
-    },
-    {
-        "id": 19,
-        "name": "D - Flashing Tabs",
-        "description": "Flashing Tab Messaging - Browser",
-        "category": "Promotional Messaging / Web",
-        "apply_on_user_segment": "*",
-        "device": "desktop",
-        "businessRuleSet": [{"set": ["PageType.Basket", "!Cart.Empty"], "type": "and"}, "PageType.PLP", "PageType.PDP"],
-        "actions":
-        [
-            {
-                "operator": "edit",
-                "type": "documentTitle",
-                "selector": "no-selector",
-                "value":
-                [
-                    "👋 Hey! Hala orada mısın?",
-                    "❤ Seni özledik"
-                ],
-                "applyEvent":
-                [
-                    "tabChange"
-                ],
-                "businessRuleTransformations":
-                [
-                    {
-                        "id": 0,
-                        "value":
-                        [
-                            "🛒 Sepetinde {{REPLACE}} ürün unuttun!",
-                            "👋 Sepetinde {{REPLACE}} ürün unuttun!"
-                        ],
-                        "replaceFn": "let sum = Array.from($(\".cartItemQuantity\")).length; return sum;"
-                    },
-                    {
-                        "id": 1,
-                        "value":
-                        [
-                            "🏡 En güzel {{REPLACE}} mobilyaları Vivense’de!",
-                            "🛋 En sağlam {{REPLACE}} mobilyaları Vivense’de!",
-                            "🪑 En kaliteli {{REPLACE}} mobilyaları Vivense’de!"
-                        ],
-                        "replaceFn":
-                        {
-                            "storage": "info-layer",
-                            "key": "plp.name",
-                            "keyFallback": "pdp.category"
-                        }
-                    },
-                    {
-                        "id": 2,
-                        "value": "⭐ O {{REPLACE}} Bu {{REPLACE}} !",
-                        "replaceFn":
-                        {
-                            "storage": "info-layer",
-                            "key": "plp.name",
-                            "keyFallback": "pdp.category"
-                        }
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": 21,
-        "name": "M - L - Disable Top Banner",
-        "description": "PLP - Disable Top Banner for Mobile",
-        "category": "Abandonment and Reengagement / PLP / Mobile Web",
-        "apply_on_user_segment": "*",
-        "device": "mobile",
-        "reapply_event": "query_search_change",
-        "pageTypes": ["PLP"],
-        "actions":
-        [
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"position\":\"unset\"}",
-                "selector": "#search-body > div.category-banner-wrapper"
-            },
-            {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"top\":\"0\"}",
-                "selector": "#category_sticky_filter"
-            }
-        ]
-    },
-    {
-        "id": 23,
-        "name": "D - C - Remove VV Banner",
-        "description": "Remove Default Vivense banner - Basket",
-        "category": "Universal Best Practice UX Strategies / Basket Page / Web ",
-        "apply_on_user_segment": "*",
-        "device": "desktop",
-        "pageTypes": ["Basket"],
-        "actions":
-        [
-            {
-                "operator": "remove",
-                "selector": "#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
-                "selectorFallback": "#checkoutForm > div.basket_product_list_header.reserved-product"
-            }
-        ]
-    },
-    {
-        "id": 24,
-        "name": "M - C - Encouraging Messaging: A: Uzun Uzun Düşünme B: 3 Gün İçinde",
-        "description": "Money back guarantee banner - Basket",
-        "category": "Universal Best Practice UX Strategies / Basket Page / Mobile Web",
-        "apply_on_user_segment": "*",
-        "device": "mobile",
-        "pageTypes": ["Basket"],
-        "eligibilityRuleSet": ["Cart.CouponApplicable"],
-        "actions":
-        [
-            {
-                "operator": "remove",
-                "selector": ".nd-money-back__wrapper"
-            },
-            {
-                "operator": "insert",
-                "type": "before",
-                "selector": "#checkoutForm > div > div.row.centered-wide-fix",
-                "selectorFallback": "#main > div",
-                "variants":
-                {
-                    "A":
-                    {
-                        "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>"
-                    },
-                    "B":
-                    {
-                        "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 gün içinde para iade garantisi</div></div></div></div>"
-                    }
-                }
-            },
-            {
-                "operator": "remove",
-                "selector": "#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
-                "selectorFallback": "#checkoutForm > div.basket_product_list_header.reserved-product"
-            }
-        ]
-    },
-    {
-        "id": 31,
-        "name": "D - CTA - Color: A: Kırmızı B: Sarı C: Mor",
-        "description": "CTA Buttons Change Color",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
-        "device": "desktop",
-        "apply_on_user_segment": "*",
-        "reapply_event": "timeout",
-        "pageTypes": ["!Homepage", "!PLP", "!Favorites", "!PastOrders", "!ProfilePages"],
-        "businessRuleSet": [{"set":["PageType.Register", "PageType.Sign-in"], "type": "or"}],
-        "actions":
-        [
-            {
-                "operator": "edit",
-                "type": "addClass",
-                "selector": ".btn.cart-confirm.btn-lg",
-                "selectorFallback": ".add-to-cart-btn",
-                "variants":
-                {
-                    "A":
-                    {
-                        "value": "nd-cta-red",
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "selector": "#registerBtn",
-                                "selectorFallback": "#loginForm > button",
-                                "value": "nd-cta-red-no-imp"
-                            }
-                        ]
-                    },
-                    "B":
-                    {
-                        "value": "nd-cta-yellow",
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "selector": "#registerBtn",
-                                "selectorFallback": "#loginForm > button",
-                                "value": "nd-cta-yellow-no-imp"
-                            }
-                        ]
-                    },
-                    "C":
-                    {
-                        "value": "nd-cta-purple",
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "selector": "#registerBtn",
-                                "selectorFallback": "#loginForm > button",
-                                "value": "nd-cta-purple-no-imp"
-                            }
-                        ]
-                    }
-                }
-            },
-            {
-                "operator": "noop",
-                "type": "addClass",
-                "selector": "#loginForm > button",
-                "selectorFallback": "#registerBtn",
-                "variants":
-                {
-                    "A":
-                    {
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "value": "nd-cta-red-no-imp",
-                                "operator": "edit"
-                            }
-                        ]
-                    },
-                    "B":
-                    {
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "value": "nd-cta-yellow-no-imp",
-                                "operator": "edit"
-                            }
-                        ]
-                    },
-                    "C":
-                    {
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "value": "nd-cta-purple-no-imp",
-                                "operator": "edit"
-                            }
-                        ]
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "id": 32,
-        "name": "M - CTA - Color: A: Kırmızı B: Sarı C: Mor",
-        "description": "CTA Buttons Change Color Mobile",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
-        "device": "mobile",
-        "reapply_event":
-        [
-            "timeout",
-            "element_change"
-        ],
-        "reapply_selector": "#\\#",
-        "apply_on_user_segment": "*",
-        "pageTypes": ["!Homepage", "!PLP", "!Favorites", "!PastOrders", "!ProfilePages"],
-        "businessRuleSet": [{"set":["PageType.Basket", "PageType.PDP"], "type": "or"}, {"set":["PageType.Address", "PageType.Payment"], "type": "or"}, {"set":["PageType.Register", "PageType.Sign-in"], "type": "or"}],
-        "actions":
-        [
-            {
-                "operator": "noop",
-                "type": "addClass",
-                "variants":
-                {
-                    "A":
-                    {
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "value": "nd-cta-red"
-                            },
-                            {
-                                "id": 1,
-                                "value": "nd-cta-red"
-                            },
-                            {
-                                "id": 2,
-                                "value": "nd-cta-red-no-imp"
-                            }
-                        ]
-                    },
-                    "B":
-                    {
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "value": "nd-cta-yellow"
-                            },
-                            {
-                                "id": 1,
-                                "value": "nd-cta-yellow"
-                            },
-                            {
-                                "id": 2,
-                                "value": "nd-cta-yellow-no-imp"
-                            }
-                        ]
-                    },
-                    "C":
-                    {
-                        "businessRuleTransformations":
-                        [
-                            {
-                                "id": 0,
-                                "value": "nd-cta-purple"
-                            },
-                            {
-                                "id": 1,
-                                "value": "nd-cta-purple"
-                            },
-                            {
-                                "id": 2,
-                                "value": "nd-cta-purple-no-imp"
-                            }
-                        ]
-                    }
-                },
-                "businessRuleTransformations":
-                [
-                    {
-                        "id": 0,
-                        "operator": "edit",
-                        "selector": ".btn.cart-confirm",
-                        "selectorFallback": ".default-add-cart-btn"
-                    },
-                    {
-                        "id": 1,
-                        "operator": "edit",
-                        "selector": ".cart-approve-btn button",
-                        "selectorFallback": ".btn-type-address"
-                    },
-                    {
-                        "id": 2,
-                        "operator": "edit",
-                        "selector": "#registerBtn"
-                    }
-                ]
-            },
-            {
-                "operator": "noop",
-                "variants":
-                {
-                    "A":
-                    {
-                        "value": "nd-cta-red-no-imp"
-                    },
-                    "B":
-                    {
-                        "value": "nd-cta-yellow-no-imp"
-                    },
-                    "C":
-                    {
-                        "value": "nd-cta-purple-no-imp"
-                    }
-                },
-                "businessRuleTransformations":
-                [
-                    {
-                        "id": 2,
-                        "operator": "edit",
-                        "type": "addClass",
-                        "selector": "#loginForm > button"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": 33,
-        "name": "M - CTA - Text Optimization",
-        "description": "CTA Button Text Optimization",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
-        "device": "mobile",
-        "reapply_event": "element_change",
-        "reapply_selector":
-        [
-            ".tabbable-line",
-            ".payment-options-area.frame-box.form-group",
-            "#\\#"
-        ],
-        "apply_on_user_segment": "*",
-        "pageTypes": ["Address", "Basket", "Payment"],
-        "businessRuleSet": ["PageType.Basket", "PageType.Address", "PageType.Payment"],
-        "actions":
-        [
-            {
-                "operator": "edit",
-                "type": "text",
-                "selector": ".btn.cart-confirm.btn-lg",
-                "businessRuleTransformations":
-                [
-                    {
-                        "id": 0,
-                        "value": "ALIŞVERİŞİ TAMAMLA",
-                        "selectorFallback": "#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button"
-                    },
-                    {
-                        "id": 1,
-                        "type": "html",
-                        "value": "<span style=\"color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;\">sonraki adım</span><span style=\"font-size:18px; font-family: BrandonTextBold\">ÖDEME BİLGİLERİNİ GİR</span>",
-                        "selectorFallback": "#order-cart-addreslist > div.cart-approve-btn > button"
-                    },
-                    {
-                        "id": 2,
-                        "type": "html",
-                        "value": "{{REPLACE}}",
-                        "selectorFallback": "#accept-pay",
-                        "replaceFn": "if (!$(\"#menuPayments > ul > li:nth-child(2)\").length) {if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.bank-transfer-area.form-group.frame-box.bank-payment-section\").attr(\"style\")?.includes(\"display: block\")) return \"<span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.row.payment-box.payment-area.credit-cart-section > div.row.installement-box.installement-area\").attr(\"style\")?.includes(\"display: none\")) return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const selectedOption = $(\"#installement-table-area > tbody\").find(\".selected-installement\");if (selectedOption.is(\":first-child\")) return \"<span style='height: 2.5rem;color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\"td\").text().split(\"x\")[1].trim();return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";} else {if ($(\"#menuPayments > ul > li:nth-child(2)\").hasClass(\"active\")) return \"<span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if (!$(\"#no_card_data\").hasClass(\"hidden\")) return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if ($(\"#menuPayments > ul > li:nth-child(1)\").hasClass(\"active\")) {const selectedOption = $(\"#creditCardInstallmentOptions > div.installament-list-2-col.add-installament > div > table > tbody\").find(\".active\");if (selectedOption.attr(\"id\") === \"installment-tr-1\") return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\".installment-price\").text().split(\"x\")[1].trim();return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";}}"
-                    }
-                ]
-            },
-            {
-                "operator": "edit",
-                "type": "addClass",
-                "selector": ".btn.cart-confirm.btn-lg",
-                "value": "nd-flex nd-flex__centered nd-flex__column",
-                "businessRuleTransformations":
-                [
-                    {
-                        "id": 0,
-                        "operator": "noop"
-                    },
-                    {
-                        "id": 1,
-                        "operator": "noop"
-                    },
-                    {
-                        "id": 2,
-                        "selectorFallback": "#accept-pay"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "id": 40,
-        "name": "D - C - Price Scarcity: Sınırlı Sayıda",
-        "description": "Insert 'Bu fiyattan sınırlı sayıda' banner depending on info from lookup api",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
-        "device": "desktop",
-        "reapply_event": "element_change",
-        "reapply_selector": "#checkoutForm > div > div.row.centered-wide-fix > div.col-md-4.cart-right-container",
-        "apply_on_user_segment": "*",
-        "pageTypes": ["Basket"],
-        "eligibilityRuleSet": ["!Cart.Empty"],
-        "actions":
-        [
-            {
-                "operator": "remove",
-                "selector": ".bn-limited-product-tag"
-            },
-            {
-                "variants":
-                {
-                    "A":
-                    {
-                        "condition":
-                        {
-                            "type": "productInfoLookup",
-                            "operator": "cartCntVisitorsIn15",
-                            "selector": ".cart-inside",
-                            "attribute": "data-sku",
-                            "inner_condition": "greaterThan",
-                            "value": 49
-                        }
-                    },
-                    "B":
-                    {
-                        "condition":
-                        {
-                            "type": "productInfoLookup",
-                            "operator": "cartCntVisitorsIn15",
-                            "selector": ".cart-inside",
-                            "attribute": "data-sku",
-                            "inner_condition": "greaterThan",
-                            "value": 49,
-                            "chain": {
-                                "attribute": "data-price",
-                                "inner_condition": "greaterEquals",
-                                "value": 1250
-                            }
-                        }
-                    }
-                },
-                "operator": "insert",
-                "type": "append",
-                "value": "<div class=\"bn-limited-product-tag\" style=\"background: rgba(255, 89, 89, 0.1); color: #FF5959; font-family: BrandonTextRegular; font-size: 12px; min-width: 127px; text-align: center;\">Bu fiyattan sınırlı sayıda</div>",
-                "selector": ".cart-price"
-            }
-        ]
-    },
-    {
-        "id": 41,
-        "name": "D - Exit Popup Promo Messages: Evini Birlikte Güzelleştirelim!",
-        "description": "Display exit popup",
-        "category": "Abandonment and Reengagement / Sitewide / Web",
-        "apply_on_user_segment": "*",
-        "reapply_event": "element_change",
-        "delay": 30000,
-        "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
-        "device": "desktop",
-        "pageTypes": ["!Basket", "!SpecialCampaigns", "!Payment", "!Address", "!Sign-in", "!Register"],
-        "eligibilityRuleSet": ["History.PageTypeCountSessionMin"],
-        "actions":
-        [
-            {
-                "operator": "insert",
-                "type": "popup",
-                "applyEvent":
-                [
-                    "exitIntent",
-                    "copyIntent"
-                ],
-                "selector": "body",
-                "value": "<div class='nd-popup'><div class='nd-popup__body'><img src='https://img.vivense.com/1920x1280/images/0b328f8e3a494ceca1f9a9f013402412.jpg' style='width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;'><div class='nd-popup__title'>Evini birlikte güzelleştirelim!</div><div class='nd-popup__text'>Vivense ile ayrıcalıklı alışverişin keyfini çıkar.</div><ul><li style='list-style: initial;font-family: BrandonTextBold;'>3 Gün İçinde Koşulsuz Para İade Garantisi</li><li style='list-style: initial;font-family: BrandonTextRegular;'>Seçilmiş Ürünler ve Özel Koleksiyonlar</li><li style='list-style: initial;font-family: BrandonTextBold;'>İç Mimarlık ve Kurulum Hizmetleri</li><li style='list-style: initial;font-family: BrandonTextRegular;'>2 Yıl Garanti*</li><li style='list-style: initial;font-family: BrandonTextBold;'>Memnuniyeti Odaklı Satış Sonrası Destek</li></ul><span style='font-family: BrandonTextLight;font-style: italic;font-size: 11px;margin: 5px 5px 10px auto;letter-spacing: 1px;'>*Seçili kategorilerde geçerlidir.</span><a class='nd-cta_btn' href='haftanin-cok-satanlari.html'>ÇOK SATANLARI GÖR</a></div><button class='nd-popup__button-close'>X</button></div>"
-            }
-        ]
-    },
-    {
-        "id": 42,
-        "name": "M - Exit Popup Promo Messages: Evini Birlikte Güzelleştirelim!",
-        "description": "Display exit popup",
-        "category": "Abandonment and Reengagement / Sitewide / Mobile Web",
-        "apply_on_user_segment": "*",
-        "reapply_event": "element_change",
-        "delay": 30000,
-        "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
-        "device": "mobile",
-        "pageTypes": ["!Basket", "!SpecialCampaigns", "!Payment", "!Address", "!Sign-in", "!Register"],
-        "eligibilityRuleSet": ["History.PageTypeCountSessionMin"],
-        "actions":
-        [
-            {
-                "operator": "insert",
-                "type": "popup",
-                "applyEvent":
-                [
-                    "exitIntent",
-                    "copyIntent"
-                ],
-                "selector": "body",
-                "value": "<div class='nd-popup' style='margin: 6vh auto;'><div class='nd-popup__body'><img src='https://img.vivense.com/1920x1280/images/0b328f8e3a494ceca1f9a9f013402412.jpg' style='width: 90vw;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;'><div class='nd-popup__title'>Evini birlikte güzelleştirelim!</div><div class='nd-popup__text'>Vivense ile ayrıcalıklı alışverişin keyfini çıkar.</div><ul><li style='list-style: initial;font-family: BrandonTextBold;'>3 Gün İçinde Koşulsuz Para İade Garantisi</li><li style='list-style: initial;font-family: BrandonTextRegular;'>Seçilmiş Ürünler ve Özel Koleksiyonlar</li><li style='list-style: initial;font-family: BrandonTextBold;'>İç Mimarlık ve Kurulum Hizmetleri</li><li style='list-style: initial;font-family: BrandonTextRegular;'>2 Yıl Garanti*</li><li style='list-style: initial;font-family: BrandonTextBold;'>Memnuniyeti Odaklı Satış Sonrası Destek</li></ul><span style='font-family: BrandonTextLight;font-style: italic;font-size: 11px;margin: 5px 5px 10px auto;letter-spacing: 1px;'>*Seçili kategorilerde geçerlidir.</span><a class='nd-cta_btn' href='haftanin-cok-satanlari.html'>ÇOK SATANLARI GÖR</a></div><button class='nd-popup__button-close'>X</button></div>"
-            }
-        ]
-    },
-    {
-        "id": 43,
-        "name": "M - C - Price Scarcity",
-        "description": "Insert 'Bu fiyattan sınırlı sayıda' banner depending on info from lookup api",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
-        "device": "mobile",
-        "apply_on_user_segment": "*",
-        "pageTypes": ["Basket"],
-        "eligibilityRuleSet": ["!Cart.Empty", "!Element.PriceScarcity"],
-        "actions":
-        [
-            {
-                "operator": "remove",
-                "selector": ".bn-limited-product-tag"
-            },
-            {
-                "variants":
-                {
-                    "A":
-                    {
-                        "condition":
-                        {
-                            "type": "productInfoLookup",
-                            "operator": "cartCntVisitorsIn15",
-                            "selector": ".cart-inside",
-                            "attribute": "data-sku",
-                            "inner_condition": "greaterThan",
-                            "value": 49
-                        }
-                    },
-                    "B":
-                    {
-                        "condition":
-                        {
-                            "type": "productInfoLookup",
-                            "operator": "cartCntVisitorsIn15",
-                            "selector": ".cart-inside",
-                            "attribute": "data-sku",
-                            "inner_condition": "greaterThan",
-                            "value": 49,
-                            "chain": {
-                                "attribute": "data-price",
-                                "inner_condition": "greaterEquals",
-                                "value": 1250
-                            }
-                        }
-                    }
-                },
-                "operator": "insert",
-                "type": "append",
-                "value": "<div class=\"bn-limited-product-tag\" style=\"background: rgba(255, 89, 89, 0.1); color: #FF5959; font-family: BrandonTextRegular; font-size: 12px; padding: 0 5px; text-align: center;\">Bu fiyattan sınırlı sayıda</div>",
-                "selector": ".right-content"
-            }
-        ]
-    },
-    {
-        "id": 49,
-        "name": "D - Simplify Membership Page",
-        "description": "Simplify Membership Page",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
-        "device": "desktop",
-        "reapply_event": "element_change",
-        "reapply_selector": "#login",
-        "apply_on_user_segment":"*",
-        "pageTypes": ["Sign-in", "Register"],
-        "actions":[
+   {
+       "id": 0,
+       "name": "ALL Dummy Baseline",
+       "description": "Dummy Baseline",
+       "category": "Baseline / Sitewide / Web, Mobile Web",
+       "apply_on_user_segment": "*",
+       "device": "*",
+       "actions":
+       [
            {
-                "operator": "remove",
-                "selector": "#sign-up > img"
-           },
-           {
-                "operator": "remove",
-                "selector": "#sign-up > p"
-           },
-           {
-                "operator": "edit",
-                "type": "text",
-                "value": "Üye Ol",
-                "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2) > a"
-           },
-           {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"display\":\"none\"}",
-                "selector": "#registration > div.vivense-campaign-endorsement-selection > div"
-           },
-           {
-                "operator": "insert",
-                "type": "after",
-                "value": "<div><label class=\"checkbox\" for=\"nd_vvns-approve-campaign\" ><input type=\"checkbox\" name=\"nd_vvns-approve-campaign\" id=\"nd_vvns-approve-campaign\" onclick='(function handleApproveClick(e){let checkbox = document.getElementById(\"nd_vvns-approve-campaign\"); if(checkbox.checked){document.querySelector(\"#vvns-approve-campaign\").click();document.querySelector(\"#vivenseSms\").click();document.querySelector(\"#vivenseEmail\").click();document.querySelector(\"#vivensePhone\").click();} else {document.querySelector(\"#vvns-not-approve-campaign\").click();}})(this)'><span style=\"margin-left:20px;vertical-align:middle\">Onaylıyorum</span></label></div>",
-                "selector": "#registration > div.vivense-campaign-endorsement-selection > p"
-           },
-           {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"background\": \"#8f9ba7 !important\", \"color\": \"#fff !important\"}",
-                "selector": "#registerBtn"
-          }
-        ]
-    },
-    {
-        "id": 51,
-        "name":"D - Header Menu Delay",
-        "description":"Apply 0.5 second delay when displaying header menu dropdown on hover",
-        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
-        "device":"desktop",
-        "pageTypes": ["!Address", "!Payment", "!Sign-in", "!Register"],
-        "actions":[
-            {
-                "operator": "injectscript",
-                "selector": "body",
-                "value": "const head = document.head || document.getElementsByTagName('head')[0];const css = '.bg_opacity {opacity: 0; transition-delay: 0s;}';const se = document.createElement('style');se.type = 'text/css';if (se.styleSheet) {se.styleSheet.cssText = css;} else {se.appendChild(document.createTextNode(css));}head.appendChild(se);const o = document.querySelector('.overlay_bg');o.classList.add('bg_opacity');document.querySelectorAll('.main_category_inner').forEach(e => {e.classList.add('bg_opacity');});const el = document.querySelector('.main_menu_category_list_wrapper');el.addEventListener('mouseover', () => {const ts = Array.from(window.top.document.querySelectorAll('.bg_opacity'));if (ts.some((t) => {return getComputedStyle(t).opacity === '1'})) {return;}setTimeout(() => {const ts = Array.from(window.top.document.querySelectorAll('.bg_opacity'));if (ts.some((t) => {return getComputedStyle(t).display === 'block'})) {o.style['opacity'] = 1;ts.forEach((t) => {t.style['opacity'] = 1;});}}, 500);});el.addEventListener('mouseleave', () => {const ts = Array.from(window.top.document.querySelectorAll('.bg_opacity'));o.style['opacity'] = 0;ts.forEach((t) => {t.style['opacity'] = 0;});});"
-            }
-        ]
-    },
-    {
-        "id": 54,
-        "name":"M - Simplify Membership Page",
-        "description":"Simplify Membership Page",
-        "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
-        "device":"mobile",
-        "reapply_event": "element_change",
-        "reapply_selector": "#login",
-        "apply_on_user_segment":"*",
-        "pageTypes": ["Sign-in", "Register"],
-        "actions":[
-           {
-                "operator": "remove",
-                "selector": "#sign-up > img"
-           },
-           {
-                "operator": "remove",
-                "selector": "#sign-up > p"
-           },
-           {
-                "operator": "edit",
-                "type": "text",
-                "value": "Üye Ol",
-                "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2) > a"
-           },
-           {
-                "operator": "edit",
-                "type": "styleApplicator",
-                "value": "{\"display\":\"none\"}",
-                "selector": "#registration > div.vivense-campaign-endorsement-selection > div"
-           },
-           {
-                "operator": "insert",
-                "type": "after",
-                "value": "<div><label class=\"checkbox\" for=\"nd_vvns-approve-campaign\" ><input type=\"checkbox\" name=\"nd_vvns-approve-campaign\" id=\"nd_vvns-approve-campaign\" onclick='(function handleApproveClick(e){let checkbox = document.getElementById(\"nd_vvns-approve-campaign\"); if(checkbox.checked){document.querySelector(\"#vvns-approve-campaign\").click();document.querySelector(\"#vivenseSms\").click();document.querySelector(\"#vivenseEmail\").click();document.querySelector(\"#vivensePhone\").click();} else {document.querySelector(\"#vvns-not-approve-campaign\").click();}})(this)'><span style=\"margin-left:20px;vertical-align:middle\">Onaylıyorum</span></label></div>",
-                "selector": "#registration > div.vivense-campaign-endorsement-selection > p"
+               "operator": "noop"
            }
-        ]
-    },
-    {
-        "id": 57,
-        "name": "D - Checkout Distracter Blocker -Quin",
-        "description": "Remove Vivense Quin Related UI items",
-        "category": "Universal Best Practice UX Strategies / Basket Page / Web ",
-        "apply_on_user_segment": "*",
-        "device": "desktop",
-        "pageTypes": ["Payment", "Address"],
-        "actions":
-        [
-            {
-                "operator": "remove",
-                "selector": "#grt-shadow-host"
-            }
-        ]
-    },
-    {
-        "id": 58,
-        "name": "M - Checkout Distracter Blocker -Quin",
-        "description": "Remove Vivense Quin Related UI items",
-        "category": "Universal Best Practice UX Strategies / Basket Page / Web ",
-        "apply_on_user_segment": "*",
-        "device": "mobile",
-        "pageTypes": ["Payment", "Address"],
-        "actions":
-        [
-            {
-                "operator": "remove",
-                "selector": "#grt-shadow-host"
-            }
-        ]
-    },
-      {
-        "id": 64,
-        "name": "D - P - Title Change",
-        "description": "Change Title with chat gpt suggestions",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
-        "device": "desktop",
-        "apply_on_user_segment": "*",
-        "eligibilityRuleSet": ["PageType.PDP"],
-        "actions":
-        [
-            {
-                "operator": "ai-suggest",
-                "type": "title-change",
-                "selector": ".product-title"
-            }
-        ]
-    },
-    {
-        "id": 65,
-        "name": "D - P - Description Append",
-        "description": "Append Description with chat gpt suggestions",
-        "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
-        "device": "desktop",
-        "apply_on_user_segment": "*",
-        "eligibilityRuleSet": ["PageType.PDP"],
-        "actions":
-        [
-            {
-                "operator": "ai-suggest",
-                "type": "add-description",
-                "selector": "#other-colour",
-                "value": "<div class=\"bg-desc-body\"><p class=\"bg-desc-text\"></p></div>"
-            }
-        ]
-    }
+       ]
+   },
+   {
+       "id": 1,
+       "name": "D - Exit Popup inc Social Proof",
+       "description": "Display exit popup",
+       "category": "Abandonment and Reengagement / Sitewide / Web",
+       "apply_on_user_segment": "*",
+       "reapply_event": "element_change",
+       "delay": 30000,
+       "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
+       "device": "desktop",
+       "productInfoStorage": "basket",
+       "pageTypes": ["!Basket", "!SpecialCampaigns", "!Payment", "!Address", "!Register", "!Sign-in"],
+       "eligibilityRuleSet": ["History.PageTypeCountSessionMin", "!Cart.Empty"],
+       "businessRuleSet": [{"set": ["!Cart.Empty", "History.HasBeenAtBasket", "ProductInfo.Sales20"], "type": "and"}, {"set": ["!Cart.Empty", "History.HasBeenAtBasket", "ProductInfo.Cart20"], "type": "and"}, {"set": ["!Cart.Empty", "History.HasBeenAtBasket", "ProductInfo.View20"], "type": "and"}],
+       "actions":
+       [
+           {
+               "operator": "insert",
+               "type": "popup",
+               "applyEvent":
+               [
+                   "exitIntent",
+                   "copyIntent"
+               ],
+               "selector": "body",
+               "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
+               "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Sipariş vermenin tam zamanı!</div><div class=\"nd-popup__text\">Sepetindeki ürünlerin stokları azalıyor. Şimdi alışverişini tamamla, ürünlerin daha hızlı teslim edilsin!</div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">ŞİMDİ SİPARİŞ VER</a></div></div>",
+               "variants": 
+               {
+                   "A":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "pType": "transactionIn2Weeks",
+                               "id": 0,
+                               "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                               "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Acele Et, Kaçırma!<br/><img src=\"https://ndvivense.glov.ai/assets/clock-history__red.png\" style=\"height: 16px;\"><span style=\"font-family: 'BrandonTextRegular';margin-left: 4px;color: #FF5959;font-size:14px;text-align:inherit;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere satın alındı.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+                           },
+                           {
+                               "pType": "addToCartIn2Weeks",
+                               "id": 1,
+                               "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                               "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Hızlı Olan Kazansın!<br/><img src=\"https://ndvivense.glov.ai/assets/nd-lightning_red.svg\" style=\"height: 16px; vertical-align: sub; margin-bottom:2px;\"><span style=\"font-family: 'BrandonTextRegular';margin-left: 4px;color: #FF5959;font-size:14px;text-align:inherit;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+                           },
+                           {
+                               "pType": "productViewCount",
+                               "id": 2,
+                               "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                               "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Gözler Üstümde!<span><img src=\"https://ndvivense.glov.ai/assets/nd-smile_black.svg\" style=\"height: 16px;\"></span><br/></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+                           }
+                       ]
+                   },
+                   "B":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "pType": "transactionIn2Weeks",
+                               "id": 0,
+                               "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                               "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Acele Et, Kaçırma!<br/><img src=\"https://ndvivense.glov.ai/assets/clock-history__red.png\" style=\"height: 16px;\"><span style=\"font-family: 'BrandonTextRegular';margin-left: 4px;color: #FF5959;font-size:14px;text-align:inherit;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere satın alındı.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">SİPARİŞİ TAMAMLA</a></div></div>"
+                           },
+                           {
+                               "pType": "addToCartIn2Weeks",
+                               "id": 1,
+                               "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                               "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Hızlı Olan Kazansın!<br/><img src=\"https://ndvivense.glov.ai/assets/nd-lightning_red.svg\" style=\"height: 16px; vertical-align: sub; margin-bottom:2px;\"><span style=\"font-family: 'BrandonTextRegular';margin-left: 4px;color: #FF5959;font-size:14px;text-align:inherit;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">SİPARİŞİ TAMAMLA</a></div></div>"
+                           },
+                           {
+                               "pType": "productViewCount",
+                               "id": 2,
+                               "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                               "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Gözler Üstümde!<span><img src=\"https://ndvivense.glov.ai/assets/nd-smile_black.svg\" style=\"height: 16px;\"></span><br/></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">SİPARİŞİ TAMAMLA</a></div></div>"
+                           }
+                       ]
+                   }
+               }
+           }
+       ]
+   },
+   {
+       "id": 2,
+       "name": "M - L - One Column Layout",
+       "description": "Change mobile layout into 1 column",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+       "apply_on_user_segment": "*",
+       "device": "mobile",
+       "reapply_event": "infinite_scroll",
+       "pageTypes": ["PLP"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"margin-top\":\"13rem\"}",
+               "selector": "div.product_info"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"width\":\"100%\"}",
+               "selector": "#product-list-wrapper > div.product-list_container > div > div"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "next-day-product",
+               "selector": ".product-list > .product-card"
+           },
+           {
+               "operator": "remove",
+               "selector": "#product-list-wrapper > div.product-list_container > div > div > div.other_size_options_mobile_wrapper.open_other_product"
+           }
+       ]
+   },
+   {
+       "id": 3,
+       "name": "D - C - Sales Motivator: Tasarruf Et",
+       "description": "Sales Motivator (Coupon) - Basket",
+       "category": "Promotional Messaging / Cart and Checkout Pages / Web",
+       "apply_on_user_segment": "*",
+       "device": "desktop",
+       "reapply_event": "info_layer_change",
+       "reapply_selector": "cart.couponApplicableAmount",
+       "pageTypes": ["Basket"],
+       "businessRuleSet": [{"set":["Cart.CouponApplicable4500", "!Cart.CouponApplicable7500"], "type":"and"}, "Cart.CouponApplicable7500"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": ".basket_top_warning-wrapper"
+           },
+           {
+               "operator": "remove",
+               "selector": "#nd-banner"
+           },
+           {
+               "operator": "noop",
+               "type": "before",
+               "selector": "body > div.main-custom-container",
+               "selectorFallback": "#main > div",
+               "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><span>300 TL daha fazla ödeme, hemen tasarruf et! Kupon Kodu: KASIM300</span></div>  <button class=\"nd-banner__action-button\" style=\"background:none; border:none\" onClick=\"window.navigator.clipboard.writeText('KASIM300'); document.querySelector('.bg-checkmark').classList.add('active')\">Kupon Kodunu Kopyala</button><div class=\"bg-checkmark_wrapper\"><svg class=\"bg-checkmark\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52 52\"><circle class=\"bg-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"25\" fill=\"none\"></circle><path class=\"bg-checkmark__check\" fill=\"none\" d=\"M14.1 27.2l7.1 7.2 16.7-16.8\"></path></svg></div><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>",
+               "variants":
+               {
+                   "A":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 1,
+                               "selector": "#checkoutForm",
+                               "operator": "insert",
+                               "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><span>300 TL daha fazla ödeme, hemen tasarruf et! Kupon Kodu: KASIM300</span></div>  <button class=\"nd-banner__action-button\" style=\"background:none; border:none\" onClick=\"window.navigator.clipboard.writeText('KASIM300'); document.querySelector('.bg-checkmark').classList.add('active')\">Kupon Kodunu Kopyala</button><div class=\"bg-checkmark_wrapper\"><svg class=\"bg-checkmark\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52 52\"><circle class=\"bg-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"25\" fill=\"none\"></circle><path class=\"bg-checkmark__check\" fill=\"none\" d=\"M14.1 27.2l7.1 7.2 16.7-16.8\"></path></svg></div><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                           },
+                           {
+                               "id": 2,
+                               "selector": "#checkoutForm",
+                               "operator": "insert",
+                               "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><span>600 TL daha fazla ödeme, hemen tasarruf et! Kupon Kodu: KASIM600</span></div>  <button class=\"nd-banner__action-button\" style=\"background:none; border:none\" onClick=\"window.navigator.clipboard.writeText('KASIM600'); document.querySelector('.bg-checkmark').classList.add('active')\">Kupon Kodunu Kopyala</button><div class=\"bg-checkmark_wrapper\"><svg class=\"bg-checkmark\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52 52\"><circle class=\"bg-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"25\" fill=\"none\"></circle><path class=\"bg-checkmark__check\" fill=\"none\" d=\"M14.1 27.2l7.1 7.2 16.7-16.8\"></path></svg></div><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                           }
+                       ]
+                   },
+                   "B":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 1,
+                               "selector": "#checkoutForm",
+                               "operator": "insert",
+                               "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><span>300 TL daha fazla ödeme, bugün kodu uygula ve tasarruf et! Kupon Kodu: KASIM300</span></div>  <button class=\"nd-banner__action-button\" style=\"background:none; border:none\" onClick=\"window.navigator.clipboard.writeText('KASIM300'); document.querySelector('.bg-checkmark').classList.add('active')\">Kupon Kodunu Kopyala</button><div class=\"bg-checkmark_wrapper\"><svg class=\"bg-checkmark\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52 52\"><circle class=\"bg-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"25\" fill=\"none\"></circle><path class=\"bg-checkmark__check\" fill=\"none\" d=\"M14.1 27.2l7.1 7.2 16.7-16.8\"></path></svg></div><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                           },
+                           {
+                               "id": 2,
+                               "selector": "#checkoutForm",
+                               "operator": "insert",
+                               "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><span>600 TL daha fazla ödeme, bugün kodu uygula ve tasarruf et! Kupon Kodu: KASIM600</span></div>  <button class=\"nd-banner__action-button\" style=\"background:none; border:none\" onClick=\"window.navigator.clipboard.writeText('KASIM600'); document.querySelector('.bg-checkmark').classList.add('active')\">Kupon Kodunu Kopyala</button><div class=\"bg-checkmark_wrapper\"><svg class=\"bg-checkmark\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52 52\"><circle class=\"bg-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"25\" fill=\"none\"></circle><path class=\"bg-checkmark__check\" fill=\"none\" d=\"M14.1 27.2l7.1 7.2 16.7-16.8\"></path></svg></div><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                           }
+                       ]
+                   },
+                   "C":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 1,
+                               "selector": "#checkoutForm",
+                               "operator": "insert",
+                               "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><span>300 TL indirimini kaybetme, bugün kodu uygula ve tasarruf et! Kupon Kodu: KASIM300</span></div>  <button class=\"nd-banner__action-button\" style=\"background:none; border:none\" onClick=\"window.navigator.clipboard.writeText('KASIM300'); document.querySelector('.bg-checkmark').classList.add('active')\">Kupon Kodunu Kopyala</button><div class=\"bg-checkmark_wrapper\"><svg class=\"bg-checkmark\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52 52\"><circle class=\"bg-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"25\" fill=\"none\"></circle><path class=\"bg-checkmark__check\" fill=\"none\" d=\"M14.1 27.2l7.1 7.2 16.7-16.8\"></path></svg></div><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                           },
+                           {
+                               "id": 2,
+                               "selector": "#checkoutForm",
+                               "operator": "insert",
+                               "value": "<div class=\"nd-banner\" id=\"nd-banner\"><div class=\"nd-banner__text\"><span>600 TL indirimini kaybetme, bugün kodu uygula ve tasarruf et! Kupon Kodu: KASIM600</span></div>  <button class=\"nd-banner__action-button\" style=\"background:none; border:none\" onClick=\"window.navigator.clipboard.writeText('KASIM600'); document.querySelector('.bg-checkmark').classList.add('active')\">Kupon Kodunu Kopyala</button><div class=\"bg-checkmark_wrapper\"><svg class=\"bg-checkmark\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52 52\"><circle class=\"bg-checkmark__circle\" cx=\"26\" cy=\"26\" r=\"25\" fill=\"none\"></circle><path class=\"bg-checkmark__check\" fill=\"none\" d=\"M14.1 27.2l7.1 7.2 16.7-16.8\"></path></svg></div><button class=\"nd-banner__close-button\" onClick=\"$('#nd-banner').remove()\">X</button></div>"
+                           }
+                       ]
+                   }
+               }
+           }
+       ]
+   },
+   {
+       "id": 7,
+       "name": "D - P - Photo Enlarging A: Slider Solda B: Slider Altta",
+       "description": "Desktop Photo Enlargement",
+       "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+       "apply_on_user_segment": "*",
+       "reapply_event": ["timeout"],
+       "device": "desktop",
+       "pageTypes": ["PDP"],
+       "businessRuleSet": ["Element.LargePictureSet"],
+       "helpers": [11, 12],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "container-fluid",
+               "selector": ".main-custom-container > .container"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "nd-photo-enlarging",
+               "selector": ".main-custom-container > .container"
+           },
+           {
+               "operator": "edit",
+               "type": "removeClass",
+               "value": "main-custom-container > container",
+               "selector": ".main-custom-container > .container"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "custom-row",
+               "selector": ".main-custom-container > .container-fluid> .row"
+           },
+           {
+               "operator": "edit",
+               "type": "removeClass",
+               "value": "main-custom-container > container-fluid> row",
+               "selector": ".main-custom-container > .container-fluid> .row"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "custom-detail",
+               "selector": ".sticky_column > .product-details-bottom"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"width\":\"100%\"}",
+               "selector": ".button-add-cart-action .add-to-cart-btn"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "next-day-image",
+               "selector": "#wowslider-container1 > .ws_images",
+               "variants":
+               {
+                   "A":
+                   {
+                       "value": "nd-empty-next-day-image"
+                   },
+                   "B":
+                   {
+                       "value": "next-day-image"
+                   }
+               }
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "next-day-thumb",
+               "selector": "#wowslider-container1 > .ws_thumbs",
+               "variants":
+               {
+                   "A":
+                   {
+                       "value": "nd-empty-next-day-thumb"
+                   },
+                   "B":
+                   {
+                       "value": "next-day-thumb"
+                   }
+               }
+           },
+           {
+               "operator": "noop",
+               "type": "styleApplicator",
+               "replaceFn": "return document.querySelectorAll(\"#wowslider-container1 > div.ws_thumbs.next-day-thumb > div a\")?.length",
+               "value": "{\"width\":\"calc({{REPLACE}} * 10em)\"}",
+               "selector": "#wowslider-container1 > .ws_thumbs div",
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 0,
+                       "operator": "edit"
+                   }
+               ],
+               "variants":
+               {
+                   "A":
+                   {
+                       "operator": "noop"
+                   },
+                   "B":
+                   {
+                       "operator": "edit"
+                   }
+               }
+           },
+           {
+               "operator": "remove",
+               "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.chose_fabric > div"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "container-fluid",
+               "selector": "body > div.main-custom-container > div.full-width > div"
+           },
+           {
+               "operator": "edit",
+               "type": "removeClass",
+               "value": "main-custom-container > container",
+               "selector": "body > div.main-custom-container > div.full-width > div"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"padding-left\":\"inherit\"}",
+               "selector": "#breadcrumb-ol",
+               "variants":
+               {
+                   "A":
+                   {
+                       "operator": "noop"
+                   },
+                   "B":
+                   {
+                       "operator": "edit"
+                   }
+               }
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "image-edit-content",
+               "variants":
+               {
+                   "A":
+                   {
+                       "selector": ".ws_images.nd-empty-next-day-image > div",
+                       "value": "nd-empty-image-edit-content"
+                   },
+                   "B":
+                   {
+                       "selector": ".ws_images.next-day-image > div",
+                       "value": "image-edit-content"
+                   }
+               }
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "image-edit",
+               "variants":
+               {
+                   "A":
+                   {
+                       "selector": "#wowslider-container1 > .ws_images.nd-empty-next-day-image > .nd-empty-image-edit-content > .ws_list > ul > li > a > img",
+                       "value": "nd-empty-image-edit"
+                   },
+                   "B":
+                   {
+                       "selector": "#wowslider-container1 > .ws_images.next-day-image > .image-edit-content > .ws_list > ul > li > a > img",
+                       "value": "image-edit"
+                   }
+               }
+           },
+           {
+               "operator": "move",
+               "move_selector_1": "body > div.main-custom-container > div.container-fluid > div > div.col-md-9 > div.full-width.sticky_header",
+               "move_selector_2": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"margin-bottom\": \"0\", \"width\": \"unset\", \"height\": \"unset\"}",
+               "selector": ".product-main-details"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "nd-remove-pseudo-elements",
+               "selector": ".product-main-details"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "nd-breadcrumb",
+               "selector": "#breadcrumb-ol"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"flex-wrap\":\"wrap\", \"justify-content\":\"space-evenly\", \"padding\":\"15px\", \"align-items\":\"unset\"}",
+               "selector": ".product-main-detail-card"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"white-space\":\"pre-line\", \"text-align\":\"center\"}",
+               "selector": ".product-title"
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "nd-product-title",
+               "selector": ".full-width.sticky_header"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"padding-left\":\"unset\"}",
+               "selector": "body > div.main-custom-container > div.container-fluid > div > div.col-md-9"
+           }
+       ]
+   },
+   {
+       "id": 11,
+       "name": "D - P - Photo Enlarging Extras",
+       "description": "Desktop photo enlargement takim iceri extras",
+       "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "reapply_event": ["timeout"],
+       "dependant_on_treatment": 7,
+       "eligibilityRuleSet": ["Element.FurnitureSet"],
+       "businessRuleSet": [{"set": ["!PDP.Price9000", "!Element.GlovPopover"], "type": "and"}, {"set": ["PDP.Price9000", "Element.GlovPopover"], "type": "and"}],
+       "actions":
+       [
+           {
+               "operator": "noop",
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 0,
+                       "operator": "insert",
+                       "type": "after",
+                       "selector": "#sidebar-right > div > div.sticky_column > div.expand-showroom",
+                       "value": "<div class=\"nd-popover\"><p>9000 TL altı ürünlerin kurulumu müşteriye aittir veya ücretli olarak Vivense tarafından sağlanabilir.</p></div>"
+                   },
+                   {
+                       "id": 1,
+                       "selector": ".nd-popover",
+                       "operator": "remove"
+                   }
+               ]
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "nd-changecontent-fix",
+               "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > a"
+           },
+           {
+               "operator": "remove",
+               "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-details > table > tbody > tr:nth-child(1) > td.components-change.components-change-custom > div"
+           }
+       ]
+   },
+   {
+       "id": 12,
+       "name": "D - P - Photo Enlarging Extras",
+       "description": "Desktop photo enlargement sticky header fix",
+       "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "reapply_event": "on_scroll",
+       "reapply_event_page_type": "Productpage",
+       "dependant_on_treatment": 7,
+       "eligibilityRuleSet": ["Element.Robot12Exclusive"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div:nth-child(2):not(.panel-body)"
+           }
+       ]
+   },
+   {
+       "id": 15,
+       "name": "D - L - Layout A: 3'lü B: 2'li",
+       "description": "Change PLP layout from 4 columns to 3 columns",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web",
+       "device": "desktop",
+       "reapply_event": "infinite_scroll",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PLP"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "nd-product-item",
+               "selector": ".product-card",
+               "variants":
+               {
+                   "A":
+                   {
+                       "value": "nd-product-item"
+                   },
+                   "B":
+                   {
+                       "value": "nd-product-item-2"
+                   }
+               }
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"max-width\":\"300px\", \"row-gap\":\"5px\"}",
+               "selector": ".list-product-cart-badge"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"width\":\"100%\"}",
+               "selector": ".category_page_wrapper .category_page_container .product-list-wrapper .product-list_container .product-list .product-card .product-link .product_img img"
+           }
+       ]
+   },
+   {
+       "id": 16,
+       "name": "D - CTA - Text Optimization: sonraki adım ve ödeme türü",
+       "description": "CTA Button Text Optimization",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web",
+       "device": "desktop",
+       "reapply_event": "element_change",
+       "reapply_selector":
+       [
+           ".tabbable-line",
+           ".payment-options-area.frame-box.form-group"
+       ],
+       "apply_on_user_segment": "*",
+       "pageTypes":["Basket", "Address", "Payment"],
+       "businessRuleSet":["PageType.Basket", "PageType.Address", "PageType.Payment"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "text",
+               "selector": ".btn.cart-confirm.btn-lg",
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 0,
+                       "value": "SEPETİ ONAYLA",
+                       "selectorFallback": "#checkoutForm > div.padding-reset.main-basket-summary > div.row.sticky-panel > div.col-xs-12.approve-basket > button"
+                   },
+                   {
+                       "id": 1,
+                       "type": "html",
+                       "value": "<span style=\"color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;\">sonraki adım</span><span style=\"font-size:18px; font-family: BrandonTextBold\">ÖDEME BİLGİLERİNİ GİR</span>",
+                       "selectorFallback": "#order-cart-addreslist > div.cart-approve-btn > button"
+                   },
+                   {
+                       "id": 2,
+                       "type": "html",
+                       "value": "{{REPLACE}}",
+                       "selectorFallback": "#accept-pay",
+                       "replaceFn": "if (!$(\"#menuPayments > ul > li:nth-child(2)\").length) {if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.bank-transfer-area.form-group.frame-box.bank-payment-section\").attr(\"style\")?.includes(\"display: block\")) return \"<span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";if ($(\"#main > div > fieldset > div.payment-options-area.frame-box.form-group > div.row.payment-box.payment-area.credit-cart-section > div.row.installement-box.installement-area\").attr(\"style\")?.includes(\"display: none\")) return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const selectedOption = $(\"#installement-table-area > tbody\").find(\".selected-installement\");if (selectedOption.is(\":first-child\")) return \"<span style='height: 2.5rem;color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\"td\").text().split(\"x\")[1].trim();return \"<span style='height: 2.5rem; color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular; border:none; padding:0'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold; border:none; padding:0'>ŞİMDİ AL</span>\";} else {if ($(\"#menuPayments > ul > li:nth-child(2)\").hasClass(\"active\")) return \"<span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if (!$(\"#no_card_data\").hasClass(\"hidden\")) return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";if ($(\"#menuPayments > ul > li:nth-child(1)\").hasClass(\"active\")) {const selectedOption = $(\"#creditCardInstallmentOptions > div.installament-list-2-col.add-installament > div > table > tbody\").find(\".active\");if (selectedOption.attr(\"id\") === \"installment-tr-1\") return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>tek çekim</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";const installmentPrice = selectedOption.find(\".installment-price\").text().split(\"x\")[1].trim();return \"<span style='color: rgba(255,255,255,.6); letter-spacing: .82px; font-size: 14px; font-family: BrandonTextRegular;'>ayda \" + installmentPrice + \" taksitle</span><span style='font-size:18px; font-family: BrandonTextBold'>ŞİMDİ AL</span>\";}}"
+                   }
+               ]
+           },
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "selector": ".btn.cart-confirm.btn-lg",
+               "value": "nd-flex nd-flex__centered nd-flex__column",
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 0,
+                       "operator": "noop"
+                   },
+                   {
+                       "id": 2,
+                       "selectorFallback": "#accept-pay"
+                   }
+               ]
+           }
+       ]
+   },
+   {
+       "id": 17,
+       "name": "M - P - Remove 'Desktek'",
+       "description": "Remove 'Destek' icon from PDP",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+       "device": "mobile",
+       "delay": 50,
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PDP"],
+       "eligibilityRuleSet": ["Element.LauncherExists"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"display\":\"none\"}",
+               "selector": "#launcher"
+           }
+       ]
+   },
+   {
+       "id": 19,
+       "name": "D - Flashing Tabs",
+       "description": "Flashing Tab Messaging - Browser",
+       "category": "Promotional Messaging / Web",
+       "apply_on_user_segment": "*",
+       "device": "desktop",
+       "businessRuleSet": [{"set": ["PageType.Basket", "!Cart.Empty"], "type": "and"}, "PageType.PLP", "PageType.PDP"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "documentTitle",
+               "selector": "no-selector",
+               "value":
+               [
+                   "👋 Hey! Hala orada mısın?",
+                   "❤ Seni özledik"
+               ],
+               "applyEvent":
+               [
+                   "tabChange"
+               ],
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 0,
+                       "value":
+                       [
+                           "🛒 Sepetinde {{REPLACE}} ürün unuttun!",
+                           "👋 Sepetinde {{REPLACE}} ürün unuttun!"
+                       ],
+                       "replaceFn": "let sum = Array.from($(\".cartItemQuantity\")).length; return sum;"
+                   },
+                   {
+                       "id": 1,
+                       "value":
+                       [
+                           "🏡 En güzel {{REPLACE}} mobilyaları Vivense’de!",
+                           "🛋 En sağlam {{REPLACE}} mobilyaları Vivense’de!",
+                           "🪑 En kaliteli {{REPLACE}} mobilyaları Vivense’de!"
+                       ],
+                       "replaceFn":
+                       {
+                           "storage": "info-layer",
+                           "key": "plp.name",
+                           "keyFallback": "pdp.category"
+                       }
+                   },
+                   {
+                       "id": 2,
+                       "value": "⭐ O {{REPLACE}} Bu {{REPLACE}} !",
+                       "replaceFn":
+                       {
+                           "storage": "info-layer",
+                           "key": "plp.name",
+                           "keyFallback": "pdp.category"
+                       }
+                   }
+               ]
+           }
+       ]
+   },
+   {
+       "id": 21,
+       "name": "M - L - Disable Top Banner",
+       "description": "PLP - Disable Top Banner for Mobile",
+       "category": "Abandonment and Reengagement / PLP / Mobile Web",
+       "apply_on_user_segment": "*",
+       "device": "mobile",
+       "reapply_event": "query_search_change",
+       "pageTypes": ["PLP"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"position\":\"unset\"}",
+               "selector": "#search-body > div.category-banner-wrapper"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"top\":\"0\"}",
+               "selector": "#category_sticky_filter"
+           }
+       ]
+   },
+   {
+       "id": 23,
+       "name": "D - C - Remove VV Banner",
+       "description": "Remove Default Vivense banner - Basket",
+       "category": "Universal Best Practice UX Strategies / Basket Page / Web ",
+       "apply_on_user_segment": "*",
+       "device": "desktop",
+       "pageTypes": ["Basket"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": "#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
+               "selectorFallback": "#checkoutForm > div.basket_product_list_header.reserved-product"
+           }
+       ]
+   },
+   {
+       "id": 24,
+       "name": "M - C - Encouraging Messaging: A: Uzun Uzun Düşünme B: 3 Gün İçinde",
+       "description": "Money back guarantee banner - Basket",
+       "category": "Universal Best Practice UX Strategies / Basket Page / Mobile Web",
+       "apply_on_user_segment": "*",
+       "device": "mobile",
+       "pageTypes": ["Basket"],
+       "eligibilityRuleSet": ["Cart.CouponApplicable"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": ".nd-money-back__wrapper"
+           },
+           {
+               "operator": "insert",
+               "type": "before",
+               "selector": "#checkoutForm > div > div.row.centered-wide-fix",
+               "selectorFallback": "#main > div",
+               "variants":
+               {
+                   "A":
+                   {
+                       "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">Teslimattan sonra da yanınızdayız</div></div></div></div>"
+                   },
+                   "B":
+                   {
+                       "value": "<div class=\"nd-money-back__wrapper\" style=\"margin: 15px auto 0\"><div class=\"nd-money-back\"><div class=\"nd-money-back__body\"><img src=\"https://ndvivense.glov.ai/assets/nd-handshake.svg\" style=\"width:36px; height:24px;\"/><div style=\"margin-left: 8px\">3 gün içinde para iade garantisi</div></div></div></div>"
+                   }
+               }
+           },
+           {
+               "operator": "remove",
+               "selector": "#checkoutForm > div > div > div.col-sm-12.basket_product_list_header.reserved-product",
+               "selectorFallback": "#checkoutForm > div.basket_product_list_header.reserved-product"
+           }
+       ]
+   },
+   {
+       "id": 29,
+       "name": "D - P - Social Proof",
+       "description": "Insert view count banner depending on info from lookup api",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+       "device": "desktop",
+       "reapply_event": "timeout",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PDP"],
+       "businessRuleSet": [{"set": ["!Element.DesktopEnlargement", "ProductInfo.Sales100"], "type": "and"}, {"set": ["!Element.DesktopEnlargement", "ProductInfo.Cart100"], "type": "and"}, {"set": ["!Element.DesktopEnlargement", "ProductInfo.View100"], "type": "and"}],
+       "actions":
+       [
+           {
+               "operator": "productInfoLookup",
+               "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite",
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 0,
+                       "operator": "productInfoLookup",
+                       "pType": "transactionIn2Weeks",
+                       "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-lightning.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span><span class=\"quick-delivery-text-small\"> son 15 günde</span> {{REPLACE_PRODUCTINFO}} adet satıldı </span>\n            </span>\n          </div>\n        </div>\n      </div>",
+                       "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite"
+                   },
+                   {
+                       "id": 1,
+                       "operator": "productInfoLookup",
+                       "pType": "addToCartIn2Weeks",
+                       "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span><span class=\"quick-delivery-text-small\"> son 15 günde</span> {{REPLACE_PRODUCTINFO}} kişi sepete ekledi </span>\n            </span>\n          </div>\n        </div>\n      </div>",
+                       "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite"
+                   },
+                   {
+                       "id": 2,
+                       "operator": "productInfoLookup",
+                       "pType": "productViewCount",
+                       "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-eye.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span><span class=\"quick-delivery-text-small\"> son 1 günde</span> {{REPLACE_PRODUCTINFO}} kişi görüntüledi </span>\n            </span>\n          </div>\n        </div>\n      </div>",
+                       "selector": "#wowslider-container1 > div.favorite-area-hearth.d-product-favorite"
+                   }
+               ]
+           }
+       ]
+   },
+   {
+       "id": 30,
+       "name": "D - P - Social Proof Extras",
+       "description": "Insert view count banner depending on info from lookup api",
+       "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "dependant_on_treatment": 29,
+       "eligibilityRuleSet": ["Element.NextDayThumb", "Element.QuickDeliveryContainer"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "value": "w-desktopEnlargement",
+               "selector": ".quick-delivery-container"
+           }
+       ]
+   },
+   {
+       "id": 31,
+       "name": "D - CTA - Color: A: Kırmızı B: Sarı C: Mor",
+       "description": "CTA Buttons Change Color",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "reapply_event": "timeout",
+       "pageTypes": ["!Homepage", "!PLP", "!Favorites", "!PastOrders", "!ProfilePages"],
+       "businessRuleSet": [{"set":["PageType.Register", "PageType.Sign-in"], "type": "or"}],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "addClass",
+               "selector": ".btn.cart-confirm.btn-lg",
+               "selectorFallback": ".add-to-cart-btn",
+               "variants":
+               {
+                   "A":
+                   {
+                       "value": "nd-cta-red",
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "selector": "#registerBtn",
+                               "selectorFallback": "#loginForm > button",
+                               "value": "nd-cta-red-no-imp"
+                           }
+                       ]
+                   },
+                   "B":
+                   {
+                       "value": "nd-cta-yellow",
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "selector": "#registerBtn",
+                               "selectorFallback": "#loginForm > button",
+                               "value": "nd-cta-yellow-no-imp"
+                           }
+                       ]
+                   },
+                   "C":
+                   {
+                       "value": "nd-cta-purple",
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "selector": "#registerBtn",
+                               "selectorFallback": "#loginForm > button",
+                               "value": "nd-cta-purple-no-imp"
+                           }
+                       ]
+                   }
+               }
+           },
+           {
+               "operator": "noop",
+               "type": "addClass",
+               "selector": "#loginForm > button",
+               "selectorFallback": "#registerBtn",
+               "variants":
+               {
+                   "A":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "value": "nd-cta-red-no-imp",
+                               "operator": "edit"
+                           }
+                       ]
+                   },
+                   "B":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "value": "nd-cta-yellow-no-imp",
+                               "operator": "edit"
+                           }
+                       ]
+                   },
+                   "C":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "value": "nd-cta-purple-no-imp",
+                               "operator": "edit"
+                           }
+                       ]
+                   }
+               }
+           }
+       ]
+   },
+   {
+       "id": 32,
+       "name": "M - CTA - Color: A: Kırmızı B: Sarı C: Mor",
+       "description": "CTA Buttons Change Color Mobile",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+       "device": "mobile",
+       "reapply_event":
+       [
+           "timeout",
+           "element_change"
+       ],
+       "reapply_selector": "#\\#",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["!Homepage", "!PLP", "!Favorites", "!PastOrders", "!ProfilePages"],
+       "businessRuleSet": [{"set":["PageType.Basket", "PageType.PDP"], "type": "or"}, {"set":["PageType.Address", "PageType.Payment"], "type": "or"}, {"set":["PageType.Register", "PageType.Sign-in"], "type": "or"}],
+       "actions":
+       [
+           {
+               "operator": "noop",
+               "type": "addClass",
+               "variants":
+               {
+                   "A":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "value": "nd-cta-red"
+                           },
+                           {
+                               "id": 1,
+                               "value": "nd-cta-red"
+                           },
+                           {
+                               "id": 2,
+                               "value": "nd-cta-red-no-imp"
+                           }
+                       ]
+                   },
+                   "B":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "value": "nd-cta-yellow"
+                           },
+                           {
+                               "id": 1,
+                               "value": "nd-cta-yellow"
+                           },
+                           {
+                               "id": 2,
+                               "value": "nd-cta-yellow-no-imp"
+                           }
+                       ]
+                   },
+                   "C":
+                   {
+                       "businessRuleTransformations":
+                       [
+                           {
+                               "id": 0,
+                               "value": "nd-cta-purple"
+                           },
+                           {
+                               "id": 1,
+                               "value": "nd-cta-purple"
+                           },
+                           {
+                               "id": 2,
+                               "value": "nd-cta-purple-no-imp"
+                           }
+                       ]
+                   }
+               },
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 0,
+                       "operator": "edit",
+                       "selector": ".btn.cart-confirm",
+                       "selectorFallback": ".default-add-cart-btn"
+                   },
+                   {
+                       "id": 1,
+                       "operator": "edit",
+                       "selector": ".cart-approve-btn button",
+                       "selectorFallback": ".btn-type-address"
+                   },
+                   {
+                       "id": 2,
+                       "operator": "edit",
+                       "selector": "#registerBtn"
+                   }
+               ]
+           },
+           {
+               "operator": "noop",
+               "variants":
+               {
+                   "A":
+                   {
+                       "value": "nd-cta-red-no-imp"
+                   },
+                   "B":
+                   {
+                       "value": "nd-cta-yellow-no-imp"
+                   },
+                   "C":
+                   {
+                       "value": "nd-cta-purple-no-imp"
+                   }
+               },
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 2,
+                       "operator": "edit",
+                       "type": "addClass",
+                       "selector": "#loginForm > button"
+                   }
+               ]
+           }
+       ]
+   },
+   {
+       "id": 34,
+       "name": "D - P - Price Installments",
+       "description": "Display minimum installement price in PDP",
+       "category": "Universal Best Practice UX Strategies / Checkout Page / Web",
+       "apply_on_user_segment": "*",
+       "reapply_event": "element_change",
+       "reapply_selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-details td.sumprice-com > p",
+       "device": "desktop",
+       "pageTypes": ["PDP"],
+       "eligibilityRuleSet": ["PDP.Price2000"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": "#bn-price-installment-tag"
+           },
+           {
+               "operator": "insert",
+               "type": "after",
+               "value": "<div id=\"bn-price-installment-tag\" style=\"text-align: center;color: #40484e;font-family: BrandonTextRegular;\">{{REPLACE}} TL’den başlayan taksitlerle</div>",
+               "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-box > div.price-text.non-discounted",
+               "selectorFallback": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div > div.product-price-box > div:nth-child(1)",
+               "replaceFn": "const p = parseInt(document.querySelector(\".price\").innerText.replace(\".\",\"\").replace(\"TL\", \"\").trim());const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return (p * 1.01 * (1 + comishRate) / 9).toFixed(0);"
+           }
+       ]
+   },
+   {
+       "id": 35,
+       "name": "M - P - Social Proof",
+       "description": "Insert view count banner depending on info from lookup api",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+       "device": "mobile",
+       "reapply_event": "timeout",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PDP"],
+       "eligibilityRuleSet": ["!Element.QuickDeliveryContainer"],
+       "businessRuleSet": [{"set": ["PageType.PDP", "ProductInfo.Sales100"]}, {"set": ["PageType.PDP", "ProductInfo.Cart100"]}, {"set": ["PageType.PDP", "ProductInfo.View100"]}],
+       "actions":
+       [
+           {
+               "id": 1,
+               "operator": "productInfoLookup",
+               "selector": ".nd-add-to-win",
+               "selectorFallback": "#main > div > section > div:nth-child(1) > div > div.header-bottom",
+               "businessRuleTransformations":
+               [
+                   {
+                       "id": 0,
+                       "pType": "transactionIn2Weeks",
+                       "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-lightning.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span><span class=\"quick-delivery-text-small\"> son 15 günde</span> {{REPLACE_PRODUCTINFO}} adet satıldı </span>\n            </span>\n          </div>\n        </div>\n      </div>"
+                   },
+                   {
+                       "id": 1,
+                       "pType": "addToCartIn2Weeks",
+                       "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/basket3filli113-nsa.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span><span class=\"quick-delivery-text-small\"> son 15 günde</span> {{REPLACE_PRODUCTINFO}} kişi sepete ekledi </span>\n            </span>\n          </div>\n        </div>\n      </div>"
+                   },
+                   {
+                       "id": 2,
+                       "pType": "productViewCount",
+                       "value": "<div class=\"quick-delivery-container\">\n        <div class=\"quick-delivery-quick-delivery\">\n          <div class=\"quick-delivery-frame34497\">\n            <div class=\"quick-delivery-frame34475\">\n              <img src=\"https://ndvivense.glov.ai/assets/nd-eye.svg\" alt=\"basket3fillI113\" class=\"quick-delivery-basket3fill\">\n            </div>\n            <span class=\"quick-delivery-text\">\n              <span><span class=\"quick-delivery-text-small\"> son 1 günde</span> {{REPLACE_PRODUCTINFO}} kişi görüntüledi </span>\n            </span>\n          </div>\n        </div>\n      </div>"
+                   }
+               ]
+           }
+       ]
+   },
+   {
+       "id": 36,
+       "name": "D - P - Delivery Date Prettifier",
+       "description": "Delivery Date Prettifier",
+       "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PDP"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "text",
+               "selector": "#sidebar-right .delivery-date",
+               "value": "{{REPLACE}}",
+               "replaceFn": "return window.beagleInfoLayer?.pdp?.deliveryDateFormatted",
+               "variants":
+               {
+                   "A":
+                   {
+                       "replaceFn": "return window.beagleInfoLayer?.pdp?.deliveryDateFormatted"
+                   },
+                   "B":
+                   {
+                       "replaceFn": "const original = document.querySelector(\"#sidebar-right .delivery-date\").innerText;try {const charRegex = /[a-zA-ZıIöÖüÜğĞşŞçÇ]+/g;const numberRegex = /\\d+/g;const val = original.trim().split(\"-\");const firstDate = parseInt(val[0].match(numberRegex)[0]);const secondDate = parseInt(val[1].match(numberRegex)[0]);if (!charRegex.test(val[0])) {if (secondDate - firstDate >= 7) return `${firstDate}-${firstDate + 3} ${original.match(charRegex)[0]}`;return original;} else {const month = val[0].match(charRegex)[0].toLowerCase();let remainigDays = 31 - firstDate;if (month.startsWith('s') || month.startsWith('ş')) remainigDays = 28 - firstDate;if (month === \"nisan\") remainigDays = 30 - firstDate;if (month === \"haziran\") remainigDays = 30 - firstDate;if (month === \"eylul\" || month === \"eylül\") remainigDays = 30 - firstDate;if (month === \"kasım\" || month === \"kasim\") remainigDays = 30 - firstDate;if (remainigDays + secondDate >= 7) {if (remainigDays >= 3) return `${firstDate}-${firstDate + 3} ${val[0].match(charRegex)[0]}`;return `${val[0]}-${3 - remainigDays} ${val[1].match(charRegex)[0]}`;}return original;}} catch (err) {return original;}"
+                   },
+                   "C":
+                   {
+                       "replaceFn": "const original = document.querySelector(\"#sidebar-right .delivery-date\").innerText;try {return `En Geç ${original.trim().split(\"-\")[1]}`;} catch (err) {return original;}"
+                   },
+                   "D":
+                   {
+                       "operator": "injectscript",
+                       "selector": "body",
+                       "value": "const months = {\"ocak\": 0,\"şubat\": 1,\"subat\": 1,\"mart\": 2,\"nisan\": 3,\"mayıs\": 4,\"mayis\": 4,\"haziran\": 5,\"temmuz\": 6,\"ağustos\": 7,\"agustos\": 7,\"eylül\": 8,\"eylul\": 8,\"ekim\": 9,\"kasım\": 10,\"kasim\": 10,\"aralık\": 11,\"aralik\": 11,};const original = document.querySelector(\"#sidebar-right .delivery-date\").innerText;try {const charRegex = /[a-zA-ZıIöÖüÜğĞşŞçÇ]+/g;const numberRegex = /\\d+/g;const month = months[original.match(charRegex)[0].toLowerCase()];const date = original.match(numberRegex)[0];const dDate = new Date();dDate.setMonth(month);dDate.setDate(date);if (Math.ceil((dDate.getTime() - Date.now()) / (1000*60*60*24)) > 28) {document.querySelector(\".product-details-bottom\").remove();}} catch (err) {}"
+                   }
+               }
+           }
+       ]
+   },
+   {
+       "id": 37,
+       "name": "M - P - Delivery Date Prettifier",
+       "description": "Delivery Date Prettifier",
+       "category": "Universal Best Practice UX Strategies / Product Pages (PDP) / Mobile",
+       "device": "mobile",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PDP"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "text",
+               "selector": ".panel-body .planned_delivery_date",
+               "value": "{{REPLACE}}",
+               "replaceFn": "return window.beagleInfoLayer?.pdp?.deliveryDateFormatted",
+               "variants":
+               {
+                   "A":
+                   {
+                       "replaceFn": "return window.beagleInfoLayer?.pdp?.deliveryDateFormatted"
+                   },
+                   "B":
+                   {
+                       "replaceFn": "const original = document.querySelector(\".panel-body .planned_delivery_date\").innerText;try {const charRegex = /[a-zA-ZıIöÖüÜğĞşŞçÇ]+/g;const numberRegex = /\\d+/g;const val = original.trim().split(\"-\");const firstDate = parseInt(val[0].match(numberRegex)[0]);const secondDate = parseInt(val[1].match(numberRegex)[0]);if (!charRegex.test(val[0])) {if (secondDate - firstDate >= 7) return `${firstDate}-${firstDate + 3} ${original.match(charRegex)[0]}`;return original;} else {const month = val[0].match(charRegex)[0].toLowerCase();let remainigDays = 31 - firstDate;if (month.startsWith('s') || month.startsWith('ş')) remainigDays = 28 - firstDate;if (month === \"nisan\") remainigDays = 30 - firstDate;if (month === \"haziran\") remainigDays = 30 - firstDate;if (month === \"eylul\" || month === \"eylül\") remainigDays = 30 - firstDate;if (month === \"kasım\" || month === \"kasim\") remainigDays = 30 - firstDate;if (remainigDays + secondDate >= 7) {if (remainigDays >= 3) return `${firstDate}-${firstDate + 3} ${val[0].match(charRegex)[0]}`;return `${val[0]}-${3 - remainigDays} ${val[1].match(charRegex)[0]}`;}return original;}} catch (err) {return original;}"
+                   },
+                   "C":
+                   {
+                       "replaceFn": "const original = document.querySelector(\".panel-body .planned_delivery_date\").innerText;try {return `En Geç ${original.trim().split(\"-\")[1]}`;} catch (err) {return original;}"
+                   },
+                   "D":
+                   {
+                       "operator": "injectscript",
+                       "selector": "body",
+                       "value": "const months = {\"ocak\": 0,\"şubat\": 1,\"subat\": 1,\"mart\": 2,\"nisan\": 3,\"mayıs\": 4,\"mayis\": 4,\"haziran\": 5,\"temmuz\": 6,\"ağustos\": 7,\"agustos\": 7,\"eylül\": 8,\"eylul\": 8,\"ekim\": 9,\"kasım\": 10,\"kasim\": 10,\"aralık\": 11,\"aralik\": 11,};const original = document.querySelector(\".panel-body .planned_delivery_date\").innerText;try {const charRegex = /[a-zA-ZıIöÖüÜğĞşŞçÇ]+/g;const numberRegex = /\\d+/g;const month = months[original.match(charRegex)[0].toLowerCase()];const date = original.match(numberRegex)[0];const dDate = new Date();dDate.setMonth(month);dDate.setDate(date);if (Math.ceil((dDate.getTime() - Date.now()) / (1000*60*60*24)) > 28) {document.querySelector(\".panel-body .delivery-date-custom\").remove();}} catch (err) {}"
+                   }
+               }
+           }
+       ]
+   },
+   {
+       "id": 38,
+       "name": "M - P - Price Installments ",
+       "description": "Display minimum installement price in PDP",
+       "category": "Universal Best Practice UX Strategies / Checkout Page / Mobile Web",
+       "apply_on_user_segment": "*",
+       "device": "mobile",
+       "reapply_event": "element_change",
+       "reapply_selector": "#sales-price",
+       "pageTypes": ["PDP"],
+       "eligibilityRuleSet": ["PDP.Price2000"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": "#bn-price-installment-tag"
+           },
+           {
+               "operator": "insert",
+               "type": "after",
+               "value": "<div id=\"bn-price-installment-tag\" style=\"text-align: center;color: #40484e;font-size: 12px;font-family: BrandonTextRegular;\">{{REPLACE}} TL’den başlayan taksitlerle</div>",
+               "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div.panel-body.nopadding > div.product-price-box > div.price-text.non-discounted",
+               "selectorFallback": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price > div",
+               "replaceFn": "const p = parseInt(document.querySelector(\"#sales-price\").innerText.replace(\".\",\"\").replace(\"TL\", \"\").trim());const comishRate = (p < 2500) ? 0.12 : (p < 5500) ? 0.09 : 0.075;return (p * 1.01 * (1 + comishRate) / 9).toFixed(0);"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"margin-top\":\"0\"}",
+               "selector": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"padding\":\"0\"}",
+               "selector": "#mobile-product-sticky > div.price.align-left.custom-left-area > div.product-price > div.product-price-sale.non-discounted"
+           }
+       ]
+   },
+   {
+       "id": 40,
+       "name": "D - C - Price Scarcity: Sınırlı Sayıda",
+       "description": "Insert 'Bu fiyattan sınırlı sayıda' banner depending on info from lookup api",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["Basket"],
+       "eligibilityRuleSet": ["!Cart.Empty", "!Element.PriceScarcity"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": ".bn-limited-product-tag"
+           },
+           {
+               "variants":
+               {
+                   "A":
+                   {
+                       "condition":
+                       {
+                           "type": "productInfoLookup",
+                           "operator": "cartCntVisitorsIn15",
+                           "selector": ".cart-inside",
+                           "attribute": "data-sku",
+                           "inner_condition": "greaterThan",
+                           "value": 49
+                       }
+                   },
+                   "B":
+                   {
+                       "condition":
+                       {
+                           "type": "productInfoLookup",
+                           "operator": "cartCntVisitorsIn15",
+                           "selector": ".cart-inside",
+                           "attribute": "data-sku",
+                           "inner_condition": "greaterThan",
+                           "value": 49,
+                           "chain": {
+                               "attribute": "data-price",
+                               "inner_condition": "greaterEquals",
+                               "value": 5000
+                           }
+                       }
+                   }
+               },
+               "operator": "insert",
+               "type": "append",
+               "value": "<div class=\"bn-limited-product-tag\" style=\"background: rgba(255, 89, 89, 0.1); color: #FF5959; font-family: BrandonTextRegular; font-size: 12px; min-width: 127px; text-align: center;\">Bu fiyattan sınırlı sayıda</div>",
+               "selector": ".cart-price"
+           }
+       ]
+   },
+   {
+       "id": 41,
+       "name": "D - Exit Popup Promo Messages: Evini Birlikte Güzelleştirelim!",
+       "description": "Display exit popup",
+       "category": "Abandonment and Reengagement / Sitewide / Web",
+       "apply_on_user_segment": "*",
+       "reapply_event": "element_change",
+       "delay": 30000,
+       "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
+       "device": "desktop",
+       "pageTypes": ["!Basket", "!SpecialCampaigns", "!Payment", "!Address", "!Sign-in", "!Register"],
+       "eligibilityRuleSet": ["History.PageTypeCountSessionMin"],
+       "actions":
+       [
+           {
+               "operator": "insert",
+               "type": "popup",
+               "applyEvent":
+               [
+                   "exitIntent",
+                   "copyIntent"
+               ],
+               "selector": "body",
+               "value": "<div class='nd-popup'><div class='nd-popup__body'><img src='https://img.vivense.com/1920x1280/images/0b328f8e3a494ceca1f9a9f013402412.jpg' style='width: 370px;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;'><div class='nd-popup__title'>Evini birlikte güzelleştirelim!</div><div class='nd-popup__text'>Vivense ile ayrıcalıklı alışverişin keyfini çıkar.</div><ul><li style='list-style: initial;font-family: BrandonTextBold;'>3 Gün İçinde Koşulsuz Para İade Garantisi</li><li style='list-style: initial;font-family: BrandonTextRegular;'>Seçilmiş Ürünler ve Özel Koleksiyonlar</li><li style='list-style: initial;font-family: BrandonTextBold;'>İç Mimarlık ve Kurulum Hizmetleri</li><li style='list-style: initial;font-family: BrandonTextRegular;'>2 Yıl Garanti*</li><li style='list-style: initial;font-family: BrandonTextBold;'>Memnuniyeti Odaklı Satış Sonrası Destek</li></ul><span style='font-family: BrandonTextLight;font-style: italic;font-size: 11px;margin: 5px 5px 10px auto;letter-spacing: 1px;'>*Seçili kategorilerde geçerlidir.</span><a class='nd-cta_btn' href='haftanin-cok-satanlari.html'>ÇOK SATANLARI GÖR</a></div><button class='nd-popup__button-close'>X</button></div>"
+           }
+       ]
+   },
+   {
+       "id": 42,
+       "name": "M - Exit Popup Promo Messages: Evini Birlikte Güzelleştirelim!",
+       "description": "Display exit popup",
+       "category": "Abandonment and Reengagement / Sitewide / Mobile Web",
+       "apply_on_user_segment": "*",
+       "reapply_event": "element_change",
+       "delay": 30000,
+       "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
+       "device": "mobile",
+       "pageTypes": ["!Basket", "!SpecialCampaigns", "!Payment", "!Address", "!Sign-in", "!Register"],
+       "eligibilityRuleSet": ["History.PageTypeCountSessionMin"],
+       "actions":
+       [
+           {
+               "operator": "insert",
+               "type": "popup",
+               "applyEvent":
+               [
+                   "exitIntent",
+                   "copyIntent"
+               ],
+               "selector": "body",
+               "value": "<div class='nd-popup' style='margin: 6vh auto;'><div class='nd-popup__body'><img src='https://img.vivense.com/1920x1280/images/0b328f8e3a494ceca1f9a9f013402412.jpg' style='width: 90vw;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;'><div class='nd-popup__title'>Evini birlikte güzelleştirelim!</div><div class='nd-popup__text'>Vivense ile ayrıcalıklı alışverişin keyfini çıkar.</div><ul><li style='list-style: initial;font-family: BrandonTextBold;'>3 Gün İçinde Koşulsuz Para İade Garantisi</li><li style='list-style: initial;font-family: BrandonTextRegular;'>Seçilmiş Ürünler ve Özel Koleksiyonlar</li><li style='list-style: initial;font-family: BrandonTextBold;'>İç Mimarlık ve Kurulum Hizmetleri</li><li style='list-style: initial;font-family: BrandonTextRegular;'>2 Yıl Garanti*</li><li style='list-style: initial;font-family: BrandonTextBold;'>Memnuniyeti Odaklı Satış Sonrası Destek</li></ul><span style='font-family: BrandonTextLight;font-style: italic;font-size: 11px;margin: 5px 5px 10px auto;letter-spacing: 1px;'>*Seçili kategorilerde geçerlidir.</span><a class='nd-cta_btn' href='haftanin-cok-satanlari.html'>ÇOK SATANLARI GÖR</a></div><button class='nd-popup__button-close'>X</button></div>"
+           }
+       ]
+   },
+   {
+       "id": 43,
+       "name": "M - C - Price Scarcity",
+       "description": "Insert 'Bu fiyattan sınırlı sayıda' banner depending on info from lookup api",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
+       "device": "mobile",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["Basket"],
+       "eligibilityRuleSet": ["!Cart.Empty", "!Element.PriceScarcity"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": ".bn-limited-product-tag"
+           },
+           {
+               "variants":
+               {
+                   "A":
+                   {
+                       "condition":
+                       {
+                           "type": "productInfoLookup",
+                           "operator": "cartCntVisitorsIn15",
+                           "selector": ".cart-inside",
+                           "attribute": "data-sku",
+                           "inner_condition": "greaterThan",
+                           "value": 49
+                       }
+                   },
+                   "B":
+                   {
+                       "condition":
+                       {
+                           "type": "productInfoLookup",
+                           "operator": "cartCntVisitorsIn15",
+                           "selector": ".cart-inside",
+                           "attribute": "data-sku",
+                           "inner_condition": "greaterThan",
+                           "value": 49,
+                           "chain": {
+                               "attribute": "data-price",
+                               "inner_condition": "greaterEquals",
+                               "value": 5000
+                           }
+                       }
+                   }
+               },
+               "operator": "insert",
+               "type": "append",
+               "value": "<div class=\"bn-limited-product-tag\" style=\"background: rgba(255, 89, 89, 0.1); color: #FF5959; font-family: BrandonTextRegular; font-size: 12px; padding: 0 5px; text-align: center;\">Bu fiyattan sınırlı sayıda</div>",
+               "selector": ".right-content"
+           }
+       ]
+   },
+   {
+       "id": 44,
+       "name": "M - Exit Popup inc Social Proof",
+       "description": "Display exit popup",
+       "category": "Abandonment and Reengagement / Sitewide / Web",
+       "apply_on_user_segment": "*",
+       "reapply_event": "element_change",
+       "delay": 30000,
+       "reapply_selector": "div.shortcut_column.basket_wrapper.my-cart",
+       "device": "mobile",
+       "productInfoStorage": "basket",
+       "pageTypes": ["!Basket", "!SpecialCampaigns", "!Payment", "!Address", "!Register", "!Sign-in"],
+       "eligibilityRuleSet": ["History.PageTypeCountSessionMin", "!Cart.Empty"],
+       "businessRuleSet": [{"set": ["!Cart.Empty", "History.HasBeenAtBasket", "ProductInfo.Sales20"], "type": "and"}, {"set": ["!Cart.Empty", "History.HasBeenAtBasket", "ProductInfo.Cart20"], "type": "and"}, {"set": ["!Cart.Empty", "History.HasBeenAtBasket", "ProductInfo.View20"], "type": "and"}],
+       "actions":
+       [
+           {
+               "operator": "insert",
+               "type": "popup",
+               "applyEvent":
+               [
+                   "exitIntent",
+                   "copyIntent"
+               ],
+               "selector": "body",
+               "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li > a > div.product_image > img",
+               "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 90vw;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Sipariş vermenin tam zamanı!</div><div class=\"nd-popup__text\">Sepetindeki ürünlerin stokları azalıyor. Şimdi alışverişini tamamla, ürünlerin daha hızlı teslim edilsin!</div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">ŞİMDİ SİPARİŞ VER</a></div></div>",
+               "businessRuleTransformations":
+               [
+                   {
+                       "pType": "transactionIn2Weeks",
+                       "id": 1,
+                       "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                       "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 90vw;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Acele Et, Kaçırma!<br/><img src=\"https://ndvivense.glov.ai/assets/clock-history__red.png\" style=\"height: 16px;\"><span style=\"font-family: 'BrandonTextRegular';margin-left: 4px;color: #FF5959;font-size:14px;text-align:inherit;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere satın alındı.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+                   },
+                   {
+                       "pType": "addToCartIn2Weeks",
+                       "id": 2,
+                       "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                       "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 90vw;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Hızlı Olan Kazansın!<br/><img src=\"https://ndvivense.glov.ai/assets/nd-lightning_red.svg\" style=\"height: 16px; vertical-align: sub; margin-bottom:2px;\"><span style=\"font-family: 'BrandonTextRegular';margin-left: 4px;color: #FF5959;font-size:14px;text-align:inherit;\">Stok azalıyor</span></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+                   },
+                   {
+                       "pType": "productViewCount",
+                       "id": 3,
+                       "contentSelector": "body > div.desktop_layout_wrapper > div.middle_header_wrapper > div > div.middle_header_inner_column.middle_header_inner_shortcuts_wrapper > div > div.shortcut_column.basket_wrapper.my-cart > div > div.basket_product_list > ul > li:last-child img",
+                       "value": "<div class=\"nd-popup\"><div class=\"nd-popup__body\"><img src=\"{{REPLACE}}\" style=\"width: 90vw;height: auto;border-radius: 10px 10px 0px 0px; margin-bottom: 30px;\"><div class=\"nd-popup__title\">Gözler Üstümde!<span><img src=\"https://ndvivense.glov.ai/assets/nd-smile_black.svg\" style=\"height: 16px;\"></span><br/></div><div class=\"nd-popup__text\">Sepetindeki ürün son 24 saatte <br/><span style=\"font-family: 'BrandonTextBold';\">{{REPLACE_PRODUCTINFO}} kere sepete eklendi.</span></div><a class=\"nd-cta_btn\" href=\"siparis-listesi.html\">TÜKENMEDEN AL</a></div></div>"
+                   }
+               ]
+           }
+       ]
+   },
+   {
+       "id": 49,
+       "name": "D - Simplify Membership Page",
+       "description": "Simplify Membership Page",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
+       "device": "desktop",
+       "reapply_event": "element_change",
+       "reapply_selector": "#login",
+       "apply_on_user_segment":"*",
+       "pageTypes": ["Sign-in", "Register"],
+       "actions":[
+          {
+               "operator": "remove",
+               "selector": "#sign-up > img"
+          },
+          {
+               "operator": "remove",
+               "selector": "#sign-up > p"
+          },
+          {
+               "operator": "edit",
+               "type": "text",
+               "value": "Üye Ol",
+               "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2) > a"
+          },
+          {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"display\":\"none\"}",
+               "selector": "#registration > div.vivense-campaign-endorsement-selection > div"
+          },
+          {
+               "operator": "insert",
+               "type": "after",
+               "value": "<div><label class=\"checkbox\" for=\"nd_vvns-approve-campaign\" ><input type=\"checkbox\" name=\"nd_vvns-approve-campaign\" id=\"nd_vvns-approve-campaign\" onclick='(function handleApproveClick(e){let checkbox = document.getElementById(\"nd_vvns-approve-campaign\"); if(checkbox.checked){document.querySelector(\"#vvns-approve-campaign\").click();document.querySelector(\"#vivenseSms\").click();document.querySelector(\"#vivenseEmail\").click();document.querySelector(\"#vivensePhone\").click();} else {document.querySelector(\"#vvns-not-approve-campaign\").click();}})(this)'><span style=\"margin-left:20px;vertical-align:middle\">Onaylıyorum</span></label></div>",
+               "selector": "#registration > div.vivense-campaign-endorsement-selection > p"
+          },
+          {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"background\": \"#8f9ba7 !important\", \"color\": \"#fff !important\"}",
+               "selector": "#registerBtn"
+         }
+       ]
+   },
+   {
+       "id": 51,
+       "name":"D - Header Menu Delay",
+       "description":"Apply 0.5 second delay when displaying header menu dropdown on hover",
+       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
+       "device":"desktop",
+       "pageTypes": ["!Address", "!Payment", "!Sign-in", "!Register"],
+       "actions":[
+           {
+               "operator": "injectscript",
+               "selector": "body",
+               "value": "const head = document.head || document.getElementsByTagName('head')[0];const css = '.bg_opacity {opacity: 0; transition-delay: 0s;}';const se = document.createElement('style');se.type = 'text/css';if (se.styleSheet) {se.styleSheet.cssText = css;} else {se.appendChild(document.createTextNode(css));}head.appendChild(se);const o = document.querySelector('.overlay_bg');o.classList.add('bg_opacity');document.querySelectorAll('.main_category_inner').forEach(e => {e.classList.add('bg_opacity');});const el = document.querySelector('.main_menu_category_list_wrapper');el.addEventListener('mouseover', () => {const ts = Array.from(window.top.document.querySelectorAll('.bg_opacity'));if (ts.some((t) => {return getComputedStyle(t).opacity === '1'})) {return;}setTimeout(() => {const ts = Array.from(window.top.document.querySelectorAll('.bg_opacity'));if (ts.some((t) => {return getComputedStyle(t).display === 'block'})) {o.style['opacity'] = 1;ts.forEach((t) => {t.style['opacity'] = 1;});}}, 500);});el.addEventListener('mouseleave', () => {const ts = Array.from(window.top.document.querySelectorAll('.bg_opacity'));o.style['opacity'] = 0;ts.forEach((t) => {t.style['opacity'] = 0;});});"
+           }
+       ]
+   },
+   {
+       "id": 54,
+       "name":"M - Simplify Membership Page",
+       "description":"Simplify Membership Page",
+       "category":"Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
+       "device":"mobile",
+       "reapply_event": "element_change",
+       "reapply_selector": "#login",
+       "apply_on_user_segment":"*",
+       "pageTypes": ["Sign-in", "Register"],
+       "actions":[
+          {
+               "operator": "remove",
+               "selector": "#sign-up > img"
+          },
+          {
+               "operator": "remove",
+               "selector": "#sign-up > p"
+          },
+          {
+               "operator": "edit",
+               "type": "text",
+               "value": "Üye Ol",
+               "selector": "body > div.main-custom-container > div.container > div.vivense-registration-page > ul > li:nth-child(2) > a"
+          },
+          {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"display\":\"none\"}",
+               "selector": "#registration > div.vivense-campaign-endorsement-selection > div"
+          },
+          {
+               "operator": "insert",
+               "type": "after",
+               "value": "<div><label class=\"checkbox\" for=\"nd_vvns-approve-campaign\" ><input type=\"checkbox\" name=\"nd_vvns-approve-campaign\" id=\"nd_vvns-approve-campaign\" onclick='(function handleApproveClick(e){let checkbox = document.getElementById(\"nd_vvns-approve-campaign\"); if(checkbox.checked){document.querySelector(\"#vvns-approve-campaign\").click();document.querySelector(\"#vivenseSms\").click();document.querySelector(\"#vivenseEmail\").click();document.querySelector(\"#vivensePhone\").click();} else {document.querySelector(\"#vvns-not-approve-campaign\").click();}})(this)'><span style=\"margin-left:20px;vertical-align:middle\">Onaylıyorum</span></label></div>",
+               "selector": "#registration > div.vivense-campaign-endorsement-selection > p"
+          }
+       ]
+   },
+   {
+       "id": 57,
+       "name": "D - Checkout Distracter Blocker -Quin",
+       "description": "Remove Vivense Quin Related UI items",
+       "category": "Universal Best Practice UX Strategies / Basket Page / Web ",
+       "apply_on_user_segment": "*",
+       "device": "desktop",
+       "pageTypes": ["Payment", "Address"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": "#grt-shadow-host"
+           }
+       ]
+   },
+   {
+       "id": 58,
+       "name": "M - Checkout Distracter Blocker -Quin",
+       "description": "Remove Vivense Quin Related UI items",
+       "category": "Universal Best Practice UX Strategies / Basket Page / Web ",
+       "apply_on_user_segment": "*",
+       "device": "mobile",
+       "pageTypes": ["Payment", "Address"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": "#grt-shadow-host"
+           }
+       ]
+   },
+   {
+       "id": 64,
+       "name": "D - P - Title Change",
+       "description": "Change Title with chat gpt suggestions",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PDP"],
+       "actions":
+       [
+           {
+               "operator" : "insert",
+               "type": "before",
+               "selector": "body > div.main-custom-container > div.container > div > div.col-md-9 > div.full-width.sticky_header > div > div > h1 > span",
+               "value": "<br/>"
+           },
+           {
+               "operator": "ai-suggest",
+               "type": "title-change",
+               "selector": ".product-title"
+           }
+       ]
+   },
+   {
+       "id": 65,
+       "name": "D - P - Description Append",
+       "description": "Append Description with chat gpt suggestions",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PDP"],
+       "actions":
+       [
+           {
+               "operator": "ai-suggest",
+               "type": "add-description",
+               "selector": "#other-colour",
+               "value": "<div class=\"panel panel-body bg-desc-body\"><p class=\"bg-desc-text\">{{REPLACE_PRODUCTINFO}}</p></div>"
+           }
+       ]
+   },
+   {
+       "id": 66,
+       "name": "M - P - Remove 'Desktek' PLP",
+       "description": "Remove 'Destek' icon from PLP",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+       "device": "mobile",
+       "delay": 50,
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PLP"],
+       "eligibilityRuleSet": ["Element.LauncherExists"],
+       "actions":
+       [
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"display\":\"none\"}",
+               "selector": "#launcher"
+           }
+       ]
+   },
+   {
+       "id": 67,
+       "name": "D - B - Remove 'Alışverişe Devam Et'",
+       "description": "Remove 'Alışverişe Devam Et' link from basket",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["Basket"],
+       "eligibilityRuleSet": ["!Cart.Empty"],
+       "actions":
+       [
+           {
+               "operator": "remove",
+               "selector": "#checkoutForm > div > div > div.col-md-8.cart-left-container > div.basket-inner-footer"
+           }
+       ]
+   },
+   {
+       "id": 68,
+       "name": "D - B - Basket photo enlarge",
+       "description": "Make product images clickable and show enlarged image",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["Basket"],
+       "eligibilityRuleSet": ["!Cart.Empty"],
+       "actions":
+       [
+           {
+               "operator": "injectscript",
+               "selector": "body",
+               "value": "const tmp = `<div class='glv_modal' style='position: fixed;height: 100%;width: 100%;top: 0;z-index: 9999;text-align: center;background: url(https://cdn.vivense.com/assets/js/product/fancybox/fancybox_overlay.png);'><div><img src='{{REPLACE}}' loading='lazy' style='height: 55vh;margin-top: 20vh;box-shadow: -5px 5px 20px black;'><div class='glv_close_btn' style='color: white;width: max-content;font-size: 4rem;cursor: pointer;display: inline;position: absolute;margin-top: 18vh;margin-left: 2vw;'>x</div></div></div>`;const handleClose = (e) => {if (e.target.tagName !== 'IMG' && !e.target.classList.contains('glv_close_btn')) {document.getElementsByClassName('glv_modal')[0].remove();window.removeEventListener('click', handleClose, true);}};const handleClick = (e) => {const clickedEl = e.target;let src = clickedEl.tagName === 'IMG' ? clickedEl.getAttribute('src') : clickedEl.getElementsByTagName('img')[0].getAttribute('src');src = src.replace(/\\d+x\\d+/, '1920x1280');let modal = document.createElement('template');modal.innerHTML = tmp.replace('{{REPLACE}}', src);modal = modal.content.firstChild;modal.getElementsByClassName('glv_close_btn')[0].onclick = (e) => {document.getElementsByClassName('glv_modal')[0].remove();window.removeEventListener('click', handleClose, true);};document.body.appendChild(modal);window.addEventListener('click', handleClose, true);};const cartElems = document.getElementsByClassName('cart-inside');for (const el of Array.from(cartElems)) {const old_link = el.getElementsByTagName('a')[0];const newWrapper = document.createElement('div');newWrapper.innerHTML = old_link.innerHTML;newWrapper.style.cursor = 'pointer';old_link.parentNode.replaceChild(newWrapper, old_link);newWrapper.addEventListener('click', handleClick, true);}"
+           }
+       ]
+   },
+   {
+       "id": 69,
+       "name": "D - P - Remove Extra Badges from PLP",
+       "description": "Remove Extra Badges from PLP",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Mobile Web",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PLP"],
+       "actions": [{
+           "operator": "injectscript",
+           "selector": "body",
+           "value": "$('.product_info').each(function() {if ($(this).has('.vvns-product-fast-free-badges-wrapper').length) {$(this).find('.list-product-cart-badge').remove();} else {if ($(this).find('.list-product-cart-badge').has('.vvns-product-rating').length) {$(this).find('.list-product-cart-badge').children().not('.vvns-product-rating').remove();} else {$(this).find('.list-product-cart-badge').remove();}}});"
+       }]
+   },
+   {
+       "id": 70,
+       "name": "D - C - 'Pesin Fiyatina' Label",
+       "description": "Insert 'Pesin Fiyatina' Label if eligible",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web ",
+       "device": "desktop",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["Payment"],
+       "eligibilityRuleSet": ["Payment.CC", "Element.InstallmentTable"],
+       "actions":
+       [
+           {
+               "condition":
+               {
+                   "type": "function",
+                   "operator": "try {if (el.getAttribute('data-times') == 1) return false;const eligible = [];let basePrice;const baseElement = document.getElementsByClassName('installment-tr')[0];if (baseElement.getAttribute('data-times') == 1) {basePrice = parseInt(baseElement.getAttribute('data-totalprice').replace(/\\./g, ''), 10);}if (!basePrice) return false;const iPrice = parseInt(el.getElementsByClassName('installment-price')[0].textContent.split('x')[1].replace(/\\./g, '').replace(/TL/, ''), 10);const installment = parseInt(el.getAttribute('data-times'));if ((iPrice * installment) <= basePrice) return true;} catch (err) {console.log(err);}",
+                   "selector": ".installment-tr"
+               },
+               "operator": "insert",
+               "type": "append",
+               "value": "<div style=\"background: #199411; color: white; border-radius: 5px; margin-left:auto; padding: 0 2px; font-size: 12px;\"><div>Peşin Fiyatına</div></div>",
+               "selector": ".installment-option"
+           },
+           {
+               "operator": "edit",
+               "type": "styleApplicator",
+               "value": "{\"display\":\"flex\", \"align-items\":\"center\", \"white-space\":\"nowrap\", \"width\":\"unset\"}",
+               "selector": ".installment-option"
+           }
+       ]
+   },
+   {
+       "id": 71,
+       "name": "M - P - Title Change",
+       "description": "Change Title with chat gpt suggestions",
+       "category": "Universal Best Practice UX Strategies / Category Pages (PLP) / Web, Mobile Web",
+       "device": "mobile",
+       "apply_on_user_segment": "*",
+       "pageTypes": ["PDP"],
+       "actions":
+       [
+           {
+               "operator": "ai-suggest",
+               "type": "title-change",
+               "selector": "#main > div > section > div > div > div.header-bottom > h1"
+           }
+       ]
+   }
 ]
