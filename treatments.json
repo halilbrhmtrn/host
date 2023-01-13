@@ -636,6 +636,7 @@
         "category": "Promotional Messaging / Web",
         "apply_on_user_segment": "*",
         "device": "desktop",
+        "reapply_event": "tabchange",
         "eligibilityRuleSet":["Document.NotVisible"],
         "delay": 15000,
         "businessRuleSet": [{"set": ["PageType.Basket", "!Cart.Empty"], "type": "and"}, "PageType.PLP", "PageType.PDP"],
