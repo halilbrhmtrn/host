@@ -1,0 +1,386 @@
+{
+    "PageType":
+    [
+        {
+            "name": "Homepage",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "Homepage"
+        },
+        {
+            "name": "PLP",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "Listingpage"
+        },
+        {
+            "name": "PDP",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "Productpage"
+        },
+        {
+            "name": "Address",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "address"
+        },
+        {
+            "name": "Payment",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "payment"
+        },
+        {
+            "name": "Sign-in",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "signin"
+        },
+        {
+            "name": "Register",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "register"
+        },
+        {
+            "name": "Basket",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "basket"
+        },
+        {
+            "name": "SpecialCampaigns",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "special_campaigns"
+        },
+        {
+            "name": "Favorites",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "favorites"
+        },
+        {
+            "name": "PastOrders",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "equal",
+            "value": "pastorders"
+        },
+        {
+            "name": "ProfilePages",
+            "type": "dataLayer",
+            "operator": "PageType",
+            "condition": "includes",
+            "value": "profile"
+        }
+    ],
+    "History":
+    [
+        {
+            "name": "PageTypeCountSessionMin",
+            "type": "dataLayer",
+            "operator": "history.PageType_count_session",
+            "condition": "greaterThan",
+            "value": 2
+        },
+        {
+            "name": "HasBeenAtBasket",
+            "type": "session",
+            "operator": "history",
+            "condition": "contains",
+            "value": "/siparis-listesi.html"
+        }
+    ],
+    "Cart": 
+    [
+        {
+            "name": "Empty",
+            "type": "dataLayer",
+            "operator": "cart.isempty",
+            "condition": "equal",
+            "value": "true"
+        },
+        {
+            "name": "CouponApplicable",
+            "type": "dataLayer",
+            "operator": "cart.couponApplicableAmount",
+            "condition": "greaterThan",
+            "value": 0
+        },
+        {
+            "name": "CouponApplicable4500",
+            "type": "dataLayer",
+            "operator": "cart.couponApplicableAmount",
+            "condition": "greaterThan",
+            "value": 4500
+        },
+        {
+            "name": "CouponApplicable7500",
+            "type": "dataLayer",
+            "operator": "cart.couponApplicableAmount",
+            "condition": "greaterThan",
+            "value": 7500
+        }
+    ],
+    "Element":
+    [
+        {
+            "name": "PriceScarcity",
+            "type": "element",
+            "operator": null,
+            "condition": "exist",
+            "selector": ".bn-limited-product-tag"
+        },
+        {
+            "name": "LargePictureSet",
+            "type": "element",
+            "operator": "count",
+            "selectorAll": "#wowslider-container1 > div.ws_thumbs > div a",
+            "condition": "greaterThan",
+            "value": 8
+        },
+        {
+            "name": "PercentageSign",
+            "type": "element",
+            "operator": null,
+            "selector": "#v_bullet",
+            "condition": "exist"
+        },
+        {
+            "name": "DesktopEnlargement",
+            "type": "element",
+            "operator": null,
+            "selector": "#wowslider-container1 > div.quick-delivery-container.w-desktopEnlargement",
+            "condition": "exist"
+        },
+        {
+            "name": "NextDayThumb",
+            "type": "element",
+            "operator": null,
+            "selector": "#wowslider-container1 > div.ws_thumbs.next-day-thumb",
+            "condition": "exist"
+        },
+        {
+            "name": "QuickDeliveryContainer",
+            "type": "element",
+            "operator": null,
+            "selector": ".quick-delivery-container",
+            "condition": "exist"
+        },
+        {
+            "name": "FurnitureSet",
+            "type": "element",
+            "operator": null,
+            "selector": "td.components-change.components-change-custom > a",
+            "condition": "exist"
+        },
+        {
+            "name": "GlovPopover",
+            "type": "element",
+            "operator": null,
+            "selector": ".nd-popover",
+            "condition": "exist"
+        },
+        {
+            "name": "Robot12Exclusive",
+            "type": "element",
+            "operator": "classList",
+            "condition": "notContains",
+            "value": "panel-body",
+            "selector": "#sidebar-right > div > div.sticky_column > div.panel.panel-default.product-right-sidebar > div:nth-child(2)"
+        },
+        {
+            "name": "LauncherExists",
+            "type": "element",
+            "operator": null,
+            "condition": "exist",
+            "selector": "#launcher"
+        },
+        {
+            "name": "InstallmentTable",
+            "type": "element",
+            "operator": "classList",
+            "condition": "includes",
+            "value": "hidden",
+            "selector": "#no_card_data",
+            "chain_condition": "or",
+            "chain": 
+            {
+                "name": "InstallmentTable",
+                "type": "element",
+                "operator": "style",
+                "condition": "contains",
+                "selector": ".installement-box.installement-area",
+                "value": "display: block"
+            }
+        },
+        {
+            "name": "AddressEntry",
+            "type": "element",
+            "operator": null,
+            "condition": "exist",
+            "selector": ".ja_wrap.ja_wrap_black",
+            "chain_condition": "or",
+            "chain": 
+            {
+                "name": "AddressEntry",
+                "type": "element",
+                "operator": "style",
+                "condition": "contains",
+                "selector": ".popup.frame-box",
+                "value": "display: block",
+                "chain_condition": "or",
+                "chain":
+                {
+                    "name": "AddressEntry",
+                    "type": "element",
+                    "operator": "style",
+                    "condition": "contains",
+                    "selector": ".edit-popup.frame-box",
+                    "value": "display: block"
+                }
+            }
+        },
+        {
+            "name": "TopBanner",
+            "type": "element",
+            "operator": null,
+            "condition": "exist",
+            "selector": "#search-body > div.category-banner-wrapper"
+        }
+    ],
+    "PDP":
+    [
+        {
+            "name": "Price2000",
+            "type": "dataLayer",
+            "operator": "pdp.price",
+            "condition": "greaterEquals",
+            "value": 2000
+        },
+        {
+            "name": "Price9000",
+            "type": "dataLayer",
+            "operator": "pdp.price",
+            "condition": "greaterEquals",
+            "value": 9000
+        }
+    ],
+    "ProductInfo":
+    [
+        {
+            "name": "Sales100",
+            "type": "productInfoLookup",
+            "operator": "saleCntVisitorsIn15",
+            "condition": "greaterThan",
+            "value": 100
+        },
+        {
+            "name": "Sales20",
+            "type": "productInfoLookup",
+            "operator": "saleCntVisitorsIn15",
+            "condition": "greaterThan",
+            "value": 20
+        },
+        {
+            "name": "Cart100",
+            "type": "productInfoLookup",
+            "operator": "cartCntVisitorsIn15",
+            "condition": "greaterThan",
+            "value": 100
+        },
+        {
+            "name": "Cart20",
+            "type": "productInfoLookup",
+            "operator": "cartCntVisitorsIn15",
+            "condition": "greaterThan",
+            "value": 20
+        },
+        {
+            "name": "View100",
+            "type": "productInfoLookup",
+            "operator": "viewCntVisitorsIn1",
+            "condition": "greaterThan",
+            "value": 100
+        },
+        {
+            "name": "View20",
+            "type": "productInfoLookup",
+            "operator": "viewCntVisitorsIn1",
+            "condition": "greaterThan",
+            "value": 100
+        },
+        {
+            "name": "HasTitle",
+            "type": "productInfoLookup",
+            "operator": "hasTitle",
+            "condition": "exist"
+        },
+        {
+            "name": "HasDescription",
+            "type": "productInfoLookup",
+            "operator": "hasDescription",
+            "condition": "exist"
+        }
+    ],
+    "Payment": 
+    [
+        {
+            "name": "CC",
+            "type": "element",
+            "operator": "classList",
+            "condition": "includes",
+            "selector": "#menuPayments > ul > li",
+            "value": "active",
+            "chain_condition": "or",
+            "chain": 
+            {
+                "name": "CC",
+                "type": "element",
+                "operator": "style",
+                "condition": "contains",
+                "selector": ".credit-cart-section",
+                "value": "display: block"
+            }
+        }
+    ],
+    "User":
+    [
+        {
+            "name": "LoggedIn",
+            "type": "dataLayer",
+            "operator": "vvsUserId",
+            "condition": "greaterThan",
+            "value": 0
+        }
+    ],
+    "Document":
+    [
+        {
+            "name": "Visible",
+            "type": "document",
+            "operator": "visibilitychange",
+            "condition": "equal",
+            "value": "visible"
+        },
+        {
+            "name": "NotVisible",
+            "type": "document",
+            "operator": "visibilitychange",
+            "condition": "equal",
+            "value": "hidden"
+        }
+    ]
+}
