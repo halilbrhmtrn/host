@@ -1,0 +1,40 @@
+{
+  "Benchmarking": {
+    "splitRatio": 20,
+    "labRatio": 20,
+    "champSkipRatio": 20,
+    "labSkipRatio": 50
+  },
+
+  "DOMTracker": {
+    "purchase_skus": {"searchBy": "class", "searchFor": "text-dark mb-1"},
+    "pdp_price": {"searchBy": "property", "searchFor": "og:price:amount"}
+  },
+
+  "DOM2Data": {
+    "purchase_skus": {"dataName": "purchase.skus", "domextract": "docQueryInnerText"},
+    "pdp_price": {"dataName": "pdp.price", "domextract": "docQueryAttribValueList", "params": ["content"]}
+  },
+
+  "Env2Data": [
+    {"env": "ga", "selector": "cd_pagetype", "dataName": "PageType", "formatter": "pageTypeGA2Glov"},
+    {"env": "ga", "selector": "ecommerce.detail.products.0.id", "dataName": "pdp.sku"},
+    {"env": "ga", "selector": "ecommerce.detail.products.0.price", "dataName": "pdp.price"},
+    {"env": "ga", "selector": "ecommerce.products.id", "dataName": "cart.sku.array"},
+    {"env": "ga", "selector": "Ra.ecommerce.items[0].item_id", "dataName": "purchase.skus"},
+    {"env": "ga", "selector": "Ra.ecommerce.value", "dataName": "purchase.revenue"},
+    {"env": "ga", "selector": "cd_user_type", "dataName": "userType"},
+    {"env": "ga", "selector": "cd_user_type", "dataName": "isAgent"}
+  ],
+
+  "Data2Data": [
+    {"triggers": ["purchase.skus"], "type": "customFunct", "params": ["removeParenthesis"]},
+    {"type": "setValueIfEquals_LS", "data_type": "string", "lhs_type": "infoLayer", "lhs": "userType", "rhs_type": "string", "rhs": "Admin", "value": true, "featureName": "isAgent"}
+  ],
+
+  "UDFs": {
+    "removeParenthesis": [
+      "const baseFunction = (str) => {return str.replace(/[()]/g, '');}"
+    ]
+  }
+}
