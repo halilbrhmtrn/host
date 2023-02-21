@@ -11,11 +11,18 @@
     "pageType_PLP": {"searchBy": "class", "searchFor": "products-header"},
     "pageType_PDP": {"searchBy": "class", "searchFor": "product-summary-card"},
     "pageType_Basket": {"searchBy": "class", "searchFor": "basket"},
+    "pageType_Checkout": {"searchBy": "class", "searchFor": "checkout-payment"},
     "pdp_price": {"searchBy": "class", "searchFor": "product-prices", "filterQuery": ".product-prices > div:nth-child(1) > span.font-weight-bold.font-size-lg"},
     "pdp_sku": {"searchBy": "class", "searchFor": "product-title", "filterQuery": ".product-title > span.align-middle"},
     "cart_skus": {"searchBy": "class", "searchFor": "vvns-card__content", "filterQuery": ".vvns-card__content .text-muted.mb-1"},
     "cart_prices": {"searchBy": "class", "searchFor": "vvns-card__content", "filterQuery": ".vvns-card__content > div.row .mx-1.mx-lg-0", "noClassMatches": "text-dark"},
-    "purchase_skus": {"searchBy": "class", "searchFor": "text-dark mb-1"}
+    "purchase_skus": {"searchBy": "class", "searchFor": "text-dark mb-1"},
+    "cta_button": [
+      {"searchBy": "class", "searchFor": "product-prices", "filterQuery": ".product-prices > button"},
+      {"searchBy": "class", "searchFor": "basket-checkout-button-container", "filterQuery": ".basket-checkout-button-container > button"},
+      {"searchBy": "class", "searchFor": "checkout-pay-button-container", "filterQuery": ".checkout-pay-button-container > button"},
+      {"searchBy": "class", "searchFor": "vvns-form", "filterQuery": ".vvns-form > button.vvns-button--uppercase"}
+    ]
   },
 
   "DOM2Data": {
@@ -23,6 +30,7 @@
     "pageType_PLP": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "PLP"},
     "pageType_PDP": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "PDP"},
     "pageType_Basket": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "Basket"},
+    "pageType_Checkout": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "Checkout"},
     "pdp_price": {"dataName": "pdp.price", "domextract": "docQueryInnerText", "formatter": "processEuroPrice"},
     "pdp_sku": {"dataName": "pdp.sku", "domextract": "docQueryInnerText"},
     "cart_skus": {"dataName": "cart.skus", "domextract": "docQueryInnerTextArray", "formatter": "trimParentheses"},
