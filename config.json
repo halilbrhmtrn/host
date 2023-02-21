@@ -46,7 +46,24 @@
   ],
 
   "Data2Data": [
-    {"type": "equals", "data_type": "string", "lhs_type": "infoLayer", "lhs": "userType", "rhs_type": "string", "rhs": "Admin", "featureName": "isAgent"}
+    {"type": "equals", "data_type": "string", "lhs_type": "infoLayer", "lhs": "userType", "rhs_type": "string", "rhs": "Admin", "featureName": "isAgent"},
+    {
+      "type": "setMapValueIfContainsMapParam", "data_type": "string", "lhs_type": "infoLayer", "lhs": "u", "featureName": "PageType",
+      "params": [
+        {"p": "/order-completed", "v": "Purchase"},
+        {"p": "/basket", "v": "Basket"},
+        {"p": "/auth/welcome", "v": "Welcome"},
+        {"p": "/auth/sign-up", "v": "Register"},
+        {"p": "/auth/sign-in", "v": "Sign-in"},
+        {"p": "/auth/forgot-password", "v": "Password-reset"},
+        {"p": "/account/favorites", "v": "Favorites"},
+        {"p": "/account/orders", "v": "PastOrders"},
+        {"p": "/account/profile", "v": "ProfileInfo"},
+        {"p": "/account/addresses", "v": "ProfileAddress"},
+        {"p": "/account/help-centre", "v": "ProfileHelpCenter"},
+        {"p": "/search", "v": "Search"}
+      ]
+    }
   ],
 
   "UDFs": {
