@@ -1,40 +1,46 @@
 {
   "Benchmarking": {
-    "splitRatio": 20,
+    "splitRatio": 80,
     "labRatio": 20,
     "champSkipRatio": 20,
     "labSkipRatio": 50
   },
 
   "DOMTracker": {
-    "purchase_skus": {"searchBy": "class", "searchFor": "text-dark mb-1"},
-    "pdp_price": {"searchBy": "property", "searchFor": "og:price:amount"}
+    "pageType_Homepage": {"searchBy": "class", "searchFor": "vvs-snippet-full-width-image-and-link"},
+    "pageType_PLP": {"searchBy": "class", "searchFor": "products-header"},
+    "pageType_PDP": {"searchBy": "class", "searchFor": "product-summary-card"},
+    "pageType_Basket": {"searchBy": "class", "searchFor": "basket"},
+    "pdp_price": {"searchBy": "class", "searchFor": "product-prices", "filterQuery": ".product-prices > div:nth-child(1) > span.font-weight-bold.font-size-lg"},
+    "pdp_sku": {"searchBy": "class", "searchFor": "product-title", "filterQuery": ".product-title > span.align-middle"},
+    "cart_skus": {"searchBy": "class", "searchFor": "vvns-card__content", "filterQuery": ".vvns-card__content .text-muted.mb-1"},
+    "cart_prices": {"searchBy": "class", "searchFor": "vvns-card__content", "filterQuery": ".vvns-card__content > div.row .mx-1.mx-lg-0", "noClassMatches": "text-dark"},
+    "purchase_skus": {"searchBy": "class", "searchFor": "text-dark mb-1"}
   },
 
   "DOM2Data": {
-    "purchase_skus": {"dataName": "purchase.skus", "domextract": "docQueryInnerText"},
-    "pdp_price": {"dataName": "pdp.price", "domextract": "docQueryAttribValueList", "params": ["content"]}
+    "pageType_Homepage": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "Homepage"},
+    "pageType_PLP": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "PLP"},
+    "pageType_PDP": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "PDP"},
+    "pageType_Basket": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "Basket"},
+    "pdp_price": {"dataName": "pdp.price", "domextract": "docQueryInnerText", "formatter": "processEuroPrice"},
+    "pdp_sku": {"dataName": "pdp.sku", "domextract": "docQueryInnerText"},
+    "cart_skus": {"dataName": "cart.skus", "domextract": "docQueryInnerTextArray", "formatter": "trimParentheses"},
+    "cart_prices": {"dataName": "cart.prices", "domextract": "docQueryInnerTextArray", "formatter": "processEuroPrice"},
+    "purchase_skus": {"dataName": "purchase.skus", "domextract": "docQueryInnerText"}
   },
 
   "Env2Data": [
-    {"env": "ga", "selector": "cd_pagetype", "dataName": "PageType", "formatter": "pageTypeGA2Glov"},
-    {"env": "ga", "selector": "ecommerce.detail.products.0.id", "dataName": "pdp.sku"},
-    {"env": "ga", "selector": "ecommerce.detail.products.0.price", "dataName": "pdp.price"},
-    {"env": "ga", "selector": "ecommerce.products.id", "dataName": "cart.sku.array"},
-    {"env": "ga", "selector": "Ra.ecommerce.items[0].item_id", "dataName": "purchase.skus"},
+    {"env": "ga", "selector": "ecommerce.products.*.id", "dataName": "cart.skus"},
+    {"env": "ga", "selector": "Ra.ecommerce.items.*.item_id", "dataName": "purchase.skus", "formatter": "trimParentheses"},
     {"env": "ga", "selector": "Ra.ecommerce.value", "dataName": "purchase.revenue"},
-    {"env": "ga", "selector": "cd_user_type", "dataName": "userType"},
-    {"env": "ga", "selector": "cd_user_type", "dataName": "isAgent"}
+    {"env": "ga", "selector": "cd_user_type", "dataName": "userType"}
   ],
 
   "Data2Data": [
-    {"triggers": ["purchase.skus"], "type": "customFunct", "params": ["removeParenthesis"]},
-    {"type": "setValueIfEquals_LS", "data_type": "string", "lhs_type": "infoLayer", "lhs": "userType", "rhs_type": "string", "rhs": "Admin", "value": true, "featureName": "isAgent"}
+    {"type": "equals", "data_type": "string", "lhs_type": "infoLayer", "lhs": "userType", "rhs_type": "string", "rhs": "Admin", "featureName": "isAgent"}
   ],
 
   "UDFs": {
-    "removeParenthesis": [
-      "const baseFunction = (str) => {return str.replace(/[()]/g, '');}"
-    ]
   }
 }
