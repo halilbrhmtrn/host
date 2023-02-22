@@ -24,6 +24,9 @@
       {"searchBy": "class", "searchFor": "basket-checkout-button-container", "filterQuery": ".basket-checkout-button-container > button"},
       {"searchBy": "class", "searchFor": "checkout-pay-button-container", "filterQuery": ".checkout-pay-button-container > button"},
       {"searchBy": "class", "searchFor": "vvns-form", "filterQuery": ".vvns-form > button.vvns-button--uppercase"}
+    ],
+    "product-big-image": [
+      {"searchBy": "tag", "searchFor": "img", "ancestorBy": "class", "ancestorFor": "position-relative"}
     ]
   },
 
@@ -43,7 +46,10 @@
     ],
     "purchase_skus": {"dataName": "purchase.skus", "domextract": "docQueryInnerTextArray", "formatter": "trimParentheses"},
     "purchase_prices": {"dataName": "purchase.prices", "domextract": "docQueryInnerTextArray", "formatter": "processEuroPrice"},
-    "purchase_orderId": {"dataName": "purchase.orderId", "domextract": "docQueryInnerText"}
+    "purchase_orderId": {"dataName": "purchase.orderId", "domextract": "docQueryInnerText"},
+    "product-big-image": [
+      {"dataName": "__features.bigimages", "domextract": "docQueryAttribValueList", "params": ["data-src"]}
+    ]
   },
 
   "Env2Data": [
@@ -58,6 +64,15 @@
 
   "Data2Data": [
     {"type": "equals", "data_type": "string", "lhs_type": "infoLayer", "lhs": "userType", "rhs_type": "string", "rhs": "Admin", "featureName": "isAgent"},
+    {
+      "triggers": ["vi", "device.osName"], "type": "setMapValueIfContainsMapParam", "data_type": "string", "lhs_type": "infoLayer", "lhs": "device.osName", "featureName": "s",
+      "params": [
+        {"p": "Android", "v": "UGA"},
+        {"p": "iOS", "v": "UGI"},
+        {"p": "Windows", "v": "UGW"},
+        {"p": "Mac", "v": "UGM"}
+      ]
+    },
     {
       "type": "setMapValueIfContainsMapParam", "data_type": "string", "lhs_type": "infoLayer", "lhs": "u", "featureName": "PageType",
       "params": [
