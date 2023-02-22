@@ -11,12 +11,14 @@
     "pageType_PLP": {"searchBy": "class", "searchFor": "products-header"},
     "pageType_PDP": {"searchBy": "class", "searchFor": "product-summary-card"},
     "pageType_Basket": {"searchBy": "class", "searchFor": "basket"},
-    "pageType_Checkout": {"searchBy": "class", "searchFor": "checkout-payment"},
     "pdp_price": {"searchBy": "class", "searchFor": "product-prices", "filterQuery": ".product-prices > div:nth-child(1) > span.font-weight-bold.font-size-lg"},
     "pdp_sku": {"searchBy": "class", "searchFor": "product-title", "filterQuery": ".product-title > span.align-middle"},
     "cart_skus": {"searchBy": "class", "searchFor": "vvns-card__content", "filterQuery": ".vvns-card__content .text-muted.mb-1"},
     "cart_prices": {"searchBy": "class", "searchFor": "vvns-card__content", "filterQuery": ".vvns-card__content > div.row .mx-1.mx-lg-0", "noClassMatches": "text-dark"},
-    "purchase_skus": {"searchBy": "class", "searchFor": "text-dark mb-1"},
+    "checkout_address": {"searchBy": "class", "searchFor": "checkout-address"},
+    "purchase_skus": {"searchBy": "class", "searchFor": "vvns-card__content", "filterQuery": ".vvns-card__content div.text-dark.mb-1"},
+    "purchase_prices": {"searchBy": "class", "searchFor": "col-auto", "filterQuery": ".col-auto.text-right > div:nth-child(2)"},
+    "purchase_orderId": {"searchBy": "class", "searchFor": "vvns-card__content", "filterQuery": ".vvns-card__content span.text-turquoise"},
     "cta_button": [
       {"searchBy": "class", "searchFor": "product-prices", "filterQuery": ".product-prices > button"},
       {"searchBy": "class", "searchFor": "basket-checkout-button-container", "filterQuery": ".basket-checkout-button-container > button"},
@@ -30,19 +32,28 @@
     "pageType_PLP": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "PLP"},
     "pageType_PDP": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "PDP"},
     "pageType_Basket": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "Basket"},
-    "pageType_Checkout": {"dataName": "PageType", "domextract": "docQueryIfExists", "value": "Checkout"},
     "pdp_price": {"dataName": "pdp.price", "domextract": "docQueryInnerText", "formatter": "processEuroPrice"},
     "pdp_sku": {"dataName": "pdp.sku", "domextract": "docQueryInnerText"},
     "cart_skus": {"dataName": "cart.skus", "domextract": "docQueryInnerTextArray", "formatter": "trimParentheses"},
     "cart_prices": {"dataName": "cart.prices", "domextract": "docQueryInnerTextArray", "formatter": "processEuroPrice"},
-    "purchase_skus": {"dataName": "purchase.skus", "domextract": "docQueryInnerText"}
+    "checkout_address": 
+    [
+      {"dataName": "PageType", "domextract": "docQueryStyleDisplay", "params": ["block"], "forceSubQuery": ":scope > .vvns-card__content > div:nth-child(2)", "value": "Address"},
+      {"dataName": "PageType", "domextract": "docQueryStyleDisplay", "params": ["none"], "forceSubQuery": ":scope > .vvns-card__content > div:nth-child(2)", "value": "Payment"}
+    ],
+    "purchase_skus": {"dataName": "purchase.skus", "domextract": "docQueryInnerTextArray", "formatter": "trimParentheses"},
+    "purchase_prices": {"dataName": "purchase.prices", "domextract": "docQueryInnerTextArray", "formatter": "processEuroPrice"},
+    "purchase_orderId": {"dataName": "purchase.orderId", "domextract": "docQueryInnerText"}
   },
 
   "Env2Data": [
-    {"env": "ga", "selector": "ecommerce.products.*.id", "dataName": "cart.skus"},
-    {"env": "ga", "selector": "Ra.ecommerce.items.*.item_id", "dataName": "purchase.skus", "formatter": "trimParentheses"},
-    {"env": "ga", "selector": "Ra.ecommerce.value", "dataName": "purchase.revenue"},
-    {"env": "ga", "selector": "cd_user_type", "dataName": "userType"}
+    {"env": "ga", "selector": "cd_user_type", "dataName": "userType"},
+    {"env": "ga", "selector": "ecommerce.purchase.products.*.id", "dataName": "purchase.skus"},
+    {"env": "ga", "selector": "ecommerce.purchase.products.*.price", "dataName": "purchase.prices"},
+    {"env": "ga", "selector": "ecommerce.purchase.products.*.quantity", "dataName": "purchase.quantities"},
+    {"env": "ga", "selector": "ecommerce.purchase.products.*.category", "dataName": "purchase.categories"},
+    {"env": "ga", "selector": "ecommerce.purchase.actionField.id", "dataName": "purchase.orderId"},
+    {"env": "ga", "selector": "ecommerce.purchase.actionField.revenue", "dataName": "purchase.revenue"}
   ],
 
   "Data2Data": [
